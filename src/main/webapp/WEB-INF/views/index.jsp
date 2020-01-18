@@ -1,0 +1,586 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie.css">	
+	<title>movie</title>
+</head>
+<body>
+
+	<div class="header">
+		<a href='<c:url value="/index" />'>
+			<div class="h-logo">FlyingV</div>
+		</a>
+		<div class="left-menu">
+			<div><a href="">提案</a></div>
+			<div><a href="<c:url value="/createProject" />">探索</a></div>
+			<div><a href='<c:url value="/fundsCategory" />'  >募資</a></div>
+		</div>
+		<div class="right-menu">
+			<div><a href="">關於我們</a></div>
+			<div class="myAccount"><a href="">我的帳戶</a></div>
+		</div>
+	</div>
+	<div style="position:fixed;width: 9%;right:0px;z-index: 99;background-color:white;display: none" class="register-btn">
+		<p><a href="">登入</a></p>
+		<p><a href="">註冊新帳號</a></p>
+	</div>
+
+
+	<div class="main">
+		<ul class="img">
+			<li><div class="main-bg1"></div></li>
+			<li><div class="main-bg2"></div></li>
+			<li><div class="main-bg3"></div></li>
+			<li><div class="main-bg4"></div></li>
+		</ul>
+	</div>
+
+	<div class="section" id="popular">
+		<div class="width-limit">
+			<h2>熱門項目</h2>
+			<div class="inner">
+				<div class="projectThumb">
+					<img src="img/popular-pic01.jpg">
+				</div>
+				<div class="content">
+					<h3>測試文字</h3>
+					<p>測試文字測試文字測試文字測試文字測試文字</p>
+				</div>
+				<div class="downMeta"></div>
+			</div>
+
+			<div class="inner">
+				<div class="projectThumb">
+					<img src="img/popular-pic02.jpg">
+				</div>
+				<div class="content">
+					<h3>測試文字</h3>
+					<p>測試文字測試文字測試文字測試文字測試文字</p>
+				</div>
+				<div class="downMeta"></div>
+			</div>
+
+			<div class="inner">
+				<div class="projectThumb">
+					<img src="img/popular-pic03.jpg">
+				</div>
+				<div class="content">
+					<h3>測試文字</h3>
+					<p>測試文字測試文字測試文字測試文字測試文字</p>
+				</div>
+				<div class="downMeta"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section" id="category">
+		<div class="width-limit">
+			<div class="change-category">
+				<div class="change-menu">
+					<div class="buttonBorder-active buttonBorder" id="new-button">最新發起</div>
+					<div class="buttonBorder"  id="trend-button">趨勢話題</div>
+					<div class="buttonBorder"  id="coming-button">即將開始</div>
+					<div class="buttonBorder"  id="end-button">即將結束</div>
+				</div>
+			</div>
+
+
+
+			<div class="category-content active" id="new">
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic05.jpg">
+					</div>
+					<div class="content">
+						<h3>新新新新新</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic04.jpg">
+					</div>
+					<div class="content">
+						<h3>新新新新新</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic03.jpg">
+					</div>
+					<div class="content">
+						<h3>新新新新新</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic02.jpg">
+					</div>
+					<div class="content">
+						<h3>測試文字</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>測試文字</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic04.jpg">
+					</div>
+					<div class="content">
+						<h3>測試文字</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+			</div>
+			<div class="category-content"  id="trend">
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>我是最潮的</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>測試文字</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>測試文字</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>測試文字</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>測試文字</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>測試文字</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+			</div>	
+			<div class="category-content"  id="coming">
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>來來來來來</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>來來來來來</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>來來來來來</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>測試文字</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>測試文字</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>測試文字</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+			</div>		
+
+			<div class="category-content" id="end">
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>結束結束結束</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>結束結束結束</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>結束結束結束</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>測試文字</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>測試文字</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+				<div class="inner">
+					<div class="projectThumb">
+						<img src="img/popular-pic01.jpg">
+					</div>
+					<div class="content">
+						<h3>測試文字</h3>
+						<p>測試文字測試文字測試文字測試文字測試文字</p>
+					</div>
+					<div class="downMeta"></div>
+				</div>
+			</div>				
+		</div>
+	</div>
+
+	<div class="section" id="unique">
+		<div class="width-limit">
+			<h2>探索企劃</h2>
+			<div class="unique-project">
+				<div class="text">
+					<div class="text-content">
+						<p>黑膠募資專頁</p>
+						<p>好感音樂</p>
+					</div>
+					<p><a href="" class="more-btn">了解更多</a></p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="section" id="siteCategory">
+		<div class="category-square">
+			<div>
+				<img src="img/icon04.svg">
+				<p>設計</p>
+			</div>
+		</div>
+		<div class="category-square">
+			<div>
+				<img src="img/icon01.svg">
+				<p>音樂</p>
+			</div>
+		</div>
+		<div class="category-square">
+			<div>
+				<img src="img/icon02.svg">
+				<p>影視</p>
+			</div>
+		</div>
+		<div class="category-square">
+			<div>
+				<img src="img/icon03.svg">
+				<p>科技</p>
+			</div>
+		</div>
+		<div class="category-square">
+			<div>
+				<img src="img/icon04.svg">
+				<p>藝術</p>
+			</div>
+		</div>
+		<div class="category-square">
+			<div>
+				<img src="img/icon03.svg">
+				<p>休閒</p>
+			</div>
+		</div>
+		<div class="category-square">
+			<div>
+				<img src="img/icon02.svg">
+				<p>公共</p>
+			</div>
+		</div>
+		<div class="category-square">
+			<div>
+				<img src="img/icon04.svg">
+				<p>在地</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="section" id="footer">
+		<div class="width-limit">
+			<div class="footer-content">
+				<h3>關於</h3>
+				<ul>
+					<li>關於我們</li>
+					<li>人才招募</li>
+					<li>媒體資源</li>
+					<li>商標使用規範</li>
+				</ul>
+			</div>
+			<div class="footer-content">
+				<h3>條款</h3>
+				<ul>
+					<li>網站使用條款</li>
+					<li>探索者合約</li>
+				</ul>
+			</div>
+			<div class="footer-content">
+				<h3>協助</h3>
+				<ul>
+					<li>常見問題</li>
+					<li>使用手冊</li>
+					<li>提案百科</li>
+				</ul>
+			</div>
+			<div class="footer-content">
+				<h3>更多</h3>
+				<ul>
+					<li>關於我們</li>
+					<li>人才招募</li>
+					<li>媒體資源</li>
+					<li>商標使用規範</li>
+				</ul>
+			</div>
+			<div class="copyright">
+				<p>FLYINGV © 2012-2020.</p>
+				<p>ALL RIGHTS RESERVED.</p>
+			</div>
+		</div>
+	</div>
+	
+
+
+</body>
+
+
+<script type="text/javascript"></script>
+
+<script>
+
+    $('#new-button').click(function(){
+    	$('.category-content').removeClass("active active-bottom"); 
+    	$('#new').addClass("active"); 
+    	$('.buttonBorder').removeClass("buttonBorder-active");
+    	$('#new-button').addClass("buttonBorder-active");
+
+	});
+    $('#trend-button').click(function(){
+    	$('.category-content').removeClass("active active-bottom"); 
+    	$('#trend').addClass("active"); 
+    	$('.buttonBorder').removeClass("buttonBorder-active");
+    	$('#trend-button').addClass("buttonBorder-active");
+	});
+	 $('#coming-button').click(function(){
+	 	$('.category-content').removeClass("active active-bottom"); 
+    	$('#coming').addClass("active"); 
+    	$('.buttonBorder').removeClass("buttonBorder-active");
+    	$('#coming-button').addClass("buttonBorder-active");
+	});
+	  $('#end-button').click(function(){
+	  	$('.category-content').removeClass("active active-bottom"); 
+    	$('#end').addClass("active"); 
+    	$('.buttonBorder').removeClass("buttonBorder-active");
+    	$('#end-button').addClass("buttonBorder-active");
+	});
+
+
+  $('.myAccount').mouseover(function(){
+	  	$('.register-btn').show(); 
+    	
+	});
+ $('.myAccount').mouseout(function(){
+	  	$('.register-btn').hide(); 
+    	
+	});
+
+
+
+	$(document).ready(
+		function() {
+			var i = 0;
+			var clone = $(".main .img li").first().clone();//克隆第一張圖片
+		$(".main .img").append(clone);//復制到列表最後
+		var size = $(".main .img li").size();
+
+		for (var j = 0; j < size - 1; j++) {
+			$(".main .num").append("<li></li>");
+		}
+
+		$(".main .num li").first().addClass("on");
+
+		/*自動輪播*/
+
+		var t = setInterval(function() {
+			i++;
+			move();
+		}, 2000);
+
+		/*鼠標懸停事件*/
+
+		$(".main").hover(function() {
+			clearInterval(t);//鼠標懸停時清除定時器
+		}, function() {
+			t = setInterval(function() {
+			i++;
+			move();
+		}, 2000); //鼠標移出時清除定時器
+		});
+
+		/*鼠標滑入原點事件*/
+
+		$(".main .num li").hover(function() {
+
+		var index = $(this).index();//獲取當前索引值
+		i = index;
+		$(".main .img").stop().animate({
+			left : -index * 1500
+		}, 750);
+		$(this).addClass("on").siblings().removeClass("on");
+		});
+
+
+		/*移動事件*/
+		function move() {
+		if (i == size) {
+			$(".main .img").css({
+			left : 0
+		});
+			i = 1;
+		}
+		if (i == -1) {
+		$(".main .img").css({
+			left : -(size - 1) * 1500
+		});
+			i = size - 2;
+		}
+		$(".main .img").stop().animate({
+			left : -i * 1450	/*圖片移動的長度*/
+		}, 1500);/* 圖片移動的時間*/
+
+		if (i == size - 1) {
+			$(".main .num li").eq(0).addClass("on")
+			.siblings().removeClass("on");
+		} else {
+			$(".main .num li").eq(i).addClass("on")
+			.siblings().removeClass("on");
+			}
+		}
+	});
+	
+
+</script>
+</body>
+</html>

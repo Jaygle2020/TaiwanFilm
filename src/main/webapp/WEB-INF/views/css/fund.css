@@ -1,0 +1,190 @@
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+.projectContentUpper {
+  position: relative;
+  padding-top: 45px;
+  background: #eee;
+  margin-bottom: 30px;
+  display: block;
+}
+
+.projectContentUpper .container {
+  width: 1170px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.projectContentUpper .container .projectTitle {
+  margin-bottom: 40px;
+  position: relative;
+  padding-left: 50px;
+  padding-right: 50px;
+  line-height: 2.2rem;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 25px;
+  letter-spacing: 1.5px;
+  color: #000;
+  max-width: 670px;
+  margin: 0 auto;
+}
+
+.projectContentUpper .container .upperContent {
+  margin-bottom: 40px;
+  margin-right: -15px;
+  margin-left: -15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+}
+
+.projectContentUpper .container .upperContent .col-left {
+  width: 65%;
+  display: inline-block;
+  height: 400px;
+}
+
+.projectContentUpper .container .upperContent .col-left .videoBlock {
+  width: 100%;
+  height: 100%;
+}
+
+.projectContentUpper .container .upperContent .col-right {
+  width: 33.33333333%;
+  padding-left: 15px;
+  display: inline-block;
+}
+
+.projectContentUpper .container .upperContent .col-right h1 {
+  font-family: Roboto,sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: left;
+  color: #4a4a4a;
+  margin-bottom: 8px;
+  line-height: 0.9;
+}
+
+.projectContentUpper .container .upperContent .col-right p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.projectContentDown {
+  margin-bottom: 30px;
+  display: block;
+}
+
+.projectContentDown .container {
+  width: 1170px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.projectContentDown .container .row {
+  margin-right: -15px;
+  margin-left: -15px;
+  background-color: lightsteelblue;
+}
+
+.projectContentDown .container .col-left {
+  width: 65%;
+  float: left;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.projectContentDown .container .col-right {
+  float: left;
+  padding-left: 15px;
+  width: 33.33333333%;
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+}
+
+.projectContentDown .container .rewardBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+}
+
+h1.projectContentHeading {
+  margin-top: 0;
+  margin-bottom: 30px;
+  padding: 40px 0;
+  text-align: center;
+  border: none;
+  font-size: 34px;
+  letter-spacing: 3px;
+  border-radius: 4px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(155, 155, 155, 0.25)), to(#fefefe));
+  background: linear-gradient(rgba(155, 155, 155, 0.25), #fefefe);
+}
+
+.btn.btn-red-ghost {
+  color: #eb4b4b;
+  background-color: transparent;
+  border-color: #eb4b4b;
+}
+
+a:active, a:hover, a:link, a:visited {
+  text-decoration: none;
+}
+
+.btn.fRed {
+  background: #eb4b4b;
+}
+
+.btn {
+  height: 38px;
+  padding: 6px 12px;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-align: center;
+  border: 1px solid transparent;
+  -webkit-transition: 250ms all ease;
+  transition: 250ms all ease;
+}
+
+.btn, .createWrapper section {
+  margin-bottom: 0;
+}
+
+.btn, .btn-delProject {
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+/*# sourceMappingURL=fund.css.map */
