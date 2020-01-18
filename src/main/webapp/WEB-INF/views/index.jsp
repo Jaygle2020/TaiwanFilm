@@ -1,36 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!DOCTYPE html>
 <html>
+	
+	
+	
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie.css">	
 	<title>movie</title>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie.css" />
+	<html lang="zh-TW">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" >
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 </head>
 <body>
 
-	<div class="header">
-		<a href='<c:url value="/index" />'>
-			<div class="h-logo">FlyingV</div>
-		</a>
-		<div class="left-menu">
-			<div><a href="">提案</a></div>
-			<div><a href="<c:url value="/createProject" />">探索</a></div>
-			<div><a href='<c:url value="/fundsCategory" />'  >募資</a></div>
-		</div>
-		<div class="right-menu">
-			<div><a href="">關於我們</a></div>
-			<div class="myAccount"><a href="">我的帳戶</a></div>
-		</div>
-	</div>
-	<div style="position:fixed;width: 9%;right:0px;z-index: 99;background-color:white;display: none" class="register-btn">
-		<p><a href="">登入</a></p>
-		<p><a href="">註冊新帳號</a></p>
-	</div>
-
+<jsp:include page="top.jsp" />
 
 	<div class="main">
 		<ul class="img">
@@ -501,10 +489,10 @@
 	  	$('.register-btn').show(); 
     	
 	});
- $('.myAccount').mouseout(function(){
-	  	$('.register-btn').hide(); 
+//  $('.myAccount').mouseout(function(){
+// 	  	$('.register-btn').hide(); 
     	
-	});
+// 	});
 
 
 
@@ -581,6 +569,8 @@
 	});
 	
 
+
+
+
 </script>
-</body>
 </html>
