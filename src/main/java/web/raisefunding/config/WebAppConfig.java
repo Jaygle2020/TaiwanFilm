@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("web.raisefunding")
+@ComponentScan({"web.raisefunding","com.web.store"})
 public class WebAppConfig implements WebMvcConfigurer {
 	@Bean
 	public ViewResolver internalResourceViewResolver() {

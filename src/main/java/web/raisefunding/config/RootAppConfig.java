@@ -55,7 +55,8 @@ public class RootAppConfig {
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean factory = new LocalSessionFactoryBean();
 		factory.setPackagesToScan(new String[] {
-				"web.raisefunding.model"
+				"web.raisefunding.model",
+				"come.web.store.Model"
 		});
 //		if (SystemConstant.DB_TYPE == SystemConstant.MYSQL) {
 //			factory.setDataSource(mySQLDataSource());

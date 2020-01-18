@@ -20,11 +20,11 @@ public class FundsController {
 		this.service = service;
 	}
 	
-	@RequestMapping("/")
-	public String homepage() {
-		return "index";
-	}
-	
+//	@RequestMapping("/")
+//	public String homepage() {
+//		return "index";
+//	}
+//	
 
 	@RequestMapping(value="/crowdFundingPage",method=RequestMethod.GET)
 	public String crowdFundingPage(Model model) {
