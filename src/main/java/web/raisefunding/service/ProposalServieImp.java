@@ -20,11 +20,11 @@ public class ProposalServieImp implements ProposalService {
 	public void setCfDao(CrowdFundingDao cfDao) {
 		this.cfDao = cfDao;
 	}
-
+	@Autowired
 	public void setDpDao(DonatePlanDao dpDao) {
 		this.dpDao = dpDao;
 	}
-
+	@Autowired
 	public void setProjDao(ProjectDao projDao) {
 		this.projDao = projDao;
 	}
@@ -32,16 +32,19 @@ public class ProposalServieImp implements ProposalService {
 	@Override
 	public int createProjectAndPlan(DonatePlanBean dpBean, CrowdFundingBean cfBean, ProjectBean projBean) {
 		int n = 0;
-	    dpBean.setProjBean(projBean);
+		projDao.createProject(projBean);
+		dpBean.setProjBean(projBean);
 		cfBean.setProjBean(projBean);
 		cfBean.setFundsNow(0);
 		cfBean.setBackerNum(0);
 		cfDao.createNewCrowdFunding(cfBean);
 		dpDao.createNewPlan(dpBean);
-		projDao.createProject(projBean);
+		
 		n++;
 		return n;
 	}
+	
+	
 	@Transactional
 	@Override
 	public int updatePlan(DonatePlanBean dpBean, CrowdFundingBean cfBean, ProjectBean projBean) {
