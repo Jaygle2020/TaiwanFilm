@@ -19,7 +19,7 @@
         $(function () {
             $(".datepicker").datepicker();
             donateOptionElm();
-            
+            $("#dliverDate").val($("#deliverYear").val()+"-"+ $("#deliverMonth").val());
         });
     </script>
 </head>
@@ -37,7 +37,7 @@
             </section>
 
             <section class="formSection">
-                <form:form method="POST" modelAttribute="CrowdFundingBean" action="/submitProject" enctype="multipart/form-data" id="projectForm">
+                <form:form method="POST" modelAttribute="CrowdFundingBean" action="${pageContext.request.contextPath}/submitProject" enctype="multipart/form-data" id="projectForm">
                     <div class="active create-basic productlist form-group">
                         <div class="createFormIntro partialWidthBlock">
                             <p>在這個區塊您將填寫專案內容中最吸引人募資影片、封面圖片和專案說明。</p>
@@ -57,7 +57,7 @@
                             <p>上傳專案圖片</p>
                             <input type="file" name="photoStr" accept="image/jpeg,image/png,image/bmp">
                             <P>專案影片</P>
-                            <input type="url" name="vedio" placeholder="請輸入youtube影片連結網址">
+                            <input type="text" name="vedio" placeholder="請輸入youtube影片連結網址">
                             <p>募資目標金額</p>
                             <p><form:input type="number" max="99999999" min="0" path="fundsGoal" />元</p>
                             <P>募資開始與結束日期</P>
@@ -85,7 +85,7 @@
                                 <p>回饋金額，最低100元</p>
                                 <input type="number" name="donateMoney" min="100"><br>
                                 <p>內容摘要</p>
-                                <textarea name="donateDescription" form="rewardPlan" rows="12" cols="40"></textarea>
+                                <textarea name="donateDescription" form="projectForm" rows="12" cols="40"></textarea>
                             </div>
                             <div class="previewCard">
                                 <p>回饋封面</p>
@@ -106,12 +106,16 @@
                                 </select>
                                 <p>預計寄送時間</p>
                                 <select  id="deliverYear"></select><select  id="deliverMonth"></select>
-                                <input type="hidden" name="dliverDate" value="">
+                                <input type="hidden" name="dliverDate" id="dliverDate">
                                 <p>限量份數</p>
                                 <input type="number" name="limit" min="1" max="999999">
                             </div>
                         </div>
                 	</div>
+                	<div id="submitAll">
+                	<input type="submit" value="送出專案" ><BR>
+                	<input type="reset" value="取消專案">
+                	</div>	
                 </form:form>	
             </section>
 
@@ -182,12 +186,15 @@
                 $('#deliverYear').append(optionYear);
             }
         }
-        $("#puchido").click(function(){
-            var year = $("#deliverYear").val();
-            var month = $("#deliverMonth").val();
-            $("#dliverDate").val(year+"-"+month);
+        $("#deliverYear").change(function(){
+        	$("#dliverDate").val($("#deliverYear").val()+"-"+ $("#deliverMonth").val());
             console.log(  $("#dliverDate").val())
         });
+        
+        $("#deliverMonth").change(function(){
+        	$("#dliverDate").val($("#deliverYear").val()+"-"+ $("#deliverMonth").val());
+            console.log(  $("#dliverDate").val())
+        })
 
     </script>
 </body>

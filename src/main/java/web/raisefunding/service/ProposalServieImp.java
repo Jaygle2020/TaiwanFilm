@@ -1,6 +1,7 @@
 package web.raisefunding.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import web.raisefunding.dao.CrowdFundingDao;
@@ -9,7 +10,7 @@ import web.raisefunding.dao.ProjectDao;
 import web.raisefunding.model.CrowdFundingBean;
 import web.raisefunding.model.DonatePlanBean;
 import web.raisefunding.model.ProjectBean;
-
+@Service
 public class ProposalServieImp implements ProposalService {
 	CrowdFundingDao cfDao; 
 	DonatePlanDao dpDao;
@@ -31,6 +32,10 @@ public class ProposalServieImp implements ProposalService {
 	@Override
 	public int createProjectAndPlan(DonatePlanBean dpBean, CrowdFundingBean cfBean, ProjectBean projBean) {
 		int n = 0;
+	    dpBean.setProjBean(projBean);
+		cfBean.setProjBean(projBean);
+		cfBean.setFundsNow(0);
+		cfBean.setBackerNum(0);
 		cfDao.createNewCrowdFunding(cfBean);
 		dpDao.createNewPlan(dpBean);
 		projDao.createProject(projBean);
@@ -45,5 +50,6 @@ public class ProposalServieImp implements ProposalService {
 		n++;
 		return n;
 	}
+
 
 }

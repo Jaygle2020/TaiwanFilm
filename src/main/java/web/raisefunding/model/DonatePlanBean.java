@@ -3,14 +3,18 @@ package web.raisefunding.model;
 import java.io.Serializable;
 import java.sql.Blob;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
-import org.springframework.web.multipart.support.MultipartFilter;
+
+
 
 @Entity
 @Table(name="donatePlan")
@@ -18,27 +22,43 @@ public class DonatePlanBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="planId")
 	private Integer planId;
-	private Integer projectId;
 	private Integer donateMoney;
 	private String donateDescription;
+	private String pictureFileName;
 	private Blob picture;
 	private String shipping;
 	private String dliverDate;
 	private Integer limit;
-	@Transient
-	private MultipartFilter pictureStr;
+	@OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="projectId", referencedColumnName="projectId")
+	private ProjectBean projBean;
+
+	public ProjectBean getProjBean() {
+		return projBean;
+	}
+
+	public void setProjBean(ProjectBean projBean) {
+		this.projBean = projBean;
+	}
+
+	public DonatePlanBean() {}
+	
+	public DonatePlanBean(Integer donateMoney,String donateDescription,String shipping,String dliverDate,Integer limit) {
+		this.donateMoney = donateMoney;
+		this.donateDescription = donateDescription;
+		this.shipping = shipping;
+		this.dliverDate = dliverDate;
+		this.limit = limit;
+	}
+	
+	
 	public Integer getPlanId() {
 		return planId;
 	}
 	public void setPlanId(Integer planId) {
 		this.planId = planId;
-	}
-	public Integer getProjectId() {
-		return projectId;
-	}
-	public void setProjectId(Integer projectId) {
-		this.projectId = projectId;
 	}
 	public Integer getDonateMoney() {
 		return donateMoney;
@@ -77,12 +97,15 @@ public class DonatePlanBean implements Serializable {
 	public void setLimit(Integer limit) {
 		this.limit = limit;
 	}
-	public MultipartFilter getPictureStr() {
-		return pictureStr;
+
+	public String getPictureFileName() {
+		return pictureFileName;
 	}
-	public void setPictureStr(MultipartFilter pictureStr) {
-		this.pictureStr = pictureStr;
+
+	public void setPictureFileName(String pictureFileName) {
+		this.pictureFileName = pictureFileName;
 	}
+
 	
 	
 	
