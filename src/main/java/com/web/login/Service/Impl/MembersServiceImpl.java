@@ -1,12 +1,12 @@
-package com.web.store.Service.Impl;
+package com.web.login.Service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.web.store.Dao.MembersDao;
-import com.web.store.Model.MembersBean;
-import com.web.store.Service.MembersService;
+import com.web.login.Dao.MembersDao;
+import com.web.login.Model.MembersBean;
+import com.web.login.Service.MembersService;
 
 @Service
 public class MembersServiceImpl implements MembersService {

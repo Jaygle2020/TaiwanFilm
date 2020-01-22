@@ -31,7 +31,7 @@ public class RootAppConfig {
 		} catch (PropertyVetoException e) {
 			e.printStackTrace();
 		}
-		ds.setJdbcUrl("jdbc:sqlserver://127.0.0.1:1433;DatabaseName=jspdb");
+		ds.setJdbcUrl("jdbc:sqlserver://127.0.0.1:1433;DatabaseName=taiwanfilm");
 		ds.setInitialPoolSize(4);
 		ds.setMaxPoolSize(8);
 		return ds;
@@ -56,7 +56,7 @@ public class RootAppConfig {
 		LocalSessionFactoryBean factory = new LocalSessionFactoryBean();
 		factory.setPackagesToScan(new String[] {
 				"web.raisefunding.model",
-				"come.web.store.Model"
+				"com.web.login.Model"
 		});
 //		if (SystemConstant.DB_TYPE == SystemConstant.MYSQL) {
 //			factory.setDataSource(mySQLDataSource());

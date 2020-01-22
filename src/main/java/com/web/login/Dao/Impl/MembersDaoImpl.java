@@ -1,4 +1,4 @@
-package com.web.store.Dao.Impl;
+package com.web.login.Dao.Impl;
 
 import javax.persistence.NoResultException;
 
@@ -7,11 +7,13 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.web.store.Dao.MembersDao;
-import com.web.store.Model.MembersBean;
+import com.web.login.Dao.MembersDao;
+import com.web.login.Model.MembersBean;
 
 @Repository
 public class MembersDaoImpl implements MembersDao {
+	
+	@Autowired
 	SessionFactory factory;
 	
 	@Autowired

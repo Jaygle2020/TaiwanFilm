@@ -1,6 +1,6 @@
 package com.web.login.Dao;
 
-import com.web.store.Model.MembersBean;
+import com.web.login.Model.MembersBean;
 
 public interface MembersDao {
 	

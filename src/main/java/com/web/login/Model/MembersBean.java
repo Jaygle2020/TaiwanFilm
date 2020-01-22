@@ -21,16 +21,16 @@ public class MembersBean implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer memberId;
-	private String memberName;
 	private String account;
 	private String password;
 	@Transient
 	private String password1;
-	private String email;
+	private String memberName;
 	private String gender;
 	private Date birthDay;
 	private String address;
 	private String phone;
+	private String email;
 	private String fileName;
 	
 	private Blob memberImage;
@@ -77,8 +77,5 @@ public class MembersBean implements Serializable{
 	public void setFileName(String fileName) {this.fileName = fileName;}
 	public void setMemberImage(Blob memberImage) {this.memberImage = memberImage;}
 	public void setCreateDay(String createDay) {this.createDay = createDay;}
-	public void setUpdateDay(String updateDay) {this.updateDay = updateDay;}
-	
-	
-	
+	public void setUpdateDay(String updateDay) {this.updateDay = updateDay;}	
 }
