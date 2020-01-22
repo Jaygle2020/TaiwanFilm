@@ -20,8 +20,8 @@ import com.web.login.Service.MembersService;
 
 
 
-@Controller
-@SessionAttributes({"members","account"})  
+//@Controller
+//@SessionAttributes({"members","account"})  
 public class RegisterController {
 	String noImage = "/images/NoImage.png";
 	String noImageFemale = "/images/NoImage_Female.jpg";
