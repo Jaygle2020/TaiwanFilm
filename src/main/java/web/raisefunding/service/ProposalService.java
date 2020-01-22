@@ -8,4 +8,5 @@ public interface ProposalService {
 	public int createProjectAndPlan(DonatePlanBean dpBean, CrowdFundingBean cfBean, ProjectBean projBean );
 	public int updatePlan(DonatePlanBean dpBean , CrowdFundingBean cfBean, ProjectBean projBean);
 	
+	
 }

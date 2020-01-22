@@ -2,10 +2,14 @@ package web.raisefunding.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,26 +19,30 @@ public class CrowdFundingBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="actionId")
 	private Integer actionId;
-	private Integer projectId;
 	private String dateBegin;
 	private String 	dateEnd;
 	private Integer fundsNow;
 	private Integer fundsGoal;
 	private Integer backerNum;
-	
+	@OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="projectId", referencedColumnName="projectId")
+	private ProjectBean projBean;
+
+	public ProjectBean getProjBean() {
+		return projBean;
+	}
+
+	public void setProjBean(ProjectBean projBean) {
+		this.projBean = projBean;
+	}
 	
 	public Integer getActionId() {
 		return actionId;
 	}
 	public void setActionId(Integer actionId) {
 		this.actionId = actionId;
-	}
-	public Integer getProjectId() {
-		return projectId;
-	}
-	public void setProjectId(Integer projectId) {
-		this.projectId = projectId;
 	}
 	public String getDateBegin() {
 		return dateBegin;
