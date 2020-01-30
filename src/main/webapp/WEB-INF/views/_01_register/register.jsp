@@ -20,18 +20,16 @@
 			
 			<div class="sign" id="sign-in">
 				<h1>登入</h1>
-				<form name="login" method='post' action='/login'>
+				<form action='${pageContext.request.contextPath}/Checklogin' method='post'>
 				<input name="account" class="nobooder" type='text' placeholder='請輸入帳號'  required /><br>
 				<input name="password" class="nobooder" type='text' placeholder='請輸入密碼' required /><br>
-				<label for="remember" class="grey dark">			
-				<br><input type="checkbox" />記得我
-				</label>
-			
-			<p style="font-size: 10px">忘記密碼?</p>
 			
 			<input type='reset' value='清除' />
 			<input type='submit' value='確認加入' onclick='return check()' />
 			</form>
+				<label for="remember" class="grey dark">			
+				<br><input type="checkbox" />記得我</label>		
+			<p style="font-size: 10px">忘記密碼?</p>
 			</div>
 			
 			<div class="sign" id="sign-up">

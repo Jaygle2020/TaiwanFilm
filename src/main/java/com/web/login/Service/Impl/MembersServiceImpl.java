@@ -8,11 +8,14 @@ import com.web.login.Dao.MembersDao;
 import com.web.login.Model.MembersBean;
 import com.web.login.Service.MembersService;
 
+
 @Service
 public class MembersServiceImpl implements MembersService {
 	
 	@Autowired
 	MembersDao dao;
+	
+	
 	
 	@Transactional
 	@Override
@@ -28,5 +31,11 @@ public class MembersServiceImpl implements MembersService {
 	@Override
 	public MembersBean getMemberByBean(MembersBean mb) {
 		return dao.getMemberByBean(mb);
+	}
+	
+	@Transactional
+	@Override
+	public MembersBean login(String acc, String pwd) {
+		return dao.login(acc,pwd);
 	}
 }

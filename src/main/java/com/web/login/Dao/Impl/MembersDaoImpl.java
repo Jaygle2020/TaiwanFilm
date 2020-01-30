@@ -56,4 +56,19 @@ public class MembersDaoImpl implements MembersDao {
 		}
 	    return member;
 	}
+	@Override
+	public MembersBean login(String acc, String pwd) {
+		String hql="form MembersBean where account = :account and password = :password";
+		MembersBean  member = null;
+		Session session = factory.getCurrentSession();
+		try {
+			member = (MembersBean) session.createQuery(hql)
+					.setParameter("account", acc)
+					.setParameter("password", pwd)
+					.getSingleResult();
+		}catch (Exception e) {
+			member = null;
+		}
+		return member;
+	}
 }
