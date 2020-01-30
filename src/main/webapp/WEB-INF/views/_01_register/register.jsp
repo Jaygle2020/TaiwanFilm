@@ -10,6 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" >
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie.css" />
+	
 	<title>movie</title>
 </head>
 <body>
@@ -22,8 +23,7 @@
 				<form name="login" method='post' action='/login'>
 				<input name="account" class="nobooder" type='text' placeholder='請輸入帳號'  required /><br>
 				<input name="password" class="nobooder" type='text' placeholder='請輸入密碼' required /><br>
-				<label for="remember" class="grey dark">
-				
+				<label for="remember" class="grey dark">			
 				<br><input type="checkbox" />記得我
 				</label>
 			
@@ -39,10 +39,7 @@
 			<p class="smalltext" >若您還未註冊會員</p>
 			<p class="smalltext">我們將會請您提供必需資訊</p>
 			<button type=""><a href="members/add">登入/註冊</a></button>
-			
-<!-- 			<input type ="button" onclick="location.href='http://localhost:8080/TaiwanFilm/_01_register/registerNewMember'"  -->
-<!-- 			value="登入/註冊" /> -->
-			
+					
 			</div>
 		</div>
 	</div>
