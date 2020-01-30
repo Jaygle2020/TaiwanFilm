@@ -1,7 +1,7 @@
-package web.raisefunding.service;
+package com.web.raisefunding.service;
 
 
-import web.raisefunding.model.DonatePlanBean;
+import com.web.raisefunding.model.DonatePlanBean;
 
 public interface DonatePlanService {
 	public int createNewPlan(DonatePlanBean dpBean);

@@ -3,6 +3,7 @@ package com.web.login.controller;
 import java.sql.Blob;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ import com.web.login.Service.MembersService;
 
 
 
-//@Controller
-//@SessionAttributes({"members","account"})  
+@Controller
+@SessionAttributes({"members","account","Login"})  
 public class RegisterController {
 	String noImage = "/images/NoImage.png";
 	String noImageFemale = "/images/NoImage_Female.jpg";
@@ -78,6 +79,7 @@ public class RegisterController {
 	}
 	@RequestMapping("/register")
 	 public String register(Model model) {
+		
 		return "_01_register/register";		
 	}
 	
@@ -86,9 +88,19 @@ public class RegisterController {
 	public String memberpage(Model model) {
 		return "index";
 	}
-	@PostMapping("/login")
-	public String memberLogin(Model model) {
-		return "index";
+	@PostMapping("/Checklogin")
+	public String memberCheckLogin(
+			@ModelAttribute("MembersBean")
+			MembersBean member,
+			Model model,
+			HttpSession session) {
+		System.out.println("Login頁面");
+		MembersBean bean = service.login(member.getAccount(),member.getPassword());
+		if(bean !=null) {
+			session.setAttribute("Login", bean);
+		}
+		
+		return "_01_register/LoginSuccessful";
 	}
 //	@PostMapping("modifyMember/{id}")
 //	public String editMemberForm(Model model,

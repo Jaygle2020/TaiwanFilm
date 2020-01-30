@@ -1,15 +1,18 @@
-package web.raisefunding.service;
+package com.web.raisefunding.service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import web.raisefunding.dao.CrowdFundingDao;
-import web.raisefunding.dao.DonatePlanDao;
-import web.raisefunding.dao.ProjectDao;
-import web.raisefunding.model.CrowdFundingBean;
-import web.raisefunding.model.DonatePlanBean;
-import web.raisefunding.model.ProjectBean;
+import com.web.raisefunding.dao.CrowdFundingDao;
+import com.web.raisefunding.dao.DonatePlanDao;
+import com.web.raisefunding.dao.ProjectDao;
+import com.web.raisefunding.model.CrowdFundingBean;
+import com.web.raisefunding.model.DonatePlanBean;
+import com.web.raisefunding.model.ProjectBean;
 @Service
 public class ProposalServieImp implements ProposalService {
 	CrowdFundingDao cfDao; 
@@ -43,7 +46,11 @@ public class ProposalServieImp implements ProposalService {
 		n++;
 		return n;
 	}
-	
+	@Transactional
+	@Override
+	public CrowdFundingBean getCrowdFundingBean(Integer projectId) {
+		return cfDao.getCrowdFundingBean(projectId);
+	}
 	
 	@Transactional
 	@Override
@@ -53,6 +60,31 @@ public class ProposalServieImp implements ProposalService {
 		n++;
 		return n;
 	}
+	@Transactional
+	@Override
+	public DonatePlanBean GetDonatePlanBean(Integer id) {
+		DonatePlanBean dpBean = dpDao.getPlan(id);
+		return dpBean;
+	}
+	
+	@Transactional
+	@Override
+	public ProjectBean GetProjBean(Integer id) {
+		ProjectBean projBean  =  projDao.getProject(id);
+		return projBean;
+	}
+	@Transactional
+	@Override
+	public List<CrowdFundingBean> getAllProjectAndFunding() {
+		return cfDao.getAllFunding();
+	}
+	
+	@Transactional
+	@Override
+	public List<DonatePlanBean> getAllDonatePlanBean(Integer projectId){
+		return dpDao.getAllPlan(projectId);
+	}
+	
 
 
 }

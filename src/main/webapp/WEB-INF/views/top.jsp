@@ -1,5 +1,6 @@
-inpl<MembersB%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -11,11 +12,11 @@ inpl<MembersB%@ page language="java" contentType="text/html; charset=UTF-8"
 </head>
 <body>
 <div class="header">
-		<a href="">
+		<a href="${pageContext.request.contextPath}/getAllProject">
 			<div class="h-logo">FlyingV</div>
 		</a>
 		<div class="left-menu">
-			<div><a href="">提案</a></div>
+			<div><a href="${pageContext.request.contextPath}/getAllProject">提案</a></div>
 			<div><a href="${pageContext.request.contextPath}/createProject">探索</a></div>
 			<div><a href="${pageContext.request.contextPath}/fundsCategory">探索</a></div>
 		</div>

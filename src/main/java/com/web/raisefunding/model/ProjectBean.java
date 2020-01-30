@@ -1,4 +1,4 @@
-package web.raisefunding.model;
+package com.web.raisefunding.model;
 
 import java.io.Serializable;
 import java.sql.Blob;
@@ -19,6 +19,7 @@ public class ProjectBean implements Serializable{
 @Column(name="projectId")
 private Integer projectId;
 private String projectName;
+@Column(length=500)
 private String projDescript;
 private String photoFileName;
 private Blob photo;

@@ -1,11 +1,15 @@
-package web.raisefunding.dao;
+package com.web.raisefunding.dao;
+
+import java.util.List;
+
+import javax.persistence.NoResultException;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import web.raisefunding.model.DonatePlanBean;
+import com.web.raisefunding.model.DonatePlanBean;
 @Repository
 public class DonatePlanDaoImp implements DonatePlanDao {
 	SessionFactory factory;
@@ -36,6 +40,21 @@ public class DonatePlanDaoImp implements DonatePlanDao {
 		Session session = factory.getCurrentSession();
 		DonatePlanBean dpBean = session.get(DonatePlanBean.class, planId);
 		return dpBean;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<DonatePlanBean> getAllPlan(Integer projectId) {
+		List<DonatePlanBean> list = null;
+		Session session = factory.getCurrentSession();
+		String hql = "From DonatePlanBean where projectId = :prjId";
+		try {
+		list= session.createQuery(hql)
+				.setParameter("prjId", projectId)
+				.getResultList();
+		} catch (NoResultException e) {
+		}
+		return list;
 	}
 
 }

@@ -1,10 +1,10 @@
-package web.raisefunding.service;
+package com.web.raisefunding.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import web.raisefunding.dao.DonatePlanDao;
-import web.raisefunding.model.DonatePlanBean;
+import com.web.raisefunding.dao.DonatePlanDao;
+import com.web.raisefunding.model.DonatePlanBean;
 
 public class DonatePlanServiceImp implements DonatePlanService {
 	DonatePlanDao Dao;

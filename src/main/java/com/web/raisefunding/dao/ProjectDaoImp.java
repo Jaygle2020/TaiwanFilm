@@ -1,11 +1,13 @@
-package web.raisefunding.dao;
+package com.web.raisefunding.dao;
+
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import web.raisefunding.model.ProjectBean;
+import com.web.raisefunding.model.ProjectBean;
 @Repository
 public class ProjectDaoImp implements ProjectDao {
 	SessionFactory factory;
@@ -37,6 +39,15 @@ public class ProjectDaoImp implements ProjectDao {
 		Session session = factory.getCurrentSession();
 		ProjectBean projBean = session.get(ProjectBean.class,projectId);
 		return projBean ;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object> getAllProject() {
+		Session session = factory.getCurrentSession();
+		String hql = "from ProjectBean p,CrowdFundingBean c where p.projectId = c.projectBean.projectId";
+		List<Object> list= session.createQuery(hql).getResultList();
+		return list;
 	}
 
 }

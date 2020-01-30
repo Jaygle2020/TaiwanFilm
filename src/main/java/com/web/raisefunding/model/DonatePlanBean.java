@@ -1,4 +1,4 @@
-package web.raisefunding.model;
+package com.web.raisefunding.model;
 
 import java.io.Serializable;
 import java.sql.Blob;
@@ -25,6 +25,7 @@ public class DonatePlanBean implements Serializable {
 	@Column(name="planId")
 	private Integer planId;
 	private Integer donateMoney;
+	@Column(length=500)
 	private String donateDescription;
 	private String pictureFileName;
 	private Blob picture;

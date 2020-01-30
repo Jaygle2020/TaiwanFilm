@@ -1,4 +1,4 @@
-package web.raisefunding.config;
+package com.web.config;
 
 public class SystemConstant {
 	public static final int SQL_SERVER = 0;

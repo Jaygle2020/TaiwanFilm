@@ -1,16 +1,18 @@
-package web.raisefunding.model;
+package com.web.raisefunding.model;
 
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="crowdfunding")
@@ -25,8 +27,10 @@ public class CrowdFundingBean implements Serializable {
 	private String 	dateEnd;
 	private Integer fundsNow;
 	private Integer fundsGoal;
+	@Transient
+	private int percent;
 	private Integer backerNum;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinColumn(name="projectId", referencedColumnName="projectId")
 	private ProjectBean projBean;
 
@@ -75,5 +79,11 @@ public class CrowdFundingBean implements Serializable {
 		this.backerNum = backerNum;
 	}
 	
-	
+	public int getPercent() {
+		return percent;
+	}
+
+	public void setPercent(Integer percent) {
+		this.percent = percent;
+	}
 }

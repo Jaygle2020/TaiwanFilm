@@ -1,6 +1,6 @@
-package web.raisefunding.service;
+package com.web.raisefunding.service;
 
-import web.raisefunding.model.CrowdFundingBean;
+import com.web.raisefunding.model.CrowdFundingBean;
 
 public interface FundingManagerService {
 public int createNewCrowdFunding(CrowdFundingBean cfBean);

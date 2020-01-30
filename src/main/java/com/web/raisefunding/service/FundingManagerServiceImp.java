@@ -1,11 +1,11 @@
-package web.raisefunding.service;
+package com.web.raisefunding.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import web.raisefunding.dao.CrowdFundingDao;
-import web.raisefunding.model.CrowdFundingBean;
+import com.web.raisefunding.dao.CrowdFundingDao;
+import com.web.raisefunding.model.CrowdFundingBean;
 @Service
 public class FundingManagerServiceImp implements FundingManagerService {
 	CrowdFundingDao dao;
