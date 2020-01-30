@@ -11,11 +11,11 @@
 </head>
 <body>
 <div class="header">
-		<a href="">
+		<a href="${pageContext.request.contextPath}/getAllProject">
 			<div class="h-logo">FlyingV</div>
 		</a>
 		<div class="left-menu">
-			<div><a href="">提案</a></div>
+			<div><a href="${pageContext.request.contextPath}/getAllProject">提案</a></div>
 			<div><a href="${pageContext.request.contextPath}/createProject">探索</a></div>
 			<div><a href="${pageContext.request.contextPath}/fundsCategory">探索</a></div>
 		</div>

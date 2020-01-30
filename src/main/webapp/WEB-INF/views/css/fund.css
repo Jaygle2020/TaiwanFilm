@@ -95,7 +95,8 @@ section {
 }
 
 .projectContentDown .container {
-  width: 1170px;
+  width: 100%;
+  display: inline-block;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -109,7 +110,7 @@ section {
 }
 
 .projectContentDown .container .col-left {
-  width: 65%;
+  width: 60%;
   float: left;
   position: relative;
   min-height: 1px;
@@ -126,7 +127,58 @@ section {
   padding-right: 15px;
 }
 
-.projectContentDown .container .rewardBar {
+.projectContentDown .container .col-right .plan {
+  background: -webkit-gradient(linear, bottom top, color-stop(lightblue, white));
+  background: linear-gradient(top bottom, white lightblue);
+  border: 1px solid #cdcdcd;
+  border-radius: 10px;
+  width: 250px;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.projectContentDown .container .col-right .plan .donateMoney {
+  font-size: 30px;
+}
+
+.projectContentDown .container .col-right .plan .projectThumb {
+  width: 100%;
+  height: 200px;
+}
+
+.projectContentDown .container .col-right .plan .planText {
+  width: 90%;
+  display: inline-block;
+  width: 40%;
+  display: inline-block;
+}
+
+.projectContentDown .container .col-right .plan .planText .shipping {
+  font-size: 14px;
+  font-weight: bold;
+  float: left;
+  text-align: left;
+}
+
+.projectContentDown .container .col-right .plan .planText .deliverDate {
+  float: left;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.projectContentDown .container .col-right .plan .planText .limit {
+  float: left;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  border-left: 3px solid #00bbd6;
+  padding: 0px 5px;
+  margin: 0px 5px;
+}
+
+.projectContentDown .rewardBar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
