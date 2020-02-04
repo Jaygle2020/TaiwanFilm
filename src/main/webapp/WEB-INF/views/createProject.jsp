@@ -51,28 +51,29 @@
 						</div>
 						<div class="partialWidthBlock projectCardGroup">
 							<div class="projectDataGroup">
-								<p>專案標題</p>
-								<input type="text" name="projectName">
+								<h2>專案標題</h2>
+								<input type="text" name="projectName" value="${ProjectBean.projectName}">
 								<P>一個好的標題應該要好記、好搜尋、吸引人想點進去看，並讓瀏覽者能在最短的時間內瞭解專案的核心理念。</P>
-								<P>內容摘要</P>
-								<textarea name="projDescript" form="projectForm" rows="8"
-									cols="80" maxlength="200"></textarea>
+								<h2>內容摘要</h2>
+								<textarea name="projDescript" form="projectForm" rows="8" 	cols="80" maxlength="200">
+								${ProjectBean.projDescript}
+								</textarea>
 								<p>使用吸引人的短文說明你的目標以及理念，強調你的獨一無二，讓贊助人對你或你的專案好奇，願意更進一步了解專案。</p>
 							</div>
 							<div class="createProjectCard"></div>
-							<p>上傳專案圖片</p>
+							<h2>上傳專案圖片</h2>
 							<input type="file" name="photoStr"
 								accept="image/jpeg,image/png,image/bmp">
-							<P>專案影片 &nbsp; (注意某些私人youtube影片是不開放其他網站載入)</P>
+							<h2>專案影片 &nbsp; (注意某些私人youtube影片是不開放其他網站載入)</h2>
 							
-							<input type="text" name="vedio" placeholder="請輸入youtube影片連結網址">
-							<p>募資目標金額</p>
+							<input type="text" name="vedio" value="https://www.youtube.com/watch?v=${ProjectBean.videoLink}" placeholder="請輸入youtube影片連結網址">
+							<h2>募資目標金額</h2>
 							<p>
 								<form:input type="number" max="99999999" min="0"
 									path="fundsGoal" />
 								元
 							</p>
-							<P>募資開始與結束日期</P>
+							<h2>募資開始與結束日期</h2>
 							<p>
 								開始日期:
 								<form:input class="datepicker" path="dateBegin" />
@@ -123,6 +124,7 @@
 							<input type="hidden" name="dliverDate" id="dliverDate">
 							<p>限量份數</p>
 							<input type="number" name="limit" min="1" max="999999">
+							<input type="hidden" name="projectId" value="${ProjectBean.projectId}">
 						</div>
 					</div>
 				</div>
@@ -131,20 +133,22 @@
 					<div class="projectDetail">
 						<div class="textTable">
 							<h2>輸入的文章預覽</h2>
-							<span><input type="type" id="enterTittle" placeholder="請輸入主題標頭"></span><br>
+							<span><input type="type" id="enterTittle" placeholder="請輸入主題標頭" ></span><br>
 							<div id="viewArea"></div>
 						</div>
 						<div class="toolBar">
-							<textarea name="" id="enterTable" cols="50" rows="10"></textarea>
+							<textarea name="" id="enterTable" cols="50" rows="10" placeholder="請在此輸入段落文章"></textarea>
 							<br>
 							<button type="button" onclick="enterText()">送出段落</button>
-							<form class="formArea" id="formArea" method="post" action=""
+							<form class="formArea" id="formArea" method="post" action="${pageContext.request.contextPath}/createPjInfo"
 								enctype="multipart/form-data">
-								<input id="innerTesxt" type="hidden" name="innerText" value="">
-								<input id="photoCount" type="hidden" name="photoCount" value="">
+								<input type="hidden" name="projectId" value="${ ProjectBean.projectName}"  >
+								<input type="hidden" id="textTittle" name="textTittle" value="" >
+								<input id="innerTesxt" type="hidden" name="innerText" value="" >
+								<input id="photoCount" type="hidden" name="photoCount" value="" >
 								<input class="imageUpload" type="file" name="">
 							</form>
-							<span>穿插圖片上限4張</span><br>
+							<span>可插入圖片上限4張</span><br>
 							<button id="formSubmit" type="button" onclick="formSubmit()">儲存結果</button>
 							<button id="restForm" type="button" onclick="resetForm()">清除</button>
 						</div>
@@ -156,9 +160,31 @@
 		</div>
 
 	</div>
+	
+	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/createProj.js"></script>
 	<script>
-		
+	//分頁按鈕
+	$('.option1').click(function() {
+		$('.productlist').removeClass('active');
+		$('.opts').removeClass('selected');
+		$('.create-basic').addClass("active");
+		$('.option1').addClass("selected");
+	});
+
+	$('.option2').click(function() {
+		$('.productlist').removeClass("active");
+		$('.opts').removeClass('selected');
+		$('.create-story').addClass("active");
+		$('.option2').addClass("actived");
+	});
+
+	$('.option3').click(function() {
+		$('.productlist').removeClass("active");
+		$('.opts').removeClass('selected');
+		$('.create-reward').addClass("active");
+		$('.option3').addClass("actived");
+	});
 	</script>
 </body>
 

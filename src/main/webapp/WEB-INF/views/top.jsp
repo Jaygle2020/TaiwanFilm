@@ -17,7 +17,7 @@
 		</a>
 		<div class="left-menu">
 			<div><a href="${pageContext.request.contextPath}/getAllProject">提案</a></div>
-			<div><a href="${pageContext.request.contextPath}/createProject">探索</a></div>
+			<div><a href="${pageContext.request.contextPath}/createProjectFirst">探索</a></div>
 			<div><a href="${pageContext.request.contextPath}/fundsCategory">探索</a></div>
 		</div>
 		<div class="right-menu">
