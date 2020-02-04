@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +13,12 @@
 <title>Document</title>
 <link rel=stylesheet type="text/css"
 	href="${pageContext.request.contextPath}/css/fund.css">
-
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/UtilTool.js" ></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie2.css" />
 </head>
 
 <body>
+<jsp:include page="top.jsp" />
 	<div class="wrapper">
 		<section>
 			<!-- 企劃上半部 -->
@@ -40,32 +41,24 @@
 							</div>
 							<div class="projectTitle_mobile"></div>
 							<div id="projectShowWrapper">
-								<div class="progressBarWrapper">
-									<div class="fundProgressBar twoGoal">
-										<div class="progressBar"></div>
-										<div class="progressPoints">
-											<div class="progressSection porgressSuccess">
-												<div class="progressPoint"></div>
-												<span class="progressMoney">$0</span> <span
-													class="progressTitle">募資開始</span>
-												<div class="progressSummary">
-													<p></p>
-												</div>
-											</div>
-											<div class="progressSection">
-												<div class="progressPoint"></div>
-												<span class="progressMoney">${cfBean.fundsGoal}</span> <span
-													class="progressTitle">募資成功</span>
-												<div class="progressSummary">
-													<P>募資目標達成!</P>
-												</div>
-
-											</div>
-										</div>
-									</div>
-
-								</div>
-
+								<div class="progressBar">
+                                     <div class="wholePercent"></div>
+                                     <div class="realPercent" style="width:${cfBean.percent/2}%"></div>
+                                </div>   
+                                <div class="progressPoint"></div> 
+                                <div class="progressSection">
+                                     <span class="progressMoney">$0</span><br>
+                                     <pre class="space">  
+                                     </pre>
+                                     <span class="progressTitle">募資開始</span>
+                                </div>
+                                <div class="porgressSuccess">
+                                     <span class="progressMoney">$${cfBean.fundsGoal}</span><br>
+                                     <pre class="space"> 
+                                     </pre>
+                                     <span class="progressTitle">募資成功</span>
+                                </div>
+								
 							</div>
 						</div>
 						<div class="col-right">
@@ -78,7 +71,7 @@
 								<p class="metaText">人</p>
 							</div>
 							<div class="numberRow totalDays">
-								<h1>60</h1>
+								<h1 id="dayCount" data-endDay="${cfBean.dateEnd}"></h1>
 								<p class="metaText">天結束</p>
 							</div>
 							<blockquote>
@@ -108,7 +101,7 @@
 						<div class="col-right rewardBar" id="rewards">
 							<c:if test="${dpBeans!=null}">
 								<c:forEach items="${dpBeans}" var="dpBean">
-									<div class="plan">
+									<div class="plan" id="donatePlan${dpBean.planId}" >
 										<div>
 											<h2 class="donateMoney">$${dpBean.donateMoney}</h2>
 										</div>
@@ -117,8 +110,11 @@
 												src="${pageContext.request.contextPath}/getDonatePlan/photo/${dpBean.planId}">
 										</div>
 										<div class="planText">
-											<span class="shipping">${dpBean.shipping}</span> <span
-												class="deliverDate">預計寄送日期 ${dpBean.dliverDate}</span> <span
+											<div class="description">
+											<c:out value="${dpBean.donateDescription}" default="單純贊助，不需回饋，小額贊助給予劇組鼓勵和支持。"></c:out>
+											</div>
+											<span class="shipping"  data-shipping="${dpBean.shipping}" >沒有運送服務</span> <span
+												class="deliverDate">預計寄送時間 ${dpBean.dliverDate}</span> <span
 												class="limit">限量 <strong>${dpBean.limit}</strong>份
 											</span>
 										</div>
@@ -128,13 +124,42 @@
 						</div>
 					</div>
 				</div>
-
-
-
-
 			</section>
 		</section>
 	</div>
 </body>
+
+<script>
+//日期倒數
+var gg = $("#dayCount").attr("data-endDay");
+
+$("#dayCount").text(DaysCountdown(gg));
+//點擊回饋標籤跳轉
+$(".plan").click(function(){
+	var id = $(this).attr("id");
+	var url = "${pageContext.request.contextPath}/"+id;
+	$(location).attr('href',url);
+})
+//顯示運送方式的中文
+$(".shipping").text(function(){
+	var location = null;
+	var value = $(this).attr("data-shipping")
+	switch (value) {
+	case 'InTaiwan':
+		location = "台灣本島";
+		break;
+	case 'OutOfTaiwan':
+		location = "外島地區";
+		break;
+	case 'Foreign':
+		location = "其他國家";
+		break;
+	default: location = "沒有運送服務";
+	}
+	return location;
+})
+	
+
+</script>
 
 </html>

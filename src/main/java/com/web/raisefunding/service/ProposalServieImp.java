@@ -32,7 +32,7 @@ public class ProposalServieImp implements ProposalService {
 		this.projDao = projDao;
 	}
 	@Transactional
-	@Override
+	@Override  //依次建立整個專案跟贊助(測試用)
 	public int createProjectAndPlan(DonatePlanBean dpBean, CrowdFundingBean cfBean, ProjectBean projBean) {
 		int n = 0;
 		projDao.createProject(projBean);
@@ -47,21 +47,23 @@ public class ProposalServieImp implements ProposalService {
 		return n;
 	}
 	@Transactional
-	@Override
+	@Override   //測Spring form tag 用
 	public CrowdFundingBean getCrowdFundingBean(Integer projectId) {
-		return cfDao.getCrowdFundingBean(projectId);
+		CrowdFundingBean cfBean = cfDao.getCrowdFundingBean(projectId);
+		double num = (double)cfBean.getFundsNow()/cfBean.getFundsGoal();
+		cfBean.setPercent((int)Math.round(num*100));
+		return cfBean;
 	}
 	
 	@Transactional
 	@Override
 	public int updatePlan(DonatePlanBean dpBean, CrowdFundingBean cfBean, ProjectBean projBean) {
 		int n = 0;
-		
 		n++;
 		return n;
 	}
 	@Transactional
-	@Override
+	@Override 
 	public DonatePlanBean GetDonatePlanBean(Integer id) {
 		DonatePlanBean dpBean = dpDao.getPlan(id);
 		return dpBean;
