@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<jsp:include page="top.jsp" />
+<jsp:include page="fragment/top.jsp" />
 	<div class="wrapper">
 		<section>
 			<!-- 企劃上半部 -->

@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<jsp:include page="top.jsp" />
+<jsp:include page="fragment/top.jsp" />
     <div class="purchaseWrapper">
         <div class="purchaseContainer">
             <h1>${dpBean.projBean.projectName}</h1>

@@ -30,7 +30,7 @@
 </head>
 
 <body>
-	<jsp:include page="top.jsp" />
+	<jsp:include page="fragment/top.jsp" />
 	<div id="createWrapper" class="wrapper createWrapper">
 		<div class="createContainer">
 			<section class="createMenu">

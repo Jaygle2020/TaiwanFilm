@@ -39,14 +39,14 @@ public class RootAppConfig {
 	@Bean
 	public DataSource mySQLDataSource() {
 		ComboPooledDataSource ds = new ComboPooledDataSource();
-		ds.setUser("sa");
-		ds.setPassword("12345");
+		ds.setUser("root");
+		ds.setPassword("P@ssw0rd");
 		try {
 			ds.setDriverClass("com.mysql.cj.jdbc.Driver");
-		} catch (PropertyVetoException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		ds.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/jspdb?serverTimezone=Asia/Taipei&useSSL=false&useUnicode=true&characterEncoding=utf-8");
+		ds.setJdbcUrl("jdbc:mysql://localhost:3306/lab?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
 		ds.setInitialPoolSize(4);
 		ds.setMaxPoolSize(8);
 		return ds;
@@ -56,14 +56,17 @@ public class RootAppConfig {
 		LocalSessionFactoryBean factory = new LocalSessionFactoryBean();
 		factory.setPackagesToScan(new String[] {
 				"com.web.raisefunding.model",
-				"com.web.login.Model"
+				"com.web.login.Model",
+				"com.web.booking.model"
 		});
 //		if (SystemConstant.DB_TYPE == SystemConstant.MYSQL) {
 //			factory.setDataSource(mySQLDataSource());
 //			factory.setHibernateProperties(additionalPropertiesMySQL());	
 //		} else if (SystemConstant.DB_TYPE == SystemConstant.SQL_SERVER) {
-			factory.setDataSource(msSQLDataSource());
-			factory.setHibernateProperties(additionalPropertiesMsSQL());	
+		
+			// mySQL msSQL 切換
+			factory.setDataSource(mySQLDataSource());
+			factory.setHibernateProperties(additionalPropertiesMySQL());	
 //		} 
 		return factory;
 	}
