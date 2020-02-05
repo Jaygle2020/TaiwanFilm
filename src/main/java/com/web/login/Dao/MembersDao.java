@@ -10,6 +10,8 @@ public interface MembersDao {
 	//取Bean
 	MembersBean getMemberByBean(MembersBean mb);
 	//會員登入
-	public MembersBean login(String acc, String pwd);
+	public MembersBean login(String email, String pwd);
+	//更改會員資料
+	boolean updateMembers(MembersBean member);
 
 }

@@ -46,10 +46,10 @@ public class MembersDaoImpl implements MembersDao {
 	public MembersBean getMemberByBean(MembersBean mb) {
 		MembersBean member = null;
 	    Session session = factory.getCurrentSession();
-	    String hql="FROM MembersBean mb WHERE mb.account = :account";
+	    String hql="FROM MembersBean mb WHERE mb.email = :email";
 	    try {
 			member = (MembersBean) session.createQuery(hql)
-					.setParameter("account",mb.getAccount())
+					.setParameter("email",mb.getEmail())
 					.getSingleResult();
 		} catch (NoResultException e) {
 			System.out.println("查無紀錄");// 表示查無紀錄
@@ -70,5 +70,33 @@ public class MembersDaoImpl implements MembersDao {
 			member = null;
 		}
 		return member;
+	}
+	@Override
+	public boolean updateMembers(MembersBean member) {
+		String hql = "from MembersBean where email = :email";
+		Session session = factory.getCurrentSession();
+		MembersBean mem = (MembersBean) session.createQuery(hql)
+				.setParameter("email", member.getEmail())
+				.getSingleResult();
+		if(member.getMemberName() !=null) {
+			mem.setMemberName(member.getMemberName());
+		}
+		if(member.getEmail() !=null) {
+			mem.setEmail(member.getEmail());
+		}
+		if(member.getGender() !=null) {
+			mem.setGender(member.getGender());
+		}
+		if(member.getBirthDay() !=null) {
+			mem.setBirthDay(member.getBirthDay());
+		}
+		if(member.getmemImage() !=null) {
+			mem.setmemImage(member.getmemImage());
+		}
+		if(member.getFileName() !=null) {
+			mem.setFileName(member.getFileName());
+		}
+		session.update(mem);
+		return true;
 	}
 }

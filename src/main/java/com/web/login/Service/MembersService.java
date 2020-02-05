@@ -7,6 +7,7 @@ public interface MembersService {
 	void saveMembers(MembersBean mb);
 	MembersBean getMemberById(int memberId);
 	MembersBean getMemberByBean(MembersBean mb);
-	MembersBean login(String acc,String pwd);
+	MembersBean login(String email,String pwd);
+	public boolean updateMembers(MembersBean member);
 	
 }

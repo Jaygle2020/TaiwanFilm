@@ -35,7 +35,12 @@ public class MembersServiceImpl implements MembersService {
 	
 	@Transactional
 	@Override
-	public MembersBean login(String acc, String pwd) {
-		return dao.login(acc,pwd);
+	public MembersBean login(String email, String pwd) {
+		return dao.login(email,pwd);
+	}
+	@Transactional
+	@Override
+	public boolean updateMembers(MembersBean member) {
+		return dao.updateMembers(member);		
 	}
 }
