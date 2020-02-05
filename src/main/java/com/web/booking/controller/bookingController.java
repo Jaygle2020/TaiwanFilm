@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,7 @@ import com.web.booking.model.sessionBean;
 import com.web.booking.model.ticketBean;
 import com.web.booking.model.viewBean;
 import com.web.booking.service.bookingService;
+import com.web.login.Model.MembersBean;
 
 @Controller
 public class bookingController {
@@ -155,16 +158,16 @@ public class bookingController {
 		return "redirect:/alterMovie";
 	}
 
-	@ModelAttribute("rateList")
-	public List<String> getRateList() {
-		List<String> rateList = new ArrayList<String>();
-		rateList.add("普遍級 0+");
-		rateList.add("保護級 6+");
-		rateList.add("輔導級 12+");
-		rateList.add("輔導級 15+");
-		rateList.add("限制級 18+");
-		return rateList;
-	}
+//	@ModelAttribute("rateList")
+//	public List<String> getRateList() {
+//		List<String> rateList = new ArrayList<String>();
+//		rateList.add("普遍級 0+");
+//		rateList.add("保護級 6+");
+//		rateList.add("輔導級 12+");
+//		rateList.add("輔導級 15+");
+//		rateList.add("限制級 18+");
+//		return rateList;
+//	}
 
 	@RequestMapping("/movieIntro")
 	public String list(Model model) {
@@ -180,7 +183,15 @@ public class bookingController {
 	}
 
 	@RequestMapping("/booking")
-	public String booking(@RequestParam("id") Integer id, Model model) {
+	public String booking(@RequestParam("id") Integer id, Model model, HttpSession session, HttpServletRequest request)
+			throws IOException {
+		MembersBean mem = (MembersBean) session.getAttribute("members");
+		String requestURI = "movieDetail?id=" + id;
+		if (mem == null) {
+			// 請使用者登入
+			session.setAttribute("requestURI", requestURI);
+			return "redirect:/register";
+		}
 		model.addAttribute("movie", service.getMovieById(id));
 		List<sessionBean> slist = service.getAllSessionsByMovieId(id);
 		List<cinemaBean> clist = service.getAllCinemas();
@@ -207,7 +218,11 @@ public class bookingController {
 	}
 
 	@RequestMapping(value = "/seatChoose", method = RequestMethod.POST)
-	public String addTicketForm(@ModelAttribute("ticketBean") ticketBean tb) {
+	public String addTicketForm(@ModelAttribute("ticketBean") ticketBean tb, HttpSession session) {
+		MembersBean mem = (MembersBean) session.getAttribute("members");
+//		System.out.println("--------------------");
+//		System.out.println(mem.getMemberId());
+		tb.setMemberId(mem.getMemberId());
 		service.addTicket(tb);
 		service.addSoldQuantity(tb);
 		return "redirect:/bookSuccess?id=" + tb.getTicketId();
@@ -225,23 +240,38 @@ public class bookingController {
 	}
 
 	@RequestMapping("/alterTicket")
-	public String alterTicket(Model model) {
-		int memberId = 0;
+	public String alterTicket(Model model, HttpSession session) {
+		MembersBean mem = (MembersBean) session.getAttribute("members");
+//		int memberId = 0;
 		List<viewBean> vlist = new ArrayList<>();
-		for (int i = 0; i < service.getMyTickets(memberId).size(); i++) {
+		for (int i = 0; i < service.getMyTickets(mem.getMemberId()).size(); i++) {
 			viewBean vb = new viewBean();
-			vb.setMovieName(service.getMovieById(service.getSessionById(service.getMyTickets(memberId).get(i).getSessionId()).getMovieId()).getMovieName());
-			vb.setEnglishName(service.getMovieById(service.getSessionById(service.getMyTickets(memberId).get(i).getSessionId()).getMovieId()).getEnglishName());
-			vb.setSessionDate(service.getSessionById(service.getMyTickets(memberId).get(i).getSessionId()).getSessionDate());
-			vb.setSessionTime(service.getSessionById(service.getMyTickets(memberId).get(i).getSessionId()).getSessionTime());
-			vb.setCinemaName(service.getCinemaById(service.getSessionById(service.getMyTickets(memberId).get(i).getSessionId()).getCinemaId()).getCinemaName());
-			vb.setSeat(service.getMyTickets(memberId).get(i).getSeat());
-			vb.setStatus(service.getMyTickets(memberId).get(i).getStatus());
-			vb.setTicketId(service.getMyTickets(memberId).get(i).getTicketId());
+			vb.setMovieName(service.getMovieById(
+					service.getSessionById(service.getMyTickets(mem.getMemberId()).get(i).getSessionId()).getMovieId())
+					.getMovieName());
+			vb.setEnglishName(service.getMovieById(
+					service.getSessionById(service.getMyTickets(mem.getMemberId()).get(i).getSessionId()).getMovieId())
+					.getEnglishName());
+			vb.setSessionDate(service.getSessionById(service.getMyTickets(mem.getMemberId()).get(i).getSessionId())
+					.getSessionDate());
+			vb.setSessionTime(service.getSessionById(service.getMyTickets(mem.getMemberId()).get(i).getSessionId())
+					.getSessionTime());
+			vb.setCinemaName(service.getCinemaById(
+					service.getSessionById(service.getMyTickets(mem.getMemberId()).get(i).getSessionId()).getCinemaId())
+					.getCinemaName());
+			vb.setSeat(service.getMyTickets(mem.getMemberId()).get(i).getSeat());
+			vb.setStatus(service.getMyTickets(mem.getMemberId()).get(i).getStatus());
+			vb.setTicketId(service.getMyTickets(mem.getMemberId()).get(i).getTicketId());
 			vlist.add(vb);
 		}
 		model.addAttribute("views", vlist);
 		return "booking/alterTicket";
+	}
+
+	@RequestMapping("/deleteTicket")
+	public String deleteTicket(@RequestParam("id") Integer id, Model model) {
+		service.deleteTicket(service.getTicketById(id));
+		return "redirect:/alterTicket";
 	}
 
 	@RequestMapping(value = "/getPicture/{bean}/{id}", method = RequestMethod.GET)

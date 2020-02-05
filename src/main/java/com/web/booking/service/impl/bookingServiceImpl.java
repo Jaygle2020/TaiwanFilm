@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.web.booking.dao.bookingDao;
 import com.web.booking.model.cinemaBean;
-import com.web.booking.model.memberBean;
 import com.web.booking.model.movieBean;
 import com.web.booking.model.sessionBean;
 import com.web.booking.model.ticketBean;
@@ -86,12 +85,6 @@ public class bookingServiceImpl implements bookingService {
 
 	@Transactional
 	@Override
-	public memberBean getMemberById(int memberId) {
-		return dao.getMemberById(memberId);
-	}
-
-	@Transactional
-	@Override
 	public void addTicket(ticketBean tb) {
 		dao.addTicket(tb);
 	}
@@ -124,5 +117,11 @@ public class bookingServiceImpl implements bookingService {
 	@Override
 	public List<ticketBean> getMyTickets(int memberId) {
 		return dao.getMyTickets(memberId);
+	}
+	
+	@Transactional
+	@Override
+	public void deleteTicket(ticketBean tb) {
+		dao.deleteTicket(tb);
 	}
 }

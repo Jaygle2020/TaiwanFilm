@@ -218,12 +218,12 @@ i {
 		$('.cinemas').click(function() {
 			$("html,body").animate({
 				scrollTop:$(".hiddenInfo").offset().top
-			}, 2000);
+			}, 600);
 			// 			$('.hiddenInfo').hide();
 			$('.cinemaDetail').hide();
 			$('.sessionDetail').hide();
-			$('.movieSession').slideDown(1000);
-			$('[id=' + $(this).attr('id') + ']').slideDown(2000);
+			$('.movieSession').slideDown(300);
+			$('[id=' + $(this).attr('id') + ']').slideDown(600);
 			return false;
 		});
 	});

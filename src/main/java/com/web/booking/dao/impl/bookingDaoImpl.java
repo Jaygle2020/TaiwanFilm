@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.web.booking.dao.bookingDao;
 import com.web.booking.model.cinemaBean;
-import com.web.booking.model.memberBean;
 import com.web.booking.model.movieBean;
 import com.web.booking.model.sessionBean;
 import com.web.booking.model.ticketBean;
@@ -113,13 +112,6 @@ public class bookingDaoImpl implements bookingDao {
 	}
 
 	@Override
-	public memberBean getMemberById(int memberId) {
-		Session session = factory.getCurrentSession();
-		memberBean sb = session.get(memberBean.class, memberId);
-		return sb;
-	}
-
-	@Override
 	public void addTicket(ticketBean tb) {
 		Session session = factory.getCurrentSession();
 		tb.setStatus("未付款");
@@ -170,13 +162,19 @@ public class bookingDaoImpl implements bookingDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ticketBean> getMyTickets(int memberId) {
-//		String hql = "from ticketBean where memberId = :mid";
-		String hql = "from ticketBean";
+		String hql = "from ticketBean where memberId = :mid";
+//		String hql = "from ticketBean";
 		Session session = null;
 		List<ticketBean> list = new ArrayList<>();
 		session = factory.getCurrentSession();
-//		list = session.createQuery(hql).setParameter("mid", memberId).getResultList();
-		list = session.createQuery(hql).getResultList();
+		list = session.createQuery(hql).setParameter("mid", memberId).getResultList();
+//		list = session.createQuery(hql).getResultList();
 		return list;
+	}
+	
+	@Override
+	public void deleteTicket(ticketBean tb) {
+		Session session = factory.getCurrentSession();
+		session.delete(tb);
 	}
 }

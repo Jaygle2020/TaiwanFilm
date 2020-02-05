@@ -67,7 +67,7 @@
 						${view.status} </label>
 					<div align="center" class="deleteBtn">
 						<a
-							href="<spring:url value='/deleteMovieDetail?id=${view.ticketId}' />"
+							href="<spring:url value='/deleteTicket?id=${view.ticketId}' />"
 							class="btn btn-primary">取消</a>
 					</div>
 				</div>

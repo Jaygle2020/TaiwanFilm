@@ -3,7 +3,6 @@ package com.web.booking.service;
 import java.util.List;
 
 import com.web.booking.model.cinemaBean;
-import com.web.booking.model.memberBean;
 import com.web.booking.model.movieBean;
 import com.web.booking.model.sessionBean;
 import com.web.booking.model.ticketBean;
@@ -30,8 +29,6 @@ public interface bookingService {
 	
 	cinemaBean getCinemaBySessionId(int sessionId);
 	
-	memberBean getMemberById(int memberId);
-	
 	void addTicket(ticketBean tb);
 	
 	void addSoldQuantity(ticketBean tb);
@@ -43,4 +40,6 @@ public interface bookingService {
 	void deleteMovieDetail(movieBean mb);
 	
 	List<ticketBean> getMyTickets(int memberId);
+	
+	void deleteTicket(ticketBean tb);
 }

@@ -4,6 +4,7 @@ import java.sql.Blob;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.web.login.Model.MembersBean;
@@ -75,7 +75,6 @@ public class RegisterController {
 
 	@RequestMapping("/register")
 	public String register() {
-
 		return "_01_register/register";
 	}
 
@@ -85,8 +84,8 @@ public class RegisterController {
 	}
 
 	@PostMapping("/Checklogin")
-	public String memberCheckLogin(@ModelAttribute("MembersBean") MembersBean member, Model model,
-			HttpSession session) {
+	public String memberCheckLogin(@ModelAttribute("MembersBean") MembersBean member, Model model, HttpSession session,
+			HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("Login頁面");
 		MembersBean bean = service.login(member.getEmail(), member.getPassword());
 		if (bean != null) {
@@ -94,6 +93,14 @@ public class RegisterController {
 		}
 		member = service.getMemberByBean(member);
 		model.addAttribute("members", member);
+		
+		// 記住原本的頁面, 登入後系統自動轉回原本的頁面。
+		String requestURI = (String) session.getAttribute("requestURI");
+		System.out.println(requestURI);
+		if (requestURI != null) {
+			return "redirect:" + requestURI;
+		}
+		
 		// return "_01_register/LoginSuccessful";
 		return "index";
 	}
@@ -131,7 +138,7 @@ public class RegisterController {
 		mem1.setBirthDay(member.getBirthDay());
 		mem1.setFileName(member.getFileName());
 
-		if(service.updateMembers(mem1)) {
+		if (service.updateMembers(mem1)) {
 			System.out.println("會員資料修改成功");
 			return "index";
 		} else {
@@ -139,6 +146,5 @@ public class RegisterController {
 			return "index";
 		}
 	}
-
 
 }
