@@ -42,6 +42,7 @@ public class CrowdFundingDaoImp implements CrowdFundingDao {
 		return cfBean;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<CrowdFundingBean> getAllFunding() {
 		Session session = factory.getCurrentSession();

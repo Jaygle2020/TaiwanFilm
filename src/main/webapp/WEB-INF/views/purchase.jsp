@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,38 +10,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel=stylesheet type="text/css" href="${pageContext.request.contextPath}/css/purchase.css">
-
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie2.css" />
 </head>
 
 <body>
+<jsp:include page="top.jsp" />
     <div class="purchaseWrapper">
         <div class="purchaseContainer">
-            <h1>Project Title</h1>
+            <h1>${dpBean.projBean.projectName}</h1>
             <p>assisten</p>
             <section class="DataSection">
                 <div class="buyerData">
-                    <form action="">
+                    <form:form method="post" modelAttribute="PurchaseBean"  action="${pageContext.request.contextPath}/newPurchase" >
                         <span class="bluequote">寄送區域</span><br>
-                        <select name="" id="">
-                            <option value="">請選擇</option>
-                            <option value="">台灣本島</option>
-                            <option value="">外島地區</option>
-                            <option value="">國外區域</option>
-                        </select><br>
+                        <form:select path="buyerLocation" >
+                            <form:option value="InTaiwan">台灣本島</form:option>
+                            <form:option value="OutOfTaiwan">外島地區</form:option>
+                            <form:option value="Foreign">國外區域</form:option>
+                        </form:select><br> 
                         <span class="bluequote">寄送資訊</span><span>以下為贊助人聯絡資訊，請確實填寫</span>
                         <div class="form-group">
                             <div class="input-group topic">收件人姓名</div>
-                            <div class="input-group textIn" ><input type="text" name=""></div><br>
+                            <div class="input-group textIn" ><form:input  path="buyerName" /></div><br>
                             <div class="input-group topic">郵遞區號</div>
-                            <div class="input-group textIn"><input type="text" name=""></div><br>
+                            <div class="input-group textIn"><form:input  path="postNumber" /></div><br>
                             <div class="input-group topic">收件地址</div>
-                            <div class="input-group textIn"><input type="text" name=""></div><br>
+                            <div class="input-group textIn"><form:input  path="adress" /></div><br>
                             <div class="input-group topic">連絡電話</div>
-                            <div class="input-group textIn"><input type="text" name=""></div><br>
+                            <div class="input-group textIn"><form:input path="phone" /></div><br>
                             <div class="input-group topic">聯絡信箱</div>
-                            <div class="input-group textIn"><input type="text" name=""></div><br>
+                            <div class="input-group textIn"><form:input path="email" /></div><br>
                             <div class="input-group topic">備註</div>
-                            <div class="input-group textIn"><input type="text" name=""></div><br>
+                            <div class="input-group textIn"><form:input path="note"  /></div><br>
                         </div>
                         <p class="bluequote">付款方式</p>
                         <div>信用卡</div>
@@ -48,38 +50,41 @@
                         <div class="whiteWell confirmData">
                             <div class="rewardData">
                                 <div class="col-left-02">
-                                    <samll>贊助金額</samll>
-                                    <p>$100</p>
+                                    <small>贊助金額</small>
+                                    <p>${dpBean.donateMoney}</p>
                                 </div>
                                 <div class="col-middle-01">
-                                    <samll>運費</samll>
-                                    <p>$0</p>
+                                    <small>運費</small>
+                                    <p class="fare">$</p>
                                 </div>
                                 <div class="col-right-02">
-                                    <samll>總金額</samll>
-                                    <p>$100</p>
+                                    <small>總金額</small>
+                                    <p class="payAmount">$</p>
+                          
                                 </div>
                             </div>
                         </div>
-                        <input type="checkbox" name="">匿名贊助
+                        <form:checkbox path="incognito" />匿名贊助
+                        <input type="hidden" name="planId" value="${dpBean.planId}">
                         <input type="submit" value="進行付款">
-                    </form>    
+                    </form:form>    
                 </div>
                 <div class="choosenData">
-                    <div class="rewardItem onlive" id="reward-12345-card">
-                        <img src="Image01.jpg" class="img-responsive">
+                    <div class="rewardItem onlive" id="reward-${dpBean.planId}-card">
+                        <img src="${pageContext.request.contextPath}/getDonatePlan/photo/${dpBean.planId}" class="img-responsive">
                         <div class="cardrow rewardDes">
-                            <P>✓單純贊助，不需回饋，小額贊助給予劇組鼓勵和支持。 ▶︎請於備註欄填寫您出示於片尾感謝名單的姓名</P>
+                            <P><c:out value="${dpBean.donateDescription}" default="✓單純贊助，不需回饋，小額贊助給予劇組鼓勵和支持。" /></P>
                         </div>
                         <div class="cardrow rewardMeta">
                             <div class="row">
                                 <div class="col-left-01">
                                     <p class="shipping-label">寄送地點</p>
-                                    <p class="shipping-label">台灣本島</p>
+                                    <p class="shipping-label">${dpBean.shipping}</p>
                                 </div>
                                 <div class="col-right-01">
+                                     <P class="remain">剩餘數量${dpBean.limit}份</P>
                                     <p class="shipping-detail">寄送時間</p>
-                                    <p class="shipping-detail">2020/02/20</p>
+                                    <p class="shipping-detail">${dpBean.dliverDate}</p>
                                 </div>
                             </div>
                         </div>

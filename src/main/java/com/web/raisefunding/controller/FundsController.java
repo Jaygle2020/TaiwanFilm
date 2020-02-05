@@ -45,36 +45,31 @@ public class FundsController {
 	@Autowired
 	ControllerUtil util;
 
-	@RequestMapping(value = "/crowdFundingPage", method = RequestMethod.GET)
-	public String crowdFundingPage(Model model) {
-		CrowdFundingBean cfBean = new CrowdFundingBean();
-		model.addAttribute("CrowdFundingBean", cfBean);
-		return "crowdFundingPage";
+	
+	//開啟目前有開募資的列表頁
+    @GetMapping("/getAllProject")
+	public  String getProject( Model model) {
+		List<CrowdFundingBean> list = propService.getAllProjectAndFunding();
+    	model.addAttribute("Fundings",list);
+			return "fundsCategory";
 	}
+    
 
-	@GetMapping("/fundsCategory")
-	public String getAllFunds() {
-		return "fundsCategory";
-	}
-	//實驗HIBERNATE的測試
-//	@RequestMapping(value = "/crowdFundingPage", method = RequestMethod.POST)
-//	public String createNewFund(@ModelAttribute("CrowdFundingBean") CrowdFundingBean cfBean, Model model) {
-//		int n = FMservice.createNewCrowdFunding(cfBean);
-//		model.addAttribute("check", (n > 0) ? "true" : "false");
-//		return "crowdFundingPage";
-//	}
-
+	
+	
+	//開啟建立募資的專案頁
 	@GetMapping("/createProject")
 	public CrowdFundingBean proposalPage(Model model) {
 		CrowdFundingBean cfBean = new CrowdFundingBean();
 		model.addAttribute("CrowdFundingBean", cfBean);
 		return cfBean;
 	}
-
+	
+	//建立專案回傳資料
 	@PostMapping("/submitProject")
 	public @ResponseBody String createProposal( Model model,@ModelAttribute("CrowdFundingBean") CrowdFundingBean cfBean,
 			HttpServletRequest request, @RequestParam("photoStr") MultipartFile photoStr,
-			@RequestParam("pictureStr") MultipartFile pictureStr){
+			@RequestParam("pictureStr") MultipartFile pictureStr ){
 		ProjectBean projBean = new ProjectBean(request.getParameter("projectName"),
 				request.getParameter("projDescript"), util.vedioLinkCut(request.getParameter("vedio")));
 		System.out.println(ReflectionToStringBuilder.toString(util.fileToBlob(noImage)));
@@ -101,23 +96,22 @@ public class FundsController {
 		propService.createProjectAndPlan(dpBean, cfBean, projBean);
 		return "Success";
 	}
-    @GetMapping("/getAllProject")
-	public  String getProject( Model model) {
-		List<CrowdFundingBean> list = propService.getAllProjectAndFunding();
-    	model.addAttribute("Fundings",list);
-//			System.out.println(ReflectionToStringBuilder.toString(list));
-			return "testPage";
-	}
+	
+	
+
+    
+    //點擊募資方塊進入個別募資
     @GetMapping("/project{id}")
     public String getProjectPage(@PathVariable("id") Integer id , Model model) {
     	CrowdFundingBean cfBean = propService.getCrowdFundingBean(id);
     	List<DonatePlanBean> list = propService.getAllDonatePlanBean(id);
     	model.addAttribute("dpBeans",list);
+    	System.out.println(ReflectionToStringBuilder.toString(list.get(0)));
     	model.addAttribute("cfBean",cfBean);
     	return "crowdFunds";
     }
     
-    
+    //募資的圖片SRC
     @GetMapping("/getProject/photo/{id}")
     public ResponseEntity<byte[]> getPicture(@PathVariable("id") Integer id){
     	byte[] body = null;
@@ -142,7 +136,7 @@ public class FundsController {
     	return new ResponseEntity<byte[]>(body , headers , HttpStatus.OK);
     }
     
-    
+    //回饋方案的圖片SRC
     @GetMapping("/getDonatePlan/photo/{id}")
     public ResponseEntity<byte[]> getDonatePicture(@PathVariable("id") Integer id){
     	byte[] body = null;
@@ -167,6 +161,27 @@ public class FundsController {
     	return new ResponseEntity<byte[]>(body , headers , HttpStatus.OK);
     }
     
+    
+//    @GetMapping("donatePlan{id}")
+//    public String getPlan(Integer planId,Model model) {
+//    	DonatePlanBean dpBean = propService.GetDonatePlanBean(planId);
+//    	model.addAttribute("dpBean",dpBean);
+//    	return "purchase";
+//    }
+    //測試Spring form tag
+//  @RequestMapping(value = "/crowdFundingPage", method = RequestMethod.GET)
+//  public String crowdFundingPage(Model model) {
+//  	CrowdFundingBean cfBean = new CrowdFundingBean();
+//  	model.addAttribute("CrowdFundingBean", cfBean);
+//  	return "crowdFundingPage";
+//  }
+	//實驗HIBERNATE的測試
+//	@RequestMapping(value = "/crowdFundingPage", method = RequestMethod.POST)
+//	public String createNewFund(@ModelAttribute("CrowdFundingBean") CrowdFundingBean cfBean, Model model) {
+//		int n = FMservice.createNewCrowdFunding(cfBean);
+//		model.addAttribute("check", (n > 0) ? "true" : "false");
+//		return "crowdFundingPage";
+//	}    
    
     
   
@@ -178,69 +193,5 @@ public class FundsController {
     
     
     
-    
-    //抓image內的圖檔轉成串流
-//    public Blob fileToBlob(String path) {
-//    	byte[] result = null;
-//    	Blob blob = null;
-//    	try(InputStream is = context.getResourceAsStream(path);
-//    			ByteArrayOutputStream baos = new ByteArrayOutputStream();){
-//    				byte[] b = new byte[819200];
-//    				int len = 0;
-//    				while((len = is.read(b))!=-1) {
-//    					baos.write(b,0,len);
-//    				}
-//    				result = baos.toByteArray();
-//    				blob = new SerialBlob(result);
-//    	}catch (Exception e) {
-//    		e.printStackTrace();
-//    		throw new RuntimeException("資料夾檔案轉blob失敗" + e.getMessage());
-//    	}
-//    	return blob;
-//    }
-//    public byte[] blobToByteArray(Blob blob) {
-//    	byte[] result = null;
-//    	try {
-//			InputStream is = blob.getBinaryStream(); ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//		    byte[] b = new byte[819200];
-//		    int len = 0;
-//		    while((len = is.read(b))!=-1) {
-//		    	baos.write(b,0,len);
-//		    }
-//		    result = baos.toByteArray();
-//    	} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//    	return result;
-//    }
-//	//上船的FILE檔案轉成圖檔
-//	public Blob fileTransformBlob(MultipartFile file) {
-//		// 建立Blob物件，交由 Hibernate 寫入資料庫
-//		Blob blob = null;
-//		if (file != null && !file.isEmpty()) {
-//			try {
-//				byte[] b = file.getBytes();
-//				blob = new SerialBlob(b);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
-//			}
-//		}
-//		return blob;
-//	}
-//	// 取得上傳圖片的檔案名稱
-//	public String getFileName(MultipartFile file) {
-//		String fileName = file.getOriginalFilename();
-//		if (fileName.length() > 0 && fileName.lastIndexOf(".") > -1) {
-//			return fileName;
-//		}
-//		return "UnknownImage";
-//	}
-//	//把影片網址擷取等號後段
-//	public String vedioLinkCut(String fullUrl) {
-//		if(fullUrl.startsWith("https://www.youtube.com/")||fullUrl.startsWith("www.youtube.com/")) {
-//		String url = fullUrl.substring((fullUrl.indexOf("=")+1));
-//		return url;}
-//		return "no vedio";
-//	}
+
 }

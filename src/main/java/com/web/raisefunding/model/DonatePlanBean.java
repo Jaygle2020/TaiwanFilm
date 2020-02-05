@@ -67,10 +67,10 @@ public class DonatePlanBean implements Serializable {
 	public void setDonateMoney(Integer donateMoney) {
 		this.donateMoney = donateMoney;
 	}
-	public String getDescription() {
+	public String getDonateDescription() {
 		return donateDescription;
 	}
-	public void setDescription(String description) {
+	public void setDonateDescription(String description) {
 		this.donateDescription = description;
 	}
 	public Blob getPicture() {
