@@ -85,7 +85,7 @@
 <!-- 					</tr> -->
 					<tr><td>
 						<td>
-							<input type="submit" id="bt1" value="確認" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="submit" id="bt1" value="確認" disabled/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="reset" id="bt2" value="取消"/>
 					</tr>
 				</table>
