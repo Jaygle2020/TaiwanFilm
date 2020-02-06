@@ -103,17 +103,7 @@ function readURL(input) {
             }
 	}
 }
-// 送出表單按鈕
-function formSubmit() {
-	$(".viewImage").attr("src", "");
-	var dataTittle = "" + $("#enterTittle").val();
-	var dataHtml = "" + $("#viewArea").html();
-	$("#textTittle").val(dataTittle);
-	$("#innerTesxt").val(dataHtml);
-	$("#photoCount").val(imageNum);
-	$("#viewArea").html("");
-	$("#formArea").submit();
-}
+
 // 清除剛剛的操作重來
 function resetForm() {
 	$("#viewArea").html("");

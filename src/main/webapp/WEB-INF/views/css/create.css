@@ -98,4 +98,55 @@ address, ol, p, ul {
   display: inline-block;
   width: 100%;
 }
+
+
+.plan {
+  background: -webkit-gradient(linear, bottom top, color-stop(lightblue, white));
+  background: linear-gradient(top bottom, white lightblue);
+  border: 1px solid #cdcdcd;
+  border-radius: 10px;
+  width: 250px;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.plan .donateMoney {
+  font-size: 30px;
+}
+.plan .projectThumb {
+  width: 100%;
+  height: 200px;
+}
+.plan .planText {
+  width: 90%;
+  display: inline-block;
+  width: 40%;
+  display: inline-block;
+}
+
+.plan .planText .shipping {
+  font-size: 14px;
+  font-weight: bold;
+  float: left;
+  text-align: left;
+}
+
+.plan .planText .deliverDate {
+  float: left;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+}
+.plan .planText .limit {
+  float: left;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  border-left: 3px solid #00bbd6;
+  padding: 0px 5px;
+  margin: 0px 5px;
+}
+
+
 /*# sourceMappingURL=create.css.map */

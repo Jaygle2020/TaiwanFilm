@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.web.config.ControllerUtil;
 import com.web.raisefunding.model.CrowdFundingBean;
 import com.web.raisefunding.model.DonatePlanBean;
@@ -53,17 +55,20 @@ public class FundsController {
 
 	// 開啟建立募資的專案頁
 	@GetMapping("/createProjectFirst")
-	public CrowdFundingBean proposalPage(Model model) {
-		CrowdFundingBean cfBean = new CrowdFundingBean();
-		model.addAttribute("CrowdFundingBean", cfBean);
-		return cfBean;
+	public String proposalPage(Model model) {
+		return "createProjectFirst";
 	}
 
 	// 建立專案回傳資料
 	@PostMapping("/submitProject")
-	public String createProposal(Model model, @ModelAttribute("CrowdFundingBean") CrowdFundingBean cfBean,
+	public String createProposal(Model model,  CrowdFundingBean cfBean,
 			HttpServletRequest request, @RequestParam("photoStr") MultipartFile photoStr,
-		 DonatePlanBean dpBean) {
+		 @RequestParam("dateBegin") String dateBegin,@RequestParam("dateEnd")String dateEnd,
+		 @RequestParam("fundsGoal")Integer fundsGoal
+			) {
+		cfBean.setDateBegin(dateBegin);
+		cfBean.setDateEnd(dateEnd);
+		cfBean.setFundsGoal(fundsGoal);
 		ProjectBean projBean = new ProjectBean(request.getParameter("projectName"),
 				request.getParameter("projDescript"), util.vedioLinkCut(request.getParameter("vedio")));
 		if (!photoStr.isEmpty()) {
@@ -73,22 +78,51 @@ public class FundsController {
 			projBean.setPhoto(util.fileToBlob(noImage));
 			projBean.setPhotoFileName("noImage.jpg");
 		}
-//		DonatePlanBean dpBean = new DonatePlanBean(Integer.parseInt(request.getParameter("donateMoney")),
-//				request.getParameter("donateDescription"), request.getParameter("shipping"),
-//				request.getParameter("dliverDate"), Integer.parseInt(request.getParameter("limit")));
+		propService.createProjectAndPlan( cfBean, projBean);
+		model.addAttribute("ProjectBean",projBean);
+		model.addAttribute("CrowdFundingBean",cfBean);
+		return "createProject";
+	}
+	
+	@GetMapping("/createProject")
+	public String updateProject(HttpSession session ,Model model) {
+		ProjectBean projBean = (ProjectBean) session.getAttribute("ProjectBean");
+		model.addAttribute("ProjectBean",projBean);
+		return "createProject";
+	}
+	@PostMapping(value="/createDonatePlan",produces = { "text/html;charset=utf-8" })
+	public @ResponseBody String createDonatePlan(DonatePlanBean dpBean , Model model,
+			@RequestParam("donateMoney") Integer donateMoney,
+			@RequestParam("donateDescription") String description,
+			@RequestParam("donatePhoto") MultipartFile donatePhoto,
+			@RequestParam("shipping") String shipping,
+			@RequestParam("dliverDate") String dliverDate,
+			@RequestParam("limit") Integer limit,
+			@RequestParam("projectId") Integer projectId,
+			Gson gson
+			) {
 //		if(!pictureStr.isEmpty()) {
 //		dpBean.setPicture(util.fileTransformBlob(pictureStr));
 //		dpBean.setPictureFileName(util.getFileName(pictureStr));
 //		}else {
-//			projBean.setPhoto(util.fileToBlob(noImage) );
-//			projBean.setPhotoFileName("noImage.jpg");
-//		}
-		propService.createProjectAndPlan( cfBean, projBean);
-		model.addAttribute("ProjectBean", projBean);
-		model.addAttribute("CrowdFundingBean", cfBean);
-		return "createProject";
+//		projBean.setPhoto(util.fileToBlob(noImage) );
+//		projBean.("noImage.jpg");
+//}
+		dpBean.setDliverDate(dliverDate);
+		dpBean.setDonateDescription(description);
+		dpBean.setDonateMoney(donateMoney);
+		dpBean.setLimit(limit);
+		dpBean.setShipping(shipping);
+		dpBean.setPicture(util.fileTransformBlob(donatePhoto));
+		dpBean.setPictureFileName(util.getFileName(donatePhoto));
+		dpBean.setProjBean(propService.GetProjBean(projectId));
+		System.out.println(ReflectionToStringBuilder.toString(dpBean));
+		propService.createDonatePlan(dpBean);
+		List<DonatePlanBean> dpBeans = propService.getAllDonatePlanBean(projectId);
+		String jsonDpBean = gson.toJson(dpBeans);
+		System.out.println(ReflectionToStringBuilder.toString(jsonDpBean));
+		return jsonDpBean;
 	}
-
 	// 點擊募資方塊進入個別募資
 	@GetMapping("/project{id}")
 	public String getProjectPage(@PathVariable("id") Integer id, Model model) {
@@ -153,7 +187,7 @@ public class FundsController {
 	}
 
 	@PostMapping("/createPjInfo")
-	public @ResponseBody String createProjectInfo(@RequestParam("textTittle") String textTittle,
+	public String createProjectInfo(@RequestParam("textTittle") String textTittle,@RequestParam("projectId") Integer projectId,
 			@RequestParam("innerText") String innerText, @RequestParam("photoCount") Integer photoCount,
 			@RequestParam(value = "image0", required = false) MultipartFile file0,
 			@RequestParam(value = "image1", required = false) MultipartFile file1,
@@ -171,8 +205,12 @@ public class FundsController {
 		infoBean.setImgName03(util.getFileName(file2));
 		infoBean.setImage04(util.fileTransformBlob(file3));
 		infoBean.setImgName04(util.getFileName(file3));
-		System.out.println(ReflectionToStringBuilder.toString(infoBean));
-		return "success";
+		ProjectBean projBean = propService.GetProjBean(projectId);
+		infoBean.setProjBean(projBean);
+		propService.createProjInfo(infoBean);
+		model.addAttribute("ProjectBean",projBean);
+		
+		return "createProject";
 	}
 
 //    @GetMapping("donatePlan{id}")

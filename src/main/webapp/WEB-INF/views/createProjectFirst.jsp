@@ -42,8 +42,7 @@
 			</section>
 
 			<section class="formSection">
-				<form:form method="POST" modelAttribute="CrowdFundingBean"
-					action="${pageContext.request.contextPath}/submitProject"
+				<form method="POST" action="${pageContext.request.contextPath}/submitProject"
 					enctype="multipart/form-data" id="projectForm">
 					<div class="active create-basic productlist form-group">
 						<div class="createFormIntro partialWidthBlock">
@@ -68,18 +67,18 @@
 							<input type="text" name="vedio" placeholder="請輸入youtube影片連結網址">
 							<h2>募資目標金額</h2>
 							<p>
-								<form:input type="number" max="99999999" min="0"
-									path="fundsGoal" />
+								<input type="number" max="99999999" min="0"
+									name="fundsGoal" />
 								元
 							</p>
 							<h2>募資開始與結束日期</h2>
 							<p>
 								開始日期:
-								<form:input class="datepicker" path="dateBegin" />
+								<input class="datepicker" name="dateBegin" />
 							</p>
 							<p>
 								結束日期:
-								<form:input class="datepicker" path="dateEnd" />
+								<input class="datepicker" name="dateEnd" />
 							</p>
 						</div>
 						<div id="submitAll">
@@ -87,7 +86,7 @@
 								type="reset" value="取消專案">
 						</div>
 					</div>
-				</form:form>
+				</form>
 
 				<div class="create-info productlist form-group"></div>
 

@@ -18,5 +18,5 @@ public interface ProposalService {
 	public int createProjInfo(ProjectInfoBean infoBean);
 	public int updateProjInfo(ProjectInfoBean infoBean) ;
 	public ProjectInfoBean getProject(Integer projectId);
-	
+	public int createDonatePlan(DonatePlanBean dpBean);
 }

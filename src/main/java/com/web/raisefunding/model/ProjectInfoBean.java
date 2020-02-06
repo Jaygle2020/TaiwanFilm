@@ -21,6 +21,7 @@ public class ProjectInfoBean implements Serializable {
 @Column(name="projInfoId")
 private Integer projInfoId;
 private String projectTittle;
+@Column(columnDefinition="TEXT")
 private String innerText;
 private Integer photoCount;
 private String imgName01;

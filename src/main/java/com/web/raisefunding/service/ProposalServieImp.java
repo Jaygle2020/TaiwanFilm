@@ -107,6 +107,14 @@ public class ProposalServieImp implements ProposalService {
 	public int updateProjInfo(ProjectInfoBean infoBean) {
 		return infoDao.updateProjInfo(infoBean);
 	}
+	@Transactional
+	@Override
+	public int createDonatePlan(DonatePlanBean dpBean) {
+		int n = 0;
+		dpDao.createNewPlan(dpBean);
+		n++;
+		return n;
+	}
 
 
 }
