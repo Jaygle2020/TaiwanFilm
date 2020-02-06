@@ -101,20 +101,19 @@ public class FundsController {
 			@RequestParam("projectId") Integer projectId,
 			Gson gson
 			) {
-//		if(!pictureStr.isEmpty()) {
-//		dpBean.setPicture(util.fileTransformBlob(pictureStr));
-//		dpBean.setPictureFileName(util.getFileName(pictureStr));
-//		}else {
-//		projBean.setPhoto(util.fileToBlob(noImage) );
-//		projBean.("noImage.jpg");
-//}
+		
 		dpBean.setDliverDate(dliverDate);
 		dpBean.setDonateDescription(description);
 		dpBean.setDonateMoney(donateMoney);
 		dpBean.setLimit(limit);
 		dpBean.setShipping(shipping);
-		dpBean.setPicture(util.fileTransformBlob(donatePhoto));
-		dpBean.setPictureFileName(util.getFileName(donatePhoto));
+		if(!donatePhoto.isEmpty()) {
+			dpBean.setPicture(util.fileTransformBlob(donatePhoto));
+			dpBean.setPictureFileName(util.getFileName(donatePhoto));
+		}else {
+			dpBean.setPicture(util.fileToBlob(noImage) );
+			dpBean.setPictureFileName("noImage.jpg");
+		}
 		dpBean.setProjBean(propService.GetProjBean(projectId));
 		System.out.println(ReflectionToStringBuilder.toString(dpBean));
 		propService.createDonatePlan(dpBean);
@@ -128,9 +127,10 @@ public class FundsController {
 	public String getProjectPage(@PathVariable("id") Integer id, Model model) {
 		CrowdFundingBean cfBean = propService.getCrowdFundingBean(id);
 		List<DonatePlanBean> list = propService.getAllDonatePlanBean(id);
+		List<ProjectInfoBean> infoBeans = propService.getProjectInfo(id);
 		model.addAttribute("dpBeans", list);
-		System.out.println(ReflectionToStringBuilder.toString(list.get(0)));
 		model.addAttribute("cfBean", cfBean);
+		model.addAttribute("infoBean",infoBeans.get(0));
 		return "crowdFunds";
 	}
 
@@ -138,7 +138,7 @@ public class FundsController {
 	@GetMapping("/getProject/photo/{id}")
 	public ResponseEntity<byte[]> getPicture(@PathVariable("id") Integer id) {
 		byte[] body = null;
-		ResponseEntity<byte[]> re = null;
+//		ResponseEntity<byte[]> re = null;
 		MediaType mediaType = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
@@ -164,7 +164,7 @@ public class FundsController {
 	@GetMapping("/getDonatePlan/photo/{id}")
 	public ResponseEntity<byte[]> getDonatePicture(@PathVariable("id") Integer id) {
 		byte[] body = null;
-		ResponseEntity<byte[]> re = null;
+//		ResponseEntity<byte[]> re = null;
 		MediaType mediaType = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
@@ -184,6 +184,53 @@ public class FundsController {
 			body = util.blobToByteArray(blob);
 		}
 		return new ResponseEntity<byte[]>(body, headers, HttpStatus.OK);
+	}
+	
+	
+	@GetMapping("/infoPhoto/{projId}/{num}")
+	public ResponseEntity<byte[]> getDonatePicture(@PathVariable("projId") Integer projId,
+			@PathVariable("num") Integer num
+			) {
+		byte[] body = null;
+//		ResponseEntity<byte[]> re = null;
+		MediaType mediaType = null;
+		HttpHeaders headers = new HttpHeaders();
+		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+		Blob blob = null;
+		String fileName=null;
+		List<ProjectInfoBean> infoBeans = propService.getProjectInfo(projId);
+		ProjectInfoBean infoBean = infoBeans.get(0);
+		if (infoBean == null)
+			return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
+			switch (num) {
+			case 0:
+				fileName = infoBean.getImgName01();
+				blob = infoBean.getImage01();
+				break;
+			case 1:
+				fileName = infoBean.getImgName02();
+				blob = infoBean.getImage02();
+				break;
+			case 2:
+				fileName = infoBean.getImgName03();
+				blob = infoBean.getImage03();
+				break;
+			case 3:
+				fileName = infoBean.getImgName04();
+				blob = infoBean.getImage04();
+				break;
+			}
+			if (fileName.toLowerCase().endsWith("jfif")) {
+				mediaType = MediaType.valueOf(context.getMimeType("dummy.jpeg"));
+			} else {
+				mediaType = MediaType.valueOf(context.getMimeType(fileName));
+				headers.setContentType(mediaType);
+			}
+			
+			if (blob != null) {
+				body = util.blobToByteArray(blob);
+			}
+			return new ResponseEntity<byte[]>(body, headers, HttpStatus.OK);
 	}
 
 	@PostMapping("/createPjInfo")
