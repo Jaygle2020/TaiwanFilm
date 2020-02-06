@@ -21,6 +21,10 @@
 	padding: 20px;
 	margin: 20px 0px 50px 0px;
 }
+
+.mart {
+	padding-top: 95px;
+}
 </style>
 </head>
 <body>
@@ -69,7 +73,7 @@
 			</table>
 		</div>
 
-		<div>
+		<div class="mart">
 			<p>
 				<strong>支援以下超商付款:</strong>
 			</p>

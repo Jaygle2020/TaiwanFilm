@@ -75,8 +75,6 @@
 		</fieldset>
 	</section>
 
-	<jsp:include page="../fragment/bottom.jsp" />
-
 </body>
 <script>
 	$(".deleteBtn a:nth-child(2)").click(function() {

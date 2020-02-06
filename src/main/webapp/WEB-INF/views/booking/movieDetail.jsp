@@ -13,13 +13,13 @@
 <head>
 <title>movie</title>
 <style>
-img {
+.movieImage img {
 	width: 300px;
 	height: 420px;
 }
 
 .movieMain {
-	padding: 50px 300px;
+	padding: 50px 15%;
 /* 	height: 550px; */
 	margin-bottom: 50px;
 }
@@ -30,7 +30,7 @@ img {
 }
 
 .movieInfo {
-	width: 60%;
+	padding-left: 5%;
 	display: inline-block;
 	vertical-align: text-bottom;
 }
@@ -65,15 +65,14 @@ img {
 
 	<h2>電影介紹</h2>
 	<div class="movieMain">
-		<figure>
+		<figure class="movieImage">
 			<img src="<c:url value='/getPicture/movieBean/${movie.movieId }' />"
 				alt="${movie.movieName }" title="${movie.movieName }">
 		</figure>
 		<section class="movieInfo">
 			<div class="markArea">
-				<span class="bigchild"> <mark>${movie.rate }</mark></span><span
-					class="hot">
-				</span>
+				<img width="45px" height="35px" src="${pageContext.request.contextPath }/img/rate/${movie.rate }.jpg"
+				alt="${movie.rate }" title="${movie.rate }">
 			</div>
 			<div class="titleArea">
 				<h1>${movie.movieName }</h1>

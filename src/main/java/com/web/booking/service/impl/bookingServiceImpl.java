@@ -34,6 +34,12 @@ public class bookingServiceImpl implements bookingService {
 	public List<movieBean> getAllMovies() {
 		return dao.getAllMovies();
 	}
+	
+	@Transactional
+	@Override
+	public List<movieBean> getAllMoviesOrder(){
+		return dao.getAllMoviesOrder();
+	}
 
 	@Transactional
 	@Override

@@ -40,6 +40,17 @@ public class bookingDaoImpl implements bookingDao {
 		list = session.createQuery(hql).getResultList();
 		return list;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<movieBean> getAllMoviesOrder() {
+		String hql = "from movieBean order by releaseDate";
+		Session session = null;
+		List<movieBean> list = new ArrayList<>();
+		session = factory.getCurrentSession();
+		list = session.createQuery(hql).getResultList();
+		return list;
+	}
 
 	@Override
 	public movieBean getMovieById(int movieId) {

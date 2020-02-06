@@ -8,7 +8,7 @@
 <head>
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/movie.css" />
+	href="${pageContext.request.contextPath}/css/movie2.css" />
 <link rel="script"
 	href="${pageContext.request.contextPath}/js/registerNewMember.js">
 

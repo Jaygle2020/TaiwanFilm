@@ -13,6 +13,8 @@ public interface bookingService {
 	
 	List<movieBean> getAllMovies();
 	
+	List<movieBean> getAllMoviesOrder();
+	
 	movieBean getMovieById(int movieId);
 	
 	List<cinemaBean> getAllCinemas();
