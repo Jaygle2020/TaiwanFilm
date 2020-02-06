@@ -6,22 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.web.raisefunding.dao.CrowdFundingDao;
 import com.web.raisefunding.dao.DonatePlanDao;
+import com.web.raisefunding.dao.ProjectDao;
 import com.web.raisefunding.dao.PurchaseBeanDao;
 import com.web.raisefunding.model.DonatePlanBean;
 import com.web.raisefunding.model.PurchaseBean;
 @Service
 public class DonatePlanServiceImp implements DonatePlanService {
+	@Autowired
 	DonatePlanDao dpDao;
+	@Autowired
 	PurchaseBeanDao pcDao;
 	@Autowired
-	public void setDpDao(DonatePlanDao dpDao) {
-		this.dpDao = dpDao;
-	}
+	ProjectDao projDao;
 	@Autowired
-	public void setPcDao(PurchaseBeanDao pcDao) {
-		this.pcDao = pcDao;
-	}
+	CrowdFundingDao cfDao;
+	
 	
 	@Transactional
 	@Override
@@ -50,6 +51,7 @@ public class DonatePlanServiceImp implements DonatePlanService {
 	public int createPurchaseData(PurchaseBean pcBean) {
 		int n = 0;
 		pcDao.createPurchaseData(pcBean);
+		
 		n++;
 		return n;
 	}
