@@ -19,11 +19,13 @@ a {
 }
 
 h2 {
+
 	text-align: left;
 	color: #00bbd6;
 	border-left: 3px solid #00bbd6;
 	font-size: 18px;
 	padding-left: 10px;
+	
 }
 
 body {
