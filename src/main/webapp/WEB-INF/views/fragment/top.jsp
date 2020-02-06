@@ -15,7 +15,7 @@
 			<a href="${pageContext.request.contextPath}/getAllProject">贊助電影</a>
 		</div>
 		<div>
-			<a href="${pageContext.request.contextPath}/createProject">贊助電影</a>
+			<a href="${pageContext.request.contextPath}//createProjectFirst">贊助電影</a>
 		</div>
 		<div>
 			<a href="${pageContext.request.contextPath}/fundsCategory">贊助電影</a>

@@ -254,9 +254,13 @@ public class FundsController {
 		infoBean.setImgName04(util.getFileName(file3));
 		ProjectBean projBean = propService.GetProjBean(projectId);
 		infoBean.setProjBean(projBean);
+//		if(propService.getProjectInfo(projectId).get(0)!=null) {
+//			propService.updateProjInfo(infoBean);
+//		}else {
 		propService.createProjInfo(infoBean);
-		model.addAttribute("ProjectBean",projBean);
 		
+//		}
+		model.addAttribute("ProjectBean",projBean);
 		return "createProject";
 	}
 

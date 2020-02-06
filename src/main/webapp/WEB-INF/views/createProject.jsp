@@ -169,7 +169,7 @@
 							<span><input type="text" id="enterTittle"
 								placeholder="請輸入主題標頭"></span><br>
 							<div id="viewArea"></div>
-							<div id="preViewArea"></div>
+							<div id="preViewArea">${infoBean.innerText}</div>
 						</div>
 						<div class="toolBar">
 							<textarea name="" id="enterTable" cols="30" rows="10"
@@ -279,6 +279,8 @@
 				close : function() {
 					var form = document.getElementById("rewardPlan");
 					form.reset();
+					var noPictures = $("<p>目前沒有圖片</p>");
+					$("#photoPre").html("").append(noPictures);
 					allFields.removeClass("ui-state-error");
 				}
 			});
@@ -298,7 +300,8 @@
 		//送出表單按鈕
 		function formSubmit(){
 			$("#preViewArea").html($("#viewArea").html());
-			$(".viewImage").attr("src", "");
+			var count = imageNum;
+			$("#viewArea").find("img").attr("src", "");
 			$("#viewArea").css("display","none");
 			var dataTittle = "" + $("#enterTittle").val();
 			var dataHtml = "" + $("#viewArea").html();
@@ -322,6 +325,10 @@
 				processData: false,
 				success:function(){
 					alert("success");
+					for(var i = 0 ; i<count;i++){
+						var url =  "${pageContext.request.contextPath}/infoPhoto/"+${ProjectBean.projectId}+"/"+i;    
+					$("#preViewArea").find("img").attr("src", url);
+					}
 				},
 				error:function(){
 					alert("fail");
