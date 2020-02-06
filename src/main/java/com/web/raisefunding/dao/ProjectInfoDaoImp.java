@@ -1,6 +1,7 @@
 package com.web.raisefunding.dao;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -35,10 +36,10 @@ public class ProjectInfoDaoImp implements Serializable, ProjectInfoDao {
 	}
 
 	@Override
-	public ProjectInfoBean getProject(Integer projectId) {
+	public List<ProjectInfoBean> getProjectInfo(Integer projectId) {
 		Session session = factory.getCurrentSession();
 		String hql = "from ProjectInfoBean where projectId = :projId";
-		ProjectInfoBean infoBean = (ProjectInfoBean) session.createQuery(hql).setParameter("projId", projectId)
+		List<ProjectInfoBean> infoBean = session.createQuery(hql).setParameter("projId", projectId)
 								   .getResultList();
 		return infoBean;
 	}

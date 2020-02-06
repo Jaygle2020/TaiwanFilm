@@ -14,8 +14,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/movie2.css" />
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/movie2.css" />
-<link rel="stylesheet"
+
 	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -170,9 +169,10 @@
 							<span><input type="text" id="enterTittle"
 								placeholder="請輸入主題標頭"></span><br>
 							<div id="viewArea"></div>
+							<div id="preViewArea"></div>
 						</div>
 						<div class="toolBar">
-							<textarea name="" id="enterTable" cols="50" rows="10"
+							<textarea name="" id="enterTable" cols="30" rows="10"
 								placeholder="請在此輸入段落文章"></textarea>
 							<br>
 							<button type="button" onclick="enterText()">送出段落</button>
@@ -297,13 +297,15 @@
 		
 		//送出表單按鈕
 		function formSubmit(){
+			$("#preViewArea").html($("#viewArea").html());
 			$(".viewImage").attr("src", "");
+			$("#viewArea").css("display","none");
 			var dataTittle = "" + $("#enterTittle").val();
 			var dataHtml = "" + $("#viewArea").html();
 			$("#textTittle").val(dataTittle);
 			$("#innerTesxt").val(dataHtml);
 			$("#photoCount").val(imageNum);
-			$("#viewArea").html("");
+		<!--	$("#viewArea").html(""); -->
 			var form = document.getElementById("formArea");
 			var url = $("#formArea").attr("action");
 			var formData = new FormData(form);
