@@ -46,15 +46,21 @@ public class CrowdFundingDaoImp implements CrowdFundingDao {
 	@Override
 	public List<CrowdFundingBean> getAllFunding() {
 		Session session = factory.getCurrentSession();
+		
 		String hql = "From CrowdFundingBean";
 		List<CrowdFundingBean> list= session.createQuery(hql).getResultList();
-		for(CrowdFundingBean cfBean:list) {
-			double num = (double)cfBean.getFundsNow()/cfBean.getFundsGoal();
-			System.out.println(num);
-			cfBean.setPercent((int)Math.round(num*100));
-			System.out.println("-----------test--------:"+cfBean.getPercent());
-
-		}
-		return list;
+		
+			for(CrowdFundingBean cfBean:list) {
+				if(cfBean.getFundsGoal()!= null) {
+				double num = (double)cfBean.getFundsNow()/cfBean.getFundsGoal();
+				System.out.println(num);
+				cfBean.setPercent((int)Math.round(num*100));
+				System.out.println("-----------test--------:"+cfBean.getPercent());
+				}
+				cfBean.setPercent(0);
+			}
+			return list;
+		
+		
 	}
 }

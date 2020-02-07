@@ -28,13 +28,13 @@ public class UserTradeController {
 		model.addAttribute("PurchaseBean",pcBean);
 		dpBean = dpService.getDonateBean(planId);
 		model.addAttribute("dpBean",dpBean);
-		return "purchase";
+		return "raiseFunding/purchase";
 	}
 	
 	@PostMapping("/newPurchase")
 	public String createNewPurchase(@ModelAttribute("PurchaseBean") PurchaseBean pcBean ,@RequestParam("planId") Integer planId ){
 		pcBean.setDpBean(dpService.getDonateBean(planId));
 		dpService.createPurchaseData(pcBean);
-		return "thankSupport";
+		return "raiseFunding/thankSupport";
 	}
 }

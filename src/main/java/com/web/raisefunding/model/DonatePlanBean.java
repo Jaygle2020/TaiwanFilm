@@ -46,12 +46,12 @@ public class DonatePlanBean implements Serializable {
 
 	public DonatePlanBean() {}
 	
-	public DonatePlanBean(Integer donateMoney,String donateDescription,String shipping,String dliverDate,Integer limit) {
+	public DonatePlanBean(Integer donateMoney,String donateDescription,String shipping,String dliverDate,Integer limitNum) {
 		this.donateMoney = donateMoney;
 		this.donateDescription = donateDescription;
 		this.shipping = shipping;
 		this.dliverDate = dliverDate;
-		this.limitNum = limit;
+		this.limitNum = limitNum;
 	}
 	
 	
@@ -92,11 +92,11 @@ public class DonatePlanBean implements Serializable {
 	public void setDliverDate(String dliverDate) {
 		this.dliverDate = dliverDate;
 	}
-	public Integer getLimit() {
+	public Integer getLimitNum() {
 		return limitNum;
 	}
-	public void setLimit(Integer limit) {
-		this.limitNum = limit;
+	public void setLimitNum(Integer limitNum) {
+		this.limitNum = limitNum;
 	}
 
 	public String getPictureFileName() {

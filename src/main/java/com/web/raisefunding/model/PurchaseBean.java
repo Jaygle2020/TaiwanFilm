@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.web.login.Model.MembersBean;
 @Entity
 @Table(name="Purchase")
 public class PurchaseBean implements Serializable {
@@ -29,10 +31,36 @@ private String note;
 private String paymentType;
 private Integer payAmount;
 private Boolean incognito;
+private String orderDate;
 @OneToOne(cascade=CascadeType.ALL)
 @JoinColumn(name="planId", referencedColumnName="planId")
 private DonatePlanBean dpBean;
+@OneToOne(cascade=CascadeType.ALL)
+@JoinColumn(name="memberId", referencedColumnName="memberId")
+private MembersBean mbBean;
+@OneToOne(cascade=CascadeType.ALL)
+@JoinColumn(name="projectId", referencedColumnName="projectId")
+private ProjectBean projBean;
 
+
+public MembersBean getMbBean() {
+	return mbBean;
+}
+public void setMbBean(MembersBean mbBean) {
+	this.mbBean = mbBean;
+}
+public ProjectBean getProjBean() {
+	return projBean;
+}
+public void setProjBean(ProjectBean projBean) {
+	this.projBean = projBean;
+}
+public String getOrderDate() {
+	return orderDate;
+}
+public void setOrderDate(String orderDate) {
+	this.orderDate = orderDate;
+}
 public Integer getPurchaseId() {
 	return purchaseId;
 }

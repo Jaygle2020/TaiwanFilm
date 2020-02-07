@@ -14,7 +14,7 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 </head>
 <body>
-<jsp:include page="fragment/top.jsp" />
+<jsp:include page="../fragment/top.jsp" />
 	<div class="section" id="category">
 		<div class="width-limit">
 			<!-- 分頁按鈕 -->

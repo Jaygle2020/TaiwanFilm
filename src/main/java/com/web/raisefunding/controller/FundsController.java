@@ -50,19 +50,20 @@ public class FundsController {
 	public String getProject(Model model) {
 		List<CrowdFundingBean> list = propService.getAllProjectAndFunding();
 		model.addAttribute("Fundings", list);
-		return "fundsCategory";
+		return "raiseFunding/fundsCategory";
 	}
 
 	// 開啟建立募資的專案頁
 	@GetMapping("/createProjectFirst")
 	public String proposalPage(Model model) {
-		return "createProjectFirst";
+		return "raiseFunding/createProjectFirst";
 	}
 
 	// 建立專案回傳資料
 	@PostMapping("/submitProject")
 	public String createProposal(Model model,  CrowdFundingBean cfBean,
 			HttpServletRequest request, @RequestParam("photoStr") MultipartFile photoStr,
+			@RequestParam("photoStr2") MultipartFile photoStr2,
 		 @RequestParam("dateBegin") String dateBegin,@RequestParam("dateEnd")String dateEnd,
 		 @RequestParam("fundsGoal")Integer fundsGoal
 			) {
@@ -70,7 +71,7 @@ public class FundsController {
 		cfBean.setDateEnd(dateEnd);
 		cfBean.setFundsGoal(fundsGoal);
 		ProjectBean projBean = new ProjectBean(request.getParameter("projectName"),
-				request.getParameter("projDescript"), util.vedioLinkCut(request.getParameter("vedio")));
+				request.getParameter("projDescript"),request.getParameter("projStory"), util.vedioLinkCut(request.getParameter("vedio")));
 		if (!photoStr.isEmpty()) {
 			projBean.setPhoto(util.fileTransformBlob(photoStr));
 			projBean.setPhotoFileName(util.getFileName(photoStr));
@@ -81,14 +82,14 @@ public class FundsController {
 		propService.createProjectAndPlan( cfBean, projBean);
 		model.addAttribute("ProjectBean",projBean);
 		model.addAttribute("CrowdFundingBean",cfBean);
-		return "createProject";
+		return "raiseFunding/createProject";
 	}
 	
 	@GetMapping("/createProject")
 	public String updateProject(HttpSession session ,Model model) {
 		ProjectBean projBean = (ProjectBean) session.getAttribute("ProjectBean");
 		model.addAttribute("ProjectBean",projBean);
-		return "createProject";
+		return "raiseFunding/createProject";
 	}
 	@PostMapping(value="/createDonatePlan",produces = { "text/html;charset=utf-8" })
 	public @ResponseBody String createDonatePlan(DonatePlanBean dpBean , Model model,
@@ -97,7 +98,7 @@ public class FundsController {
 			@RequestParam("donatePhoto") MultipartFile donatePhoto,
 			@RequestParam("shipping") String shipping,
 			@RequestParam("dliverDate") String dliverDate,
-			@RequestParam("limit") Integer limit,
+			@RequestParam("limit") Integer limitNum,
 			@RequestParam("projectId") Integer projectId,
 			Gson gson
 			) {
@@ -105,7 +106,7 @@ public class FundsController {
 		dpBean.setDliverDate(dliverDate);
 		dpBean.setDonateDescription(description);
 		dpBean.setDonateMoney(donateMoney);
-		dpBean.setLimit(limit);
+		dpBean.setLimitNum(limitNum);
 		dpBean.setShipping(shipping);
 		if(!donatePhoto.isEmpty()) {
 			dpBean.setPicture(util.fileTransformBlob(donatePhoto));
@@ -127,12 +128,12 @@ public class FundsController {
 	public String getProjectPage(@PathVariable("id") Integer id, Model model) {
 		CrowdFundingBean cfBean = propService.getCrowdFundingBean(id);
 		List<DonatePlanBean> list = propService.getAllDonatePlanBean(id);
-		List<ProjectInfoBean> infoBeans = propService.getProjectInfo(id);
+		List<ProjectInfoBean> infoBeans = propService.getProjectInfo(id);//無法使用新增跟更新同時進行所以寫使用List 待改
 		model.addAttribute("dpBeans", list);
 		model.addAttribute("cfBean", cfBean);
-		if(!infoBeans.isEmpty()) {
+		if(!infoBeans.isEmpty()) { //此處如果改善BeanList問題可以不寫判斷
 		model.addAttribute("infoBean",infoBeans.get(0));}
-		return "crowdFunds";
+		return "raiseFunding/crowdFunds";
 	}
 
 	// 募資的圖片SRC
@@ -187,7 +188,7 @@ public class FundsController {
 		return new ResponseEntity<byte[]>(body, headers, HttpStatus.OK);
 	}
 	
-	
+	//專案大綱寫死的圖片請求
 	@GetMapping("/infoPhoto/{projId}/{num}")
 	public ResponseEntity<byte[]> getDonatePicture(@PathVariable("projId") Integer projId,
 			@PathVariable("num") Integer num
@@ -233,7 +234,7 @@ public class FundsController {
 			}
 			return new ResponseEntity<byte[]>(body, headers, HttpStatus.OK);
 	}
-
+	//儲存專案大綱的表格圖片可動態一到四張 沒圖片則NULL
 	@PostMapping("/createPjInfo")
 	public String createProjectInfo(@RequestParam("textTittle") String textTittle,@RequestParam("projectId") Integer projectId,
 			@RequestParam("innerText") String innerText, @RequestParam("photoCount") Integer photoCount,
@@ -259,31 +260,11 @@ public class FundsController {
 //			propService.updateProjInfo(infoBean);
 //		}else {
 		propService.createProjInfo(infoBean);
-		
+		//這裡想要判斷有專案就修改 沒專案就新增 待改
 //		}
 		model.addAttribute("ProjectBean",projBean);
-		return "createProject";
+		return "raiseFunding/createProject";
 	}
 
-//    @GetMapping("donatePlan{id}")
-//    public String getPlan(Integer planId,Model model) {
-//    	DonatePlanBean dpBean = propService.GetDonatePlanBean(planId);
-//    	model.addAttribute("dpBean",dpBean);
-//    	return "purchase";
-//    }
-	// 測試Spring form tag
-//  @RequestMapping(value = "/crowdFundingPage", method = RequestMethod.GET)
-//  public String crowdFundingPage(Model model) {
-//  	CrowdFundingBean cfBean = new CrowdFundingBean();
-//  	model.addAttribute("CrowdFundingBean", cfBean);
-//  	return "crowdFundingPage";
-//  }
-	// 實驗HIBERNATE的測試
-//	@RequestMapping(value = "/crowdFundingPage", method = RequestMethod.POST)
-//	public String createNewFund(@ModelAttribute("CrowdFundingBean") CrowdFundingBean cfBean, Model model) {
-//		int n = FMservice.createNewCrowdFunding(cfBean);
-//		model.addAttribute("check", (n > 0) ? "true" : "false");
-//		return "crowdFundingPage";
-//	}    
 
 }
