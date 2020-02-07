@@ -32,11 +32,9 @@ public class UserTradeController {
 	}
 	
 	@PostMapping("/newPurchase")
-	public @ResponseBody String createNewPurchase(@ModelAttribute("PurchaseBean") PurchaseBean pcBean ,@RequestParam("planId") Integer planId ){
+	public String createNewPurchase(@ModelAttribute("PurchaseBean") PurchaseBean pcBean ,@RequestParam("planId") Integer planId ){
 		pcBean.setDpBean(dpService.getDonateBean(planId));
-		
-		
 		dpService.createPurchaseData(pcBean);
-		return "success";
+		return "thankSupport";
 	}
 }

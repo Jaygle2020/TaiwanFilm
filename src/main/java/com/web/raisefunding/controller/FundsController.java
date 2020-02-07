@@ -130,7 +130,8 @@ public class FundsController {
 		List<ProjectInfoBean> infoBeans = propService.getProjectInfo(id);
 		model.addAttribute("dpBeans", list);
 		model.addAttribute("cfBean", cfBean);
-		model.addAttribute("infoBean",infoBeans.get(0));
+		if(!infoBeans.isEmpty()) {
+		model.addAttribute("infoBean",infoBeans.get(0));}
 		return "crowdFunds";
 	}
 

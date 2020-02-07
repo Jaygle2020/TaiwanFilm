@@ -44,8 +44,11 @@
                             <div class="input-group textIn"><form:input path="note"  /></div><br>
                         </div>
                         <p class="bluequote">付款方式</p>
-                        <div>信用卡</div>
-                        <div>PAY PAL</div>
+                        <div><img src="${pageContext.request.contextPath}/img/supermark/familymart.png">
+							<img src="${pageContext.request.contextPath}/img/supermark/ipon.png">
+							<img src="${pageContext.request.contextPath}/img/supermark/life.png">
+							<img src="${pageContext.request.contextPath}/img/supermark/ok.png">
+						</div>
                         <p class="bluequote">贊助金額</p>
                         <div class="whiteWell confirmData">
                             <div class="rewardData">

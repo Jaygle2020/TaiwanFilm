@@ -38,7 +38,7 @@
 								src="${pageContext.request.contextPath}/getProject/photo/${proj.projBean.projectId}">
 						</div>
 						<div class="project">
-							<p class="title">很火熱的</p>
+							<p class="title"></p>
 							<p class="small-title">${proj.projBean.projectName}</p>
 							<p class="content">${proj.projBean.projDescript}</p>
 						</div>
