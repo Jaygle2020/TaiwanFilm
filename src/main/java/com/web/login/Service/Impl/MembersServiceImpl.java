@@ -23,6 +23,7 @@ public class MembersServiceImpl implements MembersService {
 		 dao.addMember(mb);
 	}
 
+	@Transactional
 	@Override
 	public MembersBean getMemberById(int memberId) {
 		return dao.getMemberById(memberId);

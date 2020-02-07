@@ -24,9 +24,10 @@
 			<div><a href="">關於我們</a></div>
 			<c:if test="${not empty sessionScope.members.email}">
 			<div class="myAccount" >
-			<span id="memberButton"> ${sessionScope.members.memberName}</span>
-			<a href="${pageContext.request.contextPath}/UpdateMember">會員資料</a>
-<%-- 			<a>${sessionScope.members.memberImage}</a> --%>
+			<span id="memberButton"> ${sessionScope.members.memberName}</span>	
+				
+			<img width='30' height='30' src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
+			
 			</div>
 			</c:if>
 			<c:if test="${empty sessionScope.members.email}">

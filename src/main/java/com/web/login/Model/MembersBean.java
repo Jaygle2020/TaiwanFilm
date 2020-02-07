@@ -21,18 +21,14 @@ public class MembersBean implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer memberId;
-//	private String account;
 	private String email;
 	private String password;
 	@Transient
 	private String password1;
 	private String memberName;
 	private String gender;
-	private Date birthDay;
-//	private String address;
-//	private String phone;
-	private String fileName;
-	
+	private String birthDay;
+	private String fileName;	
 	private Blob memberImage;
 	private String createDay;
 	private String updateDay;
@@ -46,34 +42,35 @@ public class MembersBean implements Serializable{
 	public void setmemImage(MultipartFile productImage) {
 		this.memImage = productImage;
 	}
+	public MembersBean() {}
+//	public MembersBean(String string, String string2, String string3, java.util.Date date) {}
+	public MembersBean(String memberName,String email,String gender,String  birthDay) {
+		this.memberName =memberName;
+		this.email = email;
+		this.gender = gender;
+		this.birthDay = birthDay;
+	}
 	
-	
-	
+
+
 	public Integer getMemberId() {return memberId;}
 	public String getMemberName() {return memberName;}
 	public String getPassword() {return password;}
 	public String getPassword1() {return password1;}
 	public String getEmail() {return email;}
 	public String getGender() {return gender;}
-	public Date getBirthDay() {return birthDay;}
-//	public String getAccount() {return account;}
-//	public String getAddress() {return address;}
-//	public String getPhone() {return phone;}
+	public String getBirthDay() {return birthDay;}
 	public String getFileName() {return fileName;}
 	public Blob getMemberImage() {return memberImage;}
 	public String getCreateDay() {return createDay;}
-	public String getUpdateDay() {return updateDay;}
-	
+	public String getUpdateDay() {return updateDay;}	
 	public void setMemberId(Integer memberId) {this.memberId = memberId;}
 	public void setMemberName(String memberName) {this.memberName = memberName;}
 	public void setPassword(String password) {this.password = password;}
 	public void setPassword1(String password1) {this.password1 = password1;}
 	public void setEmail(String email) {this.email = email;}
 	public void setGender(String gender) {this.gender = gender;}
-	public void setBirthDay(Date birthDay) {this.birthDay = birthDay;}
-//	public void setAccount(String account) {this.account = account;}
-//	public void setAddress(String address) {this.address = address;}
-//	public void setPhone(String phone) {this.phone = phone;}
+	public void setBirthDay(String birthDay) {this.birthDay = birthDay;}
 	public void setFileName(String fileName) {this.fileName = fileName;}
 	public void setMemberImage(Blob memberImage) {this.memberImage = memberImage;}
 	public void setCreateDay(String createDay) {this.createDay = createDay;}

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/movie.css" />
 <link rel="script"
@@ -47,45 +47,25 @@
 				<table>
 					<tr><td><span style="color: red;">*</span>
 						<td><form:input  path="email" id="email" placeholder='電子信箱' required='required'/>
+					</tr>
+					<tr><td><span style="color: red;">*</span>
+						<td><form:input  path="memberName" id="memberName" 
+						placeholder='會員姓名' required='required'/>
 					</tr>						
 					<tr><td><span style="color: red;">*</span>
 						<td><form:password path="password" id="password" 
 						placeholder='密碼' required='required' maxlength="16" 
 						pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
 						title="密碼請符合輸入格式!"/>
-					</tr>
+						<tr><td><td><small>請輸入8-16碼英數字(包含英文大小寫)</small></tr>
 					<tr><td><span style="color: red;">*</span>
 						<td><form:password  path="password1" id="password1"
 							placeholder='確認密碼'  required='required' maxlength="16" 
 						pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"/>
 					</tr>
-					<tr><td><span style="color: red;">*</span>
-						<td><form:input  path="memberName" id="memberName" 
-						placeholder='會員姓名' required='required'/>
-					</tr>
-<!-- 					<tr><td><td>性別</tr> -->
-<!-- 					<tr><td><span style="color: red;">*</span> -->
-<%-- 						<td><form:radiobutton  path="gender" name="gender"  value="男生" />男生   --%>
-<%-- 							<form:radiobutton  path="gender" name="gender" value="女生" />女生 --%>
-<!-- 					</tr> -->
-<!-- 					<tr><td><td>生日</tr> -->
-<!-- 					<tr><td> -->
-<%-- 						<td><form:input type="date" path="birthDay" id="birthDay" /> --%>
-<!-- 					</tr> -->
-<!-- 					<tr><td><td>電話</tr> -->
-<!-- 					<tr><td> -->
-<%-- 						<td><form:input  path="phone" id="phone" pattern="\d{10}"  --%>
-<%-- 						placeholder='請輸入電話'/> --%>
-<!-- 					</tr> -->
-					
-<!-- 					<tr><td><td>照片</tr> -->
-<!-- 					<tr><td> -->
-<%-- 						<td><form:input type='file' path="memImage" --%>
-<%--  								id="memberImage"  class='form:input-large' /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --%>
-<!-- 					</tr> -->
 					<tr><td>
 						<td>
-							<input type="submit" id="bt1" value="確認" disabled/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input  type="submit" id="bt1" value="確認" disabled/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="reset" id="bt2" value="取消"/>
 					</tr>
 				</table>
@@ -107,10 +87,39 @@
 
 		</div>
 		</div>
-
-		<script	src="${pageContext.request.contextPath }/js/registerNewMember.js">
-			
-		</script>
 </form:form>
+		<script	src="${pageContext.request.contextPath }/js/registerNewMember.js"></script>
+		<script>
+
+
+	$(function() {
+			$("#password").change(function() {
+				var pwd1 = $("#password").val();
+				var pwd2 = $("#password1").val();
+				if (pwd2 != pwd1) {
+				} else {
+					$("#errMsg").remove();
+					$("#bt1").prop("disabled", false);
+				}
+			})
+
+			$("#password1").change(function() {
+				var pwd1 = $("#password").val();
+				var pwd2 = $("#password1").val();
+				if (pwd2 != pwd1) {
+					$("#bt1").prop("disabled", true);
+					
+				} else {
+					$("#errMsg").remove();
+					$("#bt1").prop("disabled", false);
+				}
+			})
+		})	
+		
+		$(function(){
+			$("#btnAdd").prop("disabled", false);
+		})
+		</script>
+
 </body>
 </html>
