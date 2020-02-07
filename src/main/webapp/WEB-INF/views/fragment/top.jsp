@@ -20,16 +20,19 @@
 		<div>
 			<a href="${pageContext.request.contextPath}/fundsCategory">贊助電影</a>
 		</div>
+		 <div>
+			<a href="activities">熱門活動</a>
+		</div>
 		 
-		 
-		<!-- <div>
-			<a href="activities">活動頁面</a>
-		</div> -->
+	
 		
 		
 		
 	</div>
 	<div class="right-menu">
+		<div>
+			<a href="activitiesM">活動後台</a>
+		</div>
 		<div>
 			<a href="alterMovie">後台</a>
 		</div>

@@ -92,7 +92,7 @@ input {
 
 </head>
 <body onload="ShowTime()"> 
-	<div class="header">
+<%-- 	<div class="header">
 		<div class="h-logo" style="letter-spacing: -3px">
 			<a href="${pageContext.request.contextPath}/activitiesM">
 				<p class="Theme">TaiwanFilmsGuide
@@ -116,8 +116,8 @@ input {
 			</div>
 		</div>
 	</div>
-
-
+ --%>
+	<jsp:include page="../fragment/top.jsp" />
 	<section>
 		<div class="container">
 			<h1 style="text-align: center">修改產品資料</h1>
@@ -228,7 +228,7 @@ input {
 
 				<div class="form-group">
 					<label class='control-label col-lg-2 col-lg-2' for="productImage">
-						<spring:message code='spring.addProduct.form.image.label' />
+						
 					</label>
 					<div class='col-lg-10'>
 						<form:input id="productImage" path="productImage" type='file'
@@ -357,14 +357,8 @@ input {
 		
 		var x = $("#startTime").val();
 		var y = $("#startTime").val();
-		document.getElementById('today').setAttribute("value",y +"/"+ M +"/"+d); 
-		
-		
-		
+		document.getElementById('today').setAttribute("value",y +"/"+ M +"/"+d); 	
 	}
-	
-	
-	
 	</script>
 	
 

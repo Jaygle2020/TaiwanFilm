@@ -92,7 +92,7 @@ input {
 
 </head>
 <body onload="ShowTime()"> 
-	<div class="header">
+<%-- 	<div class="header">
 		<div class="h-logo" style="letter-spacing: -3px">
 			<a href="${pageContext.request.contextPath}/activitiesM">
 				<p class="Theme">TaiwanFilmsGuide
@@ -115,8 +115,8 @@ input {
 				<a href="">我的帳戶</a>
 			</div>
 		</div>
-	</div>
-
+	</div> --%>
+			<jsp:include page="../fragment/top.jsp" />
 
 			<div class="activityContent active" id="new">
 				<c:forEach var='activity' items='${activity}'>

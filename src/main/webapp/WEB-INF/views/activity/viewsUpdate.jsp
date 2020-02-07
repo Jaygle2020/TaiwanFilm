@@ -33,7 +33,7 @@
 </head>
 <body>
 
-	 <jsp:include page="top.jsp" /> 
+	<jsp:include page="../fragment/top.jsp" />
 
 
 
@@ -58,10 +58,12 @@
 				<p>
 					<strong>活動編號: </strong> <span class='label label-warning'>
 						${activity.activityId} </span>
-				</p>
-				<p>
-					<a href="<spring:url value='/activities' />" class="btn btn-default">
-						<span class="glyphicon-hand-left glyphicon"></span>返回
+				</p>  
+				<p>  
+					 <a href="/TaiwanFilm" class="btn btn-default">
+						<span class="glyphicon-hand-left glyphicon"></span>返回 
+					<%-- <a href="<spring:url value='/activities' />" class="btn btn-default">
+						<span class="glyphicon-hand-left glyphicon"></span>返回 --%>
 					<a href="<spring:url value='/SignUpActivity?id=${activity.activityId}' />"class="btn btn-default">
 					<span class="glyphicon-hand-left glyphicon"></span>註冊活動</a>
 				</p>

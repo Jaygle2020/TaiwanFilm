@@ -41,6 +41,7 @@ import com.web.activity.service.ActivityService;
 
 @Controller
 public class ActivityController {
+	@Autowired
 	ActivityService service;
 
 	
@@ -51,18 +52,9 @@ public class ActivityController {
 		
 	}
 	
-	
 	@Autowired
-	public void setActivityService(ActivityService service) {
-		this.service = service;
-	}
-
 	ServletContext context;
 
-	@Autowired
-	public void setActivityContext(ServletContext context) {
-		this.context = context;
-	}
 
 	/* 查多筆 未登入 */
 	@RequestMapping("/activities")
@@ -79,7 +71,7 @@ public class ActivityController {
 		List<activityBean> activityListEnd = service.getAllActivitiesExceptStatusEqualOneStart();
 		model.addAttribute("activitiesEnd", activityListEnd);
 		
-		return "activities";
+		return "activity/activities";
 	}
 
 	/* 查多筆 後台登入*/
@@ -97,7 +89,7 @@ public class ActivityController {
 		List<activityBean> activityListEnd = service.getAllActivitiesExceptStatusEqualOneStart();
 		model.addAttribute("activitiesEnd", activityListEnd);
 		
-		return "activitiesM";
+		return "activity/activitiesM";
 	}	
 	
 	/* 查多筆 一般登入*/
@@ -115,7 +107,7 @@ public class ActivityController {
 		List<activityBean> activityListEnd = service.getAllActivitiesExceptStatusEqualOneStart();
 		model.addAttribute("activitiesEnd", activityListEnd);
 		
-		return "activitiesN";
+		return "activity/activitiesN";
 	}	
 
 	/* 查單筆M */
@@ -123,7 +115,7 @@ public class ActivityController {
 	public String getActivityByIdM(@RequestParam("id") Integer activityId, Model model) {
 		activityBean ab = service.getActivityById(activityId);
 		model.addAttribute("activity", ab);
-		return "activityM";
+		return "activity/activityM";
 
 	}	
 	
@@ -135,7 +127,7 @@ public class ActivityController {
 	public String getAddNewActivityForm(Model model) {
 		activityBean ab = new activityBean();
 		model.addAttribute("activityBean", ab);
-		return "addActivity";
+		return "activity/addActivity";
 	}
 
 
@@ -177,14 +169,14 @@ public class ActivityController {
 	public String ActivitesStatusEqualOne(Model model) {
 		List<activityBean> list = service.getAllActivitiesExceptStatusEqualOne();
 		model.addAttribute("activities", list);
-		return "allActivity";
+		return "activity/allActivity";
 	}
 
 	@RequestMapping("/allActivityM")
 	public String ActivitesStatusEqualOneAndZero(Model model) {
 		List<activityBean> list = service.getAllActivities();
 		model.addAttribute("activities", list);
-		return "allActivityM";
+		return "activity/allActivityM";
 	}	
 
 
@@ -192,7 +184,7 @@ public class ActivityController {
 	public String proccessUpdateActivities(@PathVariable("activityId") Integer activityId, Model model) {
 		activityBean pb = service.getActivityById(activityId);
 		model.addAttribute("activityBean", pb);
-		return "updateActivity";
+		return "activity/updateActivity";
 	}
 
 	@RequestMapping(value = "/update/activities/{activityId}", method = RequestMethod.POST)
@@ -216,7 +208,7 @@ public class ActivityController {
 		
 		service.updateActivity(ab);
 		model.addAttribute("activity", service.getActivityById(activityId));
-		return "updateactivityM";
+		return "activity/updateactivityM";
 	}	
 	
 
@@ -234,7 +226,7 @@ public class ActivityController {
 			
 		model.addAttribute("activityBean", ab);
 		model.addAttribute("activity", ab);
-		return "viewsUpdate";
+		return "activity/viewsUpdate";
 	} 
 	
 	/* 查單筆 */
@@ -244,7 +236,7 @@ public class ActivityController {
 		
 		model.addAttribute("activity", ab);
 	
-		return "activity";
+		return "activity/activity";
 	}
 
 
@@ -262,7 +254,7 @@ public class ActivityController {
 		
 		activityBean ab = service.getActivityById(activityId);
 		model.addAttribute("activity", ab);
-		return "SignUpActivity";
+		return "activity/SignUpActivity";
 	} 
 
 	@RequestMapping(value = "/SignUpActivity/{activityId}", method = RequestMethod.POST)
@@ -271,7 +263,7 @@ public class ActivityController {
 		ab.setActivityId(activityId);
 		service.updateActivity(ab);
 		model.addAttribute("activity", service.getActivityById(activityId));
-		return "updateactivityM";
+		return "activity/updateactivityM";
 	}
 	
 	

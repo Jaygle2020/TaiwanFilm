@@ -41,7 +41,7 @@
 </head>
 <body>
 
-	<div class="header">
+<%-- 	<div class="header">
 		<div class="h-logo" style="letter-spacing:-3px">
 			<a href="<spring:url value='/activitiesM' />">
 				<p class="Theme">TaiwanFilmsGuide
@@ -69,9 +69,9 @@
 				<a href="">我的帳戶</a>
 			</div>
 		</div>
-	</div>
+	</div> --%>
 
-
+	<jsp:include page="../fragment/top.jsp" />
 
 
 	<section class="container">
