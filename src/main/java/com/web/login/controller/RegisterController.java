@@ -1,6 +1,7 @@
 package com.web.login.controller;
 
 import java.sql.Blob;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.web.activity.model.activityBean;
 import com.web.login.Model.MembersBean;
 import com.web.login.Service.MembersService;
 
@@ -109,6 +111,8 @@ public class RegisterController {
 	public String UpdateMember(Model model, @ModelAttribute("MembersBean") MembersBean member, HttpSession session) {
 //		MembersBean bean = new MembersBean();
 //		model.addAttribute("MembersBean", bean);
+		
+		
 		member = service.getMemberByBean(member);
 		model.addAttribute("members", member);
 		return "_01_register/registerUpdateMember";
@@ -146,5 +150,12 @@ public class RegisterController {
 			return "index";
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
 
 }

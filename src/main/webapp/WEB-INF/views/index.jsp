@@ -19,11 +19,13 @@ a {
 }
 
 h2 {
+
 	text-align: left;
 	color: #00bbd6;
 	border-left: 3px solid #00bbd6;
 	font-size: 18px;
 	padding-left: 10px;
+	
 }
 
 body {
@@ -38,65 +40,29 @@ body {
 
 	<div class="main">
 		<ul class="img">
-			<li><div class="main-bg1"></div></li>
-			<li><div class="main-bg2"></div></li>
-			<li><div class="main-bg3"></div></li>
-			<li><div class="main-bg4"></div></li>
+			<li><div class="main-bg1" style="background-image: url('img/mymov1.jpg');background-position: 50% 20%"></div></li>
+			<li><div class="main-bg2" style="background-image: url('img/mymov2.png')"></div></li>
+			<li><div class="main-bg3" style="background-image: url('img/wei.jpg');background-position: 50% 50%"></div></li>
+			<li><div class="main-bg4" style="background-image: url('img/test6.jpg')"></div></li>
 		</ul>
 	</div>
 
-	<div class="section" id="popular">
-		<div class="width-limit">
-			<h2>熱門項目</h2>
-			<div class="inner">
-				<div class="projectThumb">
-					<img src="img/popular-pic01.jpg">
-				</div>
-				<div class="content">
-					<h3>測試文字</h3>
-					<p>測試文字測試文字測試文字測試文字測試文字</p>
-				</div>
-				<div class="downMeta"></div>
-			</div>
 
-			<div class="inner">
-				<div class="projectThumb">
-					<img src="img/popular-pic02.jpg">
-				</div>
-				<div class="content">
-					<h3>測試文字</h3>
-					<p>測試文字測試文字測試文字測試文字測試文字</p>
-				</div>
-				<div class="downMeta"></div>
-			</div>
-
-			<div class="inner">
-				<div class="projectThumb">
-					<img src="img/popular-pic03.jpg">
-				</div>
-				<div class="content">
-					<h3>測試文字</h3>
-					<p>測試文字測試文字測試文字測試文字測試文字</p>
-				</div>
-				<div class="downMeta"></div>
-			</div>
-		</div>
-	</div>
 
 	<div class="section" id="category">
-		<div class="width-limit">
-			<div class="change-category">
+		
+		<!-- 	<div class="change-category">
 				<div class="change-menu">
 					<div class="buttonBorder-active buttonBorder" id="new-button">最新發起</div>
 					<div class="buttonBorder" id="trend-button">趨勢話題</div>
 					<div class="buttonBorder" id="coming-button">即將開始</div>
 					<div class="buttonBorder" id="end-button">即將結束</div>
 				</div>
-			</div>
+			</div> -->
 
-
-
-			<div class="category-content active" id="new">
+		
+			<jsp:include page="activity/activities.jsp" />
+<!-- 		<div class="category-content active" id="new">
 				<div class="inner">
 					<div class="projectThumb">
 						<img src="img/popular-pic05.jpg">
@@ -354,7 +320,46 @@ body {
 				</div>
 			</div>
 		</div>
+	</div> -->
+	
+	<div class="section" id="popular" style="background:white">
+		<div class="width-limit">
+			<h2>熱門項目</h2>
+			<div class="inner">
+				<div class="projectThumb">
+					<img src="img/popular-pic01.jpg">
+				</div>
+				<div class="content">
+					<h3>測試文字</h3>
+					<p>測試文字測試文字測試文字測試文字測試文字</p>
+				</div>
+				<div class="downMeta"></div>
+			</div>
+
+			<div class="inner">
+				<div class="projectThumb">
+					<img src="img/popular-pic02.jpg">
+				</div>
+				<div class="content">
+					<h3>測試文字</h3>
+					<p>測試文字測試文字測試文字測試文字測試文字</p>
+				</div>
+				<div class="downMeta"></div>
+			</div>
+
+			<div class="inner">
+				<div class="projectThumb">
+					<img src="img/popular-pic03.jpg">
+				</div>
+				<div class="content">
+					<h3>測試文字</h3>
+					<p>測試文字測試文字測試文字測試文字測試文字</p>
+				</div>
+				<div class="downMeta"></div>
+			</div>
+		</div>
 	</div>
+	
 
 	<div class="section" id="unique">
 		<div class="width-limit">
@@ -369,7 +374,6 @@ body {
 						<a href="" class="more-btn">了解更多</a>
 					</p>
 				</div>
-
 			</div>
 		</div>
 	</div>

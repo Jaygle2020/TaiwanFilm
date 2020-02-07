@@ -20,8 +20,19 @@
 		<div>
 			<a href="${pageContext.request.contextPath}/fundsCategory">贊助電影</a>
 		</div>
+		 <div>
+			<a href="activities">熱門活動</a>
+		</div>
+		 
+	
+		
+		
+		
 	</div>
 	<div class="right-menu">
+		<div>
+			<a href="activitiesM">活動後台</a>
+		</div>
 		<div>
 			<a href="alterMovie">後台</a>
 		</div>
@@ -38,7 +49,7 @@
 			</div>
 		</c:if>
 	</div>
-</div>
+</div> 
 <div id="memberDetail"
 	style="padding: 5px; display: none; width: 100px; height: 200px; background: #ebebeb; position: absolute; right: 5px; top: 68px; z-index: 100">
 	<a href="${pageContext.request.contextPath}/UpdateMember">會員資料</a> <br>
