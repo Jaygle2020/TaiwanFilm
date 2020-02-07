@@ -31,7 +31,7 @@ public class DonatePlanBean implements Serializable {
 	private Blob picture;
 	private String shipping;
 	private String dliverDate;
-	private Integer limit;
+	private Integer limitNum;
 	@OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="projectId", referencedColumnName="projectId")
 	private ProjectBean projBean;
@@ -51,7 +51,7 @@ public class DonatePlanBean implements Serializable {
 		this.donateDescription = donateDescription;
 		this.shipping = shipping;
 		this.dliverDate = dliverDate;
-		this.limit = limit;
+		this.limitNum = limit;
 	}
 	
 	
@@ -93,10 +93,10 @@ public class DonatePlanBean implements Serializable {
 		this.dliverDate = dliverDate;
 	}
 	public Integer getLimit() {
-		return limit;
+		return limitNum;
 	}
 	public void setLimit(Integer limit) {
-		this.limit = limit;
+		this.limitNum = limit;
 	}
 
 	public String getPictureFileName() {
