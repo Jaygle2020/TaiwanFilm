@@ -8,6 +8,7 @@ import java.text.ParseException;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.web.activity.model.activityBean;
 import com.web.login.Model.MembersBean;
 import com.web.login.Service.MembersService;
 
@@ -87,8 +89,8 @@ public class RegisterController {
 	}
 
 	@PostMapping("/Checklogin")
-	public String memberCheckLogin(@ModelAttribute("MembersBean") MembersBean member, Model model,
-			HttpSession session) {
+	public String memberCheckLogin(@ModelAttribute("MembersBean") MembersBean member, Model model, HttpSession session,
+			HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("Login頁面");
 		MembersBean bean = service.login(member.getEmail(), member.getPassword());
 		if (bean != null) {
@@ -96,6 +98,14 @@ public class RegisterController {
 		}
 		member = service.getMemberByBean(member);
 		model.addAttribute("members", member);
+		
+		// 記住原本的頁面, 登入後系統自動轉回原本的頁面。
+		String requestURI = (String) session.getAttribute("requestURI");
+		System.out.println(requestURI);
+		if (requestURI != null) {
+			return "redirect:" + requestURI;
+		}
+		
 		// return "_01_register/LoginSuccessful";
 		return "index";
 	}

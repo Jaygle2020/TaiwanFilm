@@ -1,25 +1,3 @@
-//分頁按鈕
-$('.option1').click(function() {
-	$('.productlist').removeClass('active');
-	$('.opts').removeClass('selected');
-	$('.create-basic').addClass("active");
-	$('.option1').addClass("selected");
-});
-
-$('.option2').click(function() {
-	$('.productlist').removeClass("active");
-	$('.opts').removeClass('selected');
-	$('.create-story').addClass("active");
-	$('.option2').addClass("actived");
-});
-
-$('.option3').click(function() {
-	$('.productlist').removeClass("active");
-	$('.opts').removeClass('selected');
-	$('.create-reward').addClass("active");
-	$('.option3').addClass("actived");
-});
-
 // 普通上傳圖片預覽
 $("#donatePhoto").change(function() {
 	$("#photoPre").html(""); // 清除預覽
@@ -125,17 +103,7 @@ function readURL(input) {
             }
 	}
 }
-// 送出表單按鈕
-function formSubmit() {
-	$(".viewImage").attr("src", "");
-	var dataTittle = "" + $("#enterTittle").val();
-	var dataHtml = "" + $("#viewArea").html();
-	$("#textTittle").val(dataTittle);
-	$("#innerTesxt").val(dataHtml);
-	$("#photoCount").val(imageNum);
-	$("#viewArea").html("");
-	$("#formArea").submit();
-}
+
 // 清除剛剛的操作重來
 function resetForm() {
 	$("#viewArea").html("");

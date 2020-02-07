@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<jsp:include page="top.jsp" />
+<jsp:include page="fragment/top.jsp" />
 	<div class="wrapper">
 		<section>
 			<!-- 企劃上半部 -->
@@ -95,7 +95,8 @@
 					<div class="row">
 						<div class="col-left" id="user_content">
 							<div class="story">
-								<h1 class="projectContentHeading">專案內容</h1>
+								<h1 class="projectContentHeading">${infoBean.projectTittle}</h1>
+									<div id="viewArea">${infoBean.innerText}</div>
 							</div>
 						</div>
 						<div class="col-right rewardBar" id="rewards">
@@ -130,6 +131,15 @@
 </body>
 
 <script>
+$(function(){
+	var count = ${infoBean.photoCount};
+	for(var i = 0 ; i<count;i++){
+		var url =  "${pageContext.request.contextPath}/infoPhoto/"+${infoBean.projBean.projectId}+"/"+i;          
+	$("#image"+i).attr("src", url);
+	}
+	
+})
+
 //日期倒數
 var gg = $("#dayCount").attr("data-endDay");
 
