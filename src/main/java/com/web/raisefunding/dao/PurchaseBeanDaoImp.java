@@ -34,6 +34,15 @@ public class PurchaseBeanDaoImp implements PurchaseBeanDao {
 		PurchaseBean pcBean = session.get(PurchaseBean.class, purchaseId);
 		return pcBean;
 	}
+	
+	
+	@Override
+	public List<PurchaseBean> getProjMemberByPurchase(Integer projectId) {
+		String hql = "From PurchaseBean where projectId = :projectId group by memberId";
+		Session session = factory.getCurrentSession();
+		List<PurchaseBean> list = session.createQuery(hql).setParameter("projectId", projectId).getResultList();
+		return list;
+	}
 
 	@Override
 	public List<PurchaseBean> getAllPurchases() {
@@ -60,7 +69,26 @@ public class PurchaseBeanDaoImp implements PurchaseBeanDao {
 		.getResultList();
 		return list;
 	}
+	//檢查會員是不是有買過: 是回傳true
+	@Override
+	public boolean checkProjectMember(PurchaseBean psBean) {
+		String hql = "From PurchaseBean  where memberId = :memberId and projectId = :projectId";
+		Session session = factory.getCurrentSession();
+		List<PurchaseBean> list = session.createQuery(hql).setParameter("memberId", psBean.getMbBean().getMemberId())
+								.setParameter("projectId", psBean.getProjBean().getProjectId())
+								.getResultList();
+		if(list.size()<2) {
+			return false;
+		}else
+		return true;
+	}
 
-	
+	public List<PurchaseBean> getProjectMember(Integer projectId) {
+		String hql = "From PurchaseBean where projectId = :projectId";
+		Session session = factory.getCurrentSession();
+		List<PurchaseBean> list = session.createQuery(hql).setParameter("projectId", projectId)
+								.getResultList();
+		return list;
+	}
 
 }

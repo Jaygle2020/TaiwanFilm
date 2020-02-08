@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.web.raisefunding.model.CrowdFundingBean;
-import com.web.raisefunding.model.DonatePlanBean;
+import com.web.raisefunding.model.PurchaseBean;
 @Repository
 public class CrowdFundingDaoImp implements CrowdFundingDao {
 	SessionFactory factory;
@@ -60,7 +60,23 @@ public class CrowdFundingDaoImp implements CrowdFundingDao {
 				cfBean.setPercent(0);
 			}
 			return list;
-		
-		
+	}
+	@Override
+	public void addNewBacker(PurchaseBean pcBean) {
+		String hql = "From CrowdFundingBean where projectId = :projectId";
+		Session session = factory.getCurrentSession();
+		CrowdFundingBean cfBean = (CrowdFundingBean) session.createQuery(hql).setParameter("projectId", pcBean.getProjBean().getProjectId())    
+								.getSingleResult();
+		cfBean.setBackerNum(cfBean.getBackerNum()+1);
+	}
+
+	@Override
+	public void addDonateToFund(PurchaseBean pcBean) {
+		String hql = "From CrowdFundingBean where projectId = :projectId";
+		Session session = factory.getCurrentSession();
+		CrowdFundingBean cfBean = (CrowdFundingBean) session.createQuery(hql).setParameter("projectId", pcBean.getProjBean().getProjectId()) 
+								.getSingleResult();
+		int total = cfBean.getFundsNow()+pcBean.getDpBean().getDonateMoney();
+		cfBean.setFundsNow(total);
 	}
 }

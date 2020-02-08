@@ -17,7 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,15 +30,19 @@ import com.web.raisefunding.model.CrowdFundingBean;
 import com.web.raisefunding.model.DonatePlanBean;
 import com.web.raisefunding.model.ProjectBean;
 import com.web.raisefunding.model.ProjectInfoBean;
+import com.web.raisefunding.model.PurchaseBean;
+import com.web.raisefunding.service.DonatePlanService;
 import com.web.raisefunding.service.ProposalService;
 
 @Controller
 @SessionAttributes("ProjectBean")
 public class FundsController {
 	String noImage = "/WEB-INF/views/image/noImage.jpg";
-
+	
 	@Autowired
 	ProposalService propService;
+	@Autowired
+	DonatePlanService donateService;
 	@Autowired
 	ServletContext context;
 	@Autowired
@@ -78,6 +81,13 @@ public class FundsController {
 		} else {
 			projBean.setPhoto(util.fileToBlob(noImage));
 			projBean.setPhotoFileName("noImage.jpg");
+		}
+		if (!photoStr2.isEmpty()) {
+			projBean.setPhoto2(util.fileTransformBlob(photoStr2));
+			projBean.setPhotoFileName2(util.getFileName(photoStr2));
+		} else {
+			projBean.setPhoto2(util.fileToBlob(noImage));
+			projBean.setPhotoFileName2("noImage.jpg");
 		}
 		propService.createProjectAndPlan( cfBean, projBean);
 		model.addAttribute("ProjectBean",projBean);
@@ -127,10 +137,12 @@ public class FundsController {
 	@GetMapping("/project{id}")
 	public String getProjectPage(@PathVariable("id") Integer id, Model model) {
 		CrowdFundingBean cfBean = propService.getCrowdFundingBean(id);
-		List<DonatePlanBean> list = propService.getAllDonatePlanBean(id);
+		List<DonatePlanBean> dpBeans = propService.getAllDonatePlanBean(id);
 		List<ProjectInfoBean> infoBeans = propService.getProjectInfo(id);//無法使用新增跟更新同時進行所以寫使用List 待改
-		model.addAttribute("dpBeans", list);
+		List<PurchaseBean> pcBeans = donateService.getProjMemberByPurchase(id);
+		model.addAttribute("dpBeans", dpBeans);
 		model.addAttribute("cfBean", cfBean);
+		model.addAttribute("pcBeans",pcBeans);
 		if(!infoBeans.isEmpty()) { //此處如果改善BeanList問題可以不寫判斷
 		model.addAttribute("infoBean",infoBeans.get(0));}
 		return "raiseFunding/crowdFunds";

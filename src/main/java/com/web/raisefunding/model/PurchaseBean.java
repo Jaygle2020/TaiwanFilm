@@ -28,7 +28,6 @@ private String adress;
 private String phone;
 private String email;
 private String note;
-private String paymentType;
 private Integer payAmount;
 private Boolean incognito;
 private String orderDate;
@@ -109,13 +108,7 @@ public String getNote() {
 public void setNote(String note) {
 	this.note = note;
 }
-public String getPaymentType() {
-	return paymentType;
-}
-public void setPaymentType(String paymentType) {
-	this.paymentType = paymentType;
-}
-public Integer getPayAmount() {
+	public Integer getPayAmount() {
 	return payAmount;
 }
 public void setPayAmount(Integer payAmount) {

@@ -5,13 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-	crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel=stylesheet type="text/css" href="${pageContext.request.contextPath}/css/purchase1.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie2.css" />
 	
@@ -22,7 +21,7 @@
     <div class="purchaseWrapper">
         <div class="purchaseContainer">
             <h1>${dpBean.projBean.projectName}</h1>
-            <p>assisten</p>
+            <p>日期<span class="LocaleDate"></span></p>
             <section class="DataSection">
                 <div class="buyerData">
                     <form:form method="post" modelAttribute="PurchaseBean"  action="${pageContext.request.contextPath}/newPurchase" >
@@ -71,6 +70,8 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" name="payAmount" id="payAmount" value="">
+                        <input type="hidden" name="localeDate" id="localeDate" value="">
                         <form:checkbox path="incognito" />匿名贊助
                         <input type="hidden" name="planId" value="${dpBean.planId}">
                         <input type="submit" value="進行付款">
@@ -102,6 +103,15 @@
     </div>
     
     <script>
+    
+    $(function(){
+    	var date = new Date().toLocaleDateString();
+    	alert(date);
+    	$(".LocaleDate").text(date);
+    	$("#localeDate").val(date);
+    	$("#payAmount").val($(".payAmount").text());
+    });
+    
     $("#buyerLocation").change(function(){
     	alert("on change")
     	var position = $("#buyerLocation").val();
@@ -123,10 +133,9 @@
 			var price = Number($("#donateMoney").text()) + Number($(".fare").text());
 			alert(price);
 			$(".payAmount").text(price);	
-			
 			break;
     	}
-    	$("input").
+    	$("#payAmount").val($(".payAmount").text());
     })
     </script>
 </body>
