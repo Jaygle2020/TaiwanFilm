@@ -36,7 +36,7 @@ public class CrowdFundingDaoImp implements CrowdFundingDao {
 	}
 
 	@Override
-	public CrowdFundingBean getCrowdFundingBean(Integer projectId) { //和projectId相同如果有問題要改成projectId
+	public CrowdFundingBean getCrowdFundingBean(Integer projectId) { 
 		String hql = "From CrowdFundingBean where projectId = :projId";
 		Session session = factory.getCurrentSession();
 		CrowdFundingBean cfBean = (CrowdFundingBean) session.createQuery(hql).setParameter("projId",projectId)
@@ -44,11 +44,11 @@ public class CrowdFundingDaoImp implements CrowdFundingDao {
 		return cfBean;
 	}
 	
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<CrowdFundingBean> getAllFunding() {
 		Session session = factory.getCurrentSession();
-		
 		String hql = "From CrowdFundingBean";
 		List<CrowdFundingBean> list= session.createQuery(hql).getResultList();
 		

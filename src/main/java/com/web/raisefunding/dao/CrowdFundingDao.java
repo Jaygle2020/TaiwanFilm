@@ -7,13 +7,9 @@ import com.web.raisefunding.model.PurchaseBean;
 
 public interface CrowdFundingDao {
 	public int createNewCrowdFunding(CrowdFundingBean cfBean);
-
 	public int updateFund(CrowdFundingBean cfBean);
-							
 	public CrowdFundingBean getCrowdFundingBean(Integer projectId);
-	public List<CrowdFundingBean> getPersonalProjDetail(List<PurchaseBean> pcBeans);
 	List<CrowdFundingBean> getAllFunding();
-
 	public void addNewBacker(PurchaseBean pcBean);
 	public void addDonateToFund(PurchaseBean pcBean);
 }

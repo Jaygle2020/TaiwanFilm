@@ -3,6 +3,7 @@ package com.web.raisefunding.model;
 import java.io.Serializable;
 import java.sql.Blob;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +30,7 @@ private Blob photo;
 private String photoFileName2;
 private Blob photo2;
 private String videoLink;
-//@OneToOne(mappedBy="ProjectBean")
+@OneToOne(cascade=CascadeType.ALL,mappedBy="projBean")
 private CrowdFundingBean cfBean;
 
 

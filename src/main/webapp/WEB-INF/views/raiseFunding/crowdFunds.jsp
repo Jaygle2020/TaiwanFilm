@@ -97,7 +97,7 @@
 						<div class="col-left" id="user_content">
 							<div id="tabs">
                                 <ul>
-                                  <li><a href="#tabs-1">專案緣起</a></li>
+                                  <li id="TabStart"><a href="#tabs-1">專案緣起</a></li>
                                   <li><a href="#tabs-2">贊助者們</a></li>
                                   <li><a href="#tabs-3">專案討論區</a></li>
                                 </ul>

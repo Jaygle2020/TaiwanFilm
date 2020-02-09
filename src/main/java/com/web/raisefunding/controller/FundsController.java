@@ -94,13 +94,15 @@ public class FundsController {
 		model.addAttribute("CrowdFundingBean",cfBean);
 		return "raiseFunding/createProject";
 	}
-	
+	//建立專案
 	@GetMapping("/createProject")
 	public String updateProject(HttpSession session ,Model model) {
 		ProjectBean projBean = (ProjectBean) session.getAttribute("ProjectBean");
 		model.addAttribute("ProjectBean",projBean);
 		return "raiseFunding/createProject";
 	}
+	
+	//建立一個專案專屬的贊助方案
 	@PostMapping(value="/createDonatePlan",produces = { "text/html;charset=utf-8" })
 	public @ResponseBody String createDonatePlan(DonatePlanBean dpBean , Model model,
 			@RequestParam("donateMoney") Integer donateMoney,
@@ -270,7 +272,7 @@ public class FundsController {
 		infoBean.setProjBean(projBean);
 //		if(propService.getProjectInfo(projectId).get(0)!=null) {
 //			propService.updateProjInfo(infoBean);
-//		}else {
+//		}else {  這裡有一個專案介紹表單重複建立的問題 待解決
 		propService.createProjInfo(infoBean);
 		//這裡想要判斷有專案就修改 沒專案就新增 待改
 //		}

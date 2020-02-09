@@ -42,9 +42,10 @@ public class ProposalServieImp implements ProposalService {
 	public int createProjectAndPlan( CrowdFundingBean cfBean, ProjectBean projBean) {
 		int n = 0;
 		projDao.createProject(projBean);
-		cfBean.setProjBean(projBean);
 		cfBean.setFundsNow(0);
 		cfBean.setBackerNum(0);
+		cfBean.setProjBean(projBean);
+		projBean.setCfBean(cfBean);
 		cfDao.createNewCrowdFunding(cfBean);
 		n++;
 		return n;
