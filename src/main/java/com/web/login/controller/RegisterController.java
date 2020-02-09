@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.sql.Blob;
 import java.text.ParseException;
 
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,10 +26,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.web.activity.model.activityBean;
 import com.web.login.Model.MembersBean;
 import com.web.login.Service.MembersService;
 
@@ -52,9 +51,24 @@ public class RegisterController {
 
 	@GetMapping("members/add")
 	public String getAddNewMemberForm(Model model) {
-		MembersBean member = new MembersBean();
+		MembersBean member = new MembersBean();		
 		model.addAttribute("MembersBean", member);
 		return "_01_register/registerNewMember";
+	}
+	
+	@ResponseBody
+	@GetMapping("/emailChecker")
+	public boolean emailChecker( 
+			@RequestParam("email")
+			String email) {
+		boolean checker = false;
+		if(service.emailExists(email)) {
+			checker = true;
+			return checker;	
+		}else {			
+			return checker;
+		}				
+		
 	}
 
 	@PostMapping("/_01_register/registerNewMember")
@@ -94,14 +108,14 @@ public class RegisterController {
 		System.out.println("Login頁面");
 		MembersBean bean = service.login(member.getEmail(), member.getPassword());
 		if (bean != null) {
-			session.setAttribute("Login", bean);
+			session.setAttribute("members", bean);
 		}
 		member = service.getMemberByBean(member);
 		model.addAttribute("members", member);
 		
 		// 記住原本的頁面, 登入後系統自動轉回原本的頁面。
 		String requestURI = (String) session.getAttribute("requestURI");
-		System.out.println(requestURI);
+		System.out.println("請求URI requestURI:"+requestURI);
 		if (requestURI != null) {
 			return "redirect:" + requestURI;
 		}

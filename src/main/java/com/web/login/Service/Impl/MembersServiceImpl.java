@@ -44,4 +44,9 @@ public class MembersServiceImpl implements MembersService {
 	public boolean updateMembers(MembersBean member) {
 		return dao.updateMembers(member);		
 	}
+	@Transactional	
+	@Override
+	public boolean emailExists(String email) {
+		return dao.emailExists(email);
+	}
 }

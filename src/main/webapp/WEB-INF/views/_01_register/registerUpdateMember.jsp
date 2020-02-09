@@ -74,9 +74,10 @@
 <%-- 			id="memberImage"  class='form:input-large' />  --%>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 			<tr><td>
-			<input type="submit" id="bt1" value="確認" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input type="reset" id="bt2" value="清空"/>
-			<a href='${pageContext.request.contextPath}/views/_01_register/register.jsp'><input type="button" value="取消修改"></a>
+			<input type="submit" id="bt1" value="確認" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="reset" id="bt2" value="清空"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" value="取消修改" /><a href="/"></a>
+<%-- 			<a href='${pageContext.request.contextPath}/views/_01_register/register.jsp'><input type="button" value="取消修改"></a> --%>
 			
 			</table>
 			</form>

@@ -1,5 +1,7 @@
 package com.web.login.Dao.Impl;
 
+import java.util.List;
+
 import javax.persistence.NoResultException;
 
 import org.hibernate.Session;
@@ -88,4 +90,16 @@ public class MembersDaoImpl implements MembersDao {
 		session.update(mem);
 		return true;
 	}
+	@Override
+	public boolean emailExists(String email) {
+		boolean exist = false;
+		Session session = factory.getCurrentSession();
+		String queryString = "from MembersBean where email = :email";
+		List<?> list = session.createQuery(queryString).setParameter("email", email).list();
+		if (!list.isEmpty()) {
+			exist = true;
+		}
+		return exist;
+	}
+	
 }
