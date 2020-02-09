@@ -36,9 +36,11 @@ public class CrowdFundingDaoImp implements CrowdFundingDao {
 	}
 
 	@Override
-	public CrowdFundingBean getCrowdFundingBean(Integer actionId) { //和projectId相同如果有問題要改成projectId
+	public CrowdFundingBean getCrowdFundingBean(Integer projectId) { //和projectId相同如果有問題要改成projectId
+		String hql = "From CrowdFundingBean where projectId = :projId";
 		Session session = factory.getCurrentSession();
-		CrowdFundingBean cfBean = session.get(CrowdFundingBean.class,actionId);
+		CrowdFundingBean cfBean = (CrowdFundingBean) session.createQuery(hql).setParameter("projId",projectId)
+								  .getSingleResult();
 		return cfBean;
 	}
 	
@@ -57,7 +59,6 @@ public class CrowdFundingDaoImp implements CrowdFundingDao {
 				cfBean.setPercent((int)Math.round(num*100));
 				System.out.println("-----------test--------:"+cfBean.getPercent());
 				}
-				cfBean.setPercent(0);
 			}
 			return list;
 	}

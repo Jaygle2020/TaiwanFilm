@@ -56,7 +56,7 @@
                                      <span class="progressMoney">$${cfBean.fundsGoal}</span><br>
                                      <pre class="space"> 
                                      </pre>
-                                     <span class="progressTitle">募資成功</span>
+                                     <span class="progressTitle">募資階段</span>
                                      <span class="percentNow">${cfBean.percent}%</span>
                                 </div>
 								
@@ -98,8 +98,8 @@
 							<div id="tabs">
                                 <ul>
                                   <li><a href="#tabs-1">專案緣起</a></li>
-                                  <li><a href="#tabs-2">專案討論區</a></li>
-                                  <li><a href="#tabs-3">贊助者們</a></li>
+                                  <li><a href="#tabs-2">贊助者們</a></li>
+                                  <li><a href="#tabs-3">專案討論區</a></li>
                                 </ul>
                                
 							<div class="story" id="tabs-1">
@@ -110,7 +110,7 @@
                                     <div class="middleFrame">
                                         <c:if test="${pcBeans!=null }">
                                         	<c:forEach items="${pcBeans}" var="pcBean">
-                                        <div class="memberBox"  title="${pcBean.mbBean.memberName}" style="background-image:url('${pageContext.request.contextPath}/img/supermark/ok.png')"  ></div>
+                                        <div class="memberBox"  title="${pcBean[1]}" style="background-image:url('${pageContext.request.contextPath}/img/supermark/ok.png')"  ></div>
 											</c:forEach>
 										</c:if>				
                                     </div>

@@ -1,5 +1,6 @@
 package com.web.raisefunding.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,8 +77,8 @@ public class DonatePlanServiceImp implements DonatePlanService {
 	}
 	@Transactional
 	@Override
-	public List<PurchaseBean> getPersonalPurchases(String buyerName) {
-		return pcDao.getPersonalPurchases(buyerName);
+	public List<PurchaseBean> getPersonalPurchases(Integer memberId) {
+		return pcDao.getPersonalPurchases(memberId);
 	}
 	
 	@Transactional
@@ -90,12 +91,30 @@ public class DonatePlanServiceImp implements DonatePlanService {
 		cfDao.addDonateToFund(pcBean);//增加金額
 		return true;
 	}
+	@Transactional
+	@Override
+	public CrowdFundingBean getProjectDetail(Integer projectId) {
+		return cfDao.getCrowdFundingBean(projectId);
+	}
+	
+	
 	
 	@Transactional
 	@Override
 	public List<PurchaseBean> getProjMemberByPurchase(Integer projectId){
-		return pcDao.getProjMemberByPurchase(projectId);
+		List<PurchaseBean> list = null;
+		try {
+			list = pcDao.getProjMemberByPurchase(projectId);
+		} catch (SQLException e) {
+			e.printStackTrace();System.out.println("SQL語法出問題");
+		} 
+		return list ;
 	}
 	
+	@Transactional
+	@Override
+	public List<PurchaseBean> getMemberPurchaseById(Integer memberId){
+		return pcDao.getPersonalPurchases(memberId);
+	}
 
 }

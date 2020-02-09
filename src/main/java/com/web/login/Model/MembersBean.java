@@ -48,7 +48,7 @@ public class MembersBean implements Serializable{
 	}
 	
 	
-	
+				     
 	public Integer getMemberId() {return memberId;}
 	public String getMemberName() {return memberName;}
 	public String getPassword() {return password;}

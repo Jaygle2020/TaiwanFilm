@@ -9,9 +9,9 @@ public interface CrowdFundingDao {
 	public int createNewCrowdFunding(CrowdFundingBean cfBean);
 
 	public int updateFund(CrowdFundingBean cfBean);
-
-	public CrowdFundingBean getCrowdFundingBean(Integer ActionId);
-
+							
+	public CrowdFundingBean getCrowdFundingBean(Integer projectId);
+	public List<CrowdFundingBean> getPersonalProjDetail(List<PurchaseBean> pcBeans);
 	List<CrowdFundingBean> getAllFunding();
 
 	public void addNewBacker(PurchaseBean pcBean);

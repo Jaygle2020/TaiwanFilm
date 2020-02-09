@@ -1,5 +1,6 @@
 package com.web.raisefunding.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -36,11 +37,12 @@ public class PurchaseBeanDaoImp implements PurchaseBeanDao {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<PurchaseBean> getProjMemberByPurchase(Integer projectId) {
-		String hql = "From PurchaseBean where projectId = :projectId group by memberId";
+	public List<PurchaseBean> getProjMemberByPurchase(Integer projectId) throws SQLException {
+		String hql = "select distinct p.mbBean.memberId ,p.mbBean.memberName from PurchaseBean p  where p.projBean.projectId = :pjId";
 		Session session = factory.getCurrentSession();
-		List<PurchaseBean> list = session.createQuery(hql).setParameter("projectId", projectId).getResultList();
+		List<PurchaseBean> list = session.createQuery(hql).setParameter("pjId", projectId).getResultList();
 		return list;
 	}
 
@@ -53,29 +55,29 @@ public class PurchaseBeanDaoImp implements PurchaseBeanDao {
 	@Override
 	public List<PurchaseBean> getPurchases(Integer planId) {
 		Session session = factory.getCurrentSession();
-		String hql = "From PurchaseBean where planId = :planId";
+		String hql = "From PurchaseBean where planId = :id";
 		List<PurchaseBean> list = session.createQuery(hql)
-		.setParameter("planId", planId)
+		.setParameter("id", planId)
 		.getResultList();
 		return list;
 	}
 
 	@Override
-	public List<PurchaseBean> getPersonalPurchases(String buyerName) {
+	public List<PurchaseBean> getPersonalPurchases(Integer memberId) {
 		Session session = factory.getCurrentSession();
-		String hql = "From PurchaseBean where buyerName = :buyerName";
+		String hql = "From PurchaseBean where memberId = :id";
 		List<PurchaseBean> list = session.createQuery(hql)
-		.setParameter("buyerName", buyerName)
+		.setParameter("id", memberId)
 		.getResultList();
 		return list;
 	}
 	//檢查會員是不是有買過: 是回傳true
 	@Override
 	public boolean checkProjectMember(PurchaseBean psBean) {
-		String hql = "From PurchaseBean  where memberId = :memberId and projectId = :projectId";
+		String hql = "From PurchaseBean  where memberId = :mbId and projectId = :pjId";
 		Session session = factory.getCurrentSession();
-		List<PurchaseBean> list = session.createQuery(hql).setParameter("memberId", psBean.getMbBean().getMemberId())
-								.setParameter("projectId", psBean.getProjBean().getProjectId())
+		List<PurchaseBean> list = session.createQuery(hql).setParameter("mbId", psBean.getMbBean().getMemberId())
+								.setParameter("pjId", psBean.getProjBean().getProjectId())
 								.getResultList();
 		if(list.size()<2) {
 			return false;
@@ -84,9 +86,9 @@ public class PurchaseBeanDaoImp implements PurchaseBeanDao {
 	}
 
 	public List<PurchaseBean> getProjectMember(Integer projectId) {
-		String hql = "From PurchaseBean where projectId = :projectId";
+		String hql = "From PurchaseBean where projectId = :id";
 		Session session = factory.getCurrentSession();
-		List<PurchaseBean> list = session.createQuery(hql).setParameter("projectId", projectId)
+		List<PurchaseBean> list = session.createQuery(hql).setParameter("id", projectId)
 								.getResultList();
 		return list;
 	}

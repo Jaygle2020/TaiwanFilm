@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -28,6 +29,8 @@ private Blob photo;
 private String photoFileName2;
 private Blob photo2;
 private String videoLink;
+//@OneToOne(mappedBy="ProjectBean")
+private CrowdFundingBean cfBean;
 
 
 
@@ -42,6 +45,12 @@ public ProjectBean(String projectName,String projDescript,String projStory,Strin
 
 
 
+public CrowdFundingBean getCfBean() {
+	return cfBean;
+}
+public void setCfBean(CrowdFundingBean cfBean) {
+	this.cfBean = cfBean;
+}
 public Integer getProjectId() {
 	return projectId;
 }
