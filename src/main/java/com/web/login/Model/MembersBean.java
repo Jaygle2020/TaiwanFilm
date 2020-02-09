@@ -50,6 +50,10 @@ public class MembersBean implements Serializable{
 		this.gender = gender;
 		this.birthDay = birthDay;
 	}
+	public MembersBean(String email,String password) {
+		this.email = email ; 
+		this.password = password;
+	}
 	
 
 

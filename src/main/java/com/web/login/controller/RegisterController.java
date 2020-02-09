@@ -40,9 +40,7 @@ import com.web.login.Service.MembersService;
 @Controller
 @SessionAttributes({ "members", "Login" })
 public class RegisterController {
-	String noImage = "/images/NoImage.png";
-	String noImageFemale = "/images/NoImage_Female.jpg";
-	String noImageMale = "/images/NoImage_Male.png";
+	String noImage = "/WEB-INF/views/img/NoImage_Male.png";
 
 	@Autowired
 	MembersService service;
@@ -54,6 +52,13 @@ public class RegisterController {
 		MembersBean member = new MembersBean();		
 		model.addAttribute("MembersBean", member);
 		return "_01_register/registerNewMember";
+	}
+	
+	@RequestMapping("/_01_register/MemberBackstage")
+	public String MemberBackstage() {
+		
+		return "_01_register/MemberBackstage";
+		
 	}
 	
 	@ResponseBody
@@ -73,6 +78,18 @@ public class RegisterController {
 
 	@PostMapping("/_01_register/registerNewMember")
 	public String processAddNewMemberForm(@ModelAttribute("MembersBean") MembersBean member, Model model) {
+		member.setFileName("NoImage_Male.png");
+		byte[] body = null;
+		
+		try {						
+			String path = "/WEB-INF/views/img/NoImage_Male.png";
+			body = fileToByteArray(path);
+			Blob blob = new SerialBlob(body);
+			member.setMemberImage(blob);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());}
 		try {
 			service.saveMembers(member);
 		} catch (org.hibernate.exception.ConstraintViolationException e) {
@@ -107,8 +124,12 @@ public class RegisterController {
 			HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("Login頁面");
 		MembersBean bean = service.login(member.getEmail(), member.getPassword());
+		System.out.println(member.getPassword());
+		System.out.println("這是BEAN" + bean);
+		
 		if (bean != null) {
 			session.setAttribute("members", bean);
+			return "index";
 		}
 		member = service.getMemberByBean(member);
 		model.addAttribute("members", member);
@@ -119,8 +140,7 @@ public class RegisterController {
 		if (requestURI != null) {
 			return "redirect:" + requestURI;
 		}
-		
-		// return "_01_register/LoginSuccessful";
+
 		return "index";
 	}
 
@@ -204,11 +224,11 @@ public class RegisterController {
 		} else {
 			String path = null;
 			if (member.getGender() == null || member.getGender().length() == 0) {
-				path = noImageMale;
+//				path = noImageMale;
 			} else if (member.getGender().equals("M")) {
-				path = noImageMale;
+//				path = noImageMale;
 			} else {
-				path = noImageFemale;
+//				path = noImageFemale;
 				;
 			}
 			body = fileToByteArray(path);
@@ -247,4 +267,7 @@ public class RegisterController {
 		}
 		return result;
 	}
+	
+
+	
 }

@@ -14,5 +14,6 @@ public interface MembersDao {
 	//更改會員資料
 	boolean updateMembers(MembersBean member);
 	boolean emailExists(String email);
+	
 
 }

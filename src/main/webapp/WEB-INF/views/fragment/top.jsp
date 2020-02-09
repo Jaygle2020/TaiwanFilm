@@ -39,7 +39,7 @@
 			<a href="alterMovie">後台</a>
 		</div>
 		<div>
-		<a href="${pageContext.request.contextPath}/MemberBackstage"></a>
+		<a href="${pageContext.request.contextPath}/_01_register/MemberBackstage">管理員後台</a>
 		</div>
 		</c:if>
 		<c:if test="${not empty sessionScope.members.email}">
