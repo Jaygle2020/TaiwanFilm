@@ -191,8 +191,7 @@ public class RegisterController {
 			return "redirect:/ToIndex";
 		}
 	}
-	
-	
+
 	@SuppressWarnings("unused")
 	@GetMapping("/crm/picture/{id}")
 	public ResponseEntity<byte[]> getPicture(@PathVariable("id") Integer id) {

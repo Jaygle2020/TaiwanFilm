@@ -432,8 +432,6 @@ body {
 	<jsp:include page="fragment/bottom.jsp" />
 
 
-
-
 <script>
 	$('#new-button').click(function() {
 		$('.category-content').removeClass("active active-bottom");
@@ -541,7 +539,7 @@ body {
 					}
 				}
 			});
-</script>
 
-</body>
+
+</script>
 </html>
