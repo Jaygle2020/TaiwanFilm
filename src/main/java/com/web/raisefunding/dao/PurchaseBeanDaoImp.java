@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.web.raisefunding.model.CrowdFundingBean;
 import com.web.raisefunding.model.PurchaseBean;
 @Repository
 public class PurchaseBeanDaoImp implements PurchaseBeanDao {
@@ -66,10 +67,19 @@ public class PurchaseBeanDaoImp implements PurchaseBeanDao {
 	public List<PurchaseBean> getPersonalPurchases(Integer memberId) {
 		Session session = factory.getCurrentSession();
 		String hql = "From PurchaseBean where memberId = :id";
-		List<PurchaseBean> list = session.createQuery(hql)
+		List<PurchaseBean> pcBeans = session.createQuery(hql)
 		.setParameter("id", memberId)
 		.getResultList();
-		return list;
+		for(PurchaseBean pcBean:pcBeans) {
+			CrowdFundingBean cfBean = pcBean.getProjBean().getCfBean();
+		if(cfBean.getFundsGoal()!= null) {
+			double num = (double)cfBean.getFundsNow()/cfBean.getFundsGoal();
+			System.out.println(num);
+			cfBean.setPercent((int)Math.round(num*100));
+			System.out.println("-----------test--------:"+cfBean.getPercent());
+			}
+		}
+		return pcBeans;
 	}
 	//檢查會員是不是有買過: 是回傳true
 	@Override

@@ -74,6 +74,7 @@ public class UserTradeController {
 			return "redirect:/register";
 		}
 		List<PurchaseBean> pcBeans = dpService.getPersonalPurchases(mbBean.getMemberId());
+		model.addAttribute("mbBean",mbBean);
 		model.addAttribute("pcBeans",pcBeans);
 		return "raiseFunding/personalPage";
 	}

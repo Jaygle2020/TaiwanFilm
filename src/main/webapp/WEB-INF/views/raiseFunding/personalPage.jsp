@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/personalPage.css">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/UtilTool.js" ></script>
 </head>
 
 
@@ -29,16 +30,16 @@
                 <div class="project">
                     <p class="title">${pcBean.projBean.projectName}</p>
                     <p class="small-title">${pcBean.projBean.projDescript}</p>
-                    <div class="content"><span >購買方案</span><span>$100</span></div>
+                    <div class="content"><span >購買方案</span><span>$${pcBean.dpBean.donateMoney}</span></div>
                 </div>
                 <div class="downMeta">
                     <div class="wholePercent"></div>
-                    <div class="realPercent" style="width:45%"></div>
+                    <div class="realPercent" style="width:${pcBean.projBean.cfBean.percent}%"></div>
                 </div>
                 <div class="plan">
-                    <span class="money">$ 45000</span> <span
-                        class="percent">45%</span> <span class="date">還剩
-                        <strong>22小時</strong>
+                    <span class="money">目前募得$${pcBean.projBean.cfBean.fundsNow}元</span> <span
+                        class="percent">${pcBean.projBean.cfBean.percent}%</span> <span class="date">還剩
+                        <strong id="dayCount" data-endDay="${pcBean.projBean.cfBean.dateEnd}"></strong>天
                     </span>
                 </div>
             </div>
@@ -48,5 +49,10 @@
 
 
     </div>
+    <script>
+    var dayCount = $("#dayCount").attr("data-endDay");
+    $("#dayCount").text(DaysCountdown(dayCount));
+    </script>
+    
 </body>
 </html>
