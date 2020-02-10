@@ -63,13 +63,13 @@ public class RootAppConfig {
 				
 		});
 //		if (SystemConstant.DB_TYPE == SystemConstant.MYSQL) {
-//			factory.setDataSource(mySQLDataSource());
-//			factory.setHibernateProperties(additionalPropertiesMySQL());	
+			factory.setDataSource(mySQLDataSource());
+			factory.setHibernateProperties(additionalPropertiesMySQL());	
 //		} else if (SystemConstant.DB_TYPE == SystemConstant.SQL_SERVER) {
 		
 			// mySQL msSQL 切換
-			factory.setDataSource(msSQLDataSource());
-			factory.setHibernateProperties(additionalPropertiesMsSQL());	
+//			factory.setDataSource(msSQLDataSource());
+//			factory.setHibernateProperties(additionalPropertiesMsSQL());	
 //		} 
 		return factory;
 	}

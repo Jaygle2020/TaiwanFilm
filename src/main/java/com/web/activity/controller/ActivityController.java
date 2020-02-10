@@ -51,6 +51,11 @@ public class ActivityController {
 		return "redirect:/activities";
 		
 	}
+	@RequestMapping("/finalProjectBackStage")
+	public String ActivityLogINNot1() {
+		return "finalProjectBackStage";
+	}
+	
 	
 	@Autowired
 	ServletContext context;

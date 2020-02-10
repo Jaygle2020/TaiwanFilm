@@ -6,219 +6,195 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- <link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"></link> 
+<title>activitiesM</title>
 
-<title>activities</title>
-<!-- <link rel='stylesheet' -->
-<%-- 	href='${pageContext.request.contextPath}/css/styles.css' --%> 
-<!-- 	type="text/css" /> -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/movie.css"
 	type="text/css">
 <style>
-.activity-inner{
-	padding: 10px;
-	vertical-align: top;
-	width: 350px;
-	display: inline-block;
-	margin: 10px;
-	text-align: center;
+body {
+	background: #f1f1f1;
+}
+.activityContent{
+	display: none;
+	} 
+.activity-content{
+	width: 80%;
+	padding:10px;
+	border-radius:10px;
+	margin:10px;
+	font-weight: bold;
 	background: white;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-	transition: 0.3s;
-	border-radius: 10px;
+	display: inline-block; 
 }
 
-.activity-inner:hover {
-	transform: translateY(-10px);
-	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+.activity-content-show{
+	width: 80%;
+	padding:10px;
+	border-radius:10px;
+	margin:10px;
+	font-weight: bold;
+	display: inline-block;
 }
 
-.activityThumb {
+.allActivityM-width {
+	width: 25%;
+	height: 200px;
+	display: inline-block;
+}
+
+
+.acitivityUpdateWidth{
+	width:21%;
+	padding:20px;
+	display: inline-block;
+	vertical-align:top; 
 	text-align: center;
-	background-size: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
-	height: 250px;
-	background-size:cover;
+	color: black;
 	
 }
 
-.activity-content {
-	padding: 5px;
-	height: 150px;
-	overflow: hidden;
-	text-align: left;
-	color: black;
-
+.activityUpdateButton{
+	width: 7%;
+	display:inline-block;
+	margin-top:12px;
+	text-align: center;
 }
 
-.activity-title {
-	font-weight: bold;
-	font-size: 18px;
+.activityUpdateButtonStyle{
+	width:100%;
+	color:white;
+	background-color:red;
+	padding:3px;
+	border-radius:3px
 }
+</style> 
 
-.activity-author {
-	font-weight: lighter;
-	font-size: 13px;
-}
-
-.activity-maincontent {
-	font-weight: 450;
-	font-size: 14px;
-}
-
-.anchor-style {
-	text-decoration: none;
-	color: black;
-}
-
-.activityContent a:hover {
-	color: black;
-}
-
-.container h2 {
-	font-size: 40px;
-	font-weight: bold;
-	text-align: center
-}
-
-.row img {
-	width: 100%;
-	height: 100%
-}
-
-
-
-.showall:hover{
-	text-decoration: none;
-}
-
-.activityContent{ 
-	height: 450px;
-	overflow:hidden;
-	display: none;
-	}
-
-</style>
-
-
+ 
 
 </head>
 <body>
-	<div class="header">
-		<div class="h-logo" style="letter-spacing: -3px">
-			<a href="activities">
-				<p class="Theme">TaiwanFilmsGuide
-			</a>
-		</div>
-		<div class="left-menu">
-
-		</div>
-		<div class="right-menu">
-			<div>
-				<a href="activitiesM">進入後台</a>
-			</div>
-			<div>
-				<a href="activitiesN">一般會員</a>
-			</div>
-		</div>
-	</div>
 
 
-
+	<jsp:include page="../fragment/menu.jsp" />
 
 
 
 	<div class="section" id="popular">
 		<div class="section" id="category">
-			<div class="width-limit">
-				<h1>活動清單</h1>
+			<div class="width-limit"> 
+				<h1>Activities</h1>
 				<div class="change-category">
 					<div class="change-menu">
 						<div class="buttonBorder-active buttonBorder" id="new-button">最新發起</div>
 						<div class="buttonBorder" id="trend-button">趨勢話題</div>
 						<div class="buttonBorder" id="coming-button">即將開始</div>
 						<div class="buttonBorder" id="end-button">即將結束</div>
-						<a href="allActivity">
-							<div style="float: right;width: 10%;color: black; font-weight: bold;">瀏覽全部活動</div>
+						<a href="allActivityM">
+							<div style="float: right;width: 10%;color: black; font-weight: bold;">全部活動頁面</div>
 						</a>
 					</div>
 				</div>
 			</div>
-		
+			<div style="width: 100%">
+				<div style="width: 20%;display: inline-block;writing-mode:tb-rl;background:red">HOT</div>
+				<div style="width: 20%;display: inline-block;background:green">摸摸摸摸</div> 
+				<div style="width: 20%;display: inline-block;background:yellow">吃吃吃</div>
+				<div style="width: 20%;display: inline-block;background:blue">吃吃吃</div>
+			</div>
 
 
 
 			<div class="activityContent active" id="new">
+				<div class="activity-content-show">
+					<div class="acitivityUpdateWidth">活動序號</div>
+					<div class="acitivityUpdateWidth">活動主題</div>
+					<div class="acitivityUpdateWidth">活動廠商</div>
+					<div class="acitivityUpdateWidth">活動開始時間</div>
+					<div class="activityUpdateButton">
+				</div> 
+			</div>
 				<c:forEach var='activity' items='${activityList}'>
 					<c:if test="${activity.category == '1'}">
 						<a href="<spring:url value='/activity?id=${activity.activityId}' />"
-							class="anchor-style">
-								<a href="<spring:url value='/queryMyActivity/${activity.activityId}' />"> 
-								<div class="activity-inner" id="${activity.activityId}" data-number="${activity.activityWatched}">		
-									<div class="activityThumb"
-										style="background-image: url('getPicture/${activity.activityId}');	">
-									</div>				 
-									<div class="activity-content"> 
-										<p id="today"></p>
-										<p class="activity-title"> ${activity.activityTitle}</p>
-										<%-- <p class="activity-author">${activity.activityAuthor}</p> --%>
-										<p class="activity-maincontent">${activity.activityMainContent}</p>
-										<p class="getvalue"><i class="fas fa-eye"></i>${activity.activityWatched}</p>										
-									</div> 
-									<div class="downMeta"></div>
-								</div>
+							class="anchor-style"> 
+							<a href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
+								<div class="activity-inner"
+									data-number="${activity.activityWatched}">
+									<div class="activity-content">  
+										<div class="acitivityUpdateWidth"style="color:red">${activity.activityNumber}</div>
+										<div class="acitivityUpdateWidth">${activity.activityTitle}</div>
+										<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
+										<div class="acitivityUpdateWidth">${activity.startTime}</div>
+										
+									</div> 	
+								</div>    
 							</a> 
-						</a>
+						</a> 
 					</c:if>
 				</c:forEach>
 			</div>
 
 			<div class="activityContent" id="trend">
+				<div class="activity-content-show">
+					<div class="acitivityUpdateWidth">活動序號</div>
+					<div class="acitivityUpdateWidth">活動主題</div>
+					<div class="acitivityUpdateWidth">活動廠商</div>
+					<div class="acitivityUpdateWidth">活動開始時間</div>
+					<div class="activityUpdateButton">
+				</div> 
+			</div> 
 				<c:forEach var='activity' items='${activitiesViews}'>
+					<c:if test="${activity.category == '1'}">
 						<a href="<spring:url value='/activity?id=${activity.activityId}' />"
-							class="anchor-style">
-							 <a href="<spring:url value='/queryMyActivity/${activity.activityId}' />">  
-							<div class="activity-inner" data-number="${activity.activityWatched}">
-								<div class="activityThumb" style="background-image: url('getPicture/${activity.activityId}');background-size:cover	">
-								</div>
-								<div class="activity-content">
-									<p class="activity-title">${activity.activityTitle}</p>
-									<%-- <p class="activity-author">${activity.activityAuthor}</p> --%>
-									<p class="activity-maincontent">${activity.activityMainContent}</p>
-									<p class="getvalue"><i class="fas fa-eye"></i>${activity.activityWatched}</p>							
-								</div>
-								<div class="downMeta"></div>
-							</div>
-						</a>
-					</a>
-				</c:forEach> 
+							class="anchor-style"> 
+							<a href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
+								<div class="activity-inner"
+									data-number="${activity.activityWatched}">
+									<div class="activity-content">  
+										<div class="acitivityUpdateWidth"style="color:red">${activity.activityNumber}</div>
+										<div class="acitivityUpdateWidth">${activity.activityTitle}</div>
+										<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
+										<div class="acitivityUpdateWidth">${activity.startTime}</div>
+										
+									</div> 	
+								</div>    
+							</a> 
+						</a> 
+					</c:if>
+				</c:forEach>
 			</div>
 
 			<div class="activityContent" id="coming">
+				<div class="activity-content-show">
+					<div class="acitivityUpdateWidth">活動序號</div>
+					<div class="acitivityUpdateWidth">活動主題</div>
+					<div class="acitivityUpdateWidth">活動廠商</div>
+					<div class="acitivityUpdateWidth">活動開始時間</div>
+					<div class="activityUpdateButton">
+				</div> 
+			</div>
 				<c:forEach var='activity' items='${activitiesStart}'>
 					<c:if test="${activity.category == '3'}">
 						<a href="<spring:url value='/activity?id=${activity.activityId}' />"
-							class="anchor-style">
-							<div class="activity-inner" data-number="${activity.activityWatched}">
-								<div class="activityThumb"
-									style="background-image: url('getPicture/${activity.activityId}');	">
-								</div>
-								<div class="activity-content">
-									<p class="activity-title">${activity.activityTitle}</p>
-								<%-- 	<p class="activity-author">${activity.activityAuthor}</p> --%>
-									<p class="activity-maincontent">${activity.activityMainContent}</p>
-									
-									<i class="fas fa-eye"></i>${activity.activityWatched}</p>
-								</div>
-								<div class="downMeta"></div>
-							</div>
+							class="anchor-style"> 
+							<a href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
+								<div class="activity-inner"
+									data-number="${activity.activityWatched}">
+									<div class="activity-content">  
+										<div class="acitivityUpdateWidth"style="color:red">${activity.activityNumber}</div>
+										<div class="acitivityUpdateWidth">${activity.activityTitle}</div>
+										<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
+										<div class="acitivityUpdateWidth">${activity.startTime}</div>
+										
+									</div> 	
+								</div>    
+							</a> 
 						</a> 
 					</c:if>
 				</c:forEach>
@@ -228,25 +204,31 @@
 
  
  			<div class="activityContent" id="end">
+ 				<div class="activity-content-show">
+					<div class="acitivityUpdateWidth">活動序號</div>
+					<div class="acitivityUpdateWidth">活動主題</div>
+					<div class="acitivityUpdateWidth">活動廠商</div>
+					<div class="acitivityUpdateWidth">活動開始時間</div>
+					<div class="activityUpdateButton">
+				</div> 
+			</div>
 				<c:forEach var='activity' items='${activitiesEnd}'>
 					<c:if test="${activity.category == '1'}">
-						<a
-							href="<spring:url value='/activity?id=${activity.activityId}' />"
-							class="anchor-style">
-							<div class="activity-inner">
-								<div class="activityThumb" style="background-image: url('getPicture/${activity.activityId}');">
-								</div>
-								<div class="activity-content">
-									<p class="activity-title">${activity.activityTitle}</p>
-									<%-- <p class="activity-author">${activity.activityAuthor}</p> --%>
-									<p class="activity-maincontent">活動內容:
-										${activity.activityMainContent}</p>
-									
-									 <i class="fas fa-eye"></i>${activity.activityWatched}</p>
-								</div>
-								<div class="downMeta"></div>
-							</div>
-						</a>
+						<a href="<spring:url value='/activity?id=${activity.activityId}' />"
+							class="anchor-style"> 
+							<a href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
+								<div class="activity-inner"
+									data-number="${activity.activityWatched}">
+									<div class="activity-content">  
+										<div class="acitivityUpdateWidth"style="color:red">${activity.activityNumber}</div>
+										<div class="acitivityUpdateWidth">${activity.activityTitle}</div>
+										<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
+										<div class="acitivityUpdateWidth">${activity.startTime}</div>
+										
+									</div> 	
+								</div>    
+							</a> 
+						</a> 
 					</c:if>
 				</c:forEach>
 			</div>  
@@ -255,37 +237,37 @@
 
 
 
+
+
+
 			<script>
-				$('#new-button').click(function() {
-					$('.activityContent').removeClass("active active-bottom");
-					$('#new').addClass("active");
+			$('#new-button').click(function() {
+				$('.activityContent').removeClass("active active-bottom");
+				$('#new').addClass("active");
+				$('.buttonBorder').removeClass("buttonBorder-active");
+				$('#new-button').addClass("buttonBorder-active");
 
-					$('.buttonBorder').removeClass("buttonBorder-active");
-					$('#new-button').addClass("buttonBorder-active");
-
-				});
-				$('#trend-button').click(function() {
-					$('.activityContent').removeClass("active active-bottom");
-					$('#trend').addClass("active");
-					$('.buttonBorder').removeClass("buttonBorder-active");
-					$('#trend-button').addClass("buttonBorder-active");
-				}); 
-				$('#coming-button').click(function() {
-					$('.activityContent').removeClass("active active-bottom");
-					$('#coming').addClass("active");
-					$('.buttonBorder').removeClass("buttonBorder-active");
-					$('#coming-button').addClass("buttonBorder-active");
-				});
-				$('#end-button').click(function() {
-					$('.activityContent').removeClass("active active-bottom");
-					$('#end').addClass("active");
-					$('.buttonBorder').removeClass("buttonBorder-active");
-					$('#end-button').addClass("buttonBorder-active");
-				});
-				
-				
-				
-
+			});
+			$('#trend-button').click(function() {
+				$('.activityContent').removeClass("active active-bottom");
+				$('#trend').addClass("active");
+				$('.buttonBorder').removeClass("buttonBorder-active");
+				$('#trend-button').addClass("buttonBorder-active");
+			}); 
+			$('#coming-button').click(function() {
+				$('.activityContent').removeClass("active active-bottom");
+				$('#coming').addClass("active");
+				$('.buttonBorder').removeClass("buttonBorder-active");
+				$('#coming-button').addClass("buttonBorder-active");
+			});
+			$('#end-button').click(function() {
+				$('.activityContent').removeClass("active active-bottom");
+				$('#end').addClass("active");
+				$('.buttonBorder').removeClass("buttonBorder-active");
+				$('#end-button').addClass("buttonBorder-active");
+			});
+			
 			</script>
 </body>
 </html>
+ 

@@ -30,7 +30,7 @@ public class HomeController {
 		List<activityBean> activityListEnd = service.getAllActivitiesExceptStatusEqualOneStart();
 		model.addAttribute("activitiesEnd", activityListEnd);
 		
-		
+		 
 		
 		return "index";
 	}
