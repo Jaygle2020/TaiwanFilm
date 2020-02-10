@@ -55,7 +55,14 @@ public class FundsController {
 		model.addAttribute("Fundings", list);
 		return "raiseFunding/fundsCategory";
 	}
-
+	//後臺取得所有募資列表
+	@GetMapping("/manage/getAllProject")
+	public String getManageProject(Model model) {
+		List<CrowdFundingBean> list = propService.getAllProjectAndFunding();
+		model.addAttribute("cfBeans", list);
+		return "raiseFunding/projectManage";
+	}
+	
 	// 開啟建立募資的專案頁
 	@GetMapping("/createProjectFirst")
 	public String proposalPage(Model model) {
@@ -101,6 +108,18 @@ public class FundsController {
 		model.addAttribute("ProjectBean",projBean);
 		return "raiseFunding/createProject";
 	}
+	//修改專案
+	@GetMapping("/updateProject/{id}")
+	public String updateProjectById(@PathVariable("id") Integer projectId,Model model) {
+		ProjectBean projBean =propService.GetProjBean(projectId);
+		List<DonatePlanBean> dpBeans = propService.getAllDonatePlanBean(projectId);
+		ProjectInfoBean infoBean = propService.getProjectInfo(projectId).get(0);
+		model.addAttribute("projBean",projBean);
+		model.addAttribute("dpBeans",dpBeans);
+		model.addAttribute("infoBean",infoBean);
+		return "updateProject";
+	}
+	
 	
 	//建立一個專案專屬的贊助方案
 	@PostMapping(value="/createDonatePlan",produces = { "text/html;charset=utf-8" })

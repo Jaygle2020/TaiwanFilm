@@ -13,7 +13,7 @@
 	href="${pageContext.request.contextPath}/css/create.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/movie.css" />
-<link rel="stylesheet"
+<link rel="stylesheet" 
 
 	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script
@@ -92,9 +92,11 @@
 				<div class="create-info productlist form-group"></div>
 
 				<div class="create-reward productlist ">
+					
+					<div class="dplan-view" >
 					<c:if test="${dpBeans!=null}">
 						<c:forEach items="${dpBeans}" var="dpBean" >
-							<div class="plan" id="donatePlan${dpBean.planId}">
+							<div class="plan" id="donatePlan${dpBean.planId}" data-planId="${dpBean.planId}">
 								<div>
 									<h2 class="donateMoney">$${dpBean.donateMoney}</h2>
 								</div>
@@ -115,7 +117,7 @@
 							</div>
 						</c:forEach>
 					</c:if>
-					<div class="dplan-view" ></div>
+					</div>
 					<button id="create-user">新增贊助方塊</button>
 					
 					<!--         dialog-Form 隱藏的跳出視窗起始點               -->
@@ -200,7 +202,7 @@
 	</div>
 
 
-	
+
 	<script>
 		var dataDpBeans = null;
 		$(function() {
@@ -360,7 +362,7 @@
 function dpPlanForEach(dpBeans){
 	$(".dplan-view").html("");
 	for(var dpBean of dpBeans){
-		var dplan = $("<div class='plan' id='donatePlan"+dpBean.planId+"'>"+
+		var dplan = $("<div class='plan' id='donatePlan"+dpBean.planId+"' data-planId='"${dpBean.planId}"'>"+
 			"<div><h2 class='donateMoney'>$"+dpBean.donateMoney+"</h2></div>"+
 			"<div class='projectThumb'><img src='${pageContext.request.contextPath}"+
 			"/getDonatePlan/photo/"+dpBean.planId+"'></div><div class='planText'><div class='description'>"+
