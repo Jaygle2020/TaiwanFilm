@@ -61,7 +61,7 @@ body {
 			</div> -->
 
 		
-			<jsp:include page="activity/activities.jsp" />
+<%-- 			<jsp:include page="activity/activities.jsp" /> --%>
 <!-- 		<div class="category-content active" id="new">
 				<div class="inner">
 					<div class="projectThumb">

@@ -23,6 +23,7 @@ public class MembersServiceImpl implements MembersService {
 		 dao.addMember(mb);
 	}
 
+	@Transactional
 	@Override
 	public MembersBean getMemberById(int memberId) {
 		return dao.getMemberById(memberId);
@@ -42,5 +43,10 @@ public class MembersServiceImpl implements MembersService {
 	@Override
 	public boolean updateMembers(MembersBean member) {
 		return dao.updateMembers(member);		
+	}
+	@Transactional	
+	@Override
+	public boolean emailExists(String email) {
+		return dao.emailExists(email);
 	}
 }
