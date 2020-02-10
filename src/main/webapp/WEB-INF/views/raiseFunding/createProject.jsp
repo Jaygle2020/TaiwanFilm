@@ -12,7 +12,7 @@
 <link rel=stylesheet type="text/css"
 	href="${pageContext.request.contextPath}/css/create.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/movie2.css" />
+	href="${pageContext.request.contextPath}/css/movie.css" />
 <link rel="stylesheet"
 
 	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

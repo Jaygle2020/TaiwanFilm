@@ -14,7 +14,7 @@
 <link rel=stylesheet type="text/css"
 	href="${pageContext.request.contextPath}/css/fund.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/UtilTool.js" ></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie2.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie.css" />
 </head>
 
 <body>
@@ -110,7 +110,7 @@
                                     <div class="middleFrame">
                                         <c:if test="${pcBeans!=null }">
                                         	<c:forEach items="${pcBeans}" var="pcBean">
-                                        <div class="memberBox"  title="${pcBean[1]}" style="background-image:url('${pageContext.request.contextPath}/img/supermark/ok.png')"  ></div>
+                                        <div class="memberBox"  title="${pcBean[1]}" style="background-image:url('${pageContext.request.contextPath}/crm/picture/${pcBean[0]}')"  ></div>
 											</c:forEach>
 										</c:if>				
                                     </div>
