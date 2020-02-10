@@ -190,7 +190,22 @@ section {
   padding-right: 15px;
   padding-left: 15px;
 }
-
+.projectContentDown .container .col-left .middleFrame {
+  margin: auto;
+  width: 70%;
+}
+#TabStart{
+	margin-left:150px;
+}
+.projectContentDown .container .col-left .middleFrame .memberBox {
+  display: inline-block;
+  width: 100px;
+  border-radius: 50%;
+  border: 3px solid #a6b7eb;
+  height: 100px;
+  background-size: contain;
+  margin: 5px;
+}
 .projectContentDown .container .col-left h1 {
   font-weight: bold;
 }

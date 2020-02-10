@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="css/movie.css">
 </head>
 <body>
+<jsp:include page="../fragment/top.jsp" />
 <h2>感謝購買</h2>
 <p>請至下列合作的超商進行付款</p>
 <div><img src="${pageContext.request.contextPath}/img/supermark/familymart.png">

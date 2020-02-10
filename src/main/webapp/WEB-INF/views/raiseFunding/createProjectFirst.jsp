@@ -12,7 +12,7 @@
 <link rel=stylesheet type="text/css"
 	href="${pageContext.request.contextPath}/css/create.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/movie2.css" />
+	href="${pageContext.request.contextPath}/css/movie.css" />
 <link rel="stylesheet"
 	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -30,7 +30,7 @@
 </head>
 
 <body>
-	<jsp:include page="fragment/top.jsp" />
+	<jsp:include page="../fragment/top.jsp" />
 	<div id="createWrapper" class="wrapper createWrapper">
 		<div class="createContainer">
 			<section class="createMenu">
@@ -54,13 +54,18 @@
 								<input type="text" name="projectName">
 								<P>一個好的標題應該要好記、好搜尋、吸引人想點進去看，並讓瀏覽者能在最短的時間內瞭解專案的核心理念。</P>
 								<h2>內容摘要</h2>
-								<textarea name="projDescript" form="projectForm" rows="8"
-									cols="80" maxlength="200"></textarea>
-								<p>使用吸引人的短文說明你的目標以及理念，強調你的獨一無二，讓贊助人對你或你的專案好奇，願意更進一步了解專案。</p>
+								<textarea name="projDescript" form="projectForm" rows="7"
+									cols="50" maxlength="200"></textarea>
+								<h2>動人的故事</h2>
+								<textarea name="projStory" form="projectForm" rows="7"
+									cols="50" maxlength="200"></textarea>
+								<p>故事訴說作者的理念，強調你的獨一無二之處，讓贊助人對你或你的專案好奇，願意更進一步了解專案。</p>
 							</div>
 							<div class="createProjectCard"></div>
 							<h2>上傳專案圖片</h2>
-							<input type="file" name="photoStr"
+							<span>專案區塊圖</span>><input type="file" name="photoStr"
+								accept="image/jpeg,image/png,image/bmp"><br>
+							<span>故事介紹圖</span>><input type="file" name="photoStr2" 
 								accept="image/jpeg,image/png,image/bmp">
 							<h2>專案影片 &nbsp; (注意某些私人youtube影片是不開放其他網站載入)</h2>
 							

@@ -4,21 +4,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https:///code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel=stylesheet type="text/css"
 	href="${pageContext.request.contextPath}/css/fund.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/UtilTool.js" ></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie2.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie.css" />
 </head>
 
 <body>
-<jsp:include page="fragment/top.jsp" />
+<jsp:include page="../fragment/top.jsp" />
 	<div class="wrapper">
 		<section>
 			<!-- 企劃上半部 -->
@@ -56,7 +56,8 @@
                                      <span class="progressMoney">$${cfBean.fundsGoal}</span><br>
                                      <pre class="space"> 
                                      </pre>
-                                     <span class="progressTitle">募資成功</span>
+                                     <span class="progressTitle">募資階段</span>
+                                     <span class="percentNow">${cfBean.percent}%</span>
                                 </div>
 								
 							</div>
@@ -94,10 +95,31 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-left" id="user_content">
-							<div class="story">
+							<div id="tabs">
+                                <ul>
+                                  <li id="TabStart"><a href="#tabs-1">專案緣起</a></li>
+                                  <li><a href="#tabs-2">贊助者們</a></li>
+                                  <li><a href="#tabs-3">專案討論區</a></li>
+                                </ul>
+                               
+							<div class="story" id="tabs-1">
 								<h1 class="projectContentHeading">${infoBean.projectTittle}</h1>
 									<div id="viewArea">${infoBean.innerText}</div>
 							</div>
+							 <div id="tabs-2">
+                                    <div class="middleFrame">
+                                        <c:if test="${pcBeans!=null }">
+                                        	<c:forEach items="${pcBeans}" var="pcBean">
+                                        <div class="memberBox"  title="${pcBean[1]}" style="background-image:url('${pageContext.request.contextPath}/crm/picture/${pcBean[0]}')"  ></div>
+											</c:forEach>
+										</c:if>				
+                                    </div>
+                            </div>
+                            <div id="tabs-3">
+                                <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+                                <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+                            </div>
+                            </div>
 						</div>
 						<div class="col-right rewardBar" id="rewards">
 							<c:if test="${dpBeans!=null}">
@@ -116,7 +138,7 @@
 											</div>
 											<span class="shipping"  data-shipping="${dpBean.shipping}" >沒有運送服務</span> <span
 												class="deliverDate">預計寄送時間 ${dpBean.dliverDate}</span> <span
-												class="limit">限量 <strong>${dpBean.limit}</strong>份
+												class="limit">限量 <strong>${dpBean.limitNum}</strong>份
 											</span>
 										</div>
 									</div>
@@ -132,6 +154,8 @@
 
 <script>
 $(function(){
+	
+	$( "#tabs" ).tabs();
 	var count = ${infoBean.photoCount};
 	for(var i = 0 ; i<count;i++){
 		var url =  "${pageContext.request.contextPath}/infoPhoto/"+${infoBean.projBean.projectId}+"/"+i;          

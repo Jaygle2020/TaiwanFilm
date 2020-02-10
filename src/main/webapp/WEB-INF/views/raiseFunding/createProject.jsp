@@ -12,7 +12,7 @@
 <link rel=stylesheet type="text/css"
 	href="${pageContext.request.contextPath}/css/create.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/movie2.css" />
+	href="${pageContext.request.contextPath}/css/movie.css" />
 <link rel="stylesheet"
 
 	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -24,7 +24,7 @@
 </head>
 
 <body>
-	<jsp:include page="fragment/top.jsp" />
+	<jsp:include page="../fragment/top.jsp" />
 	<div id="createWrapper" class="wrapper createWrapper">
 		<div class="createContainer">
 			<section class="createMenu">
@@ -109,7 +109,7 @@
 									</div>
 									<span class="shipping" data-shipping="${dpBean.shipping}">沒有運送服務</span>
 									<span class="deliverDate">預計寄送時間 ${dpBean.dliverDate}</span> <span
-										class="limit">限量 <strong>${dpBean.limit}</strong>份
+										class="limit">限量 <strong>${dpBean.limitNum}</strong>份
 									</span>
 								</div>
 							</div>
@@ -367,7 +367,7 @@ function dpPlanForEach(dpBeans){
 			dpBean.donateDescription+"</div><span class='shipping'"+ 
 			"data-shipping='"+dpBean.shipping+"'>沒有運送服務</span>"+
 			"<span class='deliverDate'>預計寄送時間 "+dpBean.dliverDate+"</span>"+
-			"<span class='limit'>限量 <strong>"+dpBean.limit+"</strong>份</span></div></div>")
+			"<span class='limit'>限量 <strong>"+dpBean.limitNum+"</strong>份</span></div></div>")
 						
 		$(".dplan-view").append(dplan);
 	}
