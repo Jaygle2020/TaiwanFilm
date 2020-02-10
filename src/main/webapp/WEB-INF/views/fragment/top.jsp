@@ -69,17 +69,15 @@
 	</div>
 </div> 
 <div id="memberDetail"
-	style="padding: 5px; display: none; width: 100px; height: 200px; background: #ebebeb; position: absolute; right: 5px; top: 68px; z-index: 100">
+	style="padding: 5px; display: none; width: 100px; height: 200px; background: #ebebeb; 
+	position: absolute; right: 5px; top: 68px; z-index: 800">
 	<a href="${pageContext.request.contextPath}/UpdateMember">會員資料</a> <br>
 	<a href="alterTicket">訂票資料</a> <br>
 	<a href="${pageContext.request.contextPath}/logout">登出</a>
 </div>
-<script type="text/javascript">
-	$("#memberButton").click(function() {
-		$("#memberDetail").fadeToggle(500);
-	});
+
+<script>
+$("#memberButton").click(function() {
+	$("#memberDetail").fadeToggle(500);
+});
 </script>
-
-
-</body>
-</html>

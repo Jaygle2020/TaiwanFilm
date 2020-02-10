@@ -429,12 +429,8 @@ body {
 		</div>
 	</div>
 
-	<jsp:include page="fragment/top.jsp" />
+	<jsp:include page="fragment/bottom.jsp" />
 
-</body>
-
-
-<script type="text/javascript"></script>
 
 <script>
 	$('#new-button').click(function() {
@@ -543,5 +539,8 @@ body {
 					}
 				}
 			});
+
+
 </script>
+</body>
 </html>

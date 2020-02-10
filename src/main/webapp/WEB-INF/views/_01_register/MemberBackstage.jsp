@@ -61,6 +61,7 @@
 	
 		<div>
 			<div class="divArea active" id="area1">顯示所有會員</div>
+				<div><a href="${pageContext.request.contextPath}/ShowAllMembers"></a> </div>
 			<div class="divArea" id="area2">小天才訂票頁面</div>
 			<div class="divArea" id="area3">傑哥募資在這</div>
 			<div class="divArea" id="area4">士棠的訂購明細</div>
