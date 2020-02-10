@@ -41,13 +41,4 @@ public class ProjectDaoImp implements ProjectDao {
 		return projBean ;
 	}
 	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Object> getAllProject() {
-		Session session = factory.getCurrentSession();
-		String hql = "from ProjectBean p,CrowdFundingBean c where p.projectId = c.projectBean.projectId";
-		List<Object> list= session.createQuery(hql).getResultList();
-		return list;
-	}
-
 }

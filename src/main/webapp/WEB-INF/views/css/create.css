@@ -152,6 +152,10 @@ address, ol, p, ul {
   padding: 0px 5px;
   margin: 0px 5px;
 }
+#enterTittle{
+	font-size:30px;
+	
+}
 
 #viewArea {
   margin: auto;
@@ -183,4 +187,9 @@ address, ol, p, ul {
   white-space: pre-wrap;
 }
 
+#enterTable{
+  font-size: 20px;
+  font-weight: bold;
+	
+}
 /*# sourceMappingURL=create.css.map */

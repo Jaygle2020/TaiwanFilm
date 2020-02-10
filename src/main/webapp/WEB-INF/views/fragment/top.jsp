@@ -19,7 +19,7 @@
 			<a href="${pageContext.request.contextPath}//createProjectFirst">贊助電影</a>
 		</div>
 		<div>
-			<a href="${pageContext.request.contextPath}/fundsCategory">贊助電影</a>
+			<a href="${pageContext.request.contextPath}/member/purchase">會員贊助測試鈕</a>
 		</div>
 		 <div>
 			<a href="activities">熱門活動</a>

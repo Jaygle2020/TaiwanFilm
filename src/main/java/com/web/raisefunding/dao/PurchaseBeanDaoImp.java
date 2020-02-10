@@ -1,5 +1,6 @@
 package com.web.raisefunding.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -7,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.web.raisefunding.model.CrowdFundingBean;
 import com.web.raisefunding.model.PurchaseBean;
 @Repository
 public class PurchaseBeanDaoImp implements PurchaseBeanDao {
@@ -34,6 +36,16 @@ public class PurchaseBeanDaoImp implements PurchaseBeanDao {
 		PurchaseBean pcBean = session.get(PurchaseBean.class, purchaseId);
 		return pcBean;
 	}
+	
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PurchaseBean> getProjMemberByPurchase(Integer projectId) throws SQLException {
+		String hql = "select distinct p.mbBean.memberId ,p.mbBean.memberName from PurchaseBean p  where p.projBean.projectId = :pjId";
+		Session session = factory.getCurrentSession();
+		List<PurchaseBean> list = session.createQuery(hql).setParameter("pjId", projectId).getResultList();
+		return list;
+	}
 
 	@Override
 	public List<PurchaseBean> getAllPurchases() {
@@ -44,23 +56,51 @@ public class PurchaseBeanDaoImp implements PurchaseBeanDao {
 	@Override
 	public List<PurchaseBean> getPurchases(Integer planId) {
 		Session session = factory.getCurrentSession();
-		String hql = "From PurchaseBean where planId = :planId";
+		String hql = "From PurchaseBean where planId = :id";
 		List<PurchaseBean> list = session.createQuery(hql)
-		.setParameter("planId", planId)
+		.setParameter("id", planId)
 		.getResultList();
 		return list;
 	}
 
 	@Override
-	public List<PurchaseBean> getPersonalPurchases(String buyerName) {
+	public List<PurchaseBean> getPersonalPurchases(Integer memberId) {
 		Session session = factory.getCurrentSession();
-		String hql = "From PurchaseBean where buyerName = :buyerName";
-		List<PurchaseBean> list = session.createQuery(hql)
-		.setParameter("buyerName", buyerName)
+		String hql = "From PurchaseBean where memberId = :id";
+		List<PurchaseBean> pcBeans = session.createQuery(hql)
+		.setParameter("id", memberId)
 		.getResultList();
-		return list;
+		for(PurchaseBean pcBean:pcBeans) {
+			CrowdFundingBean cfBean = pcBean.getProjBean().getCfBean();
+		if(cfBean.getFundsGoal()!= null) {
+			double num = (double)cfBean.getFundsNow()/cfBean.getFundsGoal();
+			System.out.println(num);
+			cfBean.setPercent((int)Math.round(num*100));
+			System.out.println("-----------test--------:"+cfBean.getPercent());
+			}
+		}
+		return pcBeans;
+	}
+	//檢查會員是不是有買過: 是回傳true
+	@Override
+	public boolean checkProjectMember(PurchaseBean psBean) {
+		String hql = "From PurchaseBean  where memberId = :mbId and projectId = :pjId";
+		Session session = factory.getCurrentSession();
+		List<PurchaseBean> list = session.createQuery(hql).setParameter("mbId", psBean.getMbBean().getMemberId())
+								.setParameter("pjId", psBean.getProjBean().getProjectId())
+								.getResultList();
+		if(list.size()<2) {
+			return false;
+		}else
+		return true;
 	}
 
-	
+	public List<PurchaseBean> getProjectMember(Integer projectId) {
+		String hql = "From PurchaseBean where projectId = :id";
+		Session session = factory.getCurrentSession();
+		List<PurchaseBean> list = session.createQuery(hql).setParameter("id", projectId)
+								.getResultList();
+		return list;
+	}
 
 }

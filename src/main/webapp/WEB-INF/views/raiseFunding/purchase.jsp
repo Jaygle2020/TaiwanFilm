@@ -5,25 +5,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel=stylesheet type="text/css" href="${pageContext.request.contextPath}/css/purchase.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel=stylesheet type="text/css" href="${pageContext.request.contextPath}/css/purchase1.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie2.css" />
+	
 </head>
 
 <body>
-<jsp:include page="fragment/top.jsp" />
+<jsp:include page="../fragment/top.jsp" />
     <div class="purchaseWrapper">
         <div class="purchaseContainer">
             <h1>${dpBean.projBean.projectName}</h1>
-            <p>assisten</p>
+            <p>日期<span class="LocaleDate"></span></p>
             <section class="DataSection">
                 <div class="buyerData">
                     <form:form method="post" modelAttribute="PurchaseBean"  action="${pageContext.request.contextPath}/newPurchase" >
                         <span class="bluequote">寄送區域</span><br>
-                        <form:select path="buyerLocation" >
+                        <form:select path="buyerLocation" id="buyerLocation">
                             <form:option value="InTaiwan">台灣本島</form:option>
                             <form:option value="OutOfTaiwan">外島地區</form:option>
                             <form:option value="Foreign">國外區域</form:option>
@@ -54,19 +57,21 @@
                             <div class="rewardData">
                                 <div class="col-left-02">
                                     <small>贊助金額</small>
-                                    <p>${dpBean.donateMoney}</p>
+                                  <p><span id="donateMoney">${dpBean.donateMoney}</span>元</p>
                                 </div>
                                 <div class="col-middle-01">
                                     <small>運費</small>
-                                    <p class="fare">$</p>
+                                  <p><span class="fare">0</span>元</p>
                                 </div>
                                 <div class="col-right-02">
                                     <small>總金額</small>
-                                    <p class="payAmount">$</p>
+                                    <p ><span class="payAmount">${dpBean.donateMoney}</span>元</p>
                           
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" name="payAmount" id="payAmount" value="">
+                        <input type="hidden" name="localeDate" id="localeDate" value="">
                         <form:checkbox path="incognito" />匿名贊助
                         <input type="hidden" name="planId" value="${dpBean.planId}">
                         <input type="submit" value="進行付款">
@@ -85,7 +90,7 @@
                                     <p class="shipping-label">${dpBean.shipping}</p>
                                 </div>
                                 <div class="col-right-01">
-                                     <P class="remain">剩餘數量${dpBean.limit}份</P>
+                                     <P class="remain">剩餘數量${dpBean.limitNum}份</P>
                                     <p class="shipping-detail">寄送時間</p>
                                     <p class="shipping-detail">${dpBean.dliverDate}</p>
                                 </div>
@@ -96,6 +101,43 @@
             </section>
         </div>
     </div>
+    
+    <script>
+    
+    $(function(){
+    	var date = new Date().toLocaleDateString();
+    	alert(date);
+    	$(".LocaleDate").text(date);
+    	$("#localeDate").val(date);
+    	$("#payAmount").val($(".payAmount").text());
+    });
+    
+    $("#buyerLocation").change(function(){
+    	alert("on change")
+    	var position = $("#buyerLocation").val();
+    	switch (position) {
+		case "InTaiwan":
+			$(".fare").text("60");
+			var price = Number($("#donateMoney").text()) + Number($(".fare").text());	
+			alert(price);
+			$(".payAmount").text(price);
+			break;
+		case "OutOfTaiwan":
+			$(".fare").text("100");
+			var price = Number($("#donateMoney").text()) + Number($(".fare").text());
+			alert(price);
+			$(".payAmount").text(price);
+			break;
+		case "Foreign":
+			$(".fare").text("200");
+			var price = Number($("#donateMoney").text()) + Number($(".fare").text());
+			alert(price);
+			$(".payAmount").text(price);	
+			break;
+    	}
+    	$("#payAmount").val($(".payAmount").text());
+    })
+    </script>
 </body>
 
 </html>
