@@ -39,7 +39,7 @@
                 <div class="plan">
                     <span class="money">目前募得$${pcBean.projBean.cfBean.fundsNow}元</span> <span
                         class="percent">${pcBean.projBean.cfBean.percent}%</span> <span class="date">還剩
-                        <strong id="dayCount" data-endDay="${pcBean.projBean.cfBean.dateEnd}"></strong>天
+                        <strong class="dayCount" data-endDay="${pcBean.projBean.cfBean.dateEnd}"></strong>天
                     </span>
                 </div>
             </div>
@@ -50,8 +50,9 @@
 
     </div>
     <script>
-    var dayCount = $("#dayCount").attr("data-endDay");
-    $("#dayCount").text(DaysCountdown(dayCount));
+    
+    var dayCount = $(".dayCount").attr("data-endDay");
+    $(".dayCount").text(DaysCountdown(dayCount));
     </script>
     
 </body>
