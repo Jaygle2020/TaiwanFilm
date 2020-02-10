@@ -17,7 +17,7 @@
 	cursor: pointer;
 }
 
-img {
+.list ul li figure img {
 	width: 300px;
 	height: 420px;
 }
