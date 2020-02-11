@@ -12,7 +12,8 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
 <head>
-<title>movie</title>
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
+<title>Taiwam Films - 網路訂票</title>
 <link
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet"
@@ -28,7 +29,7 @@ i {
 }
 
 form {
-	padding: 50px;
+	padding: 50px 150px 50px 150px;
 }
 
 .sidebar {
@@ -87,7 +88,7 @@ form {
 
 <body>
 
-	<jsp:include page="../fragment/top.jsp" />
+	<jsp:include page="../fragment/menu.jsp" />
 
 	<form:form modelAttribute="ticketBean">
 		<div class="leftbar">
@@ -1857,9 +1858,6 @@ form {
 
 		</div>
 	</form:form>
-
-	<jsp:include page="../fragment/bottom.jsp" />
-
 </body>
 <script>
 	var fullStr = 0;
@@ -1956,7 +1954,7 @@ form {
 			});
 
 	$("#submitBtn").click(function() {
-		if (!confirm("確定要結帳嗎? 結帳後無法變更購買資訊")){
+		if (!confirm("確定要結帳嗎? 結帳後無法變更購買資訊")) {
 			return false;
 		}
 	});

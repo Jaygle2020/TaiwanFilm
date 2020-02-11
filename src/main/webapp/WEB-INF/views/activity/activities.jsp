@@ -20,24 +20,26 @@
 body {
 	background: #f1f1f1;
 }
-.activityContent{
+
+.activityContent {
 	display: none;
-	} 
-.activity-content{
-	width: 80%;
-	padding:10px;
-	border-radius:10px;
-	margin:10px;
-	font-weight: bold;
-	background: white;
-	display: inline-block; 
 }
 
-.activity-content-show{
+.activity-content {
 	width: 80%;
-	padding:10px;
-	border-radius:10px;
-	margin:10px;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 10px;
+	font-weight: bold;
+	background: white;
+	display: inline-block;
+}
+
+.activity-content-show {
+	width: 80%;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 10px;
 	font-weight: bold;
 	display: inline-block;
 }
@@ -48,34 +50,32 @@ body {
 	display: inline-block;
 }
 
-
-.acitivityUpdateWidth{
-	width:21%;
-	padding:20px;
+.acitivityUpdateWidth {
+	width: 21%;
+	padding: 20px;
 	display: inline-block;
-	vertical-align:top; 
+	vertical-align: top;
 	text-align: center;
 	color: black;
-	
 }
 
-.activityUpdateButton{
+.activityUpdateButton {
 	width: 7%;
-	display:inline-block;
-	margin-top:12px;
+	display: inline-block;
+	margin-top: 12px;
 	text-align: center;
 }
 
-.activityUpdateButtonStyle{
-	width:100%;
-	color:white;
-	background-color:red;
-	padding:3px;
-	border-radius:3px
+.activityUpdateButtonStyle {
+	width: 100%;
+	color: white;
+	background-color: red;
+	padding: 3px;
+	border-radius: 3px
 }
-</style> 
+</style>
 
- 
+
 
 </head>
 <body>
@@ -87,7 +87,7 @@ body {
 
 	<div class="section" id="popular">
 		<div class="section" id="category">
-			<div class="width-limit"> 
+			<div class="width-limit">
 				<h1>Activities</h1>
 				<div class="change-category">
 					<div class="change-menu">
@@ -96,16 +96,18 @@ body {
 						<div class="buttonBorder" id="coming-button">即將開始</div>
 						<div class="buttonBorder" id="end-button">即將結束</div>
 						<a href="allActivityM">
-							<div style="float: right;width: 10%;color: black; font-weight: bold;">全部活動頁面</div>
+							<div
+								style="float: right; width: 10%; color: black; font-weight: bold;">全部活動頁面</div>
 						</a>
 					</div>
 				</div>
 			</div>
 			<div style="width: 100%">
-				<div style="width: 20%;display: inline-block;writing-mode:tb-rl;background:red">HOT</div>
-				<div style="width: 20%;display: inline-block;background:green">摸摸摸摸</div> 
-				<div style="width: 20%;display: inline-block;background:yellow">吃吃吃</div>
-				<div style="width: 20%;display: inline-block;background:blue">吃吃吃</div>
+				<div
+					style="width: 20%; display: inline-block; writing-mode: tb-rl; background: red">HOT</div>
+				<div style="width: 20%; display: inline-block; background: green">摸摸摸摸</div>
+				<div style="width: 20%; display: inline-block; background: yellow">吃吃吃</div>
+				<div style="width: 20%; display: inline-block; background: blue">吃吃吃</div>
 			</div>
 
 
@@ -116,26 +118,26 @@ body {
 					<div class="acitivityUpdateWidth">活動主題</div>
 					<div class="acitivityUpdateWidth">活動廠商</div>
 					<div class="acitivityUpdateWidth">活動開始時間</div>
-					<div class="activityUpdateButton">
-				</div> 
-			</div>
+					<div class="activityUpdateButton"></div>
+				</div>
 				<c:forEach var='activity' items='${activityList}'>
 					<c:if test="${activity.category == '1'}">
-						<a href="<spring:url value='/activity?id=${activity.activityId}' />"
-							class="anchor-style"> 
-							<a href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
+						<a
+							href="<spring:url value='/activity?id=${activity.activityId}' />"
+							class="anchor-style"> <a
+							href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
 								<div class="activity-inner"
 									data-number="${activity.activityWatched}">
-									<div class="activity-content">  
-										<div class="acitivityUpdateWidth"style="color:red">${activity.activityNumber}</div>
+									<div class="activity-content">
+										<div class="acitivityUpdateWidth" style="color: red">${activity.activityNumber}</div>
 										<div class="acitivityUpdateWidth">${activity.activityTitle}</div>
 										<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
 										<div class="acitivityUpdateWidth">${activity.startTime}</div>
-										
-									</div> 	
-								</div>    
-							</a> 
-						</a> 
+
+									</div>
+								</div>
+						</a>
+						</a>
 					</c:if>
 				</c:forEach>
 			</div>
@@ -146,26 +148,26 @@ body {
 					<div class="acitivityUpdateWidth">活動主題</div>
 					<div class="acitivityUpdateWidth">活動廠商</div>
 					<div class="acitivityUpdateWidth">活動開始時間</div>
-					<div class="activityUpdateButton">
-				</div> 
-			</div> 
+					<div class="activityUpdateButton"></div>
+				</div>
 				<c:forEach var='activity' items='${activitiesViews}'>
 					<c:if test="${activity.category == '1'}">
-						<a href="<spring:url value='/activity?id=${activity.activityId}' />"
-							class="anchor-style"> 
-							<a href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
+						<a
+							href="<spring:url value='/activity?id=${activity.activityId}' />"
+							class="anchor-style"> <a
+							href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
 								<div class="activity-inner"
 									data-number="${activity.activityWatched}">
-									<div class="activity-content">  
-										<div class="acitivityUpdateWidth"style="color:red">${activity.activityNumber}</div>
+									<div class="activity-content">
+										<div class="acitivityUpdateWidth" style="color: red">${activity.activityNumber}</div>
 										<div class="acitivityUpdateWidth">${activity.activityTitle}</div>
 										<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
 										<div class="acitivityUpdateWidth">${activity.startTime}</div>
-										
-									</div> 	
-								</div>    
-							</a> 
-						</a> 
+
+									</div>
+								</div>
+						</a>
+						</a>
 					</c:if>
 				</c:forEach>
 			</div>
@@ -176,62 +178,62 @@ body {
 					<div class="acitivityUpdateWidth">活動主題</div>
 					<div class="acitivityUpdateWidth">活動廠商</div>
 					<div class="acitivityUpdateWidth">活動開始時間</div>
-					<div class="activityUpdateButton">
-				</div> 
-			</div>
+					<div class="activityUpdateButton"></div>
+				</div>
 				<c:forEach var='activity' items='${activitiesStart}'>
 					<c:if test="${activity.category == '3'}">
-						<a href="<spring:url value='/activity?id=${activity.activityId}' />"
-							class="anchor-style"> 
-							<a href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
+						<a
+							href="<spring:url value='/activity?id=${activity.activityId}' />"
+							class="anchor-style"> <a
+							href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
 								<div class="activity-inner"
 									data-number="${activity.activityWatched}">
-									<div class="activity-content">  
-										<div class="acitivityUpdateWidth"style="color:red">${activity.activityNumber}</div>
+									<div class="activity-content">
+										<div class="acitivityUpdateWidth" style="color: red">${activity.activityNumber}</div>
 										<div class="acitivityUpdateWidth">${activity.activityTitle}</div>
 										<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
 										<div class="acitivityUpdateWidth">${activity.startTime}</div>
-										
-									</div> 	
-								</div>    
-							</a> 
-						</a> 
+
+									</div>
+								</div>
+						</a>
+						</a>
 					</c:if>
 				</c:forEach>
 			</div>
 
 
 
- 
- 			<div class="activityContent" id="end">
- 				<div class="activity-content-show">
+
+			<div class="activityContent" id="end">
+				<div class="activity-content-show">
 					<div class="acitivityUpdateWidth">活動序號</div>
 					<div class="acitivityUpdateWidth">活動主題</div>
 					<div class="acitivityUpdateWidth">活動廠商</div>
 					<div class="acitivityUpdateWidth">活動開始時間</div>
-					<div class="activityUpdateButton">
-				</div> 
-			</div>
+					<div class="activityUpdateButton"></div>
+				</div>
 				<c:forEach var='activity' items='${activitiesEnd}'>
 					<c:if test="${activity.category == '1'}">
-						<a href="<spring:url value='/activity?id=${activity.activityId}' />"
-							class="anchor-style"> 
-							<a href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
+						<a
+							href="<spring:url value='/activity?id=${activity.activityId}' />"
+							class="anchor-style"> <a
+							href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
 								<div class="activity-inner"
 									data-number="${activity.activityWatched}">
-									<div class="activity-content">  
-										<div class="acitivityUpdateWidth"style="color:red">${activity.activityNumber}</div>
+									<div class="activity-content">
+										<div class="acitivityUpdateWidth" style="color: red">${activity.activityNumber}</div>
 										<div class="acitivityUpdateWidth">${activity.activityTitle}</div>
 										<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
 										<div class="acitivityUpdateWidth">${activity.startTime}</div>
-										
-									</div> 	
-								</div>    
-							</a> 
-						</a> 
+
+									</div>
+								</div>
+						</a>
+						</a>
 					</c:if>
 				</c:forEach>
-			</div>  
+			</div>
 
 
 
@@ -241,33 +243,31 @@ body {
 
 
 			<script>
-			$('#new-button').click(function() {
-				$('.activityContent').removeClass("active active-bottom");
-				$('#new').addClass("active");
-				$('.buttonBorder').removeClass("buttonBorder-active");
-				$('#new-button').addClass("buttonBorder-active");
+				$('#new-button').click(function() {
+					$('.activityContent').removeClass("active active-bottom");
+					$('#new').addClass("active");
+					$('.buttonBorder').removeClass("buttonBorder-active");
+					$('#new-button').addClass("buttonBorder-active");
 
-			});
-			$('#trend-button').click(function() {
-				$('.activityContent').removeClass("active active-bottom");
-				$('#trend').addClass("active");
-				$('.buttonBorder').removeClass("buttonBorder-active");
-				$('#trend-button').addClass("buttonBorder-active");
-			}); 
-			$('#coming-button').click(function() {
-				$('.activityContent').removeClass("active active-bottom");
-				$('#coming').addClass("active");
-				$('.buttonBorder').removeClass("buttonBorder-active");
-				$('#coming-button').addClass("buttonBorder-active");
-			});
-			$('#end-button').click(function() {
-				$('.activityContent').removeClass("active active-bottom");
-				$('#end').addClass("active");
-				$('.buttonBorder').removeClass("buttonBorder-active");
-				$('#end-button').addClass("buttonBorder-active");
-			});
-			
+				});
+				$('#trend-button').click(function() {
+					$('.activityContent').removeClass("active active-bottom");
+					$('#trend').addClass("active");
+					$('.buttonBorder').removeClass("buttonBorder-active");
+					$('#trend-button').addClass("buttonBorder-active");
+				});
+				$('#coming-button').click(function() {
+					$('.activityContent').removeClass("active active-bottom");
+					$('#coming').addClass("active");
+					$('.buttonBorder').removeClass("buttonBorder-active");
+					$('#coming-button').addClass("buttonBorder-active");
+				});
+				$('#end-button').click(function() {
+					$('.activityContent').removeClass("active active-bottom");
+					$('#end').addClass("active");
+					$('.buttonBorder').removeClass("buttonBorder-active");
+					$('#end-button').addClass("buttonBorder-active");
+				});
 			</script>
 </body>
 </html>
- 
