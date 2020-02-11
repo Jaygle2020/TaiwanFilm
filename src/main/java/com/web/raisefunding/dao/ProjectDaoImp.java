@@ -29,7 +29,7 @@ public class ProjectDaoImp implements ProjectDao {
 	public int updateProject(ProjectBean projBean) {
 		int n = 0;
 		Session session = factory.getCurrentSession();
-		session.save(projBean);
+		session.update(projBean);
 		n++;
 		return n;
 	}

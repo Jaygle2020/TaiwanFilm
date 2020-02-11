@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.google.gson.annotations.Expose;
+
 
 @Entity
 public class ProjectBean implements Serializable{
@@ -19,6 +21,7 @@ public class ProjectBean implements Serializable{
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name="projectId")
+@Expose
 private Integer projectId;
 private String projectName;
 @Column(length=500)
