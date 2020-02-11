@@ -38,18 +38,18 @@ public class RootAppConfig {
 	}
 	@Bean
 	public DataSource mySQLDataSource() {
-		ComboPooledDataSource ds = new ComboPooledDataSource();
-		ds.setUser("root");
-		ds.setPassword("00000000");
-		try {
-			ds.setDriverClass("com.mysql.cj.jdbc.Driver");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		ds.setJdbcUrl("jdbc:mysql://localhost:3306/MessageBord?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
-		ds.setInitialPoolSize(4);
-		ds.setMaxPoolSize(8);
-		return ds;
+		 ComboPooledDataSource ds = new ComboPooledDataSource();
+	        ds.setUser("root");
+	        ds.setPassword("sa123456");
+	        try {
+	            ds.setDriverClass("com.mysql.cj.jdbc.Driver");
+	        } catch (PropertyVetoException e) {
+	            e.printStackTrace();
+	        }
+	        ds.setJdbcUrl("jdbc:mysql://localhost:3306/lab?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
+	        ds.setInitialPoolSize(4);
+	        ds.setMaxPoolSize(8);
+	        return ds;
 	}
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
@@ -58,16 +58,18 @@ public class RootAppConfig {
 				"com.web.raisefunding.model",
 				"com.web.login.Model",
 				"com.web.booking.model",
-				"com.web.message.model"
+				"com.web.activity.model"
+				
+				
 		});
 //		if (SystemConstant.DB_TYPE == SystemConstant.MYSQL) {
-//			factory.setDataSource(mySQLDataSource());
-//			factory.setHibernateProperties(additionalPropertiesMySQL());	
-//		} else if (SystemConstant.DB_TYPE == SystemConstant.SQL_SERVER) {
-		
-			// mySQL msSQL 切換
 			factory.setDataSource(mySQLDataSource());
 			factory.setHibernateProperties(additionalPropertiesMySQL());	
+//		} else if (SystemConstant.DB_TYPE == SystemConstant.SQL_SERVER) {
+		
+			// mySQL msSQL ����
+//			factory.setDataSource(msSQLDataSource());
+//			factory.setHibernateProperties(additionalPropertiesMsSQL());	
 //		} 
 		return factory;
 	}

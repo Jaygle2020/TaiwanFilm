@@ -140,6 +140,7 @@ public class bookingController {
 			}
 		}
 
+		mb.setType(mb.getType().replaceAll(",", "、"));
 		service.addMovie(mb);
 
 		String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
@@ -173,6 +174,8 @@ public class bookingController {
 	public String list(Model model) {
 		List<movieBean> list = service.getAllMovies();
 		model.addAttribute("movies", list);
+		List<movieBean> downlist = service.getAllMoviesOrder();
+		model.addAttribute("downmovies", downlist);
 		return "booking/movieIntro";
 	}
 

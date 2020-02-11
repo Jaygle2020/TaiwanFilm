@@ -57,4 +57,11 @@ public class DonatePlanDaoImp implements DonatePlanDao {
 		return list;
 	}
 
+	@Override
+	public void donatingOnce(Integer planId) {
+		Session session = factory.getCurrentSession();
+		DonatePlanBean dpBean = session.get(DonatePlanBean.class, planId);
+		dpBean.setLimitNum((dpBean.getLimitNum()-1));
+	}
+
 }

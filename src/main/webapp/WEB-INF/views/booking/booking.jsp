@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/movie2.css">
+	href="${pageContext.request.contextPath }/css/movie.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
@@ -24,7 +24,7 @@ ul li {
 
 i {
 	position: absolute;
-	left: 70px;
+	left: 150px;
 }
 
 .titleImage {
@@ -36,14 +36,16 @@ i {
 }
 
 .cinemaName {
-	padding: 50px;
+	padding-left: 150px;
+	text-align: left;
+	diplay: inline-block;
 	/* 	height: 475px; */
 }
 
 .movieSession {
 	background: LightGrey;
-	padding: 50px;
-	position: relative;
+	text-align: left;
+	padding: 50px 150px 50px 150px;
 }
 
 .hiddenInfo {
@@ -52,8 +54,9 @@ i {
 }
 
 .cinemaDetail {
-	padding: 50px;
 	font-family: Microsoft JhengHei;
+	text-align: left;
+	padding: 50px 150px 50px 150px;
 }
 
 .cinemaDetail ul {
@@ -68,146 +71,115 @@ i {
 }
 
 .countryCategory {
-	width: 200px;
+	width: 700px;
 	display: inline-block;
 	vertical-align: top;
+}
+
+.countryCategory img {
+	height: 180px;
+	width: 300px;
+}
+
+.cinemaCountry img {
+	display: inline-block;
+}
+
+.cinemaCountry section {
+	padding-left: 50px;
+	position: relative;
+	top: -3px;
 	display: inline-block;
 }
 </style>
 </head>
 <body>
 
-	<jsp:include page="../fragment/top.jsp" />
+	<jsp:include page="../fragment/menu.jsp" />
 
-	<h2>選擇戲院</h2>
-	<div class="titleImage">
-		<img src="${pageContext.request.contextPath }/img/booking/theater.jpg">
-	</div>
 
-	<div class="cinemaName">
-		<div class="countryCategory">
-			<h3>台北市</h3>
-			<c:forEach var='cinema' items='${cinemas }'>
-				<c:if test='${cinema.cinemaCountry.equals("台北市") }'>
-					<h3>
-						<a class="cinemas" id="${cinema.cinemaId }" href="">${cinema.cinemaName }</a>
-					</h3>
-				</c:if>
-			</c:forEach>
-		</div>
-		<div class="countryCategory">
-			<h3>新北市</h3>
-			<c:forEach var='cinema' items='${cinemas }'>
-				<c:if test='${cinema.cinemaCountry.equals("新北市") }'>
-					<h3>
-						<a class="cinemas" id="${cinema.cinemaId }" href="">${cinema.cinemaName }</a>
-					</h3>
-				</c:if>
-			</c:forEach>
-		</div>
-		<div class="countryCategory">
-			<h3>桃園市</h3>
-			<c:forEach var='cinema' items='${cinemas }'>
-				<c:if test='${cinema.cinemaCountry.equals("桃園市") }'>
-					<h3>
-						<a class="cinemas" id="${cinema.cinemaId }" href="">${cinema.cinemaName }</a>
-					</h3>
-				</c:if>
-			</c:forEach>
-		</div>
-		<div class="countryCategory">
-			<h3>新竹市</h3>
-			<c:forEach var='cinema' items='${cinemas }'>
-				<c:if test='${cinema.cinemaCountry.equals("新竹市") }'>
-					<h3>
-						<a class="cinemas" id="${cinema.cinemaId }" href="">${cinema.cinemaName }</a>
-					</h3>
-				</c:if>
-			</c:forEach>
-		</div>
-		<div class="countryCategory">
-			<h3>台中市</h3>
-			<c:forEach var='cinema' items='${cinemas }'>
-				<c:if test='${cinema.cinemaCountry.equals("台中市") }'>
-					<h3>
-						<a class="cinemas" id="${cinema.cinemaId }" href="">${cinema.cinemaName }</a>
-					</h3>
-				</c:if>
-			</c:forEach>
-		</div>
-		<div class="countryCategory">
-			<h3>嘉義市</h3>
-			<c:forEach var='cinema' items='${cinemas }'>
-				<c:if test='${cinema.cinemaCountry.equals("嘉義市") }'>
-					<h3>
-						<a class="cinemas" id="${cinema.cinemaId }" href="">${cinema.cinemaName }</a>
-					</h3>
-				</c:if>
-			</c:forEach>
-		</div>
-		<div class="countryCategory">
-			<h3>台南市</h3>
-			<c:forEach var='cinema' items='${cinemas }'>
-				<c:if test='${cinema.cinemaCountry.equals("台南市") }'>
-					<h3>
-						<a class="cinemas" id="${cinema.cinemaId }" href="">${cinema.cinemaName }</a>
-					</h3>
-				</c:if>
-			</c:forEach>
-		</div>
-		<div class="countryCategory">
-			<h3>高雄市</h3>
-			<c:forEach var='cinema' items='${cinemas }'>
-				<c:if test='${cinema.cinemaCountry.equals("高雄市") }'>
-					<h3>
-						<a class="cinemas" id="${cinema.cinemaId }" href="">${cinema.cinemaName }</a>
-					</h3>
-				</c:if>
-			</c:forEach>
-		</div>
-	</div>
-
-	<div class="hiddenInfo">
-		<div class="movieSession">
-			<h2>電影場次</h2>
-			<span style="color: red;">*網路訂票僅開放部份座位訂票，實際剩餘座位數請洽現場售票窗口</span>&ensp;*黃色底時間代表即將售完
-			/ 紅色底時間為完售
-			<c:forEach var='session' items='${sessions }' varStatus='count'>
-				<div class="sessionDetail" id="${session.cinemaId }">
-					<p>${session.sessionDate.substring(0, 4) }年
-						${session.sessionDate.substring(4, 6) } 月
-						${session.sessionDate.substring(6, 8) } 日 ${session.sessionDay }</p>
-					<input type="button" style="width: 200px; height: 30px;"
-						value="${session.sessionTime }"
-						onclick="javascript:location.href='<spring:url value='/seatChoose?id=${session.sessionId }' />'" />
-					<%-- 					<a href="<spring:url value='/seatChoose?id=${session.sessionId }' />">${session.sessionTime }</a> --%>
+	<div class="section" id="popular">
+		<div class="section" id="category">
+			<div class="width-limit">
+				<h1>選擇戲院</h1>
+				<div class="change-category">
+					<div class="change-menu">
+						<div class="buttonBorder-active buttonBorder" id="台北市">台北市</div>
+						<div class="buttonBorder" id="新北市">新北市</div>
+						<div class="buttonBorder" id="桃園市">桃園市</div>
+						<div class="buttonBorder" id="新竹市">新竹市</div>
+						<div class="buttonBorder" id="台中市">台中市</div>
+						<div class="buttonBorder" id="嘉義市">嘉義市</div>
+						<div class="buttonBorder" id="台南市">台南市</div>
+						<div class="buttonBorder" id="高雄市">高雄市</div>
+					</div>
 				</div>
-			</c:forEach>
-		</div>
-
-		<c:forEach var='cinema' items='${cinemas }'>
-			<div class="cinemaDetail" id="${cinema.cinemaId }">
-				<h2>戲院資訊</h2>
-				<ul>
-					<li><i class="fa fa-phone pr-10" style="font-size: 24px"></i>服務專線&ensp;:
-						<p>${cinema.cinemaPhone }</p></li>
-					<li><i class="fa fa-map-marker pr-10" style="font-size: 24px"></i>戲院地址&ensp;:
-						<p>${cinema.cinemaAddress }</p></li>
-					<li><i class="fa fa-bus pr-10" style="font-size: 24px"></i>交通資訊&ensp;:
-						<p>-&ensp;捷運&ensp;:&ensp;${cinema.cinemaMrt }</p>
-						<p>-&ensp;公車&ensp;:&ensp;${cinema.cinemaBus }</p></li>
-				</ul>
-				<img
-					src="<c:url value='/getPicture/cinemaBean/${cinema.cinemaId }' />">
-				<iframe width='100%' height='270' frameborder='0' scrolling='no'
-					marginheight='0' marginwidth='0'
-					src='https://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q=${cinema.cinemaName }&z=16&output=embed&t='></iframe>
 			</div>
-		</c:forEach>
-	</div>
 
-	<jsp:include page="../fragment/bottom.jsp" />
+			<div class="cinemaName">
+				<div class="countryCategory">
+					<c:forEach var='cinema' items='${cinemas }'>
+						<div class="cinemaCountry ${cinema.cinemaCountry }">
+							<img
+								src="<c:url value='/getPicture/cinemaBean/${cinema.cinemaId }' />"
+								alt="${cinema.cinemaName }" title="${cinema.cinemaName }">
+							<section>
+								<h3>
+									<a class="cinemas" id="${cinema.cinemaId }" href="">${cinema.cinemaName }</a>
+								</h3>
+								<h4>服務專線&ensp;:</h4>
+								<p>${cinema.cinemaPhone }</p>
+								<h4>戲院地址&ensp;:</h4>
+								<p>${cinema.cinemaAddress }</p>
+							</section>
+						</div>
+					</c:forEach>
+				</div>
 
+
+
+
+			</div>
+
+			<div class="hiddenInfo">
+				<div class="movieSession">
+					<h2>電影場次</h2>
+					<span style="color: red;">*網路訂票僅開放部份座位訂票，實際剩餘座位數請洽現場售票窗口</span>&ensp;*黃色底時間代表即將售完
+					/ 紅色底時間為完售
+					<c:forEach var='session' items='${sessions }' varStatus='count'>
+						<div class="sessionDetail" id="${session.cinemaId }">
+							<p>${session.sessionDate.substring(0, 4) }年
+								${session.sessionDate.substring(4, 6) } 月
+								${session.sessionDate.substring(6, 8) } 日 ${session.sessionDay }</p>
+							<input type="button" style="width: 200px; height: 30px;"
+								value="${session.sessionTime }"
+								onclick="javascript:location.href='<spring:url value='/seatChoose?id=${session.sessionId }' />'" />
+							<%-- 					<a href="<spring:url value='/seatChoose?id=${session.sessionId }' />">${session.sessionTime }</a> --%>
+						</div>
+					</c:forEach>
+				</div>
+
+				<c:forEach var='cinema' items='${cinemas }'>
+					<div class="cinemaDetail" id="${cinema.cinemaId }">
+						<h2>戲院資訊</h2>
+						<ul>
+							<li><i class="fa fa-phone pr-10" style="font-size: 24px"></i>服務專線&ensp;:
+								<p>${cinema.cinemaPhone }</p></li>
+							<li><i class="fa fa-map-marker pr-10"
+								style="font-size: 24px"></i>戲院地址&ensp;:
+								<p>${cinema.cinemaAddress }</p></li>
+							<li><i class="fa fa-bus pr-10" style="font-size: 24px"></i>交通資訊&ensp;:
+								<p>-&ensp;捷運&ensp;:&ensp;${cinema.cinemaMrt }</p>
+								<p>-&ensp;公車&ensp;:&ensp;${cinema.cinemaBus }</p></li>
+						</ul>
+						<img
+							src="<c:url value='/getPicture/cinemaBean/${cinema.cinemaId }' />">
+						<iframe width='100%' height='270' frameborder='0' scrolling='no'
+							marginheight='0' marginwidth='0'
+							src='https://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q=${cinema.cinemaName }&z=16&output=embed&t='></iframe>
+					</div>
+				</c:forEach>
+			</div>
 </body>
 
 <script type="text/javascript">
@@ -233,5 +205,65 @@ i {
 	// 		$(#id).slideDown(400);
 	// 		return false;
 	// 	}
+	var country = ".台北市";
+	$('.countryCategory div').hide();
+	$(country).show();
+	
+	$('#台北市').click(function() {
+		country =  "." + $(this).attr("id");
+		$('.countryCategory div').hide();
+		$(country).show();
+		$('.buttonBorder').removeClass("buttonBorder-active");
+		$('#台北市').addClass("buttonBorder-active");
+	});
+	$('#新北市').click(function() {
+		country =  "." + $(this).attr("id");
+		$('.countryCategory div').hide();
+		$(country).show();
+		$('.buttonBorder').removeClass("buttonBorder-active");
+		$('#新北市').addClass("buttonBorder-active");
+	});
+	$('#桃園市').click(function() {
+		country =  "." + $(this).attr("id");
+		$('.countryCategory div').hide();
+		$(country).show();
+		$('.buttonBorder').removeClass("buttonBorder-active");
+		$('#桃園市').addClass("buttonBorder-active");
+	});
+	$('#新竹市').click(function() {
+		country =  "." + $(this).attr("id");
+		$('.countryCategory div').hide();
+		$(country).show();
+		$('.buttonBorder').removeClass("buttonBorder-active");
+		$('#新竹市').addClass("buttonBorder-active");
+	});
+	$('#台中市').click(function() {
+		country =  "." + $(this).attr("id");
+		$('.countryCategory div').hide();
+		$(country).show();
+		$('.buttonBorder').removeClass("buttonBorder-active");
+		$('#台中市').addClass("buttonBorder-active");
+	});
+	$('#嘉義市').click(function() {
+		country =  "." + $(this).attr("id");
+		$('.countryCategory div').hide();
+		$(country).show();
+		$('.buttonBorder').removeClass("buttonBorder-active");
+		$('#嘉義市').addClass("buttonBorder-active");
+	});
+	$('#台南市').click(function() {
+		country =  "." + $(this).attr("id");
+		$('.countryCategory div').hide();
+		$(country).show();
+		$('.buttonBorder').removeClass("buttonBorder-active");
+		$('#台南市').addClass("buttonBorder-active");
+	});
+	$('#高雄市').click(function() {
+		country =  "." + $(this).attr("id");
+		$('.countryCategory div').hide();
+		$(country).show();
+		$('.buttonBorder').removeClass("buttonBorder-active");
+		$('#高雄市').addClass("buttonBorder-active");
+	});
 </script>
 </html>

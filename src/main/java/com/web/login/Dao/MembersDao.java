@@ -13,5 +13,7 @@ public interface MembersDao {
 	public MembersBean login(String email, String pwd);
 	//更改會員資料
 	boolean updateMembers(MembersBean member);
+	boolean emailExists(String email);
+	
 
 }

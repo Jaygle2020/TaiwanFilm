@@ -39,40 +39,64 @@
 			<h3>
 				<font style="font-size: 30px;">會員資料</font>
 			</h3>
-			
-			<form:form method="POST" modelAttribute="MembersBean" 
+	<form method="POST" id="UpdateMember" 
 			action="${pageContext.request.contextPath}/_01_register/DoUpdateMember"
-			enctype='multipart/form-data' > 
+			enctype='multipart/form-data'> 
+
 			<table>
 			<tr><td>顯示名稱
 			<tr><td>
-			<form:input  path="memberName" id="memberName" 
-						value='${sessionScope.members.memberName}' />					 
+			<input  name="memberName" id="memberName" type="text" value='${sessionScope.members.memberName}' />	
 			<tr><td>聯絡信箱
 			<tr><td>
-			<form:input  path="email" id="email" value='${sessionScope.members.email}'/>
+			<input  name="email" id="email" type="email" value='${sessionScope.members.email}'/>
 			<tr><td>性別
 			<tr><td>
-			<form:radiobutton  path="gender" name="gender" value="男生" />男生 
- 			<form:radiobutton  path="gender" name="gender" value="女生" />女生
+			<input type="radio"  id="gender" name="gender" value="男生" />男生 
+ 			<input type="radio"  id="gender" name="gender" value="女生" />女生
 			<tr><td>生日
 			<tr><td>
-			<form:input type="date" path="birthDay" id="birthDay" />
-
+			<input type="date" name="birthDay" id="birthDay" />
 			<tr><td>個人照片
 			<tr><td>
-			<form:input type='file' path="memImage"
-			id="memberImage"  class='form:input-large' /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<input type='file' name="memImage"
+			id="memberImage"  class='form:input-large' /> 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 			<tr><td>
-			<input type="submit" id="bt1" value="確認" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="reset" id="bt2" value="取消"/>
+			<input type="submit" id="bt1" value="確認" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="reset" id="bt2" value="清空"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="/TaiwanFilm">回首頁</a>			
 			</table>
-			</form:form>
+			</form>	
+			<input type="button" value="一鍵輸入" id="oneButtonInport" onclick="oneButtonInport()">			
 		</div>
-
 	</div>
-
-
-
+	<script>
+	$(document).ready(function(){
+		$("#oneButtonInport").onclick(){
+			$("#memberName").text("管理員01");
+			$("#memberName").val("管理員01");
+			$("#email").val("eeit@gmail.com");
+			$("#gender").val("男生");
+			$("#birthDay").val("1989-01-26");
+			
+		}
+		
+	})
+	
+	
+	</script>
 </body>
 </html>
+<%-- 			<form:form method="POST" modelAttribute="MembersBean"  --%>
+<%-- 			action="${pageContext.request.contextPath}/_01_register/DoUpdateMember" --%>
+<%-- 			enctype='multipart/form-data'>  --%>	
+<%-- 			<form:input  path="memberName" id="memberName"  --%>
+<%-- 						value='${sessionScope.members.memberName}' />					  --%>
+<%-- 			<form:input  path="email" id="email" value='${sessionScope.members.email}'/> --%>
+<%-- 			<form:radiobutton  path="gender" name="gender" value="男生" />男生  --%>
+<%--  			<form:radiobutton  path="gender" name="gender" value="女生" />女生 --%>
+<%-- 			<form:input type="date" path="birthDay" id="birthDay" /> --%>
+<%-- 			<form:input type='file' path="memImage" --%>
+<%-- 			id="memberImage"  class='form:input-large' />  --%>
+<%-- 			</form:form> --%>

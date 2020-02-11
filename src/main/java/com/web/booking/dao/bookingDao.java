@@ -12,6 +12,8 @@ public interface bookingDao {
 	void addMovie(movieBean movie);
 
 	List<movieBean> getAllMovies();
+	
+	List<movieBean> getAllMoviesOrder();
 
 	movieBean getMovieById(int movieId);
 
