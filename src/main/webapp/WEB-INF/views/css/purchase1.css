@@ -1,0 +1,190 @@
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.purchaseWrapper {
+  position: relative;
+  min-height: 100%;
+  height: auto;
+  padding-bottom: 242px;
+  padding-top: 60px;
+  font-size: 0.875rem;
+  line-height: 1.2rem;
+  color: #2e2e2e;
+}
+
+.purchaseWrapper .purchaseContainer {
+  position: relative;
+  z-index: 1;
+  max-width: 1024px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.purchaseWrapper .purchaseContainer .bluequote {
+  color: #00bbd6;
+}
+
+.purchaseWrapper .purchaseContainer h1 {
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.purchaseWrapper .purchaseContainer > p {
+  font-size: 13px;
+  letter-spacing: .8px;
+  color: #9b9b9b;
+  text-align: center;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection {
+  position: relative;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .buyerData {
+  width: 65%;
+  float: left;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  display: inline-block;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .buyerData .form-group .input-group {
+  display: inline-block;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .buyerData .form-group .topic {
+  width: 80px;
+  border: none;
+  margin-left: -2px;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .buyerData .form-group .textIn {
+  border: none;
+  width: 300px;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .buyerData .form-group input {
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  text-align: left;
+  color: #000;
+  padding-left: 20px;
+  background-color: #fff;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .buyerData .whiteWell {
+  position: relative;
+  padding: 20px 10px;
+  letter-spacing: 2px;
+  background-color: #ebebeb;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .buyerData .whiteWell .rewardData {
+  letter-spacing: 2px;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .buyerData .whiteWell .rewardData .col-left-02 {
+  position: relative;
+  width: 25%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  float: left;
+  text-align: center;
+  display: block;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .buyerData .whiteWell .rewardData .col-middle-01 {
+  text-align: center;
+  position: relative;
+  width: 16.66666667%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  float: left;
+  display: block;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .buyerData .whiteWell .rewardData .col-middle-01::before {
+  content: "+";
+  color: #222;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  font-size: 22px;
+  font-weight: 600;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .buyerData .whiteWell .rewardData .col-right-02 {
+  text-align: center;
+  margin-left: 33%;
+  width: 25%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  display: block;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .buyerData .whiteWell .rewardData .col-middle-01::after {
+  content: "=";
+  color: #222;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  font-size: 22px;
+  font-weight: 600;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .choosenData {
+  width: 32%;
+  float: left;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  display: inline-block;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .choosenData .img-responsive {
+  -o-object-fit: fill;
+     object-fit: fill;
+  width: 320px;
+  height: 240px;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .choosenData P {
+  word-break: break-all;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .choosenData .rewardMeta .col-left-01 {
+  width: 49%;
+  float: left;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.purchaseWrapper .purchaseContainer .DataSection .choosenData .rewardMeta .col-right-01 {
+  width: 49%;
+  float: left;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*# sourceMappingURL=purchase.css.map */

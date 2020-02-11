@@ -69,11 +69,16 @@ public class ControllerUtil {
 	// 取得上傳圖片的檔案名稱
 
 	public String getFileName(MultipartFile file) {
+		if(file != null) {
 		String fileName = file.getOriginalFilename();
 		if (fileName.length() > 0 && fileName.lastIndexOf(".") > -1) {
 			return fileName;
 		}
 		return "UnknownImage";
+		}else {
+			return "noImage";
+		}
+		
 	}
 	//把影片網址擷取等號後段
 

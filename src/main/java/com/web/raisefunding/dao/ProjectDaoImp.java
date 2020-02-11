@@ -29,7 +29,7 @@ public class ProjectDaoImp implements ProjectDao {
 	public int updateProject(ProjectBean projBean) {
 		int n = 0;
 		Session session = factory.getCurrentSession();
-		session.save(projBean);
+		session.update(projBean);
 		n++;
 		return n;
 	}
@@ -41,13 +41,4 @@ public class ProjectDaoImp implements ProjectDao {
 		return projBean ;
 	}
 	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Object> getAllProject() {
-		Session session = factory.getCurrentSession();
-		String hql = "from ProjectBean p,CrowdFundingBean c where p.projectId = c.projectBean.projectId";
-		List<Object> list= session.createQuery(hql).getResultList();
-		return list;
-	}
-
 }

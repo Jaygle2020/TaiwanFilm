@@ -12,17 +12,26 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie.css" />
 	
 	<title>movie</title>
+	<style>
+	.sign {
+    vertical-align: top;
+    width: 300px;
+    height: 230px;
+    display: inline-block;
+}
+	
+	</style>
 </head>
-<body>
+<body style="background: #ebebeb">
 
 	<div class="registrTotalDiv">
-		<div class="registrMainDiv">
+		<div >
 			
 			<div class="sign" id="sign-in">
 				<h1>登入</h1>
 				<form action='${pageContext.request.contextPath}/Checklogin' method='post'>
-				<input name="account" class="nobooder" type='text' placeholder='請輸入帳號'  required /><br>
-				<input name="password" class="nobooder" type='text' placeholder='請輸入密碼' required /><br>
+				<input name="email" class="nobooder" type='email' placeholder='電子信箱'  required /><br>
+				<input name="password" class="nobooder" type='password' placeholder='密碼' required /><br>
 			
 			<input type='reset' value='清除' />
 			<input type='submit' value='確認加入' onclick='return check()' />

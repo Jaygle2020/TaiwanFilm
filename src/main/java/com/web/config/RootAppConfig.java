@@ -38,32 +38,39 @@ public class RootAppConfig {
 	}
 	@Bean
 	public DataSource mySQLDataSource() {
-		ComboPooledDataSource ds = new ComboPooledDataSource();
-		ds.setUser("sa");
-		ds.setPassword("12345");
-		try {
-			ds.setDriverClass("com.mysql.cj.jdbc.Driver");
-		} catch (PropertyVetoException e) {
-			e.printStackTrace();
-		}
-		ds.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/jspdb?serverTimezone=Asia/Taipei&useSSL=false&useUnicode=true&characterEncoding=utf-8");
-		ds.setInitialPoolSize(4);
-		ds.setMaxPoolSize(8);
-		return ds;
+		 ComboPooledDataSource ds = new ComboPooledDataSource();
+	        ds.setUser("root");
+	        ds.setPassword("1234567890");
+	        try {
+	            ds.setDriverClass("com.mysql.cj.jdbc.Driver");
+	        } catch (PropertyVetoException e) {
+	            e.printStackTrace();
+	        }
+	        ds.setJdbcUrl("jdbc:mysql://localhost:3306/jspdb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
+	        ds.setInitialPoolSize(4);
+	        ds.setMaxPoolSize(8);
+	        return ds;
 	}
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean factory = new LocalSessionFactoryBean();
 		factory.setPackagesToScan(new String[] {
 				"com.web.raisefunding.model",
-				"com.web.login.Model"
+				"com.web.login.Model",
+				"com.web.booking.model",
+				"com.web.activity.model",
+				"com.web.message.model"
+				
+				
 		});
-//		if (SystemConstant.DB_TYPE == SystemConstant.MYSQL) {
-//			factory.setDataSource(mySQLDataSource());
+		if (SystemConstant.DB_TYPE == SystemConstant.MYSQL) {
+//			factory.setDataSource(msSQLDataSource());
+//			factory.setHibernateProperties(additionalPropertiesMsSQL());	
+		} else if (SystemConstant.DB_TYPE == SystemConstant.SQL_SERVER) {
+		
+			// mySQL msSQL 切換
+//			factory.setDataSource(msSQLDataSource());
 //			factory.setHibernateProperties(additionalPropertiesMySQL());	
-//		} else if (SystemConstant.DB_TYPE == SystemConstant.SQL_SERVER) {
-			factory.setDataSource(msSQLDataSource());
-			factory.setHibernateProperties(additionalPropertiesMsSQL());	
 //		} 
 		return factory;
 	}
