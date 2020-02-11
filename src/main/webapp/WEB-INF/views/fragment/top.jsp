@@ -20,6 +20,9 @@
 		<div>
 			<a href="${pageContext.request.contextPath}/fundsCategory">贊助電影</a>
 		</div>
+		<div>
+			<a href="${pageContext.request.contextPath}/messages">留言板</a>
+		</div>
 	</div>
 	<div class="right-menu">
 		<div>
