@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/movie2.css">
+	href="${pageContext.request.contextPath }/css/movie.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
@@ -12,7 +12,7 @@
 <title>movie</title>
 <style>
 .ticketContent {
-	padding: 50px;
+	padding: 125px 150px 50px 150px;
 }
 
 .ticketOrder {
@@ -21,22 +21,18 @@
 	padding: 20px;
 	margin: 20px 0px 50px 0px;
 }
-
-.mart {
-	padding-top: 95px;
-}
 </style>
 </head>
 <body>
 
-	<jsp:include page="../fragment/top.jsp" />
+	<jsp:include page="../fragment/menu.jsp" />
 
 	<div class="ticketContent">
 		<!-- 訂位成功提示訊息 -->
 		<div>
-			<p>
-				<strong>訂票成功！</strong>
-			</p>
+
+			<h3>訂票成功！</h3>
+
 			<p>
 				請於 <span style="color: red">${session.sessionDate.substring(4, 6) }/
 					${session.sessionDate.substring(6, 8) }&ensp;${session.sessionTime.substring(0, 2) - 1 }:${session.sessionTime.substring(3, 5) }
@@ -88,11 +84,9 @@
 		</div>
 	</div>
 
-	<jsp:include page="../fragment/bottom.jsp" />
-
 </body>
 <script>
-	var num = ${ticket.ticketId };
+	var num = ${ticket.ticketId	};
 	for (var len = (num + "").length; len < 7; len = num.length) {
 		num = "0" + num;
 	}

@@ -9,5 +9,4 @@ public interface ProjectDao {
 public int createProject(ProjectBean projBean);
 public int updateProject(ProjectBean projBean) ;
 public ProjectBean getProject(Integer projectId);
-public List<Object> getAllProject();
 }

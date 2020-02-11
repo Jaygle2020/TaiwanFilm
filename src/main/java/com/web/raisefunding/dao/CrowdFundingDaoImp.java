@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.web.raisefunding.model.CrowdFundingBean;
-import com.web.raisefunding.model.DonatePlanBean;
+import com.web.raisefunding.model.PurchaseBean;
 @Repository
 public class CrowdFundingDaoImp implements CrowdFundingDao {
 	SessionFactory factory;
@@ -36,11 +36,14 @@ public class CrowdFundingDaoImp implements CrowdFundingDao {
 	}
 
 	@Override
-	public CrowdFundingBean getCrowdFundingBean(Integer actionId) { //和projectId相同如果有問題要改成projectId
+	public CrowdFundingBean getCrowdFundingBean(Integer projectId) { 
+		String hql = "From CrowdFundingBean where projectId = :projId";
 		Session session = factory.getCurrentSession();
-		CrowdFundingBean cfBean = session.get(CrowdFundingBean.class,actionId);
+		CrowdFundingBean cfBean = (CrowdFundingBean) session.createQuery(hql).setParameter("projId",projectId)
+								  .getSingleResult();
 		return cfBean;
 	}
+	
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -48,13 +51,33 @@ public class CrowdFundingDaoImp implements CrowdFundingDao {
 		Session session = factory.getCurrentSession();
 		String hql = "From CrowdFundingBean";
 		List<CrowdFundingBean> list= session.createQuery(hql).getResultList();
-		for(CrowdFundingBean cfBean:list) {
-			double num = (double)cfBean.getFundsNow()/cfBean.getFundsGoal();
-			System.out.println(num);
-			cfBean.setPercent((int)Math.round(num*100));
-			System.out.println("-----------test--------:"+cfBean.getPercent());
+		
+			for(CrowdFundingBean cfBean:list) {
+				if(cfBean.getFundsGoal()!= null) {
+				double num = (double)cfBean.getFundsNow()/cfBean.getFundsGoal();
+				System.out.println(num);
+				cfBean.setPercent((int)Math.round(num*100));
+				System.out.println("-----------test--------:"+cfBean.getPercent());
+				}
+			}
+			return list;
+	}
+	@Override
+	public void addNewBacker(PurchaseBean pcBean) {
+		String hql = "From CrowdFundingBean where projectId = :projectId";
+		Session session = factory.getCurrentSession();
+		CrowdFundingBean cfBean = (CrowdFundingBean) session.createQuery(hql).setParameter("projectId", pcBean.getProjBean().getProjectId())    
+								.getSingleResult();
+		cfBean.setBackerNum(cfBean.getBackerNum()+1);
+	}
 
-		}
-		return list;
+	@Override
+	public void addDonateToFund(PurchaseBean pcBean) {
+		String hql = "From CrowdFundingBean where projectId = :projectId";
+		Session session = factory.getCurrentSession();
+		CrowdFundingBean cfBean = (CrowdFundingBean) session.createQuery(hql).setParameter("projectId", pcBean.getProjBean().getProjectId()) 
+								.getSingleResult();
+		int total = cfBean.getFundsNow()+pcBean.getDpBean().getDonateMoney();
+		cfBean.setFundsNow(total);
 	}
 }

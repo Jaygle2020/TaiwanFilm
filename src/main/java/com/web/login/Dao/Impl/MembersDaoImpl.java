@@ -1,5 +1,7 @@
 package com.web.login.Dao.Impl;
 
+import java.util.List;
+
 import javax.persistence.NoResultException;
 
 import org.hibernate.Session;
@@ -78,25 +80,26 @@ public class MembersDaoImpl implements MembersDao {
 		MembersBean mem = (MembersBean) session.createQuery(hql)
 				.setParameter("email", member.getEmail())
 				.getSingleResult();
-		if(member.getMemberName() !=null) {
 			mem.setMemberName(member.getMemberName());
-		}
-		if(member.getEmail() !=null) {
 			mem.setEmail(member.getEmail());
-		}
-		if(member.getGender() !=null) {
 			mem.setGender(member.getGender());
-		}
-		if(member.getBirthDay() !=null) {
 			mem.setBirthDay(member.getBirthDay());
-		}
-		if(member.getmemImage() !=null) {
-			mem.setmemImage(member.getmemImage());
-		}
-		if(member.getFileName() !=null) {
+			mem.setMemberImage(member.getMemberImage());
 			mem.setFileName(member.getFileName());
-		}
+			System.out.println("Dao :"+ member.getmemImage());
 		session.update(mem);
 		return true;
 	}
+	@Override
+	public boolean emailExists(String email) {
+		boolean exist = false;
+		Session session = factory.getCurrentSession();
+		String queryString = "from MembersBean where email = :email";
+		List<?> list = session.createQuery(queryString).setParameter("email", email).list();
+		if (!list.isEmpty()) {
+			exist = true;
+		}
+		return exist;
+	}
+	
 }
