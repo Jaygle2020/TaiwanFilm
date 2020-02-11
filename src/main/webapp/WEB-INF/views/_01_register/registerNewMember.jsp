@@ -20,7 +20,7 @@
 }
 .memberNewTotalDiv{
 	width:100%;
-	background-color: #ebebeb;
+/* 	background-color: #ebebeb; */
 	text-align:center;
 }
 .memberNewMainDiv {
@@ -32,10 +32,16 @@
 #focusToBlue:hover{
       color: blue
       }
+      body{
+      background-image:url(${pageContext.request.contextPath}/img/activity/gg2.jpg);
+      background-repeat:no-repeat;
+      background-size:100%;
+      }
 
 </style>
 </head>
-<body style="background: #ebebeb">
+<body>
+<div>
 	<form:form method='POST' modelAttribute="MembersBean" 
 	action="${pageContext.request.contextPath}/_01_register/registerNewMember"
 	 enctype='multipart/form-data' >
@@ -95,6 +101,7 @@
 		</div>
 		</div>
 </form:form>
+</div>
 		<script	src="${pageContext.request.contextPath }/js/registerNewMember.js"></script>
 		<script>
 		

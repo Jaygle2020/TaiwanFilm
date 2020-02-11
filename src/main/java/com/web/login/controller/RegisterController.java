@@ -150,6 +150,52 @@ public class RegisterController {
 		model.addAttribute("members", member);
 		return "_01_register/registerUpdateMember";
 	}
+	
+	
+	@RequestMapping(value = "/_01_register/DomodifyMember", method = RequestMethod.POST)
+	public String DomodifyMember(@RequestParam("memImage")
+	MultipartFile picture,
+	HttpServletRequest request,
+	Model model, 
+	HttpSession session) {
+		MembersBean member1 =(MembersBean) session.getAttribute("members");
+		MembersBean member = new MembersBean(
+			request.getParameter("memberName"),request.getParameter("email"),
+			request.getParameter("gender"),request.getParameter("birthDay"));
+		member.setPassword(member1.getPassword());
+		if(member.getGender() == null) {
+			member.setGender(member1.getGender());		
+		}		
+		String originalFilename = picture.getOriginalFilename();
+		if (originalFilename.length() > 0 && originalFilename.lastIndexOf(".") > -1) {
+			member.setFileName(originalFilename);}
+
+		if (!picture.isEmpty()) {
+			try {
+				byte[] b = picture.getBytes();
+				Blob blob = new SerialBlob(b);		
+				member.setMemberImage(blob);
+				System.out.println("取到照片" + member.getMemberImage());
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());}
+		}else {
+			System.out.println("沒給照片");
+			member.setFileName(member1.getFileName());
+			member.setMemberImage(member1.getMemberImage());
+		}
+			model.addAttribute("members", member);
+
+		if(service.updateMembers(member)) {
+			System.out.println("會員資料修改成功");
+			model.addAttribute("members", service.getAllMembers());
+			return "_01_register/allMembers";
+		} else {
+			System.out.println("會員資料修改失敗");
+			return "_01_register/DomodifyMember";
+		}
+		
+	}
 
 	@RequestMapping(value = "/_01_register/DoUpdateMember", method = RequestMethod.POST)
 	public String DoUpdateMember(
@@ -162,7 +208,7 @@ public class RegisterController {
 	HttpSession session) throws ParseException {
 		MembersBean member1 =(MembersBean) session.getAttribute("members");
 		MembersBean member = new MembersBean(
-				//request.gstParameter("memberName")
+
 				request.getParameter("memberName"),request.getParameter("email"),
 				request.getParameter("gender"),request.getParameter("birthDay"));		
 //		MultipartFile picture = (MultipartFile) (request.getParameter("memImage"));
@@ -175,7 +221,7 @@ public class RegisterController {
 				byte[] b = picture.getBytes();
 				Blob blob = new SerialBlob(b);
 				member.setMemberImage(blob);
-				System.out.println(member.getMemberImage());
+				System.out.println("取到照片" + member.getMemberImage());
 			} catch (Exception e) {
 				e.printStackTrace();
 				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());}
@@ -267,6 +313,23 @@ public class RegisterController {
 		return result;
 	}
 	
-
-	
+ @GetMapping("/ShowAllMembers")
+ public String list(Model model) {
+		model.addAttribute("members", service.getAllMembers());
+	 return "_01_register/allMembers";
+ }
+ 
+ @GetMapping("/_01_register/modify/{id}")
+ public String modifyMembers(Model model,
+		 @PathVariable
+		 Integer id) {
+	 MembersBean mem = service.getMemberById(id);
+	 model.addAttribute("members",mem);
+	 return "_01_register/modifyMemberDetail";
+ 	}
+ 
+ 
+ 
+ 
+ 
 }

@@ -63,7 +63,7 @@ public class RootAppConfig {
 				
 		});
 //		if (SystemConstant.DB_TYPE == SystemConstant.MYSQL) {
-			factory.setDataSource(mySQLDataSource());
+			factory.setDataSource(msSQLDataSource());
 			factory.setHibernateProperties(additionalPropertiesMySQL());	
 //		} else if (SystemConstant.DB_TYPE == SystemConstant.SQL_SERVER) {
 		

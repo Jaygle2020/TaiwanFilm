@@ -2,7 +2,6 @@ package com.web.login.Model;
 
 import java.io.Serializable;
 import java.sql.Blob;
-import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

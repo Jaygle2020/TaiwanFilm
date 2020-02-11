@@ -18,8 +18,6 @@
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet"> -->
 <!-- <link id="MonoTypeFontApiFontTracker" type="text/css" rel="stylesheet" href="https://fast.fonts.net/t/1.css?apiType=js&amp;projectid=b2d946f7-734c-4b45-a07f-3923a384b0dd"> -->
 
-<body style="margin: 0">	
-
 	<div class="fixed"></div>
 	<div class="left-bar">  
 		<a href="/TaiwanFilm">
@@ -61,19 +59,20 @@
 	<div class="loginOrOut">
 			<div class="right-menu">
 		<c:if test="${sessionScope.members.memberId == 1}">		
-			<div>
-				<a href="activitiesM">活動後台</a>
-			</div>
-			<div>
-				<a href="alterMovie">後台</a>
-			</div>
+<!-- 			<div> -->
+<!-- 				<a href="activitiesM">活動後台</a> -->
+<!-- 			</div> -->
+<!-- 			<div> -->
+<!-- 				<a href="alterMovie">後台</a> -->
+<!-- 			</div> -->
 			<div>
 			<a href="${pageContext.request.contextPath}/_01_register/MemberBackstage">管理員後台</a>
 			</div>
 		</c:if>
 		<c:if test="${not empty sessionScope.members.email}">
 			<div class="myAccount">
-				<span id="memberButton1"> ${sessionScope.members.memberName}</span>
+				<span style="z-index: 800"  onclick="memberButton()">${sessionScope.members.memberName}</span>
+				
 				<!--  如果沒有給照片的話    性別是女生 就給女生照片   無照片跟男性給男生照片 -->
 				<c:if test="${empty sessionScope.members.fileName}">
 					<c:choose>
@@ -97,9 +96,9 @@
 		</c:if>
 	</div>
 		<div id="memberDetail"
-		style="padding: 5px; display: block; width: 100px; height: 200px; background: #ebebeb; 
+		style="padding: 5px; display: none; width: 100px; height: 200px; background: #ebebeb; 
 		position: absolute; right: 5px; top: 68px; z-index: 800">
-		<a href="${pageContext.request.contextPath}/UpdateMember">會員資料</a> <br>
+		<a href="${pageContext.request.contextPath}/UpdateMember">修改個人資料</a> <br>
 		<a href="${pageContext.request.contextPath}/member/purchase">個人贊助</a> <br>
 		<a href="alterTicket">訂票資料</a> <br>
 		<a href="${pageContext.request.contextPath}/logout">登出</a>
@@ -107,17 +106,13 @@
 	</div>
 
 
-</body>
+
 
 <script>
 	//登入登出
-	$("#memberButton1").click(function() {
-	/* 	$("#memberDetail").fadeToggle(500); */
-	$("#memberDetail").css({display:"inline-block"})
-		alert("1");
-	}); 
-
-
+	function memberButton(){
+		$("#memberDetail").fadeToggle(500); 
+	}
 
 $(".menu-click").click(function() {
 	$(".right-bar").hide(500);
@@ -152,4 +147,3 @@ $(".close-menu").click(function() {
 
 
 </script>
-<html>

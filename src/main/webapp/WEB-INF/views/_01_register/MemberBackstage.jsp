@@ -47,9 +47,9 @@
 <body>
 
 	<div class="h-logo">
-		<a href="/TaiwanFilm">FlyingV</a>
+	
+	<a href="${pageContext.request.contextPath}">FlyingV</a>
 	</div>
-
 	<div class="MainDiv">
 		<div class="button-type">
 			<button class="button1">會員管理</button>
@@ -60,8 +60,11 @@
 		</div>
 	
 		<div>
-			<div class="divArea active" id="area1">顯示所有會員</div>
-				<div><a href="${pageContext.request.contextPath}/ShowAllMembers"></a> </div>
+			<div class="divArea active" id="area1"><a href="${pageContext.request.contextPath}/ShowAllMembers">所有會員資料管理</a>
+			<div> </div>
+			
+			</div>
+				
 			<div class="divArea" id="area2">小天才訂票頁面</div>
 			<div class="divArea" id="area3">傑哥募資在這</div>
 			<div class="divArea" id="area4">士棠的訂購明細</div>

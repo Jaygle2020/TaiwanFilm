@@ -11,10 +11,8 @@
 	href="${pageContext.request.contextPath}/css/movie.css" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/movie.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie.css" />
 	<style>
 	.memberDetailTotalDiv2{
 	width:100%;
@@ -65,10 +63,10 @@
 			<tr><td>
 			<input type="submit" id="bt1" value="確認" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="reset" id="bt2" value="清空"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="/TaiwanFilm">回首頁</a>			
+			<button><a href="/TaiwanFilm">回首頁</a></button>			
 			</table>
 			</form>	
-			<input type="button" value="一鍵輸入" id="oneButtonInport" onclick="oneButtonInport()">			
+<!-- 			<input type="button" value="一鍵輸入" id="oneButtonInport" onclick="oneButtonInport()">			 -->
 		</div>
 	</div>
 	<script>

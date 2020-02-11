@@ -135,7 +135,7 @@
 
 		</div>
 		<jsp:include page="fragment/bottom.jsp" />
-</body>
+
 
 <script>
 /* 	$(".menu-click").click(function() {
@@ -262,5 +262,5 @@
 		$(".pictures").removeClass("dark");
 	});
 </script>
-
+</body>
 </html>
