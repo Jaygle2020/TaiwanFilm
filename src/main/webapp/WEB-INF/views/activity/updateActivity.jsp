@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <!-- <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
-
+<title>TaiwanFilms</title>
 	
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -92,40 +92,19 @@ input {
 
 </head>
 <body onload="ShowTime()"> 
-<%-- 	<div class="header">
-		<div class="h-logo" style="letter-spacing: -3px">
-			<a href="${pageContext.request.contextPath}/activitiesM">
-				<p class="Theme">TaiwanFilmsGuide
-			</a>
-		</div>
-
-		<div class="left-menu">
-			<div>
-				<a href="">提案</a>
-			</div>
-			<div>
-				<a href="">探索</a>
-			</div>
-			<div>
-				<a href=''>探索</a>
-			</div>
-		</div>
-		<div class="right-menu">
-			<div>
-				<a href="">我的帳戶</a>
-			</div>
-		</div>
-	</div>
- --%>
-	<jsp:include page="../fragment/top.jsp" />
+	
+	<jsp:include page="../backstage.jsp" />
+	
 	<section>
 		<div class="container">
 			<h1 style="text-align: center">修改產品資料</h1>
 		</div>
 	</section>
-	<hr
-		style="height: 1px; border: none; color: #333; background-color: #333;">
-	<section class="container">
+	<section class="container" style="    
+	width: 80%;
+    display: inline-block;  
+    position: absolute;
+    left: 17%;">   
 		<div class="coverpic"></div>
 		<form:form method='POST' modelAttribute="activityBean"
 			class='form-horizontal' enctype="multipart/form-data">

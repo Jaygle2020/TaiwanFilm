@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet"
+ <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<title>activity</title>
+<title>TaiwanFilms</title>
 <link rel='stylesheet'
 	href='${pageContext.request.contextPath}/css/movie.css' type="text/css" />
 <style>
@@ -27,49 +27,50 @@
 .col-md-5{
 	width: 100%;
 }
+.left-bar{
+left: 0px   ;}
 </style>
 
 
 </head>
-<body>
+<body style="text-align: center;">
 
-	<jsp:include page="../fragment/top.jsp" />
-
-
-
-	<section class="container">
-		<h2>${activity.activityTitle}</h2>
-		<hr>
-		<div class="row">
-			<div style="text-align: center;	text-align: center;
-					background-position: center;
-					background-repeat: no-repeat;
-					background-image: url('../getPicture/${activity.activityId}');
-					height: 500px;">
-				 
+	<jsp:include page="../fragment/menu.jsp" />
+		<section class="container" style="width: 80%;display: inline-block">
+			<h2>${activity.activityTitle}</h2>
+			<hr>
+			<div class="row">
+				<div style="text-align: center;	text-align: center;
+						background-position: center;
+						background-repeat: no-repeat;
+						background-image: url('../getPicture/${activity.activityId}');
+						height: 500px;">
+					 
+				</div>
+				<hr> 
+				<div class="col-md-5">
+					<h2>${activity.activityTitle}</h2>
+					<h3 style="font-size: 20px;text-align: center">${activity.activityMainContent}</h3>
+					<p style="font-size: 18px">${activity.activityContent}</p>
+					<p>所屬類別: ${activity.category}</p>
+					
+					<p>
+						<strong>活動編號: </strong> <span class='label label-warning'>
+							${activity.activityId} </span>
+					</p>  
+					<p>  
+						 <a href="/TaiwanFilm" class="btn btn-default">
+							<span class="glyphicon-hand-left glyphicon"></span>返回 
+						<%-- <a href="<spring:url value='/activities' />" class="btn btn-default">
+							<span class="glyphicon-hand-left glyphicon"></span>返回 --%>
+						<a href="<spring:url value='/SignUpActivity?id=${activity.activityId}' />"class="btn btn-default">
+						<span class="glyphicon-hand-left glyphicon"></span>註冊活動</a>
+					</p>
+				</div>  
 			</div>
-			<hr> 
-			<div class="col-md-5">
-				<h2>${activity.activityTitle}</h2>
-				<h3 style="font-size: 20px;text-align: center">${activity.activityMainContent}</h3>
-				<p style="font-size: 18px">${activity.activityContent}</p>
-				<p>所屬類別: ${activity.category}</p>
-				
-				<p>
-					<strong>活動編號: </strong> <span class='label label-warning'>
-						${activity.activityId} </span>
-				</p>  
-				<p>  
-					 <a href="/TaiwanFilm" class="btn btn-default">
-						<span class="glyphicon-hand-left glyphicon"></span>返回 
-					<%-- <a href="<spring:url value='/activities' />" class="btn btn-default">
-						<span class="glyphicon-hand-left glyphicon"></span>返回 --%>
-					<a href="<spring:url value='/SignUpActivity?id=${activity.activityId}' />"class="btn btn-default">
-					<span class="glyphicon-hand-left glyphicon"></span>註冊活動</a>
-				</p>
-			</div>  
-		</div>
-	</section>
+		</section>
+		
+	   
 
 
 	<script>

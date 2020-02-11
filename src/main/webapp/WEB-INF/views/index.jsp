@@ -22,11 +22,19 @@
 <body style="margin: 0">
 
 	<jsp:include page="fragment/menu.jsp" />
+=======
 
 	<div class="bottom-bar">
 		<div class="bottom-bar-content">豐盛之城－臺灣三部曲 Formosa Wonderland -
 			「勇士計畫」預計2021年啟動</div>
 	</div>
+		<div class="dots" style="writing-mode: tb-rl;z-index: 200">
+			<div id="home-area" class="dot dot-pink"></div>  
+			<div id="activity-area" class="dot"></div>
+			<div id="funds-area" class="dot"></div>  
+			<div id="movie-area" class="dot"></div>
+		</div>
+	
 
 	<div class="indexWidth">
 		<div class="mainContent">
@@ -36,7 +44,10 @@
 				<div class="mainContent-img-right"></div>
 			</div>
 		</div>
+			
 
+<<<<<<< HEAD
+=======
 		<!-- ttttttttt -->
 
 		<!-- 		<div class="activityContent">
@@ -52,10 +63,11 @@
 				<div class="activityAreaContent3 activityAreaContentStyle"></div>
 			</div>
 		</div> -->
+>>>>>>> master
 
 		<jsp:include page="activity/activities.jsp" />
 
-		<div class="funds-trailer">
+		<div class="funds-trailer" style="background-size: 100%">  
 			<div class="Ftrailer-video">
 				<iframe width="800px" height="400px"
 					src="https://www.youtube.com/embed/eZxkpvoJI2Q" frameborder="0"
@@ -178,6 +190,9 @@
 	$(window).scroll(function() {
 		var scrollVal = $(this).scrollTop();
 		$("span.qScrollTop").text(scrollVal);
+<<<<<<< HEAD
+		 /* console.log(scrollVal);    */ 
+=======
 
 		/*  console.log(scrollVal);  */
 		if (1239 > scrollVal && scrollVal > 422) {
@@ -221,17 +236,17 @@
 	});
 	$("#activity-area").click(function() {
 		$('html,body').animate({
-			scrollTop : 860
+			scrollTop : 872
 		}, 'fast');
 	});
 	$("#funds-area").click(function() {
 		$('html,body').animate({
-			scrollTop : 1671
+			scrollTop : 1620
 		}, 'fast');
 	});
 	$("#movie-area").click(function() {
 		$('html,body').animate({
-			scrollTop : 3027
+			scrollTop : 3773
 		}, 'fast');
 	});
 

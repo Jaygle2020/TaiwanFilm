@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
 <html>
 <script
@@ -11,35 +8,36 @@
 <meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/css?family=Mukta&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="css/menuStyle.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" type="text/css">
 <!-- 	<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap" rel="stylesheet">
 
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet"> -->
 <!-- <link id="MonoTypeFontApiFontTracker" type="text/css" rel="stylesheet" href="https://fast.fonts.net/t/1.css?apiType=js&amp;projectid=b2d946f7-734c-4b45-a07f-3923a384b0dd"> -->
 
-<body style="margin: 0">	
+
+<body style="margin: 0">	  
 
 	<div class="fixed"></div>
 	<div class="left-bar">  
-		<a href="/TaiwanFilm">
-			<div class='goToMid-l'>
+		<a href="/TaiwanFilm" style="text-decoration: none">
+			<div class='goToMid-l' style="text-decoration: none">
 				<div>Taiwan Films</div>   
 			</div>	
-		</a>
+		</a> 
 	</div>
 	<div class="right-bar">
 		<div class="goToMid">
 			<div class="menu-click">Menu</div>
 			<!-- 移動時會有小點點隨著你移動到的地方變色 -->
-			 <div class="dots">
+			 <!-- <div class="dots">
 				<div id="home-area" class="dot dot-pink"></div>
 				<div id="activity-area" class="dot"></div>
 				<div id="funds-area" class="dot"></div>
 				<div id="movie-area" class="dot"></div>
-			</div>
+			</div> -->
 		</div>
 	</div>
-
+ 
 	<div class="menu-bar">
 		<div class="close-menu menu-buttonStyle">CLOSE</div>
 		<div class="menu-button">
@@ -55,10 +53,17 @@
 			<a href="movieIntro">
 				<div class="menu-buttonStyle">網路訂票</div>
 			</a>
+<<<<<<< HEAD
+			<a href="backstage">
+				<div class="menu-buttonStyle">進入後台</div>
+			</a>
+		</div> 
+=======
 			<a href="messages">
 			 <div class="menu-buttonStyle">留言板</div>
 			</a>
 		</div>
+>>>>>>> master
 	</div>
 	<div class="loginOrOut">
 			<div class="right-menu">
@@ -99,13 +104,13 @@
 		</c:if>
 	</div>
 		<div id="memberDetail"
-		style="padding: 5px; display: block; width: 100px; height: 200px; background: #ebebeb; 
+		style="padding: 5px; display: none; width: 100px; height: 200px; background: #ebebeb; 
 		position: absolute; right: 5px; top: 68px; z-index: 800">
 		<a href="${pageContext.request.contextPath}/UpdateMember">會員資料</a> <br>
 		<a href="${pageContext.request.contextPath}/member/purchase">個人贊助</a> <br>
 		<a href="alterTicket">訂票資料</a> <br>
-		<a href="${pageContext.request.contextPath}/logout">登出</a>
-	</div>   
+		<a href="${pageContext.request.contextPath}/logout">登出</a> 
+	</div>
 	</div>
 
 

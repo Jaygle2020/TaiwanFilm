@@ -3,20 +3,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<html>
+ <title>TaiwanFilms</title>
+<!-- <html>
+
 <head>
 
-<meta charset="UTF-8">
-<!-- <link rel="stylesheet" -->
-<!-- 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
+<meta charset="UTF-8"> -->
 
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script> 
+
 
 <style type="text/css">
 fieldset {
 	border: 1px solid black;
-	width: 600px;
+	width: 80%; 
 	margin: auto;
 	padding: 10px;
 }
@@ -70,7 +72,7 @@ input {
 	letter-spacing: 3px;
 	padding: 6px;
 	border-radius: 3px
-}
+} 
 
 .form-group {
 	padding: 5px 0px;
@@ -91,48 +93,21 @@ input {
 	type="text/css">
 
 
-<title>addActivity</title>
-</head>
-<body  onload="ShowTime()"> 
+<!-- <title>addActivity</title>
+</head> -->
+<body onload="ShowTime()" style="margin: 0"> 
 
-	<div class="header">
-		<div class="h-logo" style="letter-spacing: -3px">
-			<a href="../activitiesM">
-				<p class="Theme">TaiwanFilmsGuide
-			</a>
-		</div>
+<jsp:include page="../backstage.jsp" />
  
-
-		<div class="left-menu">
-			<div>
-				<a href="">提案</a>
-			</div>
-			<div>
-				<a href="">探索</a>
-			</div>
-			<div>
-				<a href=''>探索</a>
-			</div>
-		</div>
-		<div class="right-menu">
-			<div>
-				<a href="">後台</a>
-			</div>
-			<div>
-				<a href="">我的帳戶</a>
-			</div>
-		</div>
-	</div>
-
 	<section>
-		<div class="container">
+		<div class="container"style="width: 80%;display: inline-block;float:right;padding-top: 40px;">
 			<h1 style="text-align: center; font-weight: bold; font-size: 35px">新增活動資料</h1>
-		</div>
-	</section>
-	<hr
-		style="height: 1px; border: none; color: #333; background-color: #333;">
-	<section class="container">
-		<div class="coverpic"></div>
+			<button class="demo" style="color:black;border: 1px solid black;display: inline-block;width: 10% "onclick="demo()">DEMO用資料</button>  
+		</div>     
+	</section> 
+	    
+	<section class="container" style="width: 80%;display: inline-block;float:right;padding-top: 20px;">
+		<div class="coverpic"></div> 
 		<form:form method='POST' modelAttribute="activityBean"
 			class='form-horizontal' enctype="multipart/form-data">
 			<fieldset>
@@ -235,8 +210,8 @@ input {
 
 				<div class="form-group">
 					<label class='control-label col-lg-2 col-lg-2' for="productImage">
-						<spring:message code='spring.addProduct.form.image.label' />
-					</label>
+						  
+					</label> 
 					<div class='col-lg-10'>
 						<form:input id="productImage" path="productImage" type='file'
 							class='form:input-large' />
@@ -305,11 +280,14 @@ input {
 				
 			
 			</fieldset>
-		</form:form>
+		</form:form>  
 	</section>
+	
+
 </body>
 
-<script>
+
+<script language="javascript">
 
 	function ShowTime(){
 		  var date = new Date();
@@ -336,8 +314,8 @@ input {
 		document.getElementById('delay4').innerHTML = "延後一個月:"+ (M+1) +"月"+d + "日"; 
 		 
 		setTimeout('ShowTime()',100000)
-	}     
-	
+	};
+	  
 	
 	$("#startTime").blur(function(){
 		var x = $("#startTime").val();
@@ -354,19 +332,12 @@ input {
 	document.getElementById('activityNumber').setAttribute("value", zz);
 	document.getElementById('activityNumber').innerHTML =  zz ;
 	
-/* 		$("#category").blur(function(){
-			if($(".hehe").val() == 1){
-				alert("1"); 
-			}else{ 
-				alert("3");
-			}
-		}); */
-		
-/* 	var x = $("#coming").val();
-	console.log(x); */
 	
+	 
 
 
 	
 	</script>
-</html>
+
+ </html>
+ 

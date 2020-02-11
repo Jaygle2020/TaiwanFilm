@@ -13,7 +13,7 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"></link> 
 
-<title>activities</title>
+<title>TaiwanFilms</title>
 <!-- <link rel='stylesheet' -->
 <%-- 	href='${pageContext.request.contextPath}/css/styles.css' --%> 
 <!-- 	type="text/css" /> -->
@@ -116,24 +116,7 @@
 
 </head>
 <body>
-	<div class="header">
-		<div class="h-logo" style="letter-spacing: -3px">
-			<a href="activities">
-				<p class="Theme">TaiwanFilmsGuide
-			</a>
-		</div>
-		<div class="left-menu">
-
-		</div>
-		<div class="right-menu">
-			<div>
-				<a href="activitiesM">登入後台</a>
-			</div>
-			<div>
-				<a href="activities">登出會員</a>
-			</div>
-		</div>
-	</div>
+	<jsp:include page="../fragment/menu.jsp" />
 
 
 
