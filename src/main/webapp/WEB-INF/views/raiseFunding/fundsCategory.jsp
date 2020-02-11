@@ -22,9 +22,7 @@
 				<div class="change-menu">
 					<div class="buttonBorder-active buttonBorder" id="hot-button">熱門項目</div>
 					<div class="buttonBorder" id="new-button">最新發起</div>
-					<div class="buttonBorder" id="coming-button">即將開始</div>
 					<div class="buttonBorder" id="end-button">即將結束</div>
-					<div class="buttonBorder" id="money-button">募資金額</div>
 				</div>
 			</div>
 
