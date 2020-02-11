@@ -11,13 +11,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <link rel=stylesheet type="text/css" href="${pageContext.request.contextPath}/css/purchase1.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/purchase1.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" />
 	
 </head>
 
 <body>
-<jsp:include page="../fragment/top.jsp" />
+<jsp:include page="../fragment/menu.jsp" />
     <div class="purchaseWrapper">
         <div class="purchaseContainer">
             <h1>${dpBean.projBean.projectName}</h1>

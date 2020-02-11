@@ -9,12 +9,12 @@
 	type="text/css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/UtilTool.js" ></script>
 </head>
 <body>
-<jsp:include page="../fragment/top.jsp" />
+<jsp:include page="../fragment/menu.jsp" />
 	<div class="section" id="category">
 		<div class="width-limit">
 			<!-- 分頁按鈕 -->

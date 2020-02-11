@@ -68,9 +68,9 @@ public class RootAppConfig {
 			factory.setHibernateProperties(additionalPropertiesMsSQL());	
 //		} else if (SystemConstant.DB_TYPE == SystemConstant.SQL_SERVER) {
 		
-			// mySQL msSQL 切換
-			factory.setDataSource(mySQLDataSource());
-			factory.setHibernateProperties(additionalPropertiesMySQL());	
+			// mySQL msSQL 切換 自己碼
+//			factory.setDataSource(mySQLDataSource());
+//			factory.setHibernateProperties(additionalPropertiesMySQL());	
 //		} 
 		return factory;
 	}

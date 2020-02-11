@@ -4,20 +4,14 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<!DOCTYPE html>
-<html>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet" href="css/menuStyle.css" type="text/css">
+
+
+
 <!-- 	<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap" rel="stylesheet">
 
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet"> -->
 <!-- <link id="MonoTypeFontApiFontTracker" type="text/css" rel="stylesheet" href="https://fast.fonts.net/t/1.css?apiType=js&amp;projectid=b2d946f7-734c-4b45-a07f-3923a384b0dd"> -->
-
-<body style="margin: 0">	
+	
 
 	<div class="fixed"></div>
 	<div class="left-bar">  
@@ -109,7 +103,7 @@
 	</div>
 
 
-</body>
+
 
 <script>
 	//登入登出
@@ -151,7 +145,4 @@ $(".close-menu").click(function() {
 
 });
 
-
-
 </script>
-<html>

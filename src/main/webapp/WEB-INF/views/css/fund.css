@@ -53,9 +53,10 @@ section {
 }
 
 .projectContentUpper .container .upperContent .col-left {
-  width: 65%;
+  width: 60%;
   display: inline-block;
   height: 500px;
+   margin-left:5%;
 }
 
 .projectContentUpper .container .upperContent .col-left .videoBlock {
@@ -137,7 +138,7 @@ section {
 }
 
 .projectContentUpper .container .upperContent .col-right {
-  width: 33.33333333%;
+  width: 28%;
   padding-left: 15px;
   display: inline-block;
 }
@@ -189,6 +190,7 @@ section {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+  margin-left:5%;
 }
 .projectContentDown .container .col-left .middleFrame {
   margin: auto;
@@ -228,7 +230,7 @@ section {
 .projectContentDown .container .col-right {
   float: right;
   padding-left: 15px;
-  width: 33.33333333%;
+  width: 28%;
   position: relative;
   min-height: 1px;
   padding-right: 15px;

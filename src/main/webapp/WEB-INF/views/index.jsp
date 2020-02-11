@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css?family=Mukta&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="css/finalIndex.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" />
 <!-- 	<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap" rel="stylesheet">
 
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet"> -->

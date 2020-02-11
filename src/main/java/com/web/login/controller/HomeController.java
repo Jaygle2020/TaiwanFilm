@@ -11,35 +11,39 @@ import com.web.activity.model.activityBean;
 import com.web.activity.service.ActivityService;
 import com.web.booking.model.movieBean;
 import com.web.booking.service.bookingService;
+import com.web.raisefunding.model.ProjectBean;
+import com.web.raisefunding.service.ProposalService;
 
 @Controller
 public class HomeController {
 
 	@Autowired
-	ActivityService service;
+	ActivityService ActiveService;
 	
 	@Autowired
-	bookingService service2;
+	bookingService bookingService;
 	
+	@Autowired
+	ProposalService PropService;
 	@RequestMapping("/") // 看到斜線 就走去index
 	public String home(Model model) {
-		List<activityBean> activityList = service.getAllActivitiesExceptStatusEqualOne();
+		List<activityBean> activityList = ActiveService.getAllActivitiesExceptStatusEqualOne();
 		model.addAttribute("activityList", activityList);
 		
-		List<activityBean> activityListViews = service.getAllActivitiesExceptStatusEqualOneViews();
+		List<activityBean> activityListViews = ActiveService.getAllActivitiesExceptStatusEqualOneViews();
 		model.addAttribute("activitiesViews", activityListViews);
 		
-		List<activityBean> activityListStart = service.getAllActivitiesExceptStatusEqualOneStart();
+		List<activityBean> activityListStart = ActiveService.getAllActivitiesExceptStatusEqualOneStart();
 		model.addAttribute("activitiesStart", activityListStart);
 		
-		List<activityBean> activityListEnd = service.getAllActivitiesExceptStatusEqualOneStart();
+		List<activityBean> activityListEnd = ActiveService.getAllActivitiesExceptStatusEqualOneStart();
 		model.addAttribute("activitiesEnd", activityListEnd);
 		
-		List<movieBean> list = service2.getAllMovies();
+		List<movieBean> list = bookingService.getAllMovies();
 		model.addAttribute("movies", list);
 		
-		 
-		
+		ProjectBean projBean = PropService.GetProjBean(1);
+		model.addAttribute("projectBean",projBean);
 		return "index";
 	}
 	
