@@ -128,7 +128,7 @@
 										<label for="donateMoney">回饋金額，最低100元</label> 
 										<input type="number" name="donateMoney" id="donateMoney" min="100"><br>
 										<label for="donateDescription">內容摘要</label>
-										<textarea name="donateDescription" form="rewardPlan" rows="11"
+										<textarea name="donateDescription" form="rewardPlan" rows="11" id="donateDescription"
 											cols="40" >單純支持</textarea>
 									</div>
 									<div class="previewCard">
@@ -151,7 +151,7 @@
 										<input type="hidden" id="dliverDate" name="dliverDate" value=""> 
 											<label for="limit">限量份數</label> 
 											<input  type="number" name="limit" id="limit" min="1" max="999999">
-										<input type="hidden" name="projectId" value="${ProjectBean.projectId}">
+										<input type="hidden"  name="projectId" value="${ProjectBean.projectId}">
 									</div>
 								</div>
 							</form>

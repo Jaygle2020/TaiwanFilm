@@ -155,7 +155,7 @@
 										<input type="hidden" id="dliverDate" name="dliverDate" value=""> 
 											<label for="limit">限量份數</label> 
 											<input  type="number" name="limit" id="limit" min="1" max="999999">
-										<input type="hidden" name="projectId" value="${ProjectBean.projectId}">
+										<input type="hidden" id="dphidden" name="projectId" value="${ProjectBean.projectId}">
 									</div>
 								</div>
 							</form>
@@ -296,6 +296,26 @@
 				dialog.dialog("open");
 			});
 			
+// 			$(".plan").click(function(){
+// 				var url = "getDonatePlan/projid"+${ProjectBean.projectId}+"/actionId"+$(this).attr("data-planIdattr");
+// 				alert(url);
+// 				$.ajax({
+// 					type:'get',
+// 					url:url,
+// 					dataType:"json",
+// 					success:function(data){
+// 						alert(data);
+// 						dataDpBean = JSON.parse(data);
+// 						alert("ajax success");
+// 						alert(dataDpBeans);
+// 						updateForm(dataDpBeans);
+// 						dialog.dialog("open");
+// 					},
+// 					error:function(){
+// 						alert("fail");
+// 					}	
+// 				})
+// 			})
 			
 		});
 		
@@ -362,7 +382,7 @@
 function dpPlanForEach(dpBeans){
 	$(".dplan-view").html("");
 	for(var dpBean of dpBeans){
-		var dplan = $("<div class='plan' id='donatePlan"+dpBean.planId+"' data-planId='"${dpBean.planId}"'>"+
+		var dplan = $("<div class='plan' id='donatePlan"+dpBean.planId+"' data-planId='"+dpBean.planId+"'>"+
 			"<div><h2 class='donateMoney'>$"+dpBean.donateMoney+"</h2></div>"+
 			"<div class='projectThumb'><img src='${pageContext.request.contextPath}"+
 			"/getDonatePlan/photo/"+dpBean.planId+"'></div><div class='planText'><div class='description'>"+
@@ -374,6 +394,18 @@ function dpPlanForEach(dpBeans){
 		$(".dplan-view").append(dplan);
 	}
 }
+
+function updateForm(dpBean){
+		$("#donateMoney").val(dpBean.donateMoney);
+		$("#donateDescription").text(dpBean.donateDescription);
+		var img = $("<img width='300' height='200'>").attr('src',
+				"${pageContext.request.contextPath}/getDonatePlan/photo/"+dpBean.planId
+				);
+		$("#photoPre").html("").append(img);
+		$("#limit").val(dpBean.limitNum);
+
+}
+
 	</script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/js/createProj.js"></script>
