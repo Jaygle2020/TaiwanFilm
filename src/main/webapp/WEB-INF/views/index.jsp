@@ -22,7 +22,7 @@
 <body style="margin: 0">
 
 	<jsp:include page="fragment/menu.jsp" />
-=======
+ <!-- 改改改 -->
 
 	<div class="bottom-bar">
 		<div class="bottom-bar-content">豐盛之城－臺灣三部曲 Formosa Wonderland -
@@ -46,26 +46,8 @@
 		</div>
 			
 
-<<<<<<< HEAD
-=======
-		<!-- ttttttttt -->
 
-		<!-- 		<div class="activityContent">
-			<div class="activityTitle">Activity</div>
-			<div class="activity-menu">
-				<div>最新活動</div>
-				<div>熱門活動</div>  
-				<div>即將開始</div>
-			</div>
-			<div class="activityArea">
-				<div class="activityAreaContent1 activityAreaContentStyle"></div>
-				<div class="activityAreaContent2 activityAreaContentStyle"></div>
-				<div class="activityAreaContent3 activityAreaContentStyle"></div>
-			</div>
-		</div> -->
->>>>>>> master
-
-		<jsp:include page="activity/activities.jsp" />
+	 <jsp:include page="activity/activities.jsp" /> 
 
 		<div class="funds-trailer" style="background-size: 100%">  
 			<div class="Ftrailer-video">
@@ -190,11 +172,7 @@
 	$(window).scroll(function() {
 		var scrollVal = $(this).scrollTop();
 		$("span.qScrollTop").text(scrollVal);
-<<<<<<< HEAD
-		 /* console.log(scrollVal);    */ 
-=======
-
-		/*  console.log(scrollVal);  */
+		 /*  console.log(scrollVal);    */
 		if (1239 > scrollVal && scrollVal > 422) {
 			$(".goToMid-l").css("color", "white");
 			$(".right-bar").css("color", "white");

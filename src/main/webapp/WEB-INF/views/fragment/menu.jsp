@@ -53,17 +53,16 @@
 			<a href="movieIntro">
 				<div class="menu-buttonStyle">網路訂票</div>
 			</a>
-<<<<<<< HEAD
-			<a href="backstage">
-				<div class="menu-buttonStyle">進入後台</div>
-			</a>
-		</div> 
-=======
+			
 			<a href="messages">
 			 <div class="menu-buttonStyle">留言板</div>
 			</a>
+
+			<a href="backstage">
+				<div class="menu-buttonStyle">進入後台</div>
+			</a>    
 		</div>
->>>>>>> master
+
 	</div>
 	<div class="loginOrOut">
 			<div class="right-menu">
