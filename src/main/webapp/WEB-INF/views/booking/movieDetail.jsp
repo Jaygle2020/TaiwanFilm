@@ -11,7 +11,8 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <head>
-<title>movie</title>
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
+<title>Taiwam Films - ${movie.movieName }</title>
 <style>
 .movieImage img {
 	width: 300px;
@@ -69,7 +70,7 @@
 	<div class="section" id="popular">
 		<div class="section" id="category">
 			<div class="width-limit">
-				<h1>網路訂票&ensp;>&ensp;${movie.movieName }</h1>
+				<h1>${movie.movieName }</h1>
 			</div>
 
 			<div class="movieMain">

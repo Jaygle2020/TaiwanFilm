@@ -40,7 +40,7 @@ public class RootAppConfig {
 	public DataSource mySQLDataSource() {
 		 ComboPooledDataSource ds = new ComboPooledDataSource();
 	        ds.setUser("root");
-	        ds.setPassword("sa123456");
+	        ds.setPassword("P@ssw0rd");
 	        try {
 	            ds.setDriverClass("com.mysql.cj.jdbc.Driver");
 	        } catch (PropertyVetoException e) {
@@ -67,9 +67,9 @@ public class RootAppConfig {
 			factory.setHibernateProperties(additionalPropertiesMySQL());	
 //		} else if (SystemConstant.DB_TYPE == SystemConstant.SQL_SERVER) {
 		
-			// mySQL msSQL ����
-//			factory.setDataSource(msSQLDataSource());
-//			factory.setHibernateProperties(additionalPropertiesMsSQL());	
+			// mySQL msSQL 切換
+			factory.setDataSource(mySQLDataSource());
+			factory.setHibernateProperties(additionalPropertiesMySQL());	
 //		} 
 		return factory;
 	}
