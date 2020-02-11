@@ -115,7 +115,16 @@ public class MembersDaoImpl implements MembersDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<MembersBean> getAll() {
-		String hql = "FROM MembersBean";
+		String hql = "FROM MembersBean  where memberMode ='1'";
+		Session session = factory.getCurrentSession();
+		List<MembersBean> list = session.createQuery(hql).getResultList();
+		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MembersBean> getNotMember() {
+		String hql = "FROM MembersBean  where memberMode ='1'";
 		Session session = factory.getCurrentSession();
 		List<MembersBean> list = session.createQuery(hql).getResultList();
 		return list;

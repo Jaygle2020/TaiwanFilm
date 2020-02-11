@@ -20,5 +20,7 @@ public interface MembersDao {
 	//取所有會員
 	List<MembersBean> getAll();
 	MembersBean get(Integer id);
+	//取所有非會員
+	List<MembersBean> getNotMember();
 
 }

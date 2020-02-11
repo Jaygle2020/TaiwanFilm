@@ -152,7 +152,26 @@ public class RegisterController {
 		return "_01_register/registerUpdateMember";
 	}
 	
-	
+	@RequestMapping(value = "/_01_register/DoNotMember",method = RequestMethod.POST)
+	public String DoNotMember(
+			HttpServletRequest request,
+			Model model, 
+			HttpSession session) {
+			MembersBean member = new MembersBean();
+			member.setEmail(request.getParameter("email"));
+			member.setMemberMode("2");
+
+		
+			if(service.updateMembers(member)) {
+				System.out.println("會員資料修改成功");
+				model.addAttribute("members", service.getAllMembers());
+				return "_01_register/allMembers";
+			} else {
+				System.out.println("會員資料修改失敗");
+				return "_01_register/DomodifyMember";
+			}		
+		return "" ;
+	}
 	@RequestMapping(value = "/_01_register/DomodifyMember", method = RequestMethod.POST)
 	public String DomodifyMember(@RequestParam("memImage")
 	MultipartFile picture,
