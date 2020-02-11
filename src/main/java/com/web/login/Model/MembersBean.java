@@ -31,6 +31,7 @@ public class MembersBean implements Serializable{
 	private Blob memberImage;
 	private String createDay;
 	private String updateDay;
+	private String memberMode;
 	
 	@Transient
 	private MultipartFile	memImage;  	
@@ -77,5 +78,8 @@ public class MembersBean implements Serializable{
 	public void setFileName(String fileName) {this.fileName = fileName;}
 	public void setMemberImage(Blob memberImage) {this.memberImage = memberImage;}
 	public void setCreateDay(String createDay) {this.createDay = createDay;}
-	public void setUpdateDay(String updateDay) {this.updateDay = updateDay;}	
+	public void setUpdateDay(String updateDay) {this.updateDay = updateDay;}
+
+	public String getMemberMode() {return memberMode;}
+	public void setMemberMode(String memberMode) {this.memberMode = memberMode;}	
 }

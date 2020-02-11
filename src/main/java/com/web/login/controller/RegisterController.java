@@ -50,6 +50,7 @@ public class RegisterController {
 	@GetMapping("members/add")
 	public String getAddNewMemberForm(Model model) {
 		MembersBean member = new MembersBean();		
+		member.setMemberMode("1");
 		model.addAttribute("MembersBean", member);
 		return "_01_register/registerNewMember";
 	}

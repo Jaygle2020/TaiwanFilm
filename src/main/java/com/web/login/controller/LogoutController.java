@@ -16,7 +16,5 @@ public class LogoutController {
 	    System.out.println("會員登出");
 	    return "index";
 	}
-	
-	
-	
+
 }
