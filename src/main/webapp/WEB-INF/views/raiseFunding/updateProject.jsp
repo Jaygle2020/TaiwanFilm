@@ -12,7 +12,7 @@
 <link rel=stylesheet type="text/css"
 	href="${pageContext.request.contextPath}/css/create.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/movie.css" />
+	href="${pageContext.request.contextPath}/css/menuStyle.css" />
 <link rel="stylesheet" 
 
 	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -24,7 +24,7 @@
 </head>
 
 <body>
-	<jsp:include page="../fragment/top.jsp" />
+	<jsp:include page="../fragment/menu.jsp" />
 	<div id="createWrapper" class="wrapper createWrapper">
 		<div class="createContainer">
 			<section class="createMenu">

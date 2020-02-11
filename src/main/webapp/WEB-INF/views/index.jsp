@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css?family=Mukta&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="css/finalIndex.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" />
 <!-- 	<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap" rel="stylesheet">
 
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet"> -->
@@ -24,7 +25,7 @@
 	<jsp:include page="fragment/menu.jsp" />
  <!-- 改改改 -->
 
-	<div class="bottom-bar">
+	<div class="bottom-bar">	
 		<div class="bottom-bar-content">豐盛之城－臺灣三部曲 Formosa Wonderland -
 			「勇士計畫」預計2021年啟動</div>
 	</div>

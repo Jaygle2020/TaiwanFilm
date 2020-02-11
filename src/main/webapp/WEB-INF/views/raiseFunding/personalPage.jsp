@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -16,7 +16,7 @@
 
 
 <body>
-<jsp:include page="../fragment/top.jsp" />
+<jsp:include page="../fragment/menu.jsp" />
     <div class="pageWrapper">   
         <div class="upper">
             <P class="memberName" data-memberId="${mbBean.memberId}">${mbBean.memberName}&ensp;&ensp;您好</P>
