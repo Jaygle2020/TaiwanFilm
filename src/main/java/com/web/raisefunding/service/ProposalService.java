@@ -9,6 +9,7 @@ import com.web.raisefunding.model.ProjectInfoBean;
 
 public interface ProposalService {
 	public int createProjectAndPlan( CrowdFundingBean cfBean, ProjectBean projBean );
+	public int updateProjectAndPlan( CrowdFundingBean cfBean, ProjectBean projBean);
 	public int updatePlan(DonatePlanBean dpBean , CrowdFundingBean cfBean, ProjectBean projBean);
 	public ProjectBean GetProjBean(Integer id);
 	public List<CrowdFundingBean> getAllProjectAndFunding();

@@ -38,7 +38,7 @@
 			<section class="formSection">
 				
 					<div class="active create-basic productlist form-group">
-					<form method="POST" action="${pageContext.request.contextPath}/submitProject"
+					<form method="POST" action="${pageContext.request.contextPath}/updateSubmit"
 					enctype="multipart/form-data" id="projectForm">
 						<div class="createFormIntro partialWidthBlock">
 							<p>在這個區塊您將填寫專案內容中最吸引人募資影片、封面圖片和專案說明。</p>
@@ -46,24 +46,25 @@
 						<div class="partialWidthBlock projectCardGroup">
 							<div class="projectDataGroup">
 								<h2>專案標題</h2>
-								<input type="text" name="projectName"
-									value="${ProjectBean.projectName}">
+								<input type="text" name="projectName">
 								<P>一個好的標題應該要好記、好搜尋、吸引人想點進去看，並讓瀏覽者能在最短的時間內瞭解專案的核心理念。</P>
 								<h2>內容摘要</h2>
-								<textarea name="projDescript" form="projectForm" rows="8"
-									cols="80" maxlength="200">${ProjectBean.projDescript}
-								</textarea>
-								<p>使用吸引人的短文說明你的目標以及理念，強調你的獨一無二，讓贊助人對你或你的專案好奇，願意更進一步了解專案。</p>
+								<textarea name="projDescript" form="projectForm" rows="7"
+									cols="50" maxlength="200"></textarea>
+								<h2>動人的故事</h2>
+								<textarea name="projStory" form="projectForm" rows="7"
+									cols="50" maxlength="200"></textarea>
+								<p>故事訴說作者的理念，強調你的獨一無二之處，讓贊助人對你或你的專案好奇，願意更進一步了解專案。</p>
 							</div>
 							<div class="createProjectCard"></div>
 							<h2>上傳專案圖片</h2>
-							<input type="file" name="photoStr"
+							<span>專案區塊圖</span>><input type="file" name="photoStr"
+								accept="image/jpeg,image/png,image/bmp"><br>
+							<span>故事介紹圖</span>><input type="file" name="photoStr2" 
 								accept="image/jpeg,image/png,image/bmp">
 							<h2>專案影片 &nbsp; (注意某些私人youtube影片是不開放其他網站載入)</h2>
-
-							<input type="text" name="vedio"
-								value="https://www.youtube.com/watch?v=${ProjectBean.videoLink}"
-								placeholder="請輸入youtube影片連結網址">
+							
+							<input type="text" name="vedio" placeholder="請輸入youtube影片連結網址">
 							<h2>募資目標金額</h2>
 							<p>
 								<input type="number" max="99999999" min="0"
