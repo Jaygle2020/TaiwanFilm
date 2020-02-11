@@ -31,7 +31,7 @@ public class CrowdFundingDaoImp implements CrowdFundingDao {
 	public int updateFund(CrowdFundingBean cfBean) {
 	Session session = factory.getCurrentSession();
 	int n = 0;
-	session.saveOrUpdate(cfBean);
+	session.update(cfBean);
 		return n;
 	}
 

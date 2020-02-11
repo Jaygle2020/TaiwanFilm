@@ -40,13 +40,13 @@ public class RootAppConfig {
 	public DataSource mySQLDataSource() {
 		 ComboPooledDataSource ds = new ComboPooledDataSource();
 	        ds.setUser("root");
-	        ds.setPassword("sa123456");
+	        ds.setPassword("1234567890");
 	        try {
 	            ds.setDriverClass("com.mysql.cj.jdbc.Driver");
 	        } catch (PropertyVetoException e) {
 	            e.printStackTrace();
 	        }
-	        ds.setJdbcUrl("jdbc:mysql://localhost:3306/lab?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
+	        ds.setJdbcUrl("jdbc:mysql://localhost:3306/jspdb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
 	        ds.setInitialPoolSize(4);
 	        ds.setMaxPoolSize(8);
 	        return ds;
@@ -58,18 +58,19 @@ public class RootAppConfig {
 				"com.web.raisefunding.model",
 				"com.web.login.Model",
 				"com.web.booking.model",
-				"com.web.activity.model"
+				"com.web.activity.model",
+				"com.web.message.model"
 				
 				
 		});
 //		if (SystemConstant.DB_TYPE == SystemConstant.MYSQL) {
 			factory.setDataSource(msSQLDataSource());
-			factory.setHibernateProperties(additionalPropertiesMySQL());	
+			factory.setHibernateProperties(additionalPropertiesMsSQL());	
 //		} else if (SystemConstant.DB_TYPE == SystemConstant.SQL_SERVER) {
 		
-			// mySQL msSQL ����
-//			factory.setDataSource(msSQLDataSource());
-//			factory.setHibernateProperties(additionalPropertiesMsSQL());	
+			// mySQL msSQL 切換
+			factory.setDataSource(mySQLDataSource());
+			factory.setHibernateProperties(additionalPropertiesMySQL());	
 //		} 
 		return factory;
 	}

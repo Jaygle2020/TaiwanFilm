@@ -6,7 +6,8 @@
 
 <!DOCTYPE html>
 <html>
-
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
+<title>Taiwam Films</title>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <meta charset="UTF-8">
@@ -19,13 +20,21 @@
 <!-- <link id="MonoTypeFontApiFontTracker" type="text/css" rel="stylesheet" href="https://fast.fonts.net/t/1.css?apiType=js&amp;projectid=b2d946f7-734c-4b45-a07f-3923a384b0dd"> -->
 
 <body style="margin: 0">
-	
+
 	<jsp:include page="fragment/menu.jsp" />
-	
+ <!-- 改改改 -->
+
 	<div class="bottom-bar">
 		<div class="bottom-bar-content">豐盛之城－臺灣三部曲 Formosa Wonderland -
 			「勇士計畫」預計2021年啟動</div>
 	</div>
+		<div class="dots" style="writing-mode: tb-rl;z-index: 200">
+			<div id="home-area" class="dot dot-pink"></div>  
+			<div id="activity-area" class="dot"></div>
+			<div id="funds-area" class="dot"></div>  
+			<div id="movie-area" class="dot"></div>
+		</div>
+	
 
 	<div class="indexWidth">
 		<div class="mainContent">
@@ -35,26 +44,12 @@
 				<div class="mainContent-img-right"></div>
 			</div>
 		</div>
+			
 
-		<!-- ttttttttt -->
 
-<!-- 		<div class="activityContent">
-			<div class="activityTitle">Activity</div>
-			<div class="activity-menu">
-				<div>最新活動</div>
-				<div>熱門活動</div>  
-				<div>即將開始</div>
-			</div>
-			<div class="activityArea">
-				<div class="activityAreaContent1 activityAreaContentStyle"></div>
-				<div class="activityAreaContent2 activityAreaContentStyle"></div>
-				<div class="activityAreaContent3 activityAreaContentStyle"></div>
-			</div>
-		</div> -->
+	 <jsp:include page="activity/activities.jsp" /> 
 
-		<jsp:include page="activity/activities.jsp" />
-
-		<div class="funds-trailer">
+		<div class="funds-trailer" style="background-size: 100%">  
 			<div class="Ftrailer-video">
 				<iframe width="800px" height="400px"
 					src="https://www.youtube.com/embed/eZxkpvoJI2Q" frameborder="0"
@@ -111,68 +106,74 @@
 		<div class="movie">
 			<div class="cast">
 				<div class="movie-title">電影</div>
-				<div class="movie-inner">
-					ドキュメンタリー部分で赤裸々に自身の経験や考えを語るのは、2017年に発売した写真集『きっとぜんぶ大丈夫になる』が女性を中心に支持されているヌードモデルの兎丸愛美（うさまる・まなみ）と、2018年の東京国際映画祭に正式出品された、MOOSIC
-					LAB 2018長編部門作品『月極オトコトモダチ』（監督：穐山茉由）で主題歌を担当しているシンガーソングライターのBOMI（ボーミ）。
-
-					兎丸も出演する劇映画部分で、フェミニズムに関するドキュメンタリーの監督・池田を演じるのは、『イエローキッド』（監督：真利子哲也）に主演し、河瀨直美プロデュースの日韓合作映画『ひと夏のファンタジア』（監督：チャン・ゴンジェ）で韓国でも注目される岩瀬亮。西原監督が2014年に監督した実写映画『Starting
-					Over』に出演した遠藤新菜（『無伴奏』）、秋月三佳（『母さんがどんなに僕を嫌いでも』）、戸塚純貴（『銀魂2
-					掟は破るためにこそある』）が再集結し、それぞれ、兎丸の友達の女子大生・美帆、池田の彼女、美帆の彼氏を演じる。また、秋月演じるモデル・女優の後輩役として、「新潟美少女図鑑」で注目を集め、テレビ東京の音楽番組「音流〜ONRYU〜」のMCも務める現役女子高生で女優の栗林藍希（あいの）も出演。</div>
+				<div class="movie-inner" style="text-align: left; font-size: 20px;">
+					<p>二輪戲院流行的時期，錄影帶剛成為一種價格實惠的家庭影音放映技術，很多預算有限的觀眾寧可等影片在二輪影院上映，而非花更多的錢去首輪電影院。</p>
+					<p>但隨著21世紀的到來，有兩個因素促使許多二輪戲院停業：</p>
+					<ol>
+						<li>電影院影廳供過於求，導致電影在首映電影院的停留時間更長</li>
+						<li>戲院上映和VHS或DVD發行的時間間隔持續縮小</li>
+					</ol>
+					<p>後一個因素讓許多觀影人認為不值得花錢和精神在可能遇到的吵鬧顧客及骯髒環境上，使二輪戲院成為夕陽產業。</p>
+					<br>
+					<div style="color: #d2b48c;">
+						<p>上班太忙錯過了首輪強檔好片嗎？</p>
+						<p>首輪秒下口碑卻爆棚的好片來不及看嗎？</p>
+						<p>荷包緊緊但想要大螢幕環繞音響的享受嗎？</p>
+						<p>二輪電影的文化不該被沒落，錯過的電影不知道去哪看嗎？我們來幫你訂票，讓你不在錯過你想看的電影！！</p>
+					</div>
+				</div>
 			</div>
 			<div class="area">
 				<div class="movie-pad">
-					<div class="background1 pictures" id="test1"></div>
-					<div class="background2 pictures" id="test2"></div>
-					<div class="background3 pictures" id="test3"></div>
-					<div class="background4 pictures" id="test4"></div>
-					<div class="background5 pictures" id="test5"></div>
-					<div class="background6 pictures" id="test6"></div>
+					<c:forEach var='movie' items='${movies }'>
+						<a href="<spring:url value='/movieDetail?id=${movie.movieId}' />"><div
+								class="background${movie.movieId } pictures"
+								id="test${movie.movieId }"
+								style="background-image:url('<c:url value='/getPicture/movieBean/${movie.movieId }' />');"></div></a>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
 	</div>
 
-
-		</div>
-		<jsp:include page="fragment/bottom.jsp" />
+</body>
 
 
 <script>
-/* 	$(".menu-click").click(function() {
-		$(".right-bar").hide(500);
-		$(".menu-bar").css("display", "inline-block");
-		$(".menu-bar").animate({
-			right : "0%"
-		});
-		$(".fixed").show(500);
-		$(".fixed").animate({
-			width : "100%"
-		});
-		$('body').css('overflow', 'hidden');
+	/* 	$(".menu-click").click(function() {
+	 $(".right-bar").hide(500);
+	 $(".menu-bar").css("display", "inline-block");
+	 $(".menu-bar").animate({
+	 right : "0%"
+	 });
+	 $(".fixed").show(500);
+	 $(".fixed").animate({
+	 width : "100%"
+	 });
+	 $('body').css('overflow', 'hidden');
 
-	});
+	 });
 
-	$(".close-menu").click(function() {
-		$(".right-bar").show();
-		$(".menu-bar").animate({
-			right : "-40%"
-		});
-		$(".indexWidth").animate({
-			opacity : "1"
-		});
-		$(".fixed").hide(500);
-		$(".fixed").animate({
-			width : "0%"
-		});
-		$('body').css('overflow', 'visible');
+	 $(".close-menu").click(function() {
+	 $(".right-bar").show();
+	 $(".menu-bar").animate({
+	 right : "-40%"
+	 });
+	 $(".indexWidth").animate({
+	 opacity : "1"
+	 });
+	 $(".fixed").hide(500);
+	 $(".fixed").animate({
+	 width : "0%"
+	 });
+	 $('body').css('overflow', 'visible');
 
-	}), */
+	 }), */
 
 	$(window).scroll(function() {
 		var scrollVal = $(this).scrollTop();
 		$("span.qScrollTop").text(scrollVal);
-
-		/*  console.log(scrollVal);  */ 
+		 /*  console.log(scrollVal);    */
 		if (1239 > scrollVal && scrollVal > 422) {
 			$(".goToMid-l").css("color", "white");
 			$(".right-bar").css("color", "white");
@@ -214,17 +215,17 @@
 	});
 	$("#activity-area").click(function() {
 		$('html,body').animate({
-			scrollTop : 860
+			scrollTop : 872
 		}, 'fast');
 	});
 	$("#funds-area").click(function() {
 		$('html,body').animate({
-			scrollTop : 1671
+			scrollTop : 1620
 		}, 'fast');
 	});
 	$("#movie-area").click(function() {
 		$('html,body').animate({
-			scrollTop : 3027
+			scrollTop : 3773
 		}, 'fast');
 	});
 

@@ -9,7 +9,7 @@
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<title>activityM</title>
+<title>TaiwanFilms</title>
 <link rel='stylesheet'
 	href='${pageContext.request.contextPath}/css/movie.css' type="text/css" />
 <style>
@@ -42,25 +42,7 @@
 </head>
 <body>
 
-	<div class="header">
-		<div class="h-logo" style="letter-spacing:-3px">
-			<a href="<spring:url value='/activities' />">
-				<p class="Theme">TaiwanFilmsGuide
-			</a>
-		</div>
-		
-		
-		
-		<div class="left-menu">
-                                                                                        
-		</div>
-		<div class="right-menu">
-			<div>
-				<a href="<spring:url value='/activityM?id=${activity.activityId}' />">登入</a>
-			</div>
-
-		</div>
-	</div>
+<jsp:include page="../fragment/menu.jsp" />
 
 
 

@@ -11,13 +11,14 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <head>
-<title>movie</title>
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
+<title>Taiwam Films - 電影選擇</title>
 <style>
 .change-menu div {
 	cursor: pointer;
 }
 
-img {
+.list ul li figure img {
 	width: 300px;
 	height: 420px;
 }
@@ -93,7 +94,7 @@ img {
 	<div class="section" id="popular">
 		<div class="section" id="category">
 			<div class="width-limit">
-				<h1>網路訂票</h1>
+				<h1>電影選擇</h1>
 				<div class="change-category">
 					<div class="change-menu">
 						<div class="buttonBorder-active buttonBorder" id="trend-button">現正熱映</div>

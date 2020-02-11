@@ -11,8 +11,11 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
-<title>activitiesM</title>
-
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
+	integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+	crossorigin="anonymous"></link>
+<title>TaiwanFilms</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/movie.css"
 	type="text/css">
@@ -23,7 +26,10 @@ body {
 
 .activityContent {
 	display: none;
-}
+	height: 580px;
+	overflow:hidden;  
+	} 
+
 
 .activity-content {
 	width: 80%;
@@ -32,6 +38,19 @@ body {
 	margin: 10px;
 	font-weight: bold;
 	background: white;
+	display: inline-block; 
+	height: 140px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	border-radius: 10px;
+}  
+
+.activity-content:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+     
+.activity-content-show{
 	display: inline-block;
 }
 
@@ -50,9 +69,11 @@ body {
 	display: inline-block;
 }
 
+
 .acitivityUpdateWidth {
-	width: 21%;
+	width: 19%;
 	padding: 20px;
+
 	display: inline-block;
 	vertical-align: top;
 	text-align: center;
@@ -73,15 +94,23 @@ body {
 	padding: 3px;
 	border-radius: 3px
 }
-</style>
 
+#category .change-category div{
+color: #EA0082;
+
+}
+#category .change-category .change-menu .buttonBorder-active{
+border-bottom: 5px solid #EA0082;
+} 
+
+</style>
 
 
 </head>
 <body>
 
 
-	<jsp:include page="../fragment/menu.jsp" />
+	<jsp:include page="../fragment/menu.jsp" /> 
 
 
 
@@ -89,32 +118,27 @@ body {
 		<div class="section" id="category">
 			<div class="width-limit">
 				<h1>Activities</h1>
+
 				<div class="change-category">
 					<div class="change-menu">
 						<div class="buttonBorder-active buttonBorder" id="new-button">最新發起</div>
 						<div class="buttonBorder" id="trend-button">趨勢話題</div>
 						<div class="buttonBorder" id="coming-button">即將開始</div>
 						<div class="buttonBorder" id="end-button">即將結束</div>
-						<a href="allActivityM">
+						<a href="allActivity">
+							<div style="float: right;width: 10%;color: black; font-weight: bold;">瀏覽全部活動</div>
+						<!-- <a href="allActivityM">
 							<div
 								style="float: right; width: 10%; color: black; font-weight: bold;">全部活動頁面</div>
+						</a> -->
 						</a>
 					</div>
 				</div>
 			</div>
-			<div style="width: 100%">
-				<div
-					style="width: 20%; display: inline-block; writing-mode: tb-rl; background: red">HOT</div>
-				<div style="width: 20%; display: inline-block; background: green">摸摸摸摸</div>
-				<div style="width: 20%; display: inline-block; background: yellow">吃吃吃</div>
-				<div style="width: 20%; display: inline-block; background: blue">吃吃吃</div>
-			</div>
-
-
 
 			<div class="activityContent active" id="new">
 				<div class="activity-content-show">
-					<div class="acitivityUpdateWidth">活動序號</div>
+					<div class="acitivityUpdateWidth">活動照片</div>
 					<div class="acitivityUpdateWidth">活動主題</div>
 					<div class="acitivityUpdateWidth">活動廠商</div>
 					<div class="acitivityUpdateWidth">活動開始時間</div>
@@ -128,23 +152,26 @@ body {
 							href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
 								<div class="activity-inner"
 									data-number="${activity.activityWatched}">
-									<div class="activity-content">
-										<div class="acitivityUpdateWidth" style="color: red">${activity.activityNumber}</div>
-										<div class="acitivityUpdateWidth">${activity.activityTitle}</div>
+									<div class="activity-content">       
+										<div class="activityThumb"
+									style="background-image: url('getPicture/${activity.activityId}');background-size:cover;height: 120px;width:20%;display: inline-block;	">
+								</div>
+										<%-- <div class="acitivityUpdateWidth"style="color:red">${activity.activityNumber}</div> --%>
+										<div class="acitivityUpdateWidth" style="font-size: 18px;">${activity.activityTitle}</div>
 										<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
 										<div class="acitivityUpdateWidth">${activity.startTime}</div>
-
-									</div>
-								</div>
-						</a>
-						</a>
+										<div class="acitivityUpdateWidth"><i class="fas fa-eye"></i>${activity.activityWatched}</div>
+									</div> 	
+								</div>    
+							</a> 
+						</a> 
 					</c:if>
 				</c:forEach>
 			</div>
 
 			<div class="activityContent" id="trend">
 				<div class="activity-content-show">
-					<div class="acitivityUpdateWidth">活動序號</div>
+					<div class="acitivityUpdateWidth">活動照片</div>
 					<div class="acitivityUpdateWidth">活動主題</div>
 					<div class="acitivityUpdateWidth">活動廠商</div>
 					<div class="acitivityUpdateWidth">活動開始時間</div>
@@ -158,23 +185,26 @@ body {
 							href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
 								<div class="activity-inner"
 									data-number="${activity.activityWatched}">
-									<div class="activity-content">
-										<div class="acitivityUpdateWidth" style="color: red">${activity.activityNumber}</div>
-										<div class="acitivityUpdateWidth">${activity.activityTitle}</div>
+									<div class="activity-content">       
+										<div class="activityThumb"
+									style="background-image: url('getPicture/${activity.activityId}');background-size:cover;height: 120px;width:20%;display: inline-block;	">
+								</div>
+										<%-- <div class="acitivityUpdateWidth"style="color:red">${activity.activityNumber}</div> --%>
+										<div class="acitivityUpdateWidth" style="font-size: 18px;">${activity.activityTitle}</div>
 										<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
 										<div class="acitivityUpdateWidth">${activity.startTime}</div>
-
-									</div>
-								</div>
-						</a>
-						</a>
+										<div class="acitivityUpdateWidth"><i class="fas fa-eye"></i>${activity.activityWatched}</div>
+									</div> 	
+								</div>    
+							</a> 
+						</a> 
 					</c:if>
 				</c:forEach>
 			</div>
 
 			<div class="activityContent" id="coming">
 				<div class="activity-content-show">
-					<div class="acitivityUpdateWidth">活動序號</div>
+					<div class="acitivityUpdateWidth">活動照片</div>
 					<div class="acitivityUpdateWidth">活動主題</div>
 					<div class="acitivityUpdateWidth">活動廠商</div>
 					<div class="acitivityUpdateWidth">活動開始時間</div>
@@ -188,26 +218,28 @@ body {
 							href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
 								<div class="activity-inner"
 									data-number="${activity.activityWatched}">
-									<div class="activity-content">
-										<div class="acitivityUpdateWidth" style="color: red">${activity.activityNumber}</div>
-										<div class="acitivityUpdateWidth">${activity.activityTitle}</div>
+									<div class="activity-content">       
+										<div class="activityThumb"
+									style="background-image: url('getPicture/${activity.activityId}');background-size:cover;height: 120px;width:20%;display: inline-block;	">
+								</div>
+										<%-- <div class="acitivityUpdateWidth"style="color:red">${activity.activityNumber}</div> --%>
+										<div class="acitivityUpdateWidth" style="font-size: 18px;">${activity.activityTitle}</div>
 										<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
 										<div class="acitivityUpdateWidth">${activity.startTime}</div>
-
-									</div>
-								</div>
-						</a>
-						</a>
+										<div class="acitivityUpdateWidth"><i class="fas fa-eye"></i>${activity.activityWatched}</div>
+									</div> 	
+								</div>    
+							</a> 
+						</a> 
 					</c:if>
 				</c:forEach>
 			</div>
 
-
-
+ 
 
 			<div class="activityContent" id="end">
 				<div class="activity-content-show">
-					<div class="acitivityUpdateWidth">活動序號</div>
+					<div class="acitivityUpdateWidth">活動照片</div>
 					<div class="acitivityUpdateWidth">活動主題</div>
 					<div class="acitivityUpdateWidth">活動廠商</div>
 					<div class="acitivityUpdateWidth">活動開始時間</div>
@@ -221,21 +253,24 @@ body {
 							href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
 								<div class="activity-inner"
 									data-number="${activity.activityWatched}">
-									<div class="activity-content">
-										<div class="acitivityUpdateWidth" style="color: red">${activity.activityNumber}</div>
-										<div class="acitivityUpdateWidth">${activity.activityTitle}</div>
+									<div class="activity-content">       
+										<div class="activityThumb"
+									style="background-image: url('getPicture/${activity.activityId}');background-size:cover;height: 120px;width:20%;display: inline-block;	">
+								</div>
+										<%-- <div class="acitivityUpdateWidth"style="color:red">${activity.activityNumber}</div> --%>
+										<div class="acitivityUpdateWidth" style="font-size: 18px;">${activity.activityTitle}</div>
 										<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
 										<div class="acitivityUpdateWidth">${activity.startTime}</div>
-
-									</div>
-								</div>
-						</a>
-						</a>
+										<div class="acitivityUpdateWidth"><i class="fas fa-eye"></i>${activity.activityWatched}</div>
+									</div> 	
+								</div>    
+							</a> 
+						</a> 
 					</c:if>
 				</c:forEach>
 			</div>
-
-
+		</div>
+	</div>
 
 
 

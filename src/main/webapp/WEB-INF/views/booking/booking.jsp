@@ -11,13 +11,18 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <head>
-<title>movie</title>
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
+<title>Taiwam Films - 戲院選擇</title>
 <link
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet"
 	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	crossorigin="anonymous">
 <style>
+body {
+	background: #f1f1f1;
+}
+
 ul li {
 	list-style-type: none;
 }
@@ -63,10 +68,9 @@ i {
 	display: inline-block;
 }
 
-.cinemaDetail img {
-	height: 270px;
-	width: 406px;
-	margin-left: 200px;
+.cinemaDetail iframe {
+	width: 45%;
+	margin-left: 100px;
 	display: inline-block;
 }
 
@@ -101,7 +105,7 @@ i {
 	<div class="section" id="popular">
 		<div class="section" id="category">
 			<div class="width-limit">
-				<h1>選擇戲院</h1>
+				<h1>戲院選擇</h1>
 				<div class="change-category">
 					<div class="change-menu">
 						<div class="buttonBorder-active buttonBorder" id="台北市">台北市</div>
@@ -172,14 +176,14 @@ i {
 								<p>-&ensp;捷運&ensp;:&ensp;${cinema.cinemaMrt }</p>
 								<p>-&ensp;公車&ensp;:&ensp;${cinema.cinemaBus }</p></li>
 						</ul>
-						<img
-							src="<c:url value='/getPicture/cinemaBean/${cinema.cinemaId }' />">
-						<iframe width='100%' height='270' frameborder='0' scrolling='no'
+						<iframe height='270' frameborder='0' scrolling='no'
 							marginheight='0' marginwidth='0'
 							src='https://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q=${cinema.cinemaName }&z=16&output=embed&t='></iframe>
 					</div>
 				</c:forEach>
 			</div>
+		</div>
+	</div>
 </body>
 
 <script type="text/javascript">
