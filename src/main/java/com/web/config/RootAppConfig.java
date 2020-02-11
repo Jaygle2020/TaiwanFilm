@@ -40,13 +40,13 @@ public class RootAppConfig {
 	public DataSource mySQLDataSource() {
 		 ComboPooledDataSource ds = new ComboPooledDataSource();
 	        ds.setUser("root");
-	        ds.setPassword("P@ssw0rd");
+	        ds.setPassword("00000000");
 	        try {
 	            ds.setDriverClass("com.mysql.cj.jdbc.Driver");
 	        } catch (PropertyVetoException e) {
 	            e.printStackTrace();
 	        }
-	        ds.setJdbcUrl("jdbc:mysql://localhost:3306/lab?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
+	        ds.setJdbcUrl("jdbc:mysql://localhost:3306/taiwanFilm?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
 	        ds.setInitialPoolSize(4);
 	        ds.setMaxPoolSize(8);
 	        return ds;
@@ -58,7 +58,8 @@ public class RootAppConfig {
 				"com.web.raisefunding.model",
 				"com.web.login.Model",
 				"com.web.booking.model",
-				"com.web.activity.model"
+				"com.web.activity.model",
+				"com.web.message.model"
 				
 				
 		});

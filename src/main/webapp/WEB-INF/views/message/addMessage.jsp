@@ -21,7 +21,7 @@ fieldset {
 </style>
 <title>AddMessage</title>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>x
 </head>
 <body>
 	<jsp:include page="../fragment/top.jsp"></jsp:include>
@@ -100,17 +100,17 @@ fieldset {
 
 				<script>
 					//將輸入的文字傳到上面的預覽區
-					function enterText() {
-						if ($("#enterTable").val().length != 0) {
-							var str = "<pre>";
-							str += $("#enterTable").val();
-							str += "</pre>";
-							var allStr = $("#viewArea").html() + str;
-							$("#viewArea").html(allStr);
-							$("#enterTable").val("");
-						}
+// 					function enterText() {
+// 						if ($("#enterTable").val().length != 0) {
+// 							var str = "<pre>";
+// 							str += $("#enterTable").val();
+// 							str += "</pre>";
+// 							var allStr = $("#viewArea").html() + str;
+// 							$("#viewArea").html(allStr);
+// 							$("#enterTable").val("");
+// 						}
 
-					}
+// 					}
 
 					//將上傳的圖片傳到預覽區
 					var imageNum = 0;

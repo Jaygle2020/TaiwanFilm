@@ -55,6 +55,9 @@
 			<a href="movieIntro">
 				<div class="menu-buttonStyle">網路訂票</div>
 			</a>
+			<a href="messages">
+			 <div class="menu-buttonStyle">留言板</div>
+			</a>
 		</div>
 	</div>
 	<div class="loginOrOut">
