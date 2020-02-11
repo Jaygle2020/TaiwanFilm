@@ -63,15 +63,15 @@ public class RootAppConfig {
 				
 				
 		});
-//		if (SystemConstant.DB_TYPE == SystemConstant.MYSQL) {
-			factory.setDataSource(msSQLDataSource());
-			factory.setHibernateProperties(additionalPropertiesMsSQL());	
-//		} else if (SystemConstant.DB_TYPE == SystemConstant.SQL_SERVER) {
+		if (SystemConstant.DB_TYPE == SystemConstant.MYSQL) {
+//			factory.setDataSource(msSQLDataSource());
+//			factory.setHibernateProperties(additionalPropertiesMsSQL());	
+		} else if (SystemConstant.DB_TYPE == SystemConstant.SQL_SERVER) {
 		
 			// mySQL msSQL 切換 自己碼
-//			factory.setDataSource(mySQLDataSource());
-//			factory.setHibernateProperties(additionalPropertiesMySQL());	
-//		} 
+			factory.setDataSource(mySQLDataSource());
+			factory.setHibernateProperties(additionalPropertiesMySQL());	
+		} 
 		return factory;
 	}
 	@Bean(name="transactionManager")
