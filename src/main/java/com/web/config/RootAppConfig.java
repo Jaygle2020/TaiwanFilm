@@ -40,7 +40,7 @@ public class RootAppConfig {
 	public DataSource mySQLDataSource() {
 		 ComboPooledDataSource ds = new ComboPooledDataSource();
 	        ds.setUser("root");
-	        ds.setPassword("sa123456");
+	        ds.setPassword("P@ssw0rd");
 	        try {
 	            ds.setDriverClass("com.mysql.cj.jdbc.Driver");
 	        } catch (PropertyVetoException e) {

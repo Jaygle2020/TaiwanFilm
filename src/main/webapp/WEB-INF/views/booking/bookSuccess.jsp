@@ -9,7 +9,8 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <head>
-<title>movie</title>
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
+<title>Taiwam Films - 訂票成功</title>
 <style>
 .ticketContent {
 	padding: 125px 150px 50px 150px;

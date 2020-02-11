@@ -1,27 +1,3 @@
-.background1 {
-	background-image: url("../img/activity/mov1.jpg");
-}
-
-.background2 {
-	background-image: url("../img/activity/mov2.jpg");
-}
-
-.background3 {
-	background-image: url("../img/activity/mov6.jpg");
-}
-
-.background4 {
-	background-image: url("../img/activity/mov4.jpg");
-}
-
-.background5 {
-	background-image: url("../img/activity/mov5.jpg");
-}
-
-.background6 {
-	background-image: url("../img/activity/mov3.jpg");
-}
-
 .pictures {
 	background-size: 100%; /*設定圖片的大小*/
 	width: 49%;
