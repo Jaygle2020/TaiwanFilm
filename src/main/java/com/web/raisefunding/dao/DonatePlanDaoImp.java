@@ -41,7 +41,17 @@ public class DonatePlanDaoImp implements DonatePlanDao {
 		DonatePlanBean dpBean = session.get(DonatePlanBean.class, planId);
 		return dpBean;
 	}
-
+	
+	@Override
+	public DonatePlanBean getSinglePlan(Integer projectId , Integer dpId) {
+		Session session = factory.getCurrentSession();
+		String hql = "from DonatePlanBean where projectId = :prjId and planId = :dpId";
+		DonatePlanBean dpBean = (DonatePlanBean) session.createQuery(hql).setParameter("prjId", projectId).setParameter("dpId", dpId)
+								.getSingleResult();
+		return dpBean;
+		
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<DonatePlanBean> getAllPlan(Integer projectId) {

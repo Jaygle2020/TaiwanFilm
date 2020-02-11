@@ -51,8 +51,7 @@
 								<P>一個好的標題應該要好記、好搜尋、吸引人想點進去看，並讓瀏覽者能在最短的時間內瞭解專案的核心理念。</P>
 								<h2>內容摘要</h2>
 								<textarea name="projDescript" form="projectForm" rows="8"
-									cols="80" maxlength="200">
-								${ProjectBean.projDescript}
+									cols="80" maxlength="200">${ProjectBean.projDescript}
 								</textarea>
 								<p>使用吸引人的短文說明你的目標以及理念，強調你的獨一無二，讓贊助人對你或你的專案好奇，願意更進一步了解專案。</p>
 							</div>
@@ -155,6 +154,7 @@
 										<input type="hidden" id="dliverDate" name="dliverDate" value=""> 
 											<label for="limit">限量份數</label> 
 											<input  type="number" name="limit" id="limit" min="1" max="999999">
+											<input type="hidden"  id="updateId" name="updateId" value="0">
 										<input type="hidden" id="dphidden" name="projectId" value="${ProjectBean.projectId}">
 									</div>
 								</div>
@@ -233,7 +233,7 @@
 					return true;
 				}
 			}
-			
+			//彈出式視窗內的資料送進SERVER
 			function addDonatePlan() {
 				var valid = true;
 				allFields.removeClass("ui-state-error");
@@ -251,20 +251,37 @@
 						cache:false,
 						contentType: false,
 						processData: false,
-						success:function(data){
-							alert(data);
+						success:function(data){	
 							dataDpBeans = JSON.parse(data);
-							alert("ajax success");
-							alert(dataDpBeans);
 							dpPlanForEach(dataDpBeans);
+							$( ".plan" ).on( "click", getPlanForm);
 						},
 						error:function(){
 							alert("fail");
 						}
 					})
+					$("#updateId").val("0");
 					dialog.dialog("close");
 				}
 				
+			}
+			//回傳DPBEAN叫回跳出視窗
+			function getPlanForm(){
+				alert(this)
+				var url = "${pageContext.request.contextPath}/getDonatePlan/projId"+${ProjectBean.projectId}+
+				"/actionId"+$(this).attr("data-planId");
+				$.ajax({
+					type:'get',
+					url:url,
+					dataType:"json",
+					success:function(data){
+						updateForm(data);
+						dialog.dialog("open");
+					},
+					error:function(){
+						alert("fail");
+					}	
+				})
 			}
 
 			dialog = $("#dialog-form").dialog({
@@ -296,26 +313,7 @@
 				dialog.dialog("open");
 			});
 			
-// 			$(".plan").click(function(){
-// 				var url = "getDonatePlan/projid"+${ProjectBean.projectId}+"/actionId"+$(this).attr("data-planIdattr");
-// 				alert(url);
-// 				$.ajax({
-// 					type:'get',
-// 					url:url,
-// 					dataType:"json",
-// 					success:function(data){
-// 						alert(data);
-// 						dataDpBean = JSON.parse(data);
-// 						alert("ajax success");
-// 						alert(dataDpBeans);
-// 						updateForm(dataDpBeans);
-// 						dialog.dialog("open");
-// 					},
-// 					error:function(){
-// 						alert("fail");
-// 					}	
-// 				})
-// 			})
+			$(".plan").click()
 			
 		});
 		
@@ -330,7 +328,6 @@
 			$("#textTittle").val(dataTittle);
 			$("#innerTesxt").val(dataHtml);
 			$("#photoCount").val(imageNum);
-		<!--	$("#viewArea").html(""); -->
 			var form = document.getElementById("formArea");
 			var url = $("#formArea").attr("action");
 			var formData = new FormData(form);
@@ -385,7 +382,7 @@ function dpPlanForEach(dpBeans){
 		var dplan = $("<div class='plan' id='donatePlan"+dpBean.planId+"' data-planId='"+dpBean.planId+"'>"+
 			"<div><h2 class='donateMoney'>$"+dpBean.donateMoney+"</h2></div>"+
 			"<div class='projectThumb'><img src='${pageContext.request.contextPath}"+
-			"/getDonatePlan/photo/"+dpBean.planId+"'></div><div class='planText'><div class='description'>"+
+			"/getDonatePlan/photo/"+dpBean.planId+"?t="+Math.random()+"'></div><div class='planText'><div class='description'>"+
 			dpBean.donateDescription+"</div><span class='shipping'"+ 
 			"data-shipping='"+dpBean.shipping+"'>沒有運送服務</span>"+
 			"<span class='deliverDate'>預計寄送時間 "+dpBean.dliverDate+"</span>"+
@@ -403,8 +400,10 @@ function updateForm(dpBean){
 				);
 		$("#photoPre").html("").append(img);
 		$("#limit").val(dpBean.limitNum);
-
+		$("#updateId").val(dpBean.planId);
+		
 }
+
 
 	</script>
 	<script type="text/javascript"

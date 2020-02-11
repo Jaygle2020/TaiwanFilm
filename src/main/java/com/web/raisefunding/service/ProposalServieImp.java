@@ -117,6 +117,17 @@ public class ProposalServieImp implements ProposalService {
 		return n;
 	}
 	
-
+	@Transactional
+	@Override
+	public DonatePlanBean getSinglePlan(Integer projectId , Integer dpId) {
+		return dpDao.getSinglePlan(projectId, dpId);
+	}
+	
+	@Transactional
+	@Override
+	public void updateDonatePlan(DonatePlanBean dpBean) {
+		dpDao.updatePlan(dpBean);
+		
+	}
 
 }

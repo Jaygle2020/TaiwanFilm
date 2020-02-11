@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.web.config.ControllerUtil;
 import com.web.raisefunding.model.CrowdFundingBean;
 import com.web.raisefunding.model.DonatePlanBean;
@@ -131,9 +132,8 @@ public class FundsController {
 			@RequestParam("dliverDate") String dliverDate,
 			@RequestParam("limit") Integer limitNum,
 			@RequestParam("projectId") Integer projectId,
-			Gson gson
+			@RequestParam("updateId") Integer planId
 			) {
-		
 		dpBean.setDliverDate(dliverDate);
 		dpBean.setDonateDescription(description);
 		dpBean.setDonateMoney(donateMoney);
@@ -147,11 +147,29 @@ public class FundsController {
 			dpBean.setPictureFileName("noImage.jpg");
 		}
 		dpBean.setProjBean(propService.GetProjBean(projectId));
-		System.out.println(ReflectionToStringBuilder.toString(dpBean));
-		propService.createDonatePlan(dpBean);
+		//判斷如果有ID就執行更新  沒ID就新增
+		System.out.println("chage condition");
+		if(planId>0) {
+			System.out.println("-------------------test------------");
+			
+			dpBean.setPlanId(planId);
+			propService.updateDonatePlan(dpBean);
+		}else propService.createDonatePlan(dpBean);
+//		dpBean.setPlanId(Integer.parseInt(request.getParameter("updateId")));}
+		
 		List<DonatePlanBean> dpBeans = propService.getAllDonatePlanBean(projectId);
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String jsonDpBean = gson.toJson(dpBeans);
-		System.out.println(ReflectionToStringBuilder.toString(jsonDpBean));
+		return jsonDpBean;
+	}
+	
+	@GetMapping("/getDonatePlan/projId{prjId}/actionId{dpId}")
+	public @ResponseBody String getSingleDpBean(@PathVariable("prjId")Integer projectId,
+			@PathVariable("dpId")Integer planId
+			) {
+		DonatePlanBean dpBean = propService.getSinglePlan(projectId,planId );
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		String jsonDpBean = gson.toJson(dpBean);
 		return jsonDpBean;
 	}
 	// 點擊募資方塊進入個別募資
