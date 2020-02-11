@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>TaiwanFilms</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <script
@@ -111,22 +112,8 @@ body {
 
 </head>
 <body>
-	<div class="header">
-		<div class="h-logo" style="letter-spacing: -3px">
-			<a href="activities">
-				<p class="Theme">TaiwanFilmsGuide
-			</a>
-		</div>
 
-		<div class="left-menu"></div>
-		<div class="right-menu">
-			<div>
-				<a href="allActivityM">登入</a>
-			</div>
-
-		</div>
-	</div>
-
+	<jsp:include page="../fragment/menu.jsp" />
 
 	<section>
 		<div>

@@ -9,7 +9,7 @@
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<title>updateactivityM</title>
+<title>TaiwanFilms</title>
 <link rel='stylesheet'
 	href='${pageContext.request.contextPath}/css/movie.css' type="text/css" />
 <style>
@@ -41,48 +41,25 @@
 </head>
 <body>
 
-<%-- 	<div class="header">
-		<div class="h-logo" style="letter-spacing:-3px">
-			<a href="<spring:url value='/activitiesM' />">
-				<p class="Theme">TaiwanFilmsGuide
-			</a>
-		</div>
-		
-		
-		
-		<div class="left-menu">
-			<div>
-				<a href="">提案</a>
-			</div>
-			<div>
-				<a href="">探索</a>
-			</div>
-			<div>
-				<a href="">探索</a>
-			</div>                                                                                               
-		</div>
-		<div class="right-menu">
-			<div>
-			<a href="<spring:url value='/activity?id=${activity.activityId}' />">登出</a>
-			</div>
-			<div>
-				<a href="">我的帳戶</a>
-			</div>
-		</div>
-	</div> --%>
 
-	<jsp:include page="../fragment/top.jsp" />
+	<jsp:include page="../backstage.jsp" /> 
 
-
-	<section class="container">
+	<section class="container" style="    
+	width: 80%;
+    display: inline-block;  
+    position: absolute;
+    left: 17%;
+    padding-top: 100px;">
 		<h2>${activity.activityTitle}(後台)</h2>
 		<hr>
-		<div class="row">
-			<div class="activityimg" style="background-image: url('../../getPicture/${activity.activityId}');">
+		<div class="row" style="width: 100%;min-width:100%">
+<%-- 		background-image: url('../../getPicture/${activity.activityId}'); --%>
+			<div class="activityimg" style="height: 400px;">
 				<%--  <img src="<c:url value='/getPicture/${activity.activityId}'/>" />  --%>
-			</div>	
+				  <img src="<c:url value='/getPicture/${activity.activityId}'/>" />  
+			</div>	     
 			<hr>
-			<div class="col-md-5">
+			<div class="col-md-5"> 
 				<h2>${activity.activityTitle}</h2>
 				<h3 style="font-size: 20px;text-align: center">${activity.activityMainContent}</h3>
 				<p style="font-size: 18px">${activity.activityContent}</p>
