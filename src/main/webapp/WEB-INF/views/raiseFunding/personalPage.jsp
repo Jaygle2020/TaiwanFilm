@@ -20,8 +20,8 @@
     <div class="pageWrapper">   
         <div class="upper">
            	<h2>贊助記錄</h2>
-            <P>在專案結束之前，您都可修改你的回饋寄送資訊，ATM 轉帳與超商付款請於繳費期限內繳款。逾期後訂單會自動消失。</P>
-             <P>已支持的項目</P>
+            <P style="margin-top: 38px">在專案結束之前，您都可修改你的回饋寄送資訊，ATM 轉帳與超商付款請於繳費期限內繳款。逾期後訂單會自動消失。</P>
+             <div style="text-align: left">已支持的項目</div>
         </div>
         <div class="down">
            

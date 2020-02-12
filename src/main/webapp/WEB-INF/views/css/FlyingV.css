@@ -163,20 +163,23 @@
   border: 1px solid #cdcdcd;
   border-radius: 10px;
   width: 280px;
+  height: 400px;
   display: inline-block;
   text-align: center;
 }
 
 .section .width-limit .category-content .inner .projectThumb {
-  width: 100%;
-  height: 200px;
+  	width: 100%;
+    height: 50%;
+    padding: 4px;
+    box-sizing: border-box;
 }
 
 .section .width-limit .category-content .inner .project {
-  width: 90%;
-  display: inline-block;
-  text-align: left;
-  height: 175px;
+  	width: 90%;
+    display: inline-block;
+    text-align: left;
+    height: 135px;
 }
 
 .section .width-limit .category-content .inner .project .title {
@@ -196,13 +199,14 @@
 }
 
 .section .width-limit .category-content .inner .downMeta {
-  width: 80%;
-  height: 10px;
-  border: 2px solid #9EE9EF;
-  display: inline-block;
-  border-radius: 20px;
-  text-align: left;
-  padding: 0px 17px;
+    width: 80%;
+    height: 12px;
+    border: 2px solid #9EE9EF;
+    display: inline-block;
+    border-radius: 20px;
+    text-align: left;
+    padding: 0px 17px;
+    margin-top: 7px;
 }
 
 .section .width-limit .category-content .inner .downMeta .wholePercent {
@@ -226,8 +230,11 @@
 }
 
 .section .width-limit .category-content .inner .plan {
-  width: 90%;
-  display: inline-block;
+    width: 90%;
+    margin-top: -10px;
+    height: 15px;
+    padding-left: 8px;
+    display: block;
 }
 
 .section .width-limit .category-content .inner .plan div {
