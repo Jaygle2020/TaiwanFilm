@@ -12,7 +12,7 @@ import com.web.raisefunding.model.PurchaseBean;
 @Repository
 public class CrowdFundingDaoImp implements CrowdFundingDao {
 	SessionFactory factory;
-
+	
 	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.factory = sessionFactory;
@@ -37,10 +37,15 @@ public class CrowdFundingDaoImp implements CrowdFundingDao {
 
 	@Override
 	public CrowdFundingBean getCrowdFundingBean(Integer projectId) { 
+		CrowdFundingBean cfBean = new CrowdFundingBean();
 		String hql = "From CrowdFundingBean where projectId = :projId";
-		Session session = factory.getCurrentSession();
-		CrowdFundingBean cfBean = (CrowdFundingBean) session.createQuery(hql).setParameter("projId",projectId)
-								  .getSingleResult();
+				Session session = factory.getCurrentSession();
+		try {
+			cfBean = (CrowdFundingBean) session.createQuery(hql).setParameter("projId",projectId)
+									  .getSingleResult();
+		} catch (Exception e) {
+			System.out.println("there is no cfBean");
+		}
 		return cfBean;
 	}
 	

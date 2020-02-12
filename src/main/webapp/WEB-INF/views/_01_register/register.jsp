@@ -29,6 +29,7 @@
 			
 			<div class="sign" id="sign-in">
 				<h1>登入</h1>
+				<p class="login-box-msg">${errorMessage}</p>
 				<form action='${pageContext.request.contextPath}/Checklogin' method='post'>
 				<input name="email" class="nobooder" type='email' placeholder='電子信箱'  required /><br>
 				<input name="password" class="nobooder" type='password' placeholder='密碼' required /><br>

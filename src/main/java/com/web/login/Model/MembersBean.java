@@ -29,8 +29,7 @@ public class MembersBean implements Serializable{
 	private String birthDay;
 	private String fileName;	
 	private Blob memberImage;
-	private String createDay;
-	private String updateDay;
+
 	private String memberMode;
 	
 	@Transient
@@ -65,9 +64,8 @@ public class MembersBean implements Serializable{
 	public String getGender() {return gender;}
 	public String getBirthDay() {return birthDay;}
 	public String getFileName() {return fileName;}
+	public String getMemberMode() {return memberMode;}
 	public Blob getMemberImage() {return memberImage;}
-	public String getCreateDay() {return createDay;}
-	public String getUpdateDay() {return updateDay;}	
 	public void setMemberId(Integer memberId) {this.memberId = memberId;}
 	public void setMemberName(String memberName) {this.memberName = memberName;}
 	public void setPassword(String password) {this.password = password;}
@@ -77,9 +75,5 @@ public class MembersBean implements Serializable{
 	public void setBirthDay(String birthDay) {this.birthDay = birthDay;}
 	public void setFileName(String fileName) {this.fileName = fileName;}
 	public void setMemberImage(Blob memberImage) {this.memberImage = memberImage;}
-	public void setCreateDay(String createDay) {this.createDay = createDay;}
-	public void setUpdateDay(String updateDay) {this.updateDay = updateDay;}
-
-	public String getMemberMode() {return memberMode;}
-	public void setMemberMode(String memberMode) {this.memberMode = memberMode;}	
+	public void setMemberMode(String memberMode) {this.memberMode = memberMode;}
 }

@@ -99,7 +99,7 @@ public class FundsController {
 		}
 		propService.createProjectAndPlan(cfBean, projBean);
 		model.addAttribute("ProjectBean", projBean);
-		model.addAttribute("CrowdFundingBean", cfBean);
+//		model.addAttribute("CrowdFundingBean", cfBean);
 		return "raiseFunding/createProject";
 	}
 
@@ -115,46 +115,45 @@ public class FundsController {
 	public String updateProjectAndCrowd(Model model,@ModelAttribute("CrowdFundingBean") CrowdFundingBean cfBean, HttpServletRequest request,
 			@RequestParam("photoStr") MultipartFile photoStr, @RequestParam("photoStr2") MultipartFile photoStr2,
 			@RequestParam("dateBegin") String dateBegin, @RequestParam("dateEnd") String dateEnd,
-			@RequestParam("fundsGoal") Integer fundsGoal,@ModelAttribute("ProjectBean")ProjectBean projectBean ) {
+			@RequestParam("fundsGoal") Integer fundsGoal,@ModelAttribute("ProjectBean")ProjectBean projBean ) {
 		cfBean.setDateBegin(dateBegin);
 		cfBean.setDateEnd(dateEnd);
 		cfBean.setFundsGoal(fundsGoal);
-		ProjectBean projBean = new ProjectBean(request.getParameter("projectName"),
-				request.getParameter("projDescript"), request.getParameter("projStory"),
-				util.vedioLinkCut(request.getParameter("vedio")));
-		projBean.setProjectId(projectBean.getProjectId());
-		cfBean.setActionId(projectBean.getCfBean().getActionId());
+		projBean.setProjectName(request.getParameter("projectName"));
+		projBean.setProjDescript(request.getParameter("projDescript"));
+		projBean.setProjStory(request.getParameter("projStory"));	
+		projBean.setVideoLink(util.vedioLinkCut(request.getParameter("vedio")));
+		cfBean.setActionId(projBean.getCfBean().getActionId());
 		if (!photoStr.isEmpty()) {
 			projBean.setPhoto(util.fileTransformBlob(photoStr));
 			projBean.setPhotoFileName(util.getFileName(photoStr));
-		} else {
-			projBean.setPhoto(util.fileToBlob(noImage));
-			projBean.setPhotoFileName("noImage.jpg");
-		}
+		} 
 		if (!photoStr2.isEmpty()) {
 			projBean.setPhoto2(util.fileTransformBlob(photoStr2));
 			projBean.setPhotoFileName2(util.getFileName(photoStr2));
-		} else {
-			projBean.setPhoto2(util.fileToBlob(noImage));
-			projBean.setPhotoFileName2("noImage.jpg");
-		}
+		} 
 		propService.updateProjectAndPlan(cfBean, projBean);
 		model.addAttribute("ProjectBean", projBean);
-		model.addAttribute("CrowdFundingBean", cfBean);
-		return "raiseFunding/createProject";
+		return "redirect:/updateProject/"+projBean.getProjectId();
 	}
 
 
 	// 修改專案
 	@GetMapping("/updateProject/{id}")
 	public String updateProjectById(@PathVariable("id") Integer projectId, Model model) {
+		ProjectInfoBean infoBean = new ProjectInfoBean();
 		ProjectBean projBean = propService.GetProjBean(projectId);
 		List<DonatePlanBean> dpBeans = propService.getAllDonatePlanBean(projectId);
-		ProjectInfoBean infoBean = propService.getProjectInfo(projectId).get(0);
-		model.addAttribute("projBean", projBean);
+			infoBean = propService.getProjectInfo(projectId);
+		if(infoBean.getPhotoCount() == null) {
+		infoBean.setPhotoCount(0);
+		}
+		infoBean.setProjBean(projBean);
+		model.addAttribute("ProjectBean", projBean);
 		model.addAttribute("dpBeans", dpBeans);
 		model.addAttribute("infoBean", infoBean);
-		return "updateProject";
+		
+		return "/raiseFunding/updateProject";
 	}
 
 	// 建立一個專案專屬的贊助方案
@@ -208,14 +207,16 @@ public class FundsController {
 	public String getProjectPage(@PathVariable("id") Integer id, Model model) {
 		CrowdFundingBean cfBean = propService.getCrowdFundingBean(id);
 		List<DonatePlanBean> dpBeans = propService.getAllDonatePlanBean(id);
-		List<ProjectInfoBean> infoBeans = propService.getProjectInfo(id);// 無法使用新增跟更新同時進行所以寫使用List 待改
+		ProjectInfoBean infoBean = propService.getProjectInfo(id);// 無法使用新增跟更新同時進行所以寫使用List 待改
 		List<PurchaseBean> pcBeans = donateService.getProjMemberByPurchase(id);
+		if(infoBean.getPhotoCount() == null) {
+			infoBean.setPhotoCount(0);
+			infoBean.setProjBean(cfBean.getProjBean());
+		}
 		model.addAttribute("dpBeans", dpBeans);
 		model.addAttribute("cfBean", cfBean);
 		model.addAttribute("pcBeans", pcBeans);
-		if (!infoBeans.isEmpty()) { // 此處如果改善BeanList問題可以不寫判斷
-			model.addAttribute("infoBean", infoBeans.get(0));
-		}
+		model.addAttribute("infoBean", infoBean);
 		return "raiseFunding/crowdFunds";
 	}
 
@@ -282,8 +283,8 @@ public class FundsController {
 		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
 		Blob blob = null;
 		String fileName = null;
-		List<ProjectInfoBean> infoBeans = propService.getProjectInfo(projId);
-		ProjectInfoBean infoBean = infoBeans.get(0);
+		ProjectInfoBean infoBean = propService.getProjectInfo(projId);
+		
 		if (infoBean == null)
 			return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
 		switch (num) {
@@ -331,6 +332,7 @@ public class FundsController {
 		infoBean.setProjectTittle(textTittle);
 		infoBean.setPhotoCount(photoCount);
 		infoBean.setImage01(util.fileTransformBlob(file0));
+		System.out.println(file0);
 		infoBean.setImgName01(util.getFileName(file0));
 		infoBean.setImage02(util.fileTransformBlob(file1));
 		infoBean.setImgName02(util.getFileName(file1));

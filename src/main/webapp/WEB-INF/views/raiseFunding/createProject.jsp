@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
 <link rel=stylesheet type="text/css"
-	href="${pageContext.request.contextPath}/css/create.css">
+	href="${pageContext.request.contextPath}/css/createCss.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/menuStyle.css" />
 <link rel="stylesheet" 
@@ -24,7 +24,7 @@
 </head>
 
 <body>
-	<jsp:include page="../fragment/menu.jsp" />
+<jsp:include page="../fragment/backStageInclud.jsp" />
 	<div id="createWrapper" class="wrapper createWrapper">
 		<div class="createContainer">
 			<section class="createMenu">
@@ -46,39 +46,39 @@
 						<div class="partialWidthBlock projectCardGroup">
 							<div class="projectDataGroup">
 								<h2>專案標題</h2>
-								<input type="text" name="projectName">
+								<input type="text" name="projectName" value="${ProjectBean.projectName}">
 								<P>一個好的標題應該要好記、好搜尋、吸引人想點進去看，並讓瀏覽者能在最短的時間內瞭解專案的核心理念。</P>
 								<h2>內容摘要</h2>
 								<textarea name="projDescript" form="projectForm" rows="7"
-									cols="50" maxlength="200"></textarea>
+									cols="50" maxlength="200">${ProjectBean.projDescript}</textarea>
 								<h2>動人的故事</h2>
 								<textarea name="projStory" form="projectForm" rows="7"
-									cols="50" maxlength="200"></textarea>
+									cols="50" maxlength="200">${ProjectBean.projStory}</textarea>
 								<p>故事訴說作者的理念，強調你的獨一無二之處，讓贊助人對你或你的專案好奇，願意更進一步了解專案。</p>
 							</div>
 							<div class="createProjectCard"></div>
 							<h2>上傳專案圖片</h2>
-							<span>專案區塊圖</span>><input type="file" name="photoStr"
+							<span>專案區塊圖:目前圖片${ProjectBean.photoFileName}</span><input type="file" name="photoStr"
 								accept="image/jpeg,image/png,image/bmp"><br>
-							<span>故事介紹圖</span>><input type="file" name="photoStr2" 
+							<span>故事介紹圖目前圖片${ProjectBean.photoFileName2}</span><input type="file" name="photoStr2" 
 								accept="image/jpeg,image/png,image/bmp">
 							<h2>專案影片 &nbsp; (注意某些私人youtube影片是不開放其他網站載入)</h2>
 							
-							<input type="text" name="vedio" placeholder="請輸入youtube影片連結網址">
+							<input type="text" name="vedio" placeholder="請輸入youtube影片連結網址"  value="https://www.youtube.com/watch?v=${ProjectBean.videoLink}">
 							<h2>募資目標金額</h2>
 							<p>
 								<input type="number" max="99999999" min="0"
-									name="fundsGoal" />
+									name="fundsGoal" value="${ProjectBean.cfBean.fundsGoal}" />
 								元
 							</p>
 							<h2>募資開始與結束日期</h2>
 							<p>
 								開始日期:
-								<input class="datepicker" name="dateBegin" />
+								<input class="datepicker" name="dateBegin" value="${ProjectBean.cfBean.dateBegin}"/>
 							</p>
 							<p>
 								結束日期:
-								<input class="datepicker" name="dateEnd" />
+								<input class="datepicker" name="dateEnd" value="${ProjectBean.cfBean.dateEnd}"/>
 							</p>
 						</div>
 						<div id="submitAll">
@@ -207,11 +207,16 @@
 	<script>
 		var dataDpBeans = null;
 		$(function() {
+			
 			$(".datepicker").datepicker();
+			//設定方案日期按鈕
 			donateOptionElm();
 			$("#dliverDate").val(
 			$("#deliverYear").val() + "-" + $("#deliverMonth").val());
 		
+			
+			
+			//啟用方案彈出功能
 			var dialog, limit = $("#limit"), donateMoney = $("#donateMoney"),
 			allFields = $(
 					[]).add(limit).add(donateMoney), tips = $(".validateTips");
@@ -234,6 +239,7 @@
 					return true;
 				}
 			}
+			
 			//彈出式視窗內的資料送進SERVER
 			function addDonatePlan() {
 				var valid = true;
@@ -376,7 +382,7 @@
 			$('.create-reward').addClass("active");
 			$('.option3').addClass("actived");
 		});
-		
+		//重新掃回方案方塊回頁面
 function dpPlanForEach(dpBeans){
 	$(".dplan-view").html("");
 	for(var dpBean of dpBeans){
@@ -392,7 +398,7 @@ function dpPlanForEach(dpBeans){
 		$(".dplan-view").append(dplan);
 	}
 }
-
+//點擊方案方塊叫回原方案的資料進表格
 function updateForm(dpBean){
 		$("#donateMoney").val(dpBean.donateMoney);
 		$("#donateDescription").text(dpBean.donateDescription);

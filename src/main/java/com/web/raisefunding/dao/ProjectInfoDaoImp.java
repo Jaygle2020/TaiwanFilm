@@ -1,7 +1,7 @@
 package com.web.raisefunding.dao;
 
 import java.io.Serializable;
-import java.util.List;
+import java.sql.SQLException;
 
 import javax.persistence.Query;
 
@@ -52,11 +52,16 @@ public class ProjectInfoDaoImp implements Serializable, ProjectInfoDao {
 	}
 
 	@Override
-	public List<ProjectInfoBean> getProjectInfo(Integer projectId) {
+	public ProjectInfoBean getProjectInfo(Integer projectId) {
+		ProjectInfoBean infoBean = new ProjectInfoBean();
 		Session session = factory.getCurrentSession();
 		String hql = "from ProjectInfoBean where projectId = :projId";
-		List<ProjectInfoBean> infoBean = session.createQuery(hql).setParameter("projId", projectId)
-								   .getResultList();
+		try {
+			 infoBean = (ProjectInfoBean) session.createQuery(hql).setParameter("projId", projectId)
+					   .getSingleResult();
+		} catch (Exception e) {
+		e.printStackTrace(); System.out.println("these is no projectInfo");
+		}
 		return infoBean;
 	}
 
