@@ -25,7 +25,7 @@
 	<jsp:include page="fragment/menu.jsp" />
  <!-- 改改改 -->
 
-	<div class="bottom-bar">
+	<div class="bottom-bar">	
 		<div class="bottom-bar-content">豐盛之城－臺灣三部曲 Formosa Wonderland -
 			「勇士計畫」預計2021年啟動</div>
 	</div>

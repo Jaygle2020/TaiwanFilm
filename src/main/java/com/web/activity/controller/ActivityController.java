@@ -60,7 +60,6 @@ public class ActivityController {
 	@Autowired
 	ServletContext context;
 
-
 	/* 查多筆 未登入 */
 	@RequestMapping("/activities")
 	public String ActivityLogINNot(Model model) {

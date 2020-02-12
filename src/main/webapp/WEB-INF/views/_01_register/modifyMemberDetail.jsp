@@ -147,6 +147,11 @@ top:2px;
 			</table>
 			<input type="submit" id="bt1" value="確認" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <!-- 			<input type="reset" id="bt2" value="清空"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+			<form method="POST" action="${pageContext.request.contextPath}/_01_register/DoNotMember">
+			<input style="display: none;" name="memberId" id="memberId" value="${sessionScope.members.memberId}"/>
+			<input style="display: none;" name="email" id="email" value="${sessionScope.members.email}"/>
+			<input type="submit" id="bt2" value="取消會員" />
+			</form>
 			<div>
 			<button ><a href="/TaiwanFilm/ShowAllMembers" style="text-decoration: none; color: black;">上一頁</a></button>
 			<button ><a href="/TaiwanFilm/_01_register/MemberBackstage" style="text-decoration: none; color: black;">管理者頁面</a></button>

@@ -142,7 +142,7 @@ top:2px;
 				</tr>
 			</c:forEach>
 		</table>
-<br> <button><a href="<c:url value='/_01_register/MemberBackstage' />">回前頁</a></button>
+<br> <button><a href="<c:url value='/backstage' />">回前頁</a></button>
 	</c:otherwise>
 </c:choose>
 <hr>

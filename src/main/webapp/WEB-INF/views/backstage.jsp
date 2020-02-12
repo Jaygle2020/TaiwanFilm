@@ -80,6 +80,7 @@
 		.s-bar1:hover{background: #EA0082;}.s-bar2:hover{background: #EA0082;}.s-bar3:hover{background: #EA0082;}
 		.i-bar1:hover{background: #EA0082;}.i-bar2:hover{background: #EA0082;}.i-bar3:hover{background: #EA0082;}
 	
+		.back-member:hover{background:#EA0082}
 		.back-funds:hover{background:#EA0082} 
 		.back-activity:hover{background:#EA0082} 
 		.back-movie:hover{background:#EA0082} 
@@ -99,15 +100,30 @@
 	</div>         
 	<div class="backStage-bar">
 		<div class="backStage-title">
+			<div class="back-member backstage-title">會員管理</div>
+			<div class="choose-list-member choose-list">  
+				<a href="${pageContext.request.contextPath}/ShowAllMembers">
+					<div class="m-bar1">查詢全部會員</div>
+				</a>  
+				<a href="">
+					<div class="m-bar2">模糊查詢</div>
+				</a>
+<!-- 				<a href=""> -->
+<!-- 					<div class="m-bar3">新增活動</div> -->
+<!-- 				</a>       -->
+				
+			</div> 
+		</div>
+		<div class="backStage-title">
 			<div class="back-activity backstage-title">活動</div>
 			<div class="choose-list-activity choose-list">  
-				<a href="allActivityM"> 
+				<a href="${pageContext.request.contextPath}/allActivityM"> 
 					<div class="a-bar1">查詢全部活動</div>
 				</a>  
-				<a href="activitiesM">
+				<a href="${pageContext.request.contextPath}/activitiesM">
 					<div class="a-bar2">查詢分類活動</div>
 				</a>
-				<a href="addActivities">
+				<a href="${pageContext.request.contextPath}/addActivities">
 					<div class="a-bar3">新增活動</div>
 				</a>      
 				
@@ -153,7 +169,10 @@
 <!-- </body> -->            
  
 	<script>
-		 
+
+		$(".back-member").click(function(){
+		$(".choose-list-member").slideToggle();
+		})
 		$(".back-funds").click(function(){
 			$(".choose-list-funds").slideToggle();
 		})

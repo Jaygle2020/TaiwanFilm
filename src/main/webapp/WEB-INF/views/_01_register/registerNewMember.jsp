@@ -72,6 +72,7 @@
 							placeholder='確認密碼'  required='required' maxlength="16" 
 						pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"/>
 						<td id="pwdErrorBox" style="color: red; font-size:8px;text-align:left" ></td>
+						<tr><td><form:hidden path="memberMode" value="1" />
 <%-- 						<td> <form:input type='file' path="memImage"  --%>
 <%-- 			id="memberImage"  class='form:input-large' src="../img/NoImage_Male.png"  />   --%>
 <!-- 						<td><img  id="" src="../img/NoImage_Male.png" style="display:none" > -->

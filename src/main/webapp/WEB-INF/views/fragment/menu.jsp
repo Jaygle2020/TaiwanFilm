@@ -53,29 +53,21 @@
 			<a href="messages">
 			 <div class="menu-buttonStyle">留言板</div>
 			</a>
-
+			<c:if test="${sessionScope.members.memberMode == 2}">
+			
 			<a href="backstage">
 				<div class="menu-buttonStyle">進入後台</div>
 			</a>    
+			</c:if>
 		</div>
 
 	</div>
-	<div class="loginOrOut">
+	<div class="loginOrOut" style=" width:125px;">
 			<div class="right-menu">
-		<c:if test="${sessionScope.members.memberId == 1}">		
-<!-- 			<div> -->
-<!-- 				<a href="activitiesM">活動後台</a> -->
-<!-- 			</div> -->
-<!-- 			<div> -->
-<!-- 				<a href="alterMovie">後台</a> -->
-<!-- 			</div> -->
-			<div>
-			<a href="${pageContext.request.contextPath}/_01_register/MemberBackstage">管理員後台</a>
-			</div>
-		</c:if>
+
 		<c:if test="${not empty sessionScope.members.email}">
 			<div class="myAccount">
-				<span style="z-index: 800"  onclick="memberButton()">${sessionScope.members.memberName}</span>
+				<p style="z-index: 800"  onclick="memberButton()">${sessionScope.members.memberName}
 				
 				<!--  如果沒有給照片的話    性別是女生 就給女生照片   無照片跟男性給男生照片 -->
 				<c:if test="${empty sessionScope.members.fileName}">
@@ -91,6 +83,7 @@
 				<c:if test="${not empty sessionScope.members.fileName}">
 				<img width='20' height='20' src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
 				</c:if>
+				</p>
 			</div>
 		</c:if>
 		<c:if test="${empty sessionScope.members.email}">
@@ -100,7 +93,7 @@
 		</c:if>
 	</div>
 		<div id="memberDetail"
-		style="padding: 5px; display: none; width: 100px; height: 200px; background: #ebebeb; 
+		style="padding: 5px; display: none; width: 100px; height: 110px; background: #ebebeb; 
 		position: absolute; right: 5px; top: 68px; z-index: 800">
 		<a href="${pageContext.request.contextPath}/UpdateMember">修改個人資料</a> <br>
 		<a href="${pageContext.request.contextPath}/member/purchase">個人贊助</a> <br>
