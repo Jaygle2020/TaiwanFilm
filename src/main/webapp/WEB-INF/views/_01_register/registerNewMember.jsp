@@ -20,7 +20,8 @@
 }
 .memberNewTotalDiv{
 	width:100%;
-/* 	background-color: #ebebeb; */
+	height: 719px;
+	background-color:white;
 	text-align:center;
 }
 .memberNewMainDiv {
@@ -33,10 +34,23 @@
       color: blue
       }
       body{
-      background-image:url(${pageContext.request.contextPath}/img/activity/gg2.jpg);
+      background-color:wihte;
       background-repeat:no-repeat;
       background-size:100%;
       }
+	.loginOrOut{
+	display:none;
+	}
+	body{
+	background-color:white;
+	}
+	b{
+	font-size: 46px;
+	 margin-bottom: 30px;
+}
+	#focusToBlue{
+	font-size:8px;
+	}
 
 </style>
 </head>
@@ -49,7 +63,7 @@
 	 <div class="memberNewTotalDiv">
 		<div class="memberNewMainDiv">
 			<h3>
-				<font style="font-size: 30px;">輸入會員資料</font>
+				<b >輸入會員資料</b>
 			</h3>	
 
 				<table>
@@ -98,12 +112,13 @@
 <br>
 				<div style="color: red; font-size:8px; text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;*為必填欄位</div>
 				<div  style="font-size:8px;"> 已閱讀並同意：
-				<b id="focusToBlue" style="font-size:8px;" >使用者協定</b>和
-				<b id="focusToBlue"> 隱私政策</b></div>
+				<b id="focusToBlue" >使用者協定</b>和
+				<b id="focusToBlue" > 隱私政策</b></div>
 		</div>
 		</div>
 </form:form>
 </div>
+<jsp:include page="../fragment/bottom.jsp" /> 
 		<script	src="${pageContext.request.contextPath }/js/registerNewMember.js"></script>
 		<script>
 		
@@ -200,6 +215,6 @@
 			})
 		})
 		
-		</script>	
+		</script>	 
 </body>
 </html>
