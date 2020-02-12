@@ -57,21 +57,7 @@ public class MessageController {
 	@RequestMapping("/messages")
 	public String list(Integer id, Model model) {
 		List<MessageBean> list = service.getAllMessages();
-
-//		for (MessageBean msBean : list) {
-//			String mss = msBean.getMessageContent();
-//			while (mss.indexOf("<p>") != (-1)) {
-//				mss = msBean.getMessageContent().replace("<p>", "<span>");
-//				msBean.setMessageContent(mss);
-//				System.out.println(mss);
-//			}
-//			String mas =msBean.getMessageContent();
-//			while (mas.indexOf("</p>") != (-1)) {
-//				mas = msBean.getMessageContent().replace("/<p>", "</span>");
-//				msBean.setMessageContent(mas);
-//			}
-//		}
-
+		
 		model.addAttribute("messages", list);
 		return "message/messages";
 	}

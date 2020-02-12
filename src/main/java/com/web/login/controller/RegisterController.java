@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.text.ParseException;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -32,9 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.web.login.Model.MembersBean;
 import com.web.login.Service.MembersService;
-
-
-
+import com.web.message.model.MessageBean;
 
 
 @Controller
@@ -105,44 +104,42 @@ public class RegisterController {
 
 	}
 	
-	@GetMapping("/ToIndex")
-	public String returnToIndex() {	
-		return "index";
-	}
-	
-	@RequestMapping("/register")
-	public String register() {
-		return "_01_register/register";
-	}
 
-	@RequestMapping("/members")
-	public String memberpage(Model model) {
-		return "index";
-	}
 
 	@PostMapping("/Checklogin")
 	public String memberCheckLogin(@ModelAttribute("MembersBean") MembersBean member, Model model, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("Login頁面");
-		MembersBean bean = service.login(member.getEmail(), member.getPassword());
-		System.out.println(member.getPassword());
+		MembersBean bean = service.login(request.getParameter("email"),request.getParameter("password"));
 		System.out.println("這是BEAN" + bean);
-		
-		if (bean != null) {
-			session.setAttribute("members", bean);
-			return "index";
-		}
-		member = service.getMemberByBean(member);
-		model.addAttribute("members", member);
-		
-		// 記住原本的頁面, 登入後系統自動轉回原本的頁面。
-		String requestURI = (String) session.getAttribute("requestURI");
-		System.out.println("請求URI requestURI:"+requestURI);
-		if (requestURI != null) {
-			return "redirect:" + requestURI;
-		}
+		if (request.getParameter("email") == null || request.getParameter("password") == null) {
+			model.addAttribute("errorMessage", "帳號或密碼欄不能為空");
+			return "_01_register/register";}
+		try {
+			
 
-		return "index";
+		if (bean.getMemberMode().equals("2") || bean.getMemberMode().equals("1") ) {
+			model.addAttribute("members", bean);
+			System.out.println("登入成功");
+			
+			return "redirect:/";
+		}
+		} catch (Exception e) {
+		
+//		else if(bean.getMemberMode() == "0") {
+//			System.out.println("非會員");
+//			return "_01_register/MemberBackstage";
+//		}		
+			System.out.println("無帳號");
+			return "_01_register/register";
+		}
+		// 記住原本的頁面, 登入後系統自動轉回原本的頁面。
+//		String requestURI = (String) session.getAttribute("requestURI");
+//		System.out.println("請求URI requestURI:"+requestURI);
+//		if (requestURI != null) {
+//			return "redirect:" + requestURI;
+//		}
+		return "_01_register/register";
 	}
 
 	@RequestMapping(value = "/UpdateMember")
@@ -158,19 +155,22 @@ public class RegisterController {
 			Model model, 
 			HttpSession session) {
 			MembersBean member = new MembersBean();
-			member.setEmail(request.getParameter("email"));
-			member.setMemberMode("2");
+			System.out.println(" controller控制台 取到ID"+request.getParameter("memberId"));
+			System.out.println(" controller控制台 取到信箱"+request.getParameter("email"));
+			System.out.println(" controller控制台 取到會員身分"+request.getParameter("memberMode"));
+			member.setEmail(request.getParameter("email"));		
+			member.setMemberMode(request.getParameter("memberMode"));
 
 		
-			if(service.updateMembers(member)) {
-				System.out.println("會員資料修改成功");
+			if(service.modifyMembers(member)) {
+				System.out.println("會員狀態修改成功");
 				model.addAttribute("members", service.getAllMembers());
 				return "_01_register/allMembers";
 			} else {
 				System.out.println("會員資料修改失敗");
 				return "_01_register/DomodifyMember";
 			}		
-		return "" ;
+		//return "" ;
 	}
 	@RequestMapping(value = "/_01_register/DomodifyMember", method = RequestMethod.POST)
 	public String DomodifyMember(@RequestParam("memImage")
@@ -333,8 +333,8 @@ public class RegisterController {
 		return result;
 	}
 	
- @GetMapping("/ShowAllMembers")
- public String list(Model model) {
+@GetMapping("/ShowAllMembers")
+public String list(Model model) {
 		model.addAttribute("members", service.getAllMembers());
 	 return "_01_register/allMembers";
  }
@@ -348,8 +348,28 @@ public class RegisterController {
 	 return "_01_register/modifyMemberDetail";
  	}
  
- 
- 
- 
+	@GetMapping("/ToIndex")
+	public String returnToIndex() {	
+		return "index";
+	}
+	
+	@RequestMapping("/register")
+	public String register() {
+		return "_01_register/register";
+	}
+
+	@RequestMapping("/members")
+	public String memberpage(Model model) {
+		return "index";
+	}
+
+	@GetMapping("/FuzzyQuery")
+	public String FuzzyQuery(String keyword,Model model)  {
+		List<MembersBean> list = service.getMemberByEmail(keyword); 
+		model.addAttribute("members", list);
+		System.out.println("keyword 是:" + keyword);
+		return "_01_register/FuzzyQuery";
+	}
+
  
 }

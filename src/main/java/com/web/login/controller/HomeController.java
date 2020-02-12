@@ -2,6 +2,8 @@ package com.web.login.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import com.web.activity.model.activityBean;
 import com.web.activity.service.ActivityService;
 import com.web.booking.model.movieBean;
 import com.web.booking.service.bookingService;
+import com.web.login.Model.MembersBean;
 import com.web.raisefunding.model.ProjectBean;
 import com.web.raisefunding.service.ProposalService;
 
@@ -26,7 +29,7 @@ public class HomeController {
 	@Autowired
 	ProposalService PropService;
 	@RequestMapping("/") // 看到斜線 就走去index
-	public String home(Model model) {
+	public String home(Model model,HttpSession session) {
 		List<activityBean> activityList = ActiveService.getAllActivitiesExceptStatusEqualOne();
 		model.addAttribute("activityList", activityList);
 		
@@ -44,6 +47,13 @@ public class HomeController {
 		
 		ProjectBean projBean = PropService.GetProjBean(1);
 		model.addAttribute("projectBean",projBean);
+		
+		String testNum = "0";
+		MembersBean mbBean = (MembersBean) session.getAttribute("members");
+		if(mbBean !=null ) {
+			testNum = mbBean.getMemberMode();
+		}
+		model.addAttribute("testNum",testNum);
 		return "index";
 	}
 	

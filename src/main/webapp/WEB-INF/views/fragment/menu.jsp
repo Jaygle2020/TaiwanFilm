@@ -19,7 +19,7 @@
 
 	<div class="fixed"></div>
 	<div class="left-bar">  
-		<a href="/TaiwanFilm" style="text-decoration: none">
+		<a href="${pageContext.request.contextPath}/TaiwanFilm" style="text-decoration: none">
 			<div class='goToMid-l' style="text-decoration: none">
 				<div>Taiwan Films</div>   
 			</div>	
@@ -57,7 +57,8 @@
 			<a href="messages">
 			 <div class="menu-buttonStyle">留言板</div>
 			</a>
-			<c:if test="${sessionScope.members.memberMode == 2}">			
+			
+			<c:if test="${testNum == 2}">			
 			<a href="backstage">
 				<div class="menu-buttonStyle">進入後台</div>
 			</a>    
