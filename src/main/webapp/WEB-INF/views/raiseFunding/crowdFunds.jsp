@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<jsp:include page="../fragment/menu.jsp" />
+<jsp:include page="../backstage.jsp" />
 	<div class="wrapper">
 		<section>
 			<!-- 企劃上半部 -->
