@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
-
-
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+<!DOCTYPE html>
+<html>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" type="text/css">
 <!-- 	<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap" rel="stylesheet">
 
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet"> -->
 <!-- <link id="MonoTypeFontApiFontTracker" type="text/css" rel="stylesheet" href="https://fast.fonts.net/t/1.css?apiType=js&amp;projectid=b2d946f7-734c-4b45-a07f-3923a384b0dd"> -->
-	
+
+
+<body style="margin: 0">	  
 
 	<div class="fixed"></div>
 	<div class="left-bar">  
@@ -53,8 +57,7 @@
 			<a href="messages">
 			 <div class="menu-buttonStyle">留言板</div>
 			</a>
-			<c:if test="${sessionScope.members.memberMode == 2}">
-			
+			<c:if test="${sessionScope.members.memberMode == 2}">			
 			<a href="backstage">
 				<div class="menu-buttonStyle">進入後台</div>
 			</a>    
@@ -140,5 +143,7 @@ $(".close-menu").click(function() {
 	$('body').css('overflow', 'visible');
 
 });
+
+
 
 </script>
