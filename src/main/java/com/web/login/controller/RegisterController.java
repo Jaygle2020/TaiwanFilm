@@ -33,7 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.web.login.Model.MembersBean;
 import com.web.login.Service.MembersService;
-import com.web.message.model.MessageBean;
+
 
 
 @Controller
@@ -356,6 +356,7 @@ public String list(Model model) {
 	@RequestMapping("/register")
 	public String register() {
 		return "_01_register/register";
+//		return "_01_register/register";
 	}
 
 	@RequestMapping("/members")
@@ -365,6 +366,7 @@ public String list(Model model) {
 
 	@GetMapping("/FuzzyQuery")
 	public String FuzzyQuery(String keyword,Model model)  {
+
 		List<MembersBean> list = service.getMemberByEmail(keyword); 
 		model.addAttribute("members", list);
 		System.out.println("keyword 是:" + keyword);

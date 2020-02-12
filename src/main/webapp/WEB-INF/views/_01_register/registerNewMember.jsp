@@ -41,6 +41,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="../fragment/menu.jsp" /> 
 <div>
 	<form:form method='POST' modelAttribute="MembersBean" 
 	action="${pageContext.request.contextPath}/_01_register/registerNewMember"

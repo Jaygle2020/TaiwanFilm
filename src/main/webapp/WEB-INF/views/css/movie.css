@@ -223,19 +223,11 @@ a {
     height: 250px;
     display: inline-block;
 }    
-#sign-in{
-	background-color: #ffffff;
-	margin: 5px;
-	hight:230px
-}
-#sign-up{
-	margin: 5px;
-	background-color: #ffffff;
-	hight:230px
-}
+
 .registrTotalDiv{
 	padding-top:100px;
 text-align:center;     
+height:570px;
 }
 /* .registrMainDiv{	 */
 /* 	width:30%; */

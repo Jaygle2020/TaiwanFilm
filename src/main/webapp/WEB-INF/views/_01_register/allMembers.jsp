@@ -163,7 +163,10 @@ top:2px;
 	</c:otherwise>
 </c:choose>
 <hr>
-
+<form  type="get" action="${pageContext.request.contextPath}/FuzzyQuery">
+	<input class="query" type="text" name="keyword" value=""
+			placeholder="搜尋文章⋯">查詢會員
+</form>
 
 keyword
 </div>
