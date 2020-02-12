@@ -59,8 +59,9 @@ public class RootAppConfig {
 				"com.web.login.Model",
 				"com.web.booking.model",
 				"com.web.activity.model",
-				"com.web.message.model"
-				
+				"com.web.message.model",
+				"com.web.store.model",
+				"com.web.shoppingCart.model"
 				
 		});
 		if (SystemConstant.DB_TYPE == SystemConstant.MYSQL) {
