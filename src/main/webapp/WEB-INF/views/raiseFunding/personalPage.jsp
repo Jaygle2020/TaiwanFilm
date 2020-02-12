@@ -19,11 +19,12 @@
 <jsp:include page="../fragment/menu.jsp" />
     <div class="pageWrapper">   
         <div class="upper">
-            <P class="memberName" data-memberId="${mbBean.memberId}">${mbBean.memberName}&ensp;&ensp;您好</P>
-            <P>其他消息</P>
+           	<h2>贊助記錄</h2>
+            <P>在專案結束之前，您都可修改你的回饋寄送資訊，ATM 轉帳與超商付款請於繳費期限內繳款。逾期後訂單會自動消失。</P>
+             <P>已支持的項目</P>
         </div>
         <div class="down">
-            <P>已支持的項目</P>
+           
             <c:if test="${pcBeans!=null}">
             <c:forEach items="${pcBeans}"  var="pcBean">
             <div class="inner" id="project12">
