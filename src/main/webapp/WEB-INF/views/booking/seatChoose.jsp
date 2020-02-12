@@ -6,13 +6,16 @@
 <html lang="zh-TW">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/movie2.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/menuStyle.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
 <head>
-<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath }/favicon.ico" />
 <title>Taiwam Films - 網路訂票</title>
 <link
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -54,8 +57,9 @@ form {
 }
 
 .leftbar {
-	width: 69%;
+	width: 60%;
 	display: inline-block;
+	padding-left: 9%;
 }
 
 #select-seats-container {
@@ -63,13 +67,14 @@ form {
 }
 
 .ticketSelect table {
-	width: 65%;
+	width: 71%;
 	text-align: left;
 	padding: 5px;
 	border-collapse: collapse;
 }
 
 .ticketSelect th {
+	padding-left: 5px;
 	height: 40px;
 	background-color: lightsteelblue;
 }

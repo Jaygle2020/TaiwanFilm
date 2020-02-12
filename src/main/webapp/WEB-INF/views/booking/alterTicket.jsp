@@ -16,6 +16,8 @@
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/movie.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/menuStyle.css">
 <style>
 body {
 	background: #f1f1f1;

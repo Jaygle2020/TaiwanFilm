@@ -1,3 +1,7 @@
+body {
+	margin: 0;
+}
+
 .fixed {
 	width: 100%;
 	opacity: 0.6;
@@ -75,7 +79,7 @@
 	right: 15px;
 }
 
-.dot {     
+.dot {
 	width: 10px;
 	height: 10px;
 	display: inline-block;
@@ -101,9 +105,10 @@
 	z-index: 60;
 	text-align: center;
 	transition: 0.2s;
-	color: black;        
+	color: black;
 }
-.goToMid-l{
+
+.goToMid-l {
 	position: relative;
 	font-size: 25px;
 	padding-right: 15px;
@@ -112,12 +117,13 @@
 	z-index: 60;
 	text-align: center;
 	transition: 0.2s;
-	color: black;      
+	color: black;
 }
 
-.goToMid-l:hover{
+.goToMid-l:hover {
 	color: #EA0082;
-}    
+}
+
 .close-menu {
 	writing-mode: tb-rl;;
 	position: absolute;
@@ -164,9 +170,10 @@
 	color: #EA0082;
 }
 
-.menu-buttonStyle{
+.menu-buttonStyle {
 	color: white;
 }
-.menu-buttonStyle:hover{
+
+.menu-buttonStyle:hover {
 	color: pink;
 }

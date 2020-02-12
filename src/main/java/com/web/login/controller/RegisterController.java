@@ -170,7 +170,6 @@ public class RegisterController {
 				System.out.println("會員資料修改失敗");
 				return "_01_register/DomodifyMember";
 			}		
-		return "" ;
 	}
 	@RequestMapping(value = "/_01_register/DomodifyMember", method = RequestMethod.POST)
 	public String DomodifyMember(@RequestParam("memImage")
