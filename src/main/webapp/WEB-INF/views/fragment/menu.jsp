@@ -19,7 +19,7 @@
 
 	<div class="fixed"></div>
 	<div class="left-bar">  
-		<a href="${pageContext.request.contextPath}/TaiwanFilm" style="text-decoration: none">
+		<a href="/TaiwanFilm" style="text-decoration: none">
 			<div class='goToMid-l' style="text-decoration: none">
 				<div>Taiwan Films</div>   
 			</div>	
