@@ -109,7 +109,7 @@ public class ProposalServieImp implements ProposalService {
 	
 	@Transactional
 	@Override
-	public List<ProjectInfoBean> getProjectInfo(Integer projectId) {
+	public ProjectInfoBean getProjectInfo(Integer projectId) {
 		return infoDao.getProjectInfo(projectId);
 	}
 	

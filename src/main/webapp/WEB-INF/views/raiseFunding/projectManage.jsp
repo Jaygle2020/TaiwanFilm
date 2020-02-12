@@ -11,17 +11,18 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-   	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/projectManage.css" >
+   	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/Manage.css" >
    	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" >
 </head>
 
 <body>
-<jsp:include page="../fragment/menu.jsp" />
+<jsp:include page="../fragment/backStageInclud.jsp" />
     <div class="pageWrapper">
     <div class="functionWrapper">
         
         <h2>目前存在專案</h2>
-        <div class="addProject"><button type="button" onclick="addProject()">新增專案內容</button></div>
+       
         
     </div>
     <div class="formWrapper">
@@ -32,7 +33,7 @@
                 <th>募資截止日</th>
                 <th>目前金額</th>
                 <th>目標金額</th>
-                <th>進度百分比</th>
+                <th>進度百分比</th><button type="button" onclick="addProject()">新增專案內容</button>
             </thead>
             <c:if test="${cfBeans!=null}">
             <c:forEach items="${cfBeans}" var="cfBean">
@@ -57,8 +58,8 @@
     }
     
     $("td:last-child").click(function () {
-            alert("hello");
-	var url = "${pageContext.request.contextPath}/"+$(this).attr("id");
+       var id  = $(this).find("button").attr("id");
+       window.location.href = "${pageContext.request.contextPath}/updateProject/"+id;
     })
     </script>
 
