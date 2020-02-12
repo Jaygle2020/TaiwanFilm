@@ -13,6 +13,7 @@ import com.web.login.Model.MembersBean;
 import com.web.message.dao.MessageDao;
 import com.web.message.model.MessageBean;
 import com.web.message.model.ReplyBean;
+import com.web.raisefunding.model.ProjectInfoBean;
 
 @Repository
 public class MessageDaoImpl implements MessageDao {
@@ -59,6 +60,28 @@ public class MessageDaoImpl implements MessageDao {
 		return list;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MessageBean> getMessagesByLike() {
+		String hql = "FROM MessageBean   ORDER  BY   messageLike DESC";
+		Session session = null;
+		List<MessageBean> list = new ArrayList<>();
+		session = factory.getCurrentSession();
+		list = session.createQuery(hql).getResultList();
+		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MessageBean> getMessagesByDate() {
+		String hql = "FROM MessageBean   ORDER  BY  createDate DESC";
+		Session session = null;
+		List<MessageBean> list = new ArrayList<>();
+		session = factory.getCurrentSession();
+		list = session.createQuery(hql).getResultList();
+		return list;
+	}
+
 	// 查詢留言by messageId
 	@Override
 	public ReplyBean getReplyByMessageId(int messageId) {
@@ -78,7 +101,7 @@ public class MessageDaoImpl implements MessageDao {
 //模糊查詢
 	@Override
 	public List<MessageBean> getMessageByTitle(String keyword) {
-		String hql = "from MessageBean c WHERE c.messageTitle like '" + keyword + "%'";
+		String hql = "from MessageBean c WHERE c.messageTitle like '" + keyword + " %' ";
 		List<MessageBean> list = new ArrayList<>();
 		Session session = factory.getCurrentSession();
 		list = session.createQuery(hql).setMaxResults(15).getResultList();
@@ -150,12 +173,14 @@ public class MessageDaoImpl implements MessageDao {
 		Session session = factory.getCurrentSession();
 		session.createQuery(hql).setParameter("newReplyDelete", 2).setParameter("replyId", replyId).executeUpdate();
 	}
+
 	// 檢舉留言
 	@Override
 	public void reportReply(ReplyBean reply) {
 		String hql = "UPDATE ReplyBean SET replyReport=:newReplyReport WHERE replyId=:replyId";
 		Session session = factory.getCurrentSession();
-		session.createQuery(hql).setParameter("newReplyReport",reply.getReplyReport() ).setParameter("replyId", reply.getReplyId()).executeUpdate();
+		session.createQuery(hql).setParameter("newReplyReport", reply.getReplyReport())
+				.setParameter("replyId", reply.getReplyId()).executeUpdate();
 	}
 
 	// 刪除文章
@@ -165,7 +190,7 @@ public class MessageDaoImpl implements MessageDao {
 		Session session = factory.getCurrentSession();
 		session.createQuery(hql).setParameter("newMessageDelete", 2).setParameter("messageId", messageId)
 				.executeUpdate();
-	System.out.println(messageId);
+		System.out.println(messageId);
 	}
 
 	// 編輯留言
@@ -185,6 +210,14 @@ public class MessageDaoImpl implements MessageDao {
 		Session session = factory.getCurrentSession();
 		MembersBean mb = session.get(MembersBean.class, memberId);
 		return mb;
+	}
+
+	@Override
+	public List<MessageBean> getMessageInfo(Integer messageId) {
+		Session session = factory.getCurrentSession();
+		String hql = "from MessageBean where messagetId = :messageId";
+		List<MessageBean> messageBean = session.createQuery(hql).setParameter("messageId", messageId).getResultList();
+		return messageBean;
 	}
 
 }

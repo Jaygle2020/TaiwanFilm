@@ -44,4 +44,10 @@ public interface MessageDao {
 
 	void reportReply(ReplyBean reply);
 
+	List<MessageBean> getMessageInfo(Integer messageId);
+
+	List<MessageBean> getMessagesByLike();
+
+	List<MessageBean> getMessagesByDate();
+
 }

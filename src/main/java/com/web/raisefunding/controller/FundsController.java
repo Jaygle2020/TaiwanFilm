@@ -261,6 +261,7 @@ public class FundsController {
 		infoBean.setProjectTittle(textTittle);
 		infoBean.setPhotoCount(photoCount);
 		infoBean.setImage01(util.fileTransformBlob(file0));
+		System.out.println(file0);
 		infoBean.setImgName01(util.getFileName(file0));
 		infoBean.setImage02(util.fileTransformBlob(file1));
 		infoBean.setImgName02(util.getFileName(file1));

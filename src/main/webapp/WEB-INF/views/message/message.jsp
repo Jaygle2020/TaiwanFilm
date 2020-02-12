@@ -26,16 +26,19 @@
 			<div style="text-align: left; display: inline-block; font-size: 40px">${message.messageTitle}</div>
 			<div style="display: inline-block; width: 100%">
 				<div style="display: inline-block; width: 80%">
-					發文者 : ${message.memberBean.memberImage}
+					發文者 : <img width='20' height='20'
+						src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
+					<%-- ${message.memberBean.memberImage} --%>
 					${message.memberBean.memberName}
 					<c:if test="${members.memberId == message.memberBean.memberId}">
 						<a
 							href="<spring:url value='/update/message/${message.messageId}' />">編輯</a>
-							<a
+						<a
 							href="<spring:url value='/deleteMessage/${message.messageId}' />">刪除</a>
 					</c:if>
 				</div>
-				<div style="display: inline-block; width: 20%; text-align: right; float: right">
+				<div
+					style="display: inline-block; width: 20%; text-align: right; float: right">
 					<button id="likebutton" onclick="like(${message.messageId})">讚</button>
 				</div>
 			</div>
@@ -50,7 +53,10 @@
 			<c:forEach var='replys' items='${replys}'>
 				<c:if test="${ replys.replyDelete ==1}">
 					<div style="display: inline-block; width: 100%">
-						<div style="display: inline-block; width: 8%">${replys.membersBean.memberImage }</div>
+						<div style="display: inline-block; width: 8%">
+							<img width='20' height='20'
+								src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
+						</div>
 						<div style="display: inline-block; width: 8%">${replys.membersBean.memberName }</div>
 						<div id="content${replys.replyId}"
 							style="display: inline-block; width: 49%">${replys.replyContent}</div>
@@ -68,15 +74,17 @@
 								style="display: inline-block; text-align: right; width: 5%">
 								<input type="hidden" name="replyId" value="${replys.replyId }">
 								<div>
-								<button type="submit" onclick="del()">刪除</button>
+									<button type="submit" onclick="del()">刪除</button>
 								</div>
 							</form>
-						</c:if >
+						</c:if>
 						<c:if test="${replys.membersBean.memberId!=members.memberId }">
-								<div style="display: inline-block; text-align: right; width: 7%">
-								<button id="reportbutton${replys.replyId}" onclick="report(${replys.replyId})">檢舉</button>
-								</div>
-								<div  id="hidden22" style="display:none ; text-align: right; width: 5%">已檢舉</div>
+							<div style="display: inline-block; text-align: right; width: 7%">
+								<button id="reportbutton${replys.replyId}"
+									onclick="report(${replys.replyId})">檢舉</button>
+							</div>
+							<div id="hidden22"
+								style="display: none; text-align: right; width: 5%">已檢舉</div>
 						</c:if>
 					</div>
 				</c:if>
