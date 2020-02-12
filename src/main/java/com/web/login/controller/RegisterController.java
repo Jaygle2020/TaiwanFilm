@@ -107,10 +107,6 @@ public class RegisterController {
 	}
 	
 
-	@RequestMapping("/members")
-	public String memberpage(Model model) {
-		return "index";
-	}
 	@Autowired
 	ActivityService ActiveService;
 	@PostMapping("/Checklogin")

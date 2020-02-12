@@ -1,3 +1,7 @@
+body{
+	background-image: url("../img/wall1.jpeg");
+}
+
 .header {
   width: 100%;
   background-color: #f1f1f1;
