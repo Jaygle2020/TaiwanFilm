@@ -18,8 +18,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.web.login.Model.MembersBean;
 import com.web.shoppingCart.model.OrderBean;
 import com.web.shoppingCart.model.OrderItemBean;
 import com.web.shoppingCart.model.ShoppingCart;
@@ -59,7 +59,7 @@ public class ShoppingCartController {
 
 		
 
-		return "ShowCartContent";
+		return "store/ShowCartContent";
 		
 	}
 
@@ -94,7 +94,7 @@ public class ShoppingCartController {
 			sc.modifyQty(bookId, newQty); // 修改某項商品的數項
 
 		}
-		return "ShowCartContent";
+		return "store/ShowCartContent";
 	}
 
 	@PostMapping("/clearCart")
@@ -125,7 +125,7 @@ public class ShoppingCartController {
 			return "index";
 		}
 		// 結帳
-		return "OrderConfirm";
+		return "store/OrderConfirm";
 	}
 
 	@PostMapping("/ProcessOrder")
@@ -136,11 +136,11 @@ public class ShoppingCartController {
 
 			return "index";
 		}
-//		MemberBean mb = (MemberBean) session.getAttribute("LoginOK");
-//		if (mb == null) {
-//			
-//			return "index";
-//		}
+		MembersBean mb = (MembersBean) session.getAttribute("members");
+		if (mb == null) {
+			
+			return "index";
+		}
 		ShoppingCart sc = (ShoppingCart) session.getAttribute("ShoppingCart");
 		if (sc == null) {
 			// 處理訂單時如果找不到購物車(通常是Session逾時)，沒有必要往下執行
@@ -154,14 +154,14 @@ public class ShoppingCartController {
 
 			return "index";
 		}
-//		String memberId = mb.getMemberId();   						// 取出會員代號
+		Integer memberId = mb.getMemberId();  						// 取出會員代號
 		double totalAmount = Math.round(sc.getSubtotal()); // 計算訂單總金額
 		String shippingAddress = request.getParameter("ShippingAddress"); // 出貨地址
 		String bNO = request.getParameter("BNO"); // 發票的統一編號
 		String invoiceTitle = request.getParameter("InvoiceTitle"); // 發票的抬頭
 		Date today = new Date(); // 新增訂單的時間
 		// 新建訂單物件。OrderBean:封裝一筆訂單資料的容器，包含訂單主檔與訂單明細檔的資料。目前只存放訂單主檔的資料。
-		OrderBean ob = new OrderBean(null, "1", totalAmount, shippingAddress, bNO, invoiceTitle, today, null, null);
+		OrderBean ob = new OrderBean(null, memberId, totalAmount, shippingAddress, bNO, invoiceTitle, today, null, null);
 		System.out.println(ReflectionToStringBuilder.toString(ob));
 		// 取出存放在購物車內的商品，放入Map型態的變數cart，準備將其內的商品一個一個轉換為OrderItemBean，
 
@@ -189,7 +189,7 @@ public class ShoppingCartController {
 
 			session.removeAttribute("ShoppingCart");
 
-			return "products";
+			return "store/products";
 			
 		} catch (RuntimeException ex) {
 			String message = ex.getMessage();
@@ -198,7 +198,7 @@ public class ShoppingCartController {
 			System.out.println(shortMsg);
 			session.setAttribute("OrderErrorMessage", "處理訂單時發生異常: " + shortMsg + "，請調正訂單內容");
 
-			return "ShowCartContent";
+			return "store/ShowCartContent";
 		}
 	}
 
@@ -211,16 +211,16 @@ public class ShoppingCartController {
 		if (session == null) { // 使用逾時
 			return "index";
 		}
-//		MemberBean mb = (MemberBean) session.getAttribute("LoginOK");
+		MembersBean mb = (MembersBean) session.getAttribute("members");
 //		OrderService os = new OrderServiceImpl();
 //		ServletContext sc = getServletContext();
 //		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(sc);
 //		OrderService os = ctx.getBean(OrderService.class);
 		
-		List<OrderBean> memberOrders = service.getMemberOrders("1");
+		List<OrderBean> memberOrders = service.getMemberOrders(mb.getMemberId());
 		request.setAttribute("memberOrders", memberOrders);
 
-		return "OrderList";
+		return "store/OrderList";
 	}
 	
 
@@ -228,6 +228,7 @@ public class ShoppingCartController {
 	public String orderDetail(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		
+		MembersBean mb = (MembersBean) session.getAttribute("members");
 		
 		String orderNo = request.getParameter("orderNo");
 		int no = Integer.parseInt(orderNo.trim());
@@ -238,11 +239,11 @@ public class ShoppingCartController {
 //		OrderService orderService = ctx.getBean(OrderService.class);
 		OrderBean ob = service.getOrder(no);
 		request.setAttribute("OrderBean", ob);   // 將OrderBean物件暫存到請求物件內
-		service.getMemberOrders("1");
+		List<OrderBean> memberOrders = service.getMemberOrders(mb.getMemberId());
 		System.out.println(ob);
 		
 		
-		return "ShowOrderDetail";
+		return "store/ShowOrderDetail";
 	}
 
 	public void displayOrderBean(OrderBean ob) {

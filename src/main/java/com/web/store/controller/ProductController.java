@@ -26,8 +26,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -65,7 +64,7 @@ public class ProductController {
 	public String keyQuery(String keyWord,Model model) {
 		List<ProductBean> list = service.getkeyQuery(keyWord);
 		model.addAttribute("products", list);
-		return "products";
+		return "store/products";
 	}
 	
 	// 產品清單頁面 (選單查詢)
@@ -75,22 +74,22 @@ public class ProductController {
 		List<ProductBean> list = service.getselectQuery(category);
 		model.addAttribute("products", list);
 		System.out.println("list="+list);
-		return "products";
+		return "store/products";
 	}
 	
-	// 產品清單頁面(
+	// 產品清單頁面
 		@RequestMapping("/products")
 		public String queryProducts(Model model) {
 			List<ProductBean> list = service.getAllProducts();
 			model.addAttribute("products", list);
-			return "products";
+			return "store/products";
 		}
 
 	// 產品頁面
 	@RequestMapping("/product")
 	public String getProductsById(@RequestParam("id") Integer id, Model model) {
 		model.addAttribute("product", service.getProductById(id));
-		return "product";
+		return "store/product";
 	}
 
 	// 產品清單頁面(後台)
@@ -98,22 +97,22 @@ public class ProductController {
 	public String queryProductsM(Model model) {
 		List<ProductBean> list = service.getAllProductsM();
 		model.addAttribute("products", list);
-		return "productsM";
+		return "store/productsM";
 	}
 
 	// 產品頁面(後台)
 	@RequestMapping("/productM")
 	public String getProductsByIdM(@RequestParam("id") Integer id, Model model) {
 		model.addAttribute("product", service.getProductById(id));
-		return "productM";
+		return "store/productM";
 	}
-
-	@RequestMapping("/queryByCategory")
-	public String getCategoryList(Model model) {
-		List<String> list = service.getAllCategories();
-		model.addAttribute("categoryList", list);
-		return "products";
-	}
+//
+//	@RequestMapping("/queryByCategory")
+//	public String getCategoryList(Model model) {
+//		List<String> list = service.getAllCategories();
+//		model.addAttribute("categoryList", list);
+//		return "products";
+//	}
 
 
 	
@@ -121,14 +120,14 @@ public class ProductController {
 	public String getProductsbyCategory(@PathVariable("category") String category, Model model) {
 		List<ProductBean> products = service.getProductsByCategory(category);
 		model.addAttribute("products", products);
-		return "products";
+		return "store/products";
 	}
 
 	@RequestMapping(value = "/products/add", method = RequestMethod.GET)
 	public String getAddNewProductForm(Model model) {
 		ProductBean bb = new ProductBean();
 		model.addAttribute("productbean", bb);
-		return "addProduct";
+		return "store/addProduct";
 	}
 
 	@RequestMapping(value = "/products/add", method = RequestMethod.POST)
@@ -195,7 +194,7 @@ public class ProductController {
 	public String getupdateProducts(Model model) {
 		List<ProductBean> list = service.getAllProducts();
 		model.addAttribute("product", list);
-		return "product";
+		return "store/product";
 
 	}
 
@@ -203,7 +202,7 @@ public class ProductController {
 	public String proccessupdateProducts(@PathVariable("productId") Integer productId, Model model) {
 		ProductBean pb = service.getProductById(productId);
 		model.addAttribute("ProductBean", pb);
-		return "updateProduct";
+		return "store/updateProduct";
 	}
 
 	@RequestMapping(value = "/update/products/{productId}", method = RequestMethod.POST)
@@ -245,7 +244,7 @@ public class ProductController {
 		return "redirect://productsM";
 	}
 
-	@RequestMapping(value = "/getPicture/{productId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getPicture/store/{productId}", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getPicture(HttpServletResponse resp, @PathVariable Integer productId) {
 
 		String filePath = "/images/noImage.jpg";
@@ -311,6 +310,12 @@ public class ProductController {
 	@PostMapping("/addToCart")
 	public String addCart(Model model, HttpServletRequest request, HttpSession session) throws ServletException {
 		
+		
+		if (session == null) {
+			// 請使用者登入
+			
+			return "_01_register/register.jsp";
+		}
 	
 		ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
 		if (cart == null) {

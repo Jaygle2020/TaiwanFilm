@@ -156,7 +156,7 @@ a {
 
 				<div style="width: 100%">
 					<img style="width: 75%; height: 300px;"
-						src="<c:url value='/getPicture/${product.productId}'/>" />
+						src="<c:url value='/getPicture/store/${product.productId}'/>" />
 				</div>
 				<div>
 					<p>品名 : ${product.title}</p>

@@ -72,7 +72,7 @@ public class OrderDaoImpl_Hibernate implements OrderDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<OrderBean> getMemberOrders(String memberId) {
+	public List<OrderBean> getMemberOrders(Integer memberId) {
 		List<OrderBean> list = null;
 		Session session = factory.getCurrentSession();
 		String hql = "FROM OrderBean ob WHERE ob.memberId = :mid";

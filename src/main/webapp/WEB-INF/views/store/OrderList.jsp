@@ -25,7 +25,7 @@
 	<table style="margin-left:auto; margin-right:auto; width:810; border: 1px gray solid; ">
 
 		<tr id='borderA' height='50' >
-			<th id='borderA'  colspan="4" align="center">${LoginOK.name}訂購紀錄</th>
+			<th id='borderA'  colspan="4" align="center">${members.memberName}的訂購紀錄</th>
 		</tr>
 		<tr id='borderA' height='36' >
 			<th id='borderA'>訂單編號</th>
@@ -36,7 +36,7 @@
 		<c:forEach var="anOrderBean" varStatus="stat" items="${memberOrders}">
 			<TR id='borderA' height='30'>
 			<TD id='borderA' width="86" align="center">
-			    <a  href='<c:url value='orderDetail.do?memberId=1&orderNo=${anOrderBean.orderNo}' />'>
+			    <a  href='<c:url value='orderDetail.do?memberId=${members.memberId}&orderNo=${anOrderBean.orderNo}' />'>
 				    ${anOrderBean.orderNo}
 			    </a>
 			</TD>

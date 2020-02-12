@@ -171,7 +171,7 @@ a {
 				<img src="" style="width: 100%; height: 70%;" class="mainImage1">
 			</div>
 			<div class="subImage">
-				<img class="subImage1" src="<c:url value='getPicture/${product.productId}'/>"
+				<img class="subImage1" src="<c:url value='getPicture/store/${product.productId}'/>"
 					style="width: 25%; height: 30%;"> <img class="subImage2"
 					src="${pageContext.request.contextPath}/images/2000x.jpg" style="width: 25%; height: 30%;"> <img
 					class="subImage3" src="${pageContext.request.contextPath}/images/2000y.jpg"

@@ -43,8 +43,8 @@
 			<a href="${pageContext.request.contextPath}/getAllProject">
 				<div class="menu-buttonStyle">贊助電影</div>
 			</a>
-			<a href="">
-				<div class="menu-buttonStyle">電影區</div>
+			<a href="products">
+				<div class="menu-buttonStyle">電影周邊</div>
 			</a>
 			<a href="movieIntro">
 				<div class="menu-buttonStyle">網路訂票</div>

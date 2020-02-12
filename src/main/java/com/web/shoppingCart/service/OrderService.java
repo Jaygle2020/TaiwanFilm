@@ -28,5 +28,5 @@ public interface OrderService {
 
 	List<OrderBean> getAllOrders();
 
-	List<OrderBean> getMemberOrders(String memberId);
+	List<OrderBean> getMemberOrders(Integer integer);
 }

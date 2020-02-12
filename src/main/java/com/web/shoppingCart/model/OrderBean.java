@@ -18,7 +18,7 @@ public class OrderBean {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Integer orderNo;
-	String 	memberId;
+	Integer 	memberId;
 	Double	totalAmount;
 	String	shippingAddress; 
 	String  bno;
@@ -33,7 +33,7 @@ public class OrderBean {
 		
 	}
 
-	public OrderBean(Integer no, String memberId, Double totalAmount, String shippingAddress,
+	public OrderBean(Integer no, Integer memberId, Double totalAmount, String shippingAddress,
 			String bNO, String invoiceTitle, Date orderDate,
 			Date shippingDate, Set<OrderItemBean> items) {
 		super();
@@ -63,11 +63,11 @@ public class OrderBean {
 		this.orderNo = orderNo;
 	}
 
-	public String getMemberId() {
+	public Integer getMemberId() {
 		return memberId;
 	}
 
-	public void setMemberId(String memberId) {
+	public void setMemberId(Integer memberId) {
 		this.memberId = memberId;
 	}
 

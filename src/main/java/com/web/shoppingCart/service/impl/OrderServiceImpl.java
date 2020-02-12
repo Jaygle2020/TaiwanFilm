@@ -70,10 +70,9 @@ public class OrderServiceImpl implements OrderService {
 
 	@Transactional
 	@Override
-	public List<OrderBean> getMemberOrders(String memberId) {
-		List<OrderBean> list = null;
-			list = odao.getMemberOrders(memberId);
+	public List<OrderBean> getMemberOrders(Integer memberId) {
+		return	odao.getMemberOrders(memberId);
 
-		return list;
+		
 	}
 }

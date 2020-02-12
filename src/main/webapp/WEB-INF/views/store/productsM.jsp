@@ -173,7 +173,7 @@ a {
 			</c:choose>
 			
 				<div style="width: 100%">
-					<img src="<c:url value='/getPicture/${product.productId}'/>"
+					<img src="<c:url value='/getPicture/store/${product.productId}'/>"
 						style="width: 75%; height: 300px;">
 				</div>
 				<div>

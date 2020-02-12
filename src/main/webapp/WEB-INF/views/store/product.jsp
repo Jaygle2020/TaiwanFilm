@@ -151,7 +151,7 @@ a {
 	<jsp:include page="topMVC.jsp" />
 
 
-	<div class="option">
+	<<!-- div class="option">
 
 		<div>
 			<p
@@ -165,7 +165,7 @@ a {
 			<div class="option5 optioneffect">活動商品專區</div>
 		</a>
 	</div>
-
+ -->
 
 	<div class="productContent">
 
@@ -175,7 +175,7 @@ a {
 			</div>
 			<div class="subImage">
 				<img class="subImage1"
-					src="<c:url value='getPicture/${product.productId}'/>"
+					src="<c:url value='getPicture/store/${product.productId}'/>"
 					style="width: 25%; height: 30%;"> <img class="subImage2"
 					src="images/2000x.jpg" style="width: 25%; height: 30%;"> <img
 					class="subImage3" src="images/2000y.jpg"
