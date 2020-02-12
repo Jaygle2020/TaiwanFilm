@@ -148,7 +148,9 @@
 		<div class="backStage-title">
 			<div class="back-shopping backstage-title">購物</div>
 			<div class="choose-list-shopping choose-list">
-				<a href=""><div class="s-bar1">s1</div></a>
+				<a href="${pageContext.request.contextPath}/productsM"> 
+					<div class="a-bar1">商品管理</div>
+				</a>  
 				<a href=""><div class="s-bar2">s2</div></a>
 				<a href=""><div class="s-bar3">s3</div></a>
 			</div>
@@ -189,5 +191,8 @@
 			$(".choose-list-activity").slideToggle();
 			
 		}) 
+		
+		
+		
 	</script>
 </html>

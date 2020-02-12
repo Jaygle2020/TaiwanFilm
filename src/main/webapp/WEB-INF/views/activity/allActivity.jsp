@@ -21,6 +21,9 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/movie.css"
 	type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/menuStyle.css"
+	type="text/css">
 
 <style>
 body {
@@ -39,8 +42,9 @@ body {
 	transition: 0.3s;
 	border-radius: 10px;
 }
-
-.activity-inner:hover {
+      
+.activity-inner:hover { 
+	-webkit-filter:contrast(1.5);
 	transform: translateY(-10px);
 	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
 }

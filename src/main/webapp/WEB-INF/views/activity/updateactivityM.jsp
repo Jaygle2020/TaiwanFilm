@@ -12,6 +12,7 @@
 <title>TaiwanFilms</title>
 <link rel='stylesheet'
 	href='${pageContext.request.contextPath}/css/movie.css' type="text/css" />
+
 <style>
 .container h2{
 	font-size: 40px;
