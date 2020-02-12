@@ -103,8 +103,8 @@ public class RegisterController {
 
 	}
 	
-
-
+	@Autowired
+	ActivityService ActiveService;
 	@PostMapping("/Checklogin")
 	public String memberCheckLogin(@ModelAttribute("MembersBean") MembersBean member, Model model, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response) {
