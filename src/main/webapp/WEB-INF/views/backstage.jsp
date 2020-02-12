@@ -189,5 +189,8 @@
 			$(".choose-list-activity").slideToggle();
 			
 		}) 
+		
+		
+		
 	</script>
 <!-- </html> -->

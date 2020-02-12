@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+   
 <!DOCTYPE html>
 <html>
 <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
@@ -20,7 +20,7 @@
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet"> -->
 <!-- <link id="MonoTypeFontApiFontTracker" type="text/css" rel="stylesheet" href="https://fast.fonts.net/t/1.css?apiType=js&amp;projectid=b2d946f7-734c-4b45-a07f-3923a384b0dd"> -->
 
-<body style="margin: 0">
+<body style="margin: 0;background-image: url(img/wall1.jpeg)">
 
 	<jsp:include page="fragment/menu.jsp" />
  <!-- 改改改 -->
@@ -50,7 +50,7 @@
 
 	 <jsp:include page="activity/activities.jsp" /> 
 
-		<div class="funds-trailer" style="background-size: 100%">  
+		<div class="funds-trailer" >  
 			<div class="Ftrailer-video">
 				<iframe width="800px" height="400px"
 					src="https://www.youtube.com/embed/eZxkpvoJI2Q" frameborder="0"
@@ -60,10 +60,10 @@
 			<div class="Ftrailer-title">FUNDS</div>
 			<div class="Ftrailer-txt">測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字</div>
 		</div>
-		<div class="funds">
+		<div class="funds">      
 			<div class="introduction">
 				<div class="f-inner">
-					<div class="f-img1 f-img-style"></div>
+					<div class="f-img1 f-img-style"></div>  
 					<div class="f-img2 f-img-style"></div>
 					<div class="f-img3 f-img-style"></div>
 					<!-- <img src="img/test1.jpg">
@@ -136,63 +136,47 @@
 			</div>
 		</div>
 	</div>
+	
+	<jsp:include page="footer.jsp" /> 
 
 </body>
 
 
 <script>
-	/* 	$(".menu-click").click(function() {
-	 $(".right-bar").hide(500);
-	 $(".menu-bar").css("display", "inline-block");
-	 $(".menu-bar").animate({
-	 right : "0%"
-	 });
-	 $(".fixed").show(500);
-	 $(".fixed").animate({
-	 width : "100%"
-	 });
-	 $('body').css('overflow', 'hidden');
-
-	 });
-
-	 $(".close-menu").click(function() {
-	 $(".right-bar").show();
-	 $(".menu-bar").animate({
-	 right : "-40%"
-	 });
-	 $(".indexWidth").animate({
-	 opacity : "1"
-	 });
-	 $(".fixed").hide(500);
-	 $(".fixed").animate({
-	 width : "0%"
-	 });
-	 $('body').css('overflow', 'visible');
-
-	 }), */
 
 	$(window).scroll(function() {
 		var scrollVal = $(this).scrollTop();
 		$("span.qScrollTop").text(scrollVal);
-		 /*  console.log(scrollVal);    */
-		if (1239 > scrollVal && scrollVal > 422) {
-			$(".goToMid-l").css("color", "white");
-			$(".right-bar").css("color", "white");
+	 	console.log(scrollVal);     
+		if (1231 > scrollVal && scrollVal > 422) {
+			$(".goToMid-l").css("color", "black");
+			$(".menu-click").css("color", "black");
 			$('.dot').removeClass("dot-pink");
 			$('#activity-area').addClass("dot-pink");
 
-		} else if (1981 > scrollVal && scrollVal > 1240) {
-			$(".right-bar").css("color", "black");
+		} else if(1000 > scrollVal && scrollVal > 100){
+			$(".mainContent-coverImg").css("margin-top",test())
+			function test(){
+				var y =($(this).scrollTop()/50 + "%");                      
+				return y;        
+			}      
+		} 
+		
+		else if (1950 > scrollVal && scrollVal > 1232)  {
+			$(".goToMid-l").css("color", "white");
+			$(".menu-click").css("color", "white");
 
-		} else if (2499 > scrollVal && scrollVal > 1981) {
+		}else if(3314 > scrollVal && scrollVal > 2683) {	
 			$(".goToMid-l").css("color", "black");
-
+		} else if (3314 > scrollVal && scrollVal > 1951) {
+			$(".goToMid-l").css("color", "white");
+			$(".menu-click").css("color", "black"); 
 			$('.dot').removeClass("dot-pink");
 			$('#funds-area').addClass("dot-pink");
 
-		} else if (9999 > scrollVal && scrollVal > 2530) {
+		} else if (9999 > scrollVal && scrollVal > 3315) {
 			$(".goToMid-l").css("color", "white");
-			$(".right-bar").css("color", "white");
+			$(".menu-click").css("color", "white");
 
 			$('.dot').removeClass("dot-pink");
 			$('#movie-area').addClass("dot-pink");

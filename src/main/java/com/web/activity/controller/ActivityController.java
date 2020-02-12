@@ -125,7 +125,7 @@ public class ActivityController {
 	
 	
 	
-	
+
 	/* insert資料 */
 	@RequestMapping(value = "/addActivities", method = RequestMethod.GET)
 	public String getAddNewActivityForm(Model model) {

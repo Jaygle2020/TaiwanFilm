@@ -53,12 +53,12 @@
 			<a href="messages">
 			 <div class="menu-buttonStyle">留言板</div>
 			</a>
-			<c:if test="${sessionScope.members.memberMode == 2}">
+			<%-- <c:if test="${sessionScope.members.memberMode == 2}"> --%>
 			
-			<a href="backstage">
+			<%-- <a href="backstage">
 				<div class="menu-buttonStyle">進入後台</div>
 			</a>    
-			</c:if>
+			</c:if> --%>
 		</div>
 
 	</div>
