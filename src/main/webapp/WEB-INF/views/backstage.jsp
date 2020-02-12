@@ -12,7 +12,7 @@
 	<script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
-<!-- <head> -->
+<head>
 	<style>
 	 
 		body{
@@ -87,9 +87,9 @@
 		.back-message:hover{background:#EA0082} 
 		.back-shopping:hover{background:#EA0082} 
 		
-	</style>
-<!-- </head> -->
-<!-- <body> -->
+</style>
+</head>
+<body>
 	<div class="backStage-top">      
 		<a href="/TaiwanFilm">
 			<div class="TaiwanFilms">TaiwanFilms</div>
@@ -105,7 +105,7 @@
 				<a href="${pageContext.request.contextPath}/ShowAllMembers">
 					<div class="m-bar1">查詢全部會員</div>
 				</a>  
-				<a href="">
+				<a href="${pageContext.request.contextPath}/FuzzyQuery">
 					<div class="m-bar2">模糊查詢</div>
 				</a>
 <!-- 				<a href=""> -->
@@ -132,9 +132,9 @@
 		<div class="backStage-title">
 			<div class="back-funds backstage-title">募款</div>
 			<div class="choose-list-funds choose-list">
-				<a href=""><div class="f-bar1">f1</div></a>
-				<a href=""><div class="f-bar2">f2</div></a>
-				<a href=""><div class="f-bar3">f3</div></a>
+				<a href="${pageContext.request.contextPath}/manage/getAllProject"><div class="f-bar1">目前的募款清單</div></a>
+<!-- 				<a href=""><div class="f-bar2">f2</div></a> -->
+<!-- 				<a href=""><div class="f-bar3">f3</div></a> -->
 			</div>
 		</div>
 		<div class="backStage-title">
@@ -148,7 +148,9 @@
 		<div class="backStage-title">
 			<div class="back-shopping backstage-title">購物</div>
 			<div class="choose-list-shopping choose-list">
-				<a href=""><div class="s-bar1">s1</div></a>
+				<a href="${pageContext.request.contextPath}/productsM"> 
+					<div class="a-bar1">商品管理</div>
+				</a>  
 				<a href=""><div class="s-bar2">s2</div></a>
 				<a href=""><div class="s-bar3">s3</div></a>
 			</div>
@@ -193,4 +195,4 @@
 		
 		
 	</script>
-<!-- </html> -->
+</html>

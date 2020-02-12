@@ -46,6 +46,11 @@ public class MembersServiceImpl implements MembersService {
 	public boolean updateMembers(MembersBean member) {
 		return dao.updateMembers(member);		
 	}
+	@Transactional
+	@Override
+	public boolean modifyMembers(MembersBean member) {
+		return dao.modifyMembers(member);		
+	}	
 	@Transactional	
 	@Override
 	public boolean emailExists(String email) {
@@ -55,5 +60,10 @@ public class MembersServiceImpl implements MembersService {
 	@Override
 	public List<MembersBean> getAllMembers() {
 		return dao.getAll();
+	}
+	@Transactional	
+	@Override
+	public List<MembersBean> getMemberByEmail(String keyword) {
+		return dao.getMemberByEmail(keyword);
 	}
 }

@@ -1,5 +1,6 @@
 package com.web.login.Dao.Impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -43,6 +44,20 @@ public class MembersDaoImpl implements MembersDao {
 		}
 	    return mb;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<MembersBean> getMemberByEmail(String keyword){
+		String hql="FROM MembersBean mb WHERE mb.memberName like '"+ keyword +" %'";
+//		List<MembersBean> list = new ArrayList<>();
+		Session session = factory.getCurrentSession();
+		List<MembersBean> list = session.createQuery(hql).getResultList();
+//		list = session.createQuery(hql).getResultList();	
+		System.out.println("在DAO印出參數 :KEYWORD:" + keyword);
+		
+		return list ;
+		
+	}
 
 	@Override
 	public MembersBean getMemberByBean(MembersBean mb) {
@@ -59,20 +74,39 @@ public class MembersDaoImpl implements MembersDao {
 	    return member;
 	}
 	@Override
-	public MembersBean login(String acc, String pwd) {
-		String hql="form MembersBean where account = :account and password = :password";
+	public MembersBean login(String email, String password) {
+		String hql ="from MembersBean where email = :email and password = :password";
 		MembersBean  member = null;
 		Session session = factory.getCurrentSession();
 		try {
+			System.out.println("SQL登入成功");
 			member = (MembersBean) session.createQuery(hql)
-					.setParameter("account", acc)
-					.setParameter("password", pwd)
+					.setParameter("email", email)
+					.setParameter("password", password)
 					.getSingleResult();
 		}catch (Exception e) {
+			System.out.println("SQL登入失敗");
 			member = null;
 		}
 		return member;
 	}
+	
+	@Override
+	public boolean modifyMembers(MembersBean member) {
+		System.out.println("後端改會員狀態DAO");
+		System.out.println("會員狀態為:" +member.getMemberMode());
+		String hql = "from MembersBean where email = :email";
+		Session session = factory.getCurrentSession();
+		System.out.println("modifyMembersy在DAO取出信箱 : "+member.getEmail());
+		MembersBean mem = (MembersBean) session.createQuery(hql)
+				.setParameter("email", member.getEmail())
+				.getSingleResult();			
+			mem.setMemberMode(member.getMemberMode());
+
+		session.update(mem);
+		return true;
+	}
+	
 	@Override
 	public boolean updateMembers(MembersBean member) {
 		String hql = "from MembersBean where email = :email";
@@ -81,13 +115,7 @@ public class MembersDaoImpl implements MembersDao {
 		MembersBean mem = (MembersBean) session.createQuery(hql)
 				.setParameter("email", member.getEmail())
 				.getSingleResult();
-//		System.out.println("member.getMemberName()印出"+ member.getMemberName() );
-//		System.out.println("member.getEmail()印出"+ member.getEmail());
-//		System.out.println("member.getGender()印出"+member.getGender());
-//		System.out.println("member.getBirthDay()印出"+member.getBirthDay());
-//		System.out.println("member.getMemberImage()印出"+member.getMemberImage());
-//		System.out.println("member.getFileName()印出"+ member.getFileName());
-//		System.out.println("member.getPassword()印出"+ member.getPassword());
+		
 			mem.setMemberName(member.getMemberName());
 			mem.setEmail(member.getEmail());
 			mem.setGender(member.getGender());
@@ -97,7 +125,7 @@ public class MembersDaoImpl implements MembersDao {
 			if(member.getPassword() !="") {
 				mem.setPassword(member.getPassword());
 			}
-			System.out.println("Dao取出照片 :"+ member.getmemImage());
+			System.out.println("更新時秀出在Dao取出照片 :"+ member.getmemImage());
 		session.update(mem);
 		return true;
 	}
@@ -115,7 +143,8 @@ public class MembersDaoImpl implements MembersDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<MembersBean> getAll() {
-		String hql = "FROM MembersBean  where memberMode ='1'";
+		String hql = "FROM MembersBean ";
+//		where memberMode ='1'
 		Session session = factory.getCurrentSession();
 		List<MembersBean> list = session.createQuery(hql).getResultList();
 		return list;

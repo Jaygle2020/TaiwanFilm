@@ -46,37 +46,39 @@
 						<div class="partialWidthBlock projectCardGroup">
 							<div class="projectDataGroup">
 								<h2>專案標題</h2>
-								<input type="text" name="projectName"
-									value="${projBean.projectName}">
+								<input type="text" name="projectName" value="${ProjectBean.projectName}">
 								<P>一個好的標題應該要好記、好搜尋、吸引人想點進去看，並讓瀏覽者能在最短的時間內瞭解專案的核心理念。</P>
 								<h2>內容摘要</h2>
-								<textarea name="projDescript" form="projectForm" rows="8" cols="80" maxlength="200">${projBean.projDescript}
-								</textarea>
-								<p>使用吸引人的短文說明你的目標以及理念，強調你的獨一無二，讓贊助人對你或你的專案好奇，願意更進一步了解專案。</p>
+								<textarea name="projDescript" form="projectForm" rows="7"
+									cols="50" maxlength="200">${ProjectBean.projDescript}</textarea>
+								<h2>動人的故事</h2>
+								<textarea name="projStory" form="projectForm" rows="7"
+									cols="50" maxlength="200">${ProjectBean.projStory}</textarea>
+								<p>故事訴說作者的理念，強調你的獨一無二之處，讓贊助人對你或你的專案好奇，願意更進一步了解專案。</p>
 							</div>
 							<div class="createProjectCard"></div>
 							<h2>上傳專案圖片</h2>
-							<input type="file" name="photoStr"
+							<span>專案區塊圖:目前圖片${ProjectBean.photoFileName}</span><input type="file" name="photoStr"
+								accept="image/jpeg,image/png,image/bmp"><br>
+							<span>故事介紹圖目前圖片${ProjectBean.photoFileName2}</span><input type="file" name="photoStr2" 
 								accept="image/jpeg,image/png,image/bmp">
 							<h2>專案影片 &nbsp; (注意某些私人youtube影片是不開放其他網站載入)</h2>
-
-							<input type="text" name="vedio"
-								value="https://www.youtube.com/watch?v=${projBean.videoLink}"
-								placeholder="請輸入youtube影片連結網址">
+							
+							<input type="text" name="vedio" placeholder="請輸入youtube影片連結網址"  value="https://www.youtube.com/watch?v=${ProjectBean.videoLink}">
 							<h2>募資目標金額</h2>
 							<p>
 								<input type="number" max="99999999" min="0"
-									name="fundsGoal" value="${projBean.cfBean.fundsGoal}"/>
+									name="fundsGoal" value="${ProjectBean.cfBean.fundsGoal}" />
 								元
 							</p>
 							<h2>募資開始與結束日期</h2>
 							<p>
 								開始日期:
-								<input class="datepicker" name="dateBegin" value="${projBean.cfBean.dateBegin}"/>
+								<input class="datepicker" name="dateBegin" value="${ProjectBean.cfBean.dateBegin}"/>
 							</p>
 							<p>
 								結束日期:
-								<input class="datepicker" name="dateEnd" value="${projBean.cfBean.dateEnd}" />
+								<input class="datepicker" name="dateEnd" value="${ProjectBean.cfBean.dateEnd}"/>
 							</p>
 						</div>
 						<div id="submitAll">
@@ -206,7 +208,16 @@
 			donateOptionElm();
 			$("#dliverDate").val(
 			$("#deliverYear").val() + "-" + $("#deliverMonth").val());
+			
+			//取得簡介圖片
+			var count = ${infoBean.photoCount};
+			var projectId = ${infoBean.projBean.projectId};
 		
+			for(var i = 0 ; i<count;i++){
+				var url =  "${pageContext.request.contextPath}/infoPhoto/"+projectId+"/"+i;          
+			$("#image"+i).attr("src", url);
+			}
+			
 			var dialog, limit = $("#limit"), donateMoney = $("#donateMoney"),
 			allFields = $(
 					[]).add(limit).add(donateMoney), tips = $(".validateTips");
