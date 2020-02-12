@@ -11,13 +11,13 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-   	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/projectManage.css" >
+   	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/Manage.css" >
    	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" >
 </head>
 
 <body>
-<jsp:include page="../backstage.jsp" />
+<jsp:include page="../fragment/backStageInclud.jsp" />
     <div class="pageWrapper">
     <div class="functionWrapper">
         
@@ -58,8 +58,8 @@
     }
     
     $("td:last-child").click(function () {
-            alert("hello");
-	var url = "${pageContext.request.contextPath}/"+$(this).attr("id");
+       var id  = $(this).find("button").attr("id");
+       window.location.href = "${pageContext.request.contextPath}/updateProject/"+id;
     })
     </script>
 

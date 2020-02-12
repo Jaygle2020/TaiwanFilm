@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
 <link rel=stylesheet type="text/css"
-	href="${pageContext.request.contextPath}/css/create.css">
+	href="${pageContext.request.contextPath}/css/createCss.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/menuStyle.css" />
 <link rel="stylesheet"
@@ -31,7 +31,7 @@
 </head>
 
 <body>
-	<jsp:include page="../backstage.jsp" />
+<jsp:include page="../fragment/backStageInclud.jsp" />
 	<div id="createWrapper" class="wrapper createWrapper">
 		<div class="createContainer">
 			<section class="createMenu">

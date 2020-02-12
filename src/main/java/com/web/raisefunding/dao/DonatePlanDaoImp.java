@@ -55,15 +55,11 @@ public class DonatePlanDaoImp implements DonatePlanDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<DonatePlanBean> getAllPlan(Integer projectId) {
-		List<DonatePlanBean> list = null;
 		Session session = factory.getCurrentSession();
 		String hql = "From DonatePlanBean where projectId = :prjId";
-		try {
-		list= session.createQuery(hql)
+		List<DonatePlanBean> list= session.createQuery(hql)
 				.setParameter("prjId", projectId)
 				.getResultList();
-		} catch (NoResultException e) {
-		}
 		return list;
 	}
 
