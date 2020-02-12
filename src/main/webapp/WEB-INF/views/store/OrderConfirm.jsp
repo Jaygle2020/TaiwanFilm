@@ -54,10 +54,10 @@ function reconfirmOrder() {
    <TABLE  style="background:white; border: 0.5px solid #d1d1d1; width:810;">
       <TR >
          <TD style="text-align:left; border: 0.5px solid #d1d1d1;">
-         	會員編號：1
+         	會員編號：${members.memberId}
          </TD>
          <TD style="text-align:left; border: 0.5px solid #d1d1d1;">
-         	客戶姓名：林士棠
+         	客戶姓名：${members.memberName}
          </TD>
          <TD style="text-align:left; border: 0.5px solid #d1d1d1;">
          	訂單日期：<fmt:formatDate value="${today}" pattern="yyyy-MM-dd"/>

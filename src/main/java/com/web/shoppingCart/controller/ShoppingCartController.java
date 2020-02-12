@@ -189,7 +189,7 @@ public class ShoppingCartController {
 
 			session.removeAttribute("ShoppingCart");
 
-			return "store/products";
+			return "redirect://products";
 			
 		} catch (RuntimeException ex) {
 			String message = ex.getMessage();
