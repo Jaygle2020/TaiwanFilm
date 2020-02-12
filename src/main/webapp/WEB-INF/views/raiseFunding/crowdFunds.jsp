@@ -14,11 +14,11 @@
 <link rel=stylesheet type="text/css"
 	href="${pageContext.request.contextPath}/css/fund.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/UtilTool.js" ></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/movie.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" />
 </head>
 
 <body>
-<jsp:include page="../fragment/top.jsp" />
+<jsp:include page="../fragment/menu.jsp" />
 	<div class="wrapper">
 		<section>
 			<!-- 企劃上半部 -->

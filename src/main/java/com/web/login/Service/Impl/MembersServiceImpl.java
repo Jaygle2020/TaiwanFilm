@@ -1,5 +1,7 @@
 package com.web.login.Service.Impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,9 +46,24 @@ public class MembersServiceImpl implements MembersService {
 	public boolean updateMembers(MembersBean member) {
 		return dao.updateMembers(member);		
 	}
+	@Transactional
+	@Override
+	public boolean modifyMembers(MembersBean member) {
+		return dao.modifyMembers(member);		
+	}	
 	@Transactional	
 	@Override
 	public boolean emailExists(String email) {
 		return dao.emailExists(email);
+	}
+	@Transactional	
+	@Override
+	public List<MembersBean> getAllMembers() {
+		return dao.getAll();
+	}
+	@Transactional	
+	@Override
+	public List<MembersBean> getMemberByEmail(String keyword) {
+		return dao.getMemberByEmail(keyword);
 	}
 }

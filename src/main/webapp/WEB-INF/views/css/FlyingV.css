@@ -162,7 +162,7 @@
 .section .width-limit .category-content .inner {
   border: 1px solid #cdcdcd;
   border-radius: 10px;
-  width: 30%;
+  width: 280px;
   display: inline-block;
   text-align: center;
 }

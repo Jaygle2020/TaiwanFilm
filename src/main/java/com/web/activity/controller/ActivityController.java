@@ -51,15 +51,14 @@ public class ActivityController {
 		return "redirect:/activities";
 		
 	}
-	@RequestMapping("/finalProjectBackStage")
+	@RequestMapping("/backstage")
 	public String ActivityLogINNot1() {
-		return "finalProjectBackStage";
+		return "backstage";
 	}
 	
 	
 	@Autowired
 	ServletContext context;
-
 
 	/* 查多筆 未登入 */
 	@RequestMapping("/activities")
@@ -116,7 +115,7 @@ public class ActivityController {
 	}	
 
 	/* 查單筆M */
-	@RequestMapping("/activityM")
+	@RequestMapping("/activityM/{activityId}")
 	public String getActivityByIdM(@RequestParam("id") Integer activityId, Model model) {
 		activityBean ab = service.getActivityById(activityId);
 		model.addAttribute("activity", ab);
@@ -128,7 +127,7 @@ public class ActivityController {
 	
 	
 	/* insert資料 */
-	@RequestMapping(value = "/activities/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/addActivities", method = RequestMethod.GET)
 	public String getAddNewActivityForm(Model model) {
 		activityBean ab = new activityBean();
 		model.addAttribute("activityBean", ab);
@@ -137,7 +136,7 @@ public class ActivityController {
 
 
 
-	@RequestMapping(value = "/activities/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/addActivities", method = RequestMethod.POST)
 	public String processAddNewActivityForm(@ModelAttribute("activityBean") activityBean ab, BindingResult result) {
 		
 		String[] suppressedFields = result.getSuppressedFields();
@@ -234,15 +233,15 @@ public class ActivityController {
 		return "activity/viewsUpdate";
 	} 
 	
-	/* 查單筆 */
-	@RequestMapping("/activity")
-	public String getActivityById(@RequestParam("id") Integer activityId, Model model) {
-		activityBean ab = service.getActivityById(activityId);
-		
-		model.addAttribute("activity", ab);
-	
-		return "activity/activity";
-	}
+//	/* 查單筆 */
+//	@RequestMapping("/activity")
+//	public String getActivityById(@RequestParam("id") Integer activityId, Model model) {
+//		activityBean ab = service.getActivityById(activityId);
+//		
+//		model.addAttribute("activity", ab);
+//	
+//		return "activity/activity";
+//	}
 
 
 	/* 報名活動 */

@@ -20,7 +20,7 @@
 }
 .memberNewTotalDiv{
 	width:100%;
-	background-color: #ebebeb;
+/* 	background-color: #ebebeb; */
 	text-align:center;
 }
 .memberNewMainDiv {
@@ -32,10 +32,16 @@
 #focusToBlue:hover{
       color: blue
       }
+      body{
+      background-image:url(${pageContext.request.contextPath}/img/activity/gg2.jpg);
+      background-repeat:no-repeat;
+      background-size:100%;
+      }
 
 </style>
 </head>
-<body style="background: #ebebeb">
+<body>
+<div>
 	<form:form method='POST' modelAttribute="MembersBean" 
 	action="${pageContext.request.contextPath}/_01_register/registerNewMember"
 	 enctype='multipart/form-data' >
@@ -66,6 +72,7 @@
 							placeholder='確認密碼'  required='required' maxlength="16" 
 						pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"/>
 						<td id="pwdErrorBox" style="color: red; font-size:8px;text-align:left" ></td>
+						<tr><td><form:hidden path="memberMode" value="1" />
 <%-- 						<td> <form:input type='file' path="memImage"  --%>
 <%-- 			id="memberImage"  class='form:input-large' src="../img/NoImage_Male.png"  />   --%>
 <!-- 						<td><img  id="" src="../img/NoImage_Male.png" style="display:none" > -->
@@ -95,6 +102,7 @@
 		</div>
 		</div>
 </form:form>
+</div>
 		<script	src="${pageContext.request.contextPath }/js/registerNewMember.js"></script>
 		<script>
 		

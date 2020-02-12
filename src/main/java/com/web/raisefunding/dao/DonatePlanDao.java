@@ -12,6 +12,8 @@ public interface DonatePlanDao {
 
 	public DonatePlanBean getPlan(Integer planId);
 	
+	public DonatePlanBean getSinglePlan(Integer projectId , Integer dpId) ;
+	
 	public List<DonatePlanBean>getAllPlan(Integer projectId);
 	
 	public void donatingOnce(Integer planId);

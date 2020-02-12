@@ -12,11 +12,11 @@
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <link rel='stylesheet'
 	href='${pageContext.request.contextPath}/css/movie.css' type="text/css" />
-<title>allActivityM</title>
+<title>TaiwanFilms</title>
 
 <style>
 body {
-	background: #f1f1f1;
+	background: white;
 }
 
 .activity-content{
@@ -26,6 +26,8 @@ body {
 	margin:10px;
 	font-weight: bold;
 	background: white;
+	display: inline-block; 
+	height: 100px;
 }
 
 .activity-content-show{
@@ -34,6 +36,7 @@ body {
 	border-radius:10px;
 	margin:10px;
 	font-weight: bold;
+	display: inline-block;
 }
 
 .allActivityM-width {
@@ -57,7 +60,9 @@ body {
 	width: 7%;
 	display:inline-block;
 	margin-top:12px;
-	text-align: center;
+	text-align: center;  
+	vertical-align: top;
+	padding-top: 5px;
 }
 
 .activityUpdateButtonStyle{
@@ -69,43 +74,17 @@ body {
 }
 </style>
 </head>
-<body>
-	<div class="header">
-		<div class="h-logo" style="letter-spacing: -3px">
-			<a href="activitiesM">
-				<p class="Theme">TaiwanFilmsGuide
-			</a>
-		</div>
-
-		<div class="left-menu"></div>
-		<div class="right-menu">
-			<div>
-				<a href="allActivity">登出</a>
-			</div>
-
-		</div>
-	</div>
-
-
-	<section>
-		<div>
-			<div class="container" style="text-align: center">
-				<h1>全部活動內容(員工後台)</h1>
-				<a href='activities/add' style="font-size: 25px; font-weight: bold;">新增活動消息</a>
-			</div>
-		</div>
-	</section>
-
-	<hr
-		style="height: 1px; border: none; color: #333; background-color: #333;">
+<body> 
+	<jsp:include page="../backstage.jsp" />
   
-	<section class="container">
-		<div class="category-content">
-			<a href="activitiesM">
-				<div style="position:relative;right:20px;width:30%;font-weight: bold;display: inline-block;">回到分類頁面</div>
-			</a>
-			<div class="activity-content-show">
-				<div class="acitivityUpdateWidth">活動序號</div>
+	<section class="container" style="position:absolute;left: 17%;width: 80%;padding-top: 100px">
+		<div class="category-content">     
+			<h1 style="text-align: center;margin: 0">活動分類頁面(員工後台)</h1>       
+ 			<a href="activitiesM"> 
+				<div style="position:relative;width:100%;font-weight: bold;color:black;display: inline-block;text-align:right">回到分類頁面</div>
+			</a>  
+			<div class="activity-content-show">  
+				<div class="acitivityUpdateWidth">活動照片</div> 
 				<div class="acitivityUpdateWidth">活動主題</div>
 				<div class="acitivityUpdateWidth">活動廠商</div>
 				<div class="acitivityUpdateWidth">活動開始時間</div>
@@ -118,27 +97,29 @@ body {
 					<a href="<spring:url value='/activity?id=${activity.activityId}' />"
 						class="anchor-style"> 
 						<a href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
-							<div class="activity-inner"
-								data-number="${activity.activityWatched}">
-								<div class="activity-content">  
-									<div class="acitivityUpdateWidth"style="color:red">${activity.activityNumber}</div>
-									<div class="acitivityUpdateWidth">${activity.activityTitle}</div>
-									<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
-									<div class="acitivityUpdateWidth">${activity.startTime}</div>
-									<div class="activityUpdateButton"><a href="<spring:url value='/update/activities/${activity.activityId}' />"
-											class="btn btn-primary"> <span
-											class="glyphicon-info-sigh glyphicon"></span>編輯 
-										</a>  
-									</div>  
-								</div> 	
-							</div>    
-						</a> 
+								<div class="activity-inner"
+									data-number="${activity.activityWatched}">
+									<div class="activity-content">       
+										<div class="activityThumb"
+									style="background-image: url('getPicture/${activity.activityId}');background-size:cover;height: 80px;width:20%;display: inline-block;	">
+							 	</div> 
+										<div class="acitivityUpdateWidth" style="font-size: 18px;">${activity.activityTitle}</div>
+										<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
+										<div class="acitivityUpdateWidth">${activity.startTime}</div>
+										<div class="activityUpdateButton"><a href="<spring:url value='/update/activities/${activity.activityId}' />"
+												class="btn btn-primary"> <span
+												class="glyphicon-info-sigh glyphicon"></span>編輯 
+											</a>  
+										</div>  
+									</div> 	
+								</div>    
+							</a>
 					</a> 
 				</c:if>
 			</c:forEach>
 
 			<div class="activity-content-show">
-				<div class="acitivityUpdateWidth">活動序號</div>
+				<div class="acitivityUpdateWidth">活動照片</div>
 				<div class="acitivityUpdateWidth">活動主題</div>
 				<div class="acitivityUpdateWidth">活動廠商</div>
 				<div class="acitivityUpdateWidth">活動開始時間</div>
@@ -151,34 +132,26 @@ body {
 					<a href="<spring:url value='/activity?id=${activity.activityId}' />"
 						class="anchor-style"> 
 						<a href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
-							<div class="activity-inner"
-								data-number="${activity.activityWatched}">
-								<div class="activity-content">  
-									<div class="acitivityUpdateWidth"style="color:red">${activity.activityNumber}</div>
-									<div class="acitivityUpdateWidth">${activity.activityTitle}</div>
-									<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
-									<div class="acitivityUpdateWidth">${activity.startTime}</div>
-									<div class="activityUpdateButton"><a href="<spring:url value='/update/activities/${activity.activityId}' />"
-											class="btn btn-primary"> <span
-											class="glyphicon-info-sigh glyphicon"></span>編輯 
-										</a>  
-									</div>  
-								</div> 	
-							</div>    
-						</a> 
+								<div class="activity-inner"
+									data-number="${activity.activityWatched}">
+									<div class="activity-content">       
+										<div class="activityThumb"
+									style="background-image: url('getPicture/${activity.activityId}');background-size:cover;height: 80px;width:20%;display: inline-block;	">
+								</div> 
+										<div class="acitivityUpdateWidth" style="font-size: 18px;">${activity.activityTitle}</div>
+										<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
+										<div class="acitivityUpdateWidth">${activity.startTime}</div>
+										<div class="activityUpdateButton"><a href="<spring:url value='/update/activities/${activity.activityId}' />"
+												class="btn btn-primary"> <span
+												class="glyphicon-info-sigh glyphicon"></span>編輯 
+											</a>  
+										</div>  
+									</div> 	
+								</div>    
+							</a>
 					</a> 
 				</c:if>
 			</c:forEach>
-
-
-
-
-
-
-
-
-
-
 
 
 		</div>

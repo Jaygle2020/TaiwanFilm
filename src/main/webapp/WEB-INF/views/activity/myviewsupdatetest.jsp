@@ -5,7 +5,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
-
+<title>TaiwanFilms</title>
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
@@ -40,20 +40,7 @@ body{
 
 </head>
 <body onload="enter()">
-	<div class="header">
-		<div class="h-logo" style="letter-spacing: -3px">
-			<a href="${pageContext.request.contextPath}/activitiesM">
-				<p class="Theme">TaiwanFilmsGuide
-			</a>
-		</div>
-
-		<div class="left-menu">
-
-		</div>
-		<div class="right-menu">
-
-		</div>
-	</div>
+	<jsp:include page="../fragment/menu.jsp" />
 
 
 	<section>

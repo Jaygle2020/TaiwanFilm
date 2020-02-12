@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.google.gson.annotations.Expose;
+
 
 
 
@@ -23,15 +25,24 @@ public class DonatePlanBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="planId")
+	@Expose
 	private Integer planId;
+	@Expose
 	private Integer donateMoney;
+	@Expose
 	@Column(length=500)
 	private String donateDescription;
+	@Expose
 	private String pictureFileName;
+	@Expose
 	private Blob picture;
+	@Expose
 	private String shipping;
+	@Expose
 	private String dliverDate;
+	@Expose
 	private Integer limitNum;
+	@Expose
 	@OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="projectId", referencedColumnName="projectId")
 	private ProjectBean projBean;

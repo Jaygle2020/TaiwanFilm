@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css?family=Mukta&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="css/finalIndex.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" />
 <!-- 	<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap" rel="stylesheet">
 
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet"> -->
@@ -22,11 +23,19 @@
 <body style="margin: 0">
 
 	<jsp:include page="fragment/menu.jsp" />
+ <!-- 改改改 -->
 
-	<div class="bottom-bar">
+	<div class="bottom-bar">	
 		<div class="bottom-bar-content">豐盛之城－臺灣三部曲 Formosa Wonderland -
 			「勇士計畫」預計2021年啟動</div>
 	</div>
+		<div class="dots" style="writing-mode: tb-rl;z-index: 200">
+			<div id="home-area" class="dot dot-pink"></div>  
+			<div id="activity-area" class="dot"></div>
+			<div id="funds-area" class="dot"></div>  
+			<div id="movie-area" class="dot"></div>
+		</div>
+	
 
 	<div class="indexWidth">
 		<div class="mainContent">
@@ -36,26 +45,12 @@
 				<div class="mainContent-img-right"></div>
 			</div>
 		</div>
+			
 
-		<!-- ttttttttt -->
 
-		<!-- 		<div class="activityContent">
-			<div class="activityTitle">Activity</div>
-			<div class="activity-menu">
-				<div>最新活動</div>
-				<div>熱門活動</div>  
-				<div>即將開始</div>
-			</div>
-			<div class="activityArea">
-				<div class="activityAreaContent1 activityAreaContentStyle"></div>
-				<div class="activityAreaContent2 activityAreaContentStyle"></div>
-				<div class="activityAreaContent3 activityAreaContentStyle"></div>
-			</div>
-		</div> -->
+	 <jsp:include page="activity/activities.jsp" /> 
 
-		<jsp:include page="activity/activities.jsp" />
-
-		<div class="funds-trailer">
+		<div class="funds-trailer" style="background-size: 100%">  
 			<div class="Ftrailer-video">
 				<iframe width="800px" height="400px"
 					src="https://www.youtube.com/embed/eZxkpvoJI2Q" frameborder="0"
@@ -144,6 +139,7 @@
 
 </body>
 
+
 <script>
 	/* 	$(".menu-click").click(function() {
 	 $(".right-bar").hide(500);
@@ -178,8 +174,7 @@
 	$(window).scroll(function() {
 		var scrollVal = $(this).scrollTop();
 		$("span.qScrollTop").text(scrollVal);
-
-		/*  console.log(scrollVal);  */
+		 /*  console.log(scrollVal);    */
 		if (1239 > scrollVal && scrollVal > 422) {
 			$(".goToMid-l").css("color", "white");
 			$(".right-bar").css("color", "white");
@@ -221,17 +216,17 @@
 	});
 	$("#activity-area").click(function() {
 		$('html,body').animate({
-			scrollTop : 860
+			scrollTop : 872
 		}, 'fast');
 	});
 	$("#funds-area").click(function() {
 		$('html,body').animate({
-			scrollTop : 1671
+			scrollTop : 1620
 		}, 'fast');
 	});
 	$("#movie-area").click(function() {
 		$('html,body').animate({
-			scrollTop : 3027
+			scrollTop : 3773
 		}, 'fast');
 	});
 
@@ -269,5 +264,5 @@
 		$(".pictures").removeClass("dark");
 	});
 </script>
-
+</body>
 </html>
