@@ -1,5 +1,5 @@
 body{
-	background-image: url("../img/wall1.jpeg");
+	background-image:url('../img/wall1.jpeg')
 }
 
 .header {
@@ -291,9 +291,7 @@ body{
   display: block;
 }
 
-#category {
-  background-color: #f1f1f1;
-}
+
 
 #category .change-category {
   width: 100%;

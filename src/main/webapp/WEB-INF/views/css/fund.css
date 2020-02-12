@@ -20,7 +20,7 @@ section {
 }
 
 .projectContentUpper .container {
-  width: 1170px;
+  width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -76,7 +76,7 @@ section {
   content: "";
   position: absolute;
   top: 32.5%;
-  left: 43%;
+  left: 50.5%;
   border: 5px solid #e4e4e4;
   border-bottom-style: none;
   border-radius: 50% 50% 0% 0%;
@@ -115,6 +115,7 @@ section {
   padding: 0px 17px;
   top: 35%;
   position: absolute;
+  margin-left: 7%;
 }
 
 .projectContentUpper .container .upperContent #projectShowWrapper .progressBar .wholePercent {
@@ -151,14 +152,29 @@ section {
   text-align: left;
   color: #4a4a4a;
   margin-bottom: 8px;
+  margin-top:8px;
   line-height: 0.9;
 }
 
 .projectContentUpper .container .upperContent .col-right p {
-  font-size: 14px;
-  font-weight: 500;
+    text-align: right;
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom: gray solid;
 }
 
+.projectContentUpper .container .upperContent .col-right blockqoute{
+	display: block;
+    padding: 15px;
+    background-color: #00bbd6;
+    text-align: center;
+}
+
+.projectContentUpper .container .upperContent .col-right .splitButtonContainer{
+	text-align: center;
+    border: solid #00bbd6;
+	
+}
 .text-center {
   text-align: center;
 }
