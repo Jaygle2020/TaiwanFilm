@@ -20,6 +20,9 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/movie.css"
 	type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/menuStyle.css"
+	type="text/css">
 <style>
 .activity-inner{
 	padding: 10px;

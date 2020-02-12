@@ -12,6 +12,9 @@
 <title>TaiwanFilms</title>
 <link rel='stylesheet'
 	href='${pageContext.request.contextPath}/css/movie.css' type="text/css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/menuStyle.css"
+	type="text/css">
 <style>
 .container h2{
 	font-size: 40px;
@@ -28,12 +31,13 @@
 	width: 100%;
 }
 .left-bar{
-left: 0px   ;}
+left: 0px;
+}
 </style>
 
 
 </head>
-<body style="text-align: center;">
+<body style="text-align: center;background-image: url(${pageContext.request.contextPath}/img/wall1.jpeg)">
 
 	<jsp:include page="../fragment/menu.jsp" />
 		<section class="container" style="width: 80%;display: inline-block">

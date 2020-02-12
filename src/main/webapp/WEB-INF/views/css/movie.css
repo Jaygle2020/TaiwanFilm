@@ -251,5 +251,10 @@ height:570px;
 .box input{
 	Border-radius: 10px;	
 }
-
+.#category .change-category div{
+	color: black;
+}
+#category .change-category .change-menu .buttonBorder-active{
+	border-bottom: 5px solid #EA0082; 
+}
     
