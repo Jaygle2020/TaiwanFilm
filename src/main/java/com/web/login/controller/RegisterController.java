@@ -124,7 +124,9 @@ public class RegisterController {
 		if (bean.getMemberMode().equals("2") || bean.getMemberMode().equals("1") ) {
 			model.addAttribute("members", bean);
 			System.out.println("登入成功");
-			
+			if(session.getAttribute("requestURI")!=null) {
+				return "redirect:/"+session.getAttribute("requestURI");
+			}
 			return "redirect:/";
 		}
 		} catch (Exception e) {

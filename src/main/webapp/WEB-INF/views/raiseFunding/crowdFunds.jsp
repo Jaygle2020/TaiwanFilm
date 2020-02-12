@@ -26,11 +26,9 @@
 			<section class="projectContentUpper">
 				<div class="container stickyNavTrigger">
 					<div class="projectTitle">
-
 						<div class="projectShare">
-							<a href=""></a> <span class="metaText">提醒我</span>
+							<h1 class="text-center ptitle">${cfBean.projBean.projectName}</h1>
 						</div>
-						<h1 class="text-center ptitle">${cfBean.projBean.projectName}</h1>
 					</div>
 					<div class="upperContent">
 						<div class="col-left">
@@ -76,7 +74,7 @@
 								<h1 id="dayCount" data-endDay="${cfBean.dateEnd}"></h1>
 								<p class="metaText">天結束</p>
 							</div>
-							<blockquote>
+							<blockquote class="colorPart">
 								專案正在募資中!! 
 							</blockquote>
 							<div class="splitButtonContainer">
