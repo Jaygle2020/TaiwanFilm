@@ -151,7 +151,7 @@
 	$(window).scroll(function() {
 		var scrollVal = $(this).scrollTop();
 		$("span.qScrollTop").text(scrollVal);
-	 	console.log(scrollVal);     
+	 	/* console.log(scrollVal);     滑動時抓高度 */
 		if (1231 > scrollVal && scrollVal > 422) {
 			$(".goToMid-l").css("color", "black");
 			$(".menu-click").css("color", "black");

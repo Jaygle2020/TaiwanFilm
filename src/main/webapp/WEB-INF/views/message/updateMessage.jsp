@@ -8,53 +8,75 @@
 <head>
 <meta charset="UTF-8">
 <title>編輯訊息</title>
+
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/movie.css">
+	href="${pageContext.request.contextPath }/css/movie.css"
+	type="text/css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/menuStyle.css"
+	type="text/css">
 <style type="text/css">
+body {
+	background: #f1f1f1;
+}
+
 fieldset {
-	border: 1px solid rgb(255, 232, 57);
-	width: 400px;
+	border: 1px solid white;
+	width: 80%;
 	margin: auto;
 }
+
+#messageBackground {
+	background-image: url(${pageContext.request.contextPath}/img/wall1.jpeg);
+}
 </style>
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 </head>
 <body>
-	<jsp:include page="../fragment/top.jsp"></jsp:include>
-	<section>
-		<div class="container">
-			<h1 style="text-align: center">編輯文章</h1>
-		</div>
-	</section>
-	<hr
-		style="height: 1px; border: none; color: #333; background-color: blue;">
-	<!--       三個地方要完全一樣 -->
-	<fieldset>
-		<form:form method='POST' modelAttribute="messageBean"
-			class='form-horizontal' enctype="multipart/form-data">
-			<div class="toolBar">
+		<jsp:include page="../fragment/menu.jsp"></jsp:include>
+	<div id="messageBackground">
 
-				<div class="form-group">
-					<select name="messageCategory">
-						<option value="國片討論">國片討論
-						<option value="募資討論">募資討論
-							<%-- <options items="${categoryList}"></options> --%>
-					</select>
-				</div>
-				<div>標題</div>
-				<div class="col-lg-10">
-					<input id="messageTitle" name="messageTitle" type='text'>
-				</div>
-				<div style="margin: 0 auto; width: 700px">
-					<textarea id="editor" name="messageContent"></textarea>
-				</div>
-				<input name="messageDelete" value="1" type="hidden"> <input
-					type="submit" value="輸入" /> <input type="reset" value="重寫" />
+		<section>
+			<div class="container">
+				<h1 style="text-align: center; font-size: 40px">編輯文章</h1>
 			</div>
+		</section>
+		<hr
+			style="height: 1px; border: none; color: #333; background-color: white;">
+		<!--       三個地方要完全一樣 -->
+		<fieldset>
+			<form:form method='POST' modelAttribute="messageBean"
+				class='form-horizontal' enctype="multipart/form-data">
+				<div class="toolBar">
+					<div style="font-size: 20px; padding: 10px 0px">分類</div>
+					<div class="form-group">
+						<form:select path="messageCategory"
+							style="font-size: 20px; width: 108px; height: 30px;">
+							<form:option value="國片討論"></form:option>
+							<form:option value="募資討論"></form:option>
+							<%-- <options items="${categoryList}"></options> --%>
+						</form:select>
+					</div>
+					<div style="font-size: 20px; padding: 10px 0px">標題</div>
+					<div class="col-lg-10">
+						<form:input id="messageTitle" path="messageTitle" type='text'  style="height:30px; width:600px ;font-size:15px ;height:30px" />
+					</div>
+					<div style="font-size: 20px; padding: 10px 0px">內文</div>
+					<div style="margin: 0 auto; width: 100%; padding: 10px 0px">
+						<form:textarea id="editor" path="messageContent" />
+					</div>
+					<div style="font-size: 20px">
+						<input name="messageDelete" value="1" type="hidden"> <input
+							type="submit" value="輸入" /> <input type="reset" value="重寫" />
+					</div>
+				</div>
 
-		</form:form>
-	</fieldset>
+			</form:form>
+		</fieldset>
+	</div>
 	<script>
 		CKEDITOR.replace('editor');
 	</script>
+		<jsp:include page="../fragment/bottom.jsp"></jsp:include>
 </body>
 </html>

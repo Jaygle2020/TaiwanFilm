@@ -3,6 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet"
+ href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
+ integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+ crossorigin="anonymous"></link>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <meta charset="UTF-8">
@@ -55,7 +59,7 @@
 			</a>
 			
 			<a href="messages">
-			 <div class="menu-buttonStyle">留言板</div>
+			 <div class="${pageContext.request.contextPath}/messages">留言板</div>
 			</a>
 			
 			<c:if test="${testNum == 2}">			
