@@ -250,7 +250,7 @@
 		</div>
 	</div>
 	
-	<jsp:include page="../fragment/footer.jsp" />
+	<jsp:include page="../fragment/bottom.jsp" />
 </body>
 <script>
 	$('.downList').hide();

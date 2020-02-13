@@ -249,3 +249,22 @@
 .menu-buttonStyle:hover {
 	color: pink;
 }
+
+/* 我是footer的 */
+.Myfooter-area{
+	width: 100%;background:white;padding: 50px 0px;text-align: center}
+	.social{
+	margin: 30px 0px}
+	.social-area{  
+	width: 15%;display: inline-block;font-size: 20px}
+	.social-area i {
+		font-size: 30px;
+		color: black;
+		padding:0px 10px}
+		
+	.Myfooter-content{
+	width: 50%;display: inline-block;background:black;padding:5px 10px;margin-top: 20px;color: white;font-size: 25px}
+
+	.footer-title{
+	font-size: 51px; color:#EA0082;font-weight:bold;
+	}
