@@ -34,7 +34,7 @@
 left: 0px;
 }
 .container{
-width: 80%;display: inline-block;position: absolute;padding-top: 100px}
+width: 80%;display: inline-block;padding-top: 100px}
 </style>
 
 
@@ -78,7 +78,7 @@ width: 80%;display: inline-block;position: absolute;padding-top: 100px}
 		</section>
 		
 	   
-
+	<jsp:include page="../fragment/footer.jsp" /> 
 
 	<script>
 		$(".btn-warning").click(function(){

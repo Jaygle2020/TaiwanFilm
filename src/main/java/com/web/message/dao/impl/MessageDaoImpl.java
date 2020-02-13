@@ -101,7 +101,7 @@ public class MessageDaoImpl implements MessageDao {
 //模糊查詢
 	@Override
 	public List<MessageBean> getMessageByTitle(String keyword) {
-		String hql = "from MessageBean c WHERE c.messageTitle like '" + keyword + " %' ";
+		String hql = "from MessageBean c WHERE c.messageTitle like '%" + keyword + "%'";
 		List<MessageBean> list = new ArrayList<>();
 		Session session = factory.getCurrentSession();
 		list = session.createQuery(hql).setMaxResults(15).getResultList();
@@ -172,6 +172,13 @@ public class MessageDaoImpl implements MessageDao {
 		String hql = "UPDATE ReplyBean SET replyDelete=:newReplyDelete WHERE replyId=:replyId";
 		Session session = factory.getCurrentSession();
 		session.createQuery(hql).setParameter("newReplyDelete", 2).setParameter("replyId", replyId).executeUpdate();
+	}
+	// 後台刪除留言
+	@Override
+	public void deleteReplyB(Integer replyId) {
+		String hql = "UPDATE ReplyBean SET replyReport=:newReplyReport WHERE replyId=:replyId";
+		Session session = factory.getCurrentSession();
+		session.createQuery(hql).setParameter("newReplyReport", 3).setParameter("replyId", replyId).executeUpdate();
 	}
 
 	// 檢舉留言

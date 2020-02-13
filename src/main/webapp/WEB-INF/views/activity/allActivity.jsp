@@ -181,6 +181,8 @@ body {
 	</section>
 
 
+	<jsp:include page="../fragment/footer.jsp" /> 
+
 
 
 

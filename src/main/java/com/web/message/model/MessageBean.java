@@ -26,23 +26,14 @@ public class MessageBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer messageId;
+	@Column(columnDefinition="TEXT")
 	private String messageContent;
 	private String createDate;
 	private Integer messageLike;
 	private Integer messageDelete;
 	private String messageTitle;
 
-	@Column(columnDefinition = "TEXT")
-//	private String innerText;
-//	private Integer photoCount;
-//	private String img01;
-//	private byte[] image01;
-//	private String img02;
-//	private byte[] image02;
-//	private String img03;
-//	private byte[] image03;
-//	private String img04;
-//	private byte[] image04;
+
 	public Integer getMessageDelete() {
 		return messageDelete;
 	}
@@ -195,87 +186,6 @@ public class MessageBean implements Serializable {
 	public void setMessageTitle(String messageTitle) {
 		this.messageTitle = messageTitle;
 	}
-
-//	public String getInnerText() {
-//		return innerText;
-//	}
-
-//	public void setInnerText(String innerText) {
-//		this.innerText = innerText;
-//	}
-//
-//	public String getImg01() {
-//		return img01;
-//	}
-//
-//	public void setImg01(String img01) {
-//		this.img01 = img01;
-//	}
-//
-//	public String getImg02() {
-//		return img02;
-//	}
-//
-//	public void setImg02(String img02) {
-//		this.img02 = img02;
-//	}
-//
-//	public String getImg03() {
-//		return img03;
-//	}
-//
-//	public void setImg03(String img03) {
-//		this.img03 = img03;
-//	}
-//
-//	public String getImg04() {
-//		return img04;
-//	}
-//
-//	public void setImg04(String img04) {
-//		this.img04 = img04;
-//	}
-//
-//
-//	public byte[] getImage01() {
-//		return image01;
-//	}
-//
-//	public void setImage01(byte[] image01) {
-//		this.image01 = image01;
-//	}
-//
-//	public byte[] getImage02() {
-//		return image02;
-//	}
-//
-//	public void setImage02(byte[] image02) {
-//		this.image02 = image02;
-//	}
-//
-//	public byte[] getImage03() {
-//		return image03;
-//	}
-//
-//	public void setImage03(byte[] image03) {
-//		this.image03 = image03;
-//	}
-//
-//	public byte[] getImage04() {
-//		return image04;
-//	}
-//
-//	public void setImage04(byte[] image04) {
-//		this.image04 = image04;
-//	}
-//
-//	public Integer getPhotoCount() {
-//		return photoCount;
-//	}
-//
-//	public void setPhotoCount(Integer photoCount) {
-//		this.photoCount = photoCount;
-//	}
 
 
 }

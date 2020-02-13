@@ -119,7 +119,7 @@ public class RegisterController {
 		try {
 			
 		if (bean.getMemberMode().equals("2") || bean.getMemberMode().equals("1") ) {
-			bean.setmemImage(null);
+			bean.setMemberImage(null);
 			model.addAttribute("members", bean);
 			System.out.println("登入成功");
 			//建立Remember Cookie的預設值
@@ -376,10 +376,7 @@ public String list(Model model) {
 		return "_01_register/register";
 	}
 
-	@RequestMapping("/members")
-	public String memberpage(Model model) {
-		return "index";
-	}
+
 
 	@GetMapping("/FuzzyQuery")
 	public String FuzzyQuery(String keyword,Model model)  {
