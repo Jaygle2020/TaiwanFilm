@@ -24,20 +24,21 @@
 
 .movieMain {
 	text-align: left;
-	padding: 50px 15%;
+	padding: 50px 10%;
 	/* 	height: 550px; */
 	margin-bottom: 50px;
 }
 
 .movieMain figure {
 	display: inline-block;
-	margin: 0px 100px;
+	margin: 0px 10%;
 }
 
 .movieInfo {
 	padding-left: 5%;
 	display: inline-block;
 	vertical-align: text-bottom;
+	width: 45%;
 }
 
 .infoArea {

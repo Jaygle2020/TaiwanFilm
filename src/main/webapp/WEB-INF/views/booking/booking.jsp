@@ -71,14 +71,8 @@ ul li i {
 	padding: 50px 150px 50px 150px;
 }
 
-.cinemaDetail ul {
-	display: inline-block;
-}
-
 .cinemaDetail iframe {
-	width: 45%;
-	margin-left: 100px;
-	display: inline-block;
+	margin-top: 25px;
 }
 
 .countryCategory {
@@ -191,7 +185,7 @@ ul li i {
 							<p>-&ensp;捷運&ensp;:&ensp;${cinema.cinemaMrt }</p>
 							<p>-&ensp;公車&ensp;:&ensp;${cinema.cinemaBus }</p></li>
 					</ul>
-					<iframe height='270' frameborder='0' scrolling='no'
+					<iframe width='100%' height='270' frameborder='0' scrolling='no'
 						marginheight='0' marginwidth='0'
 						src='https://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q=${cinema.cinemaName }&z=16&output=embed&t='></iframe>
 				</div>
