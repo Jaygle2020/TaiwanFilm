@@ -6,6 +6,10 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
   font-size: 100%;
   vertical-align: baseline;
 }
+body{
+	background:url('../img/wall1.jepg')
+	
+}
 
 input,textarea{
 	border-radius:5px;
@@ -13,13 +17,40 @@ input,textarea{
 }
 input{
 	margin-bottom:10px;
+	text-align:center;
+}
+
+.buttonGroup{
+	
+	
+}
+.storyForm,.introducForm{
+	display:inline-block;
+	width:48%;
+}
+h1{
+	margin-left: 10%;
+    font-size: 20px;
+    font-weight: bold;
+	
 }
 h2{
 	color:	#00bbd6;
 	font-weight:bold;
 	margin-bottom:5px;
+	margin-top:5px;
+}
+p{
+    font-weight: bold;
+    font-size: 14px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
+.create-reward button{
+    border: solid dodgerblue;
+    font-weight: bold;
+}
 .createWrapper {
   position: relative;
   width: 100%;
@@ -42,8 +73,25 @@ h2{
 
  
 }
-.partialWidthBlock{
+
+.projectDetail{
+	text-align:center;
 	
+}
+
+.buttonGroup{
+    width: 40%;
+    margin: auto;
+    text-align: left;
+}
+
+#viewArea,#preViewArea{
+	text-align: left;
+    width: 48%;
+}
+
+.createWrapper .createContainer .createMenu{
+padding-left: 15%;
 }
 
 .createWrapper .createContainer .createMenu ul {
@@ -138,6 +186,7 @@ address, ol, p, ul {
   text-align: center;
   margin: 15px;
   background-color:white;
+  padding:5px;
 }
 
 .plan .donateMoney{
@@ -199,9 +248,12 @@ address, ol, p, ul {
 
 #viewArea {
   margin: auto;
-  width: 100%;
+  margin-top: 20px;
+/*   width: 100%; */
   font-size: 20px;
   font-weight: bold;
+  text-align: left;
+  width: 60%;
 }
 
 #viewArea img {
@@ -214,9 +266,12 @@ address, ol, p, ul {
 
 #preViewArea {
   margin: auto;
-  width: 100%;
+/*   width: 100%; */
+margin-top: 20px;
   font-size: 20px;
   font-weight: bold;
+  text-align: left;
+   width: 60%;
 }
 
 #preViewArea img {

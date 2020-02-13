@@ -48,10 +48,11 @@
 								<h2>專案標題</h2>
 								<input type="text" name="projectName" value="${ProjectBean.projectName}">
 								<P>一個好的標題應該要好記、好搜尋、吸引人想點進去看，並讓瀏覽者能在最短的時間內瞭解專案的核心理念。</P>
-								<div  class="storyForm" >
+								<div  class="introducForm" >
 									<h2>內容摘要</h2>
 									<textarea name="projDescript" form="projectForm" rows="7"
-										cols="40" maxlength="200">${ProjectBean.projDescript}</textarea>
+										cols="40" maxlength="200">${ProjectBean.projDescript}</textarea></div>
+								<div class="storyForm">
 									<h2>動人的故事</h2>
 									<textarea name="projStory" form="projectForm" rows="7"
 										cols="40" maxlength="500">${ProjectBean.projStory}</textarea>
@@ -60,13 +61,13 @@
 							</div>
 							<div class="createProjectCard"></div>
 							<h2>上傳專案圖片</h2>
-							<span>專案區塊圖:目前圖片${ProjectBean.photoFileName}</span><input type="file" name="photoStr"
+							<span>專案區塊圖:目前圖片${ProjectBean.photoFileName}</span><br><input type="file" name="photoStr"
 								accept="image/jpeg,image/png,image/bmp"><br>
-							<span>故事介紹圖目前圖片${ProjectBean.photoFileName2}</span><input type="file" name="photoStr2" 
+							<span>故事介紹圖:目前圖片${ProjectBean.photoFileName2}</span><br><input type="file" name="photoStr2" 
 								accept="image/jpeg,image/png,image/bmp">
 							<h2>專案影片 &nbsp; (注意某些私人youtube影片是不開放其他網站載入)</h2>
 							
-							<input type="text" name="vedio" placeholder="請輸入youtube影片連結網址"  value="https://www.youtube.com/watch?v=${ProjectBean.videoLink}">
+							<input type="text" name="vedio" style='width: 325px' placeholder="請輸入youtube影片連結網址"  value="https://www.youtube.com/watch?v=${ProjectBean.videoLink}">
 							<h2>募資目標金額</h2>
 							<p>
 								<input type="number" max="99999999" min="0"
@@ -112,6 +113,7 @@
 											default="單純贊助，不需回饋，小額贊助給予劇組鼓勵和支持。"></c:out>
 									</div>
 									<span class="shipping" data-shipping="${dpBean.shipping}">沒有運送服務</span>
+									<hr>
 									<span class="deliverDate">預計寄送時間 ${dpBean.dliverDate}</span> <span
 										class="limit">限量 <strong>${dpBean.limitNum}</strong>份
 									</span>
@@ -124,7 +126,7 @@
 					
 					<!--         dialog-Form 隱藏的跳出視窗起始點               -->
 					
-					<div id="dialog-form" title="Create new user">
+					<div id="dialog-form" title="建立一個新的贊助方案">
 						<p class="validateTips">所有表格都必須填寫</p>
 						<div class="create-reward productlist form-group">
 							<form method="POST" id='rewardPlan' action="${pageContext.request.contextPath}/createDonatePlan" 
@@ -133,7 +135,7 @@
 									<div class="createCard">
 										<label for="donateMoney">回饋金額，最低100元</label> 
 										<input type="number" name="donateMoney" id="donateMoney" min="100"><br>
-										<label for="donateDescription">內容摘要</label>
+										<label for="donateDescription"><h2>內容摘要</h2></label>
 										<textarea name="donateDescription" form="rewardPlan" rows="11"
 											cols="40" >單純支持</textarea>
 									</div>
@@ -148,14 +150,14 @@
 											accept="image/jpeg,image/png,image/bmp">
 									</div>
 									<div class="rewardInfo">
-										<label for="shipping">運送區域</label> <select name="shipping">
+										<label for="shipping"><h2>運送區域</h2></label> <select name="shipping">
 											<option value="InTaiwan">台灣本島</option>
 											<option value="OutTaiwan">外島地區</option>
 											<option value="Foreign">其他國家</option>
 										</select> <label for="deliverYear">預計寄送時間</label> 
 										<select id="deliverYear"></select> <select id="deliverMonth"></select>
-										<input type="hidden" id="dliverDate" name="dliverDate" value=""> 
-											<label for="limit">限量份數</label> 
+										<input type="hidden" id="dliverDate" name="dliverDate" value=""> <br>
+											<label for="limit"><h2>限量份數</h2></label> 
 											<input  type="number" name="limit" id="limit" min="1" max="999999">
 											<input type="hidden"  id="updateId" name="updateId" value="0">
 										<input type="hidden" id="dphidden" name="projectId" value="${ProjectBean.projectId}">
@@ -180,7 +182,7 @@
 							<textarea name="" id="enterTable" cols="30" rows="10"
 								placeholder="請在此輸入段落文章"></textarea>
 							<br>
-							<button type="button" onclick="enterText()">送出段落</button>
+							<div class="buttonGroup"><button type="button" onclick="enterText()">送出段落</button>
 							<form class="formArea" id="formArea" method="post"
 								action="${pageContext.request.contextPath}/createPjInfo"
 								enctype="multipart/form-data">
@@ -194,6 +196,7 @@
 							<span>可插入圖片上限4張</span><br>
 							<button id="formSubmit" type="button" onclick="formSubmit()">儲存結果</button>
 							<button id="restForm" type="button" onclick="resetForm()">清除</button>
+							</div>
 						</div>
 
 					</div>
@@ -276,7 +279,6 @@
 			}
 			//回傳DPBEAN叫回跳出視窗
 			function getPlanForm(){
-				alert(this)
 				var url = "${pageContext.request.contextPath}/getDonatePlan/projId"+${ProjectBean.projectId}+
 				"/actionId"+$(this).attr("data-planId");
 				$.ajax({
@@ -340,9 +342,6 @@
 			var form = document.getElementById("formArea");
 			var url = $("#formArea").attr("action");
 			var formData = new FormData(form);
-			alert(form);
-			alert(url);
-			alert(formData);
 			$.ajax({
 				type:'post',
 				url:url,
@@ -352,7 +351,6 @@
 				contentType: false,
 				processData: false,
 				success:function(){
-					alert("success");
 					for(var i = 0 ; i<count;i++){
 						var url =  "${pageContext.request.contextPath}/infoPhoto/"+${ProjectBean.projectId}+"/"+i;    
 					$("#preViewArea").find("img").attr("src", url);
