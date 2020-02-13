@@ -47,7 +47,7 @@ public class UserTradeController {
 	public String createNewPurchase(@ModelAttribute("PurchaseBean") PurchaseBean pcBean ,
 			@RequestParam("planId") Integer planId ,@RequestParam("localeDate") String localedate,
 			@RequestParam("localeDate") String orderDate,@RequestParam("payAmount") Integer payAmount,
-			HttpSession session){
+			HttpSession session , Model model){
 		MembersBean mbBean = (MembersBean) session.getAttribute("members");
 		DonatePlanBean dpBean =  dpService.getDonateBean(planId);
 		pcBean.setPayAmount(payAmount);
@@ -58,6 +58,7 @@ public class UserTradeController {
 		dpService.createPurchaseData(pcBean);
 		//假設已經完成結帳， 下面進行資料庫的更新，理論上應該是執行付費確認之後的controller運算
 		dpService.DonatingTransaction(pcBean);
+		model.addAttribute("pcBean",pcBean);
 		return "raiseFunding/thankSupport";
 	}
 	//取得個人已贊助的網頁
