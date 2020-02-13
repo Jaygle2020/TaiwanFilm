@@ -11,8 +11,11 @@ input,textarea{
 	border-radius:5px;
 	
 }
+input{
+	margin-bottom:10px;
+}
 h2{
-	font-color:	#00bbd6;
+	color:	#00bbd6;
 	font-weight:bold;
 	margin-bottom:5px;
 }

@@ -48,12 +48,14 @@
 								<h2>專案標題</h2>
 								<input type="text" name="projectName" value="${ProjectBean.projectName}">
 								<P>一個好的標題應該要好記、好搜尋、吸引人想點進去看，並讓瀏覽者能在最短的時間內瞭解專案的核心理念。</P>
-								<h2>內容摘要</h2>
-								<textarea name="projDescript" form="projectForm" rows="7"
-									cols="50" maxlength="200">${ProjectBean.projDescript}</textarea>
-								<h2>動人的故事</h2>
-								<textarea name="projStory" form="projectForm" rows="7"
-									cols="50" maxlength="200">${ProjectBean.projStory}</textarea>
+								<div  class="storyForm" >
+									<h2>內容摘要</h2>
+									<textarea name="projDescript" form="projectForm" rows="7"
+										cols="40" maxlength="200">${ProjectBean.projDescript}</textarea>
+									<h2>動人的故事</h2>
+									<textarea name="projStory" form="projectForm" rows="7"
+										cols="40" maxlength="500">${ProjectBean.projStory}</textarea>
+								</div>
 								<p>故事訴說作者的理念，強調你的獨一無二之處，讓贊助人對你或你的專案好奇，願意更進一步了解專案。</p>
 							</div>
 							<div class="createProjectCard"></div>
