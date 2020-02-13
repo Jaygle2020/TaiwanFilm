@@ -25,6 +25,10 @@
 	padding: 20px;
 	margin: 20px 0px 50px 0px;
 }
+
+body{
+	background-image: url(img/wall1.jpeg);
+}  
 </style>
 </head>
 <body>
@@ -88,6 +92,7 @@
 		</div>
 	</div>
 
+	<jsp:include page="../fragment/footer.jsp" />
 </body>
 <script>
 	var num = ${ticket.ticketId	};

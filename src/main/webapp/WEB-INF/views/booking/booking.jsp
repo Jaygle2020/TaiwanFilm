@@ -33,7 +33,7 @@ ul li {
 	list-style-type: none;
 }
 
-i {
+ul li i {
 	position: absolute;
 	left: 150px;
 }
@@ -102,6 +102,10 @@ i {
 	top: -3px;
 	display: inline-block;
 }
+
+#category{
+	background-image: url(img/wall1.jpeg);
+}  
 </style>
 </head>
 <body>
@@ -112,7 +116,7 @@ i {
 	<div class="section" id="popular">
 		<div class="section" id="category">
 			<div class="width-limit">
-				<h1>戲院選擇</h1>
+				<h1 style="font-family: Microsoft JhengHei;">戲院選擇</h1>
 				<div class="change-category">
 					<div class="change-menu">
 						<div class="buttonBorder-active buttonBorder" id="台北市">台北市</div>
@@ -191,6 +195,8 @@ i {
 			</div>
 		</div>
 	</div>
+	
+	<jsp:include page="../fragment/footer.jsp" />
 </body>
 
 <script type="text/javascript">

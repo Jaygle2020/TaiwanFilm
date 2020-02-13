@@ -17,7 +17,7 @@
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <style>
 label:not (#fake ) {
-	color: #039db0;
+	color: #428bca;
 	font-size: 16px;
 }
 
