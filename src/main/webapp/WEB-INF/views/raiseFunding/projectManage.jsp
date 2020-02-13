@@ -78,48 +78,70 @@
 }
 </style>
 
+<style>
 
+
+.content {
+	width: 90%;
+	background: white;
+	border-radius: 10px;
+	margin: 10px 0px;
+	display: inline-block
+}
+
+.content-area {
+	width: 90px;
+	display: inline-block;
+	height: 50px;
+	padding-top: 15px;
+	text-align: center
+}
+</style>
 </head>
 
-<body>
+<body style="background: #d5d6db;">
 	<jsp:include page="../fragment/backStageInclud.jsp" />
 	<div class="pageWrapper">
 		<div class="">
 			<h2>目前存在專案</h2>
 		</div>
 		<div class="formWrapper">
-			<table>
-				<thead>
-					<th>募資名稱</th>
-					<th>募資起始日</th>
-					<th>募資截止日</th>
-					<th>目前金額</th>
-					<th>目標金額</th>
-					<th>進度百分比</th>
-				</thead>
-				<c:if test="${cfBeans!=null}">
-					<c:forEach items="${cfBeans}" var="cfBean">
-						<tr>
-							<td>${cfBean.projBean.projectName}</td>
-							<td>${cfBean.dateBegin}</td>
-							<td>${cfBean.dateEnd}</td>
-							<td>${cfBean.fundsNow}</td>
-							<td>${cfBean.fundsGoal}</td>
-							<td>${cfBean.percent}</td>
-							<td><button id="${cfBean.projBean.projectId}">修改</button></td>
-						</tr>
-					</c:forEach>
-				</c:if>
-			</table>
+			
+	<div class="name">
+		<div class="content">
+			<div class="content-area" >募資名稱</div>
+			<div class="content-area">募資起始日</div>
+			<div class="content-area">募資截止日</div>
+			<div class="content-area">目前金額</div>
+			<div class="content-area">目標金額</div>
+			<div class="content-area">進度百分比</div>
+			<div class="content-area" content="  "></div>
+		</div>
+		<!--  寫foreach -->
+		<c:if test="${cfBeans!=null}">
+			<c:forEach items="${cfBeans}" var="cfBean">
+				<div class="content project">
+					<div class="content-area" >${cfBean.projBean.projectName}</div>
+					<div class="content-area">${cfBean.dateBegin}</div>
+					<div class="content-area">${cfBean.dateEnd}</div>
+					<div class="content-area">${cfBean.fundsNow}</div>
+					<div class="content-area">${cfBean.fundsGoal}</div>
+					<div class="content-area">${cfBean.percent}</div>
+					<div class="content-area"><button id="${cfBean.projBean.projectId}">修改</button></div>
+				</div>
+			</c:forEach>
+		</c:if>
+		<!--  寫foreach -->
+	</div>
 		</div>
 	</div>
 
-	<script>
 
-		$("td:last-child")
-				.click(
+
+	<script>
+		$("button").click(
 						function() {
-							var id = $(this).find("button").attr("id");
+							var id = $(this).attr("id");
 							window.location.href = "${pageContext.request.contextPath}/updateProject/"
 									+ id;
 						})

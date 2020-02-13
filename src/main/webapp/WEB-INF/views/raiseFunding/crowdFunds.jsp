@@ -13,7 +13,7 @@
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https:///code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel=stylesheet type="text/css"
-	href="${pageContext.request.contextPath}/css/fund.css">
+	href="${pageContext.request.contextPath}/css/fund1.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/UtilTool.js" ></script>
 
 </head>
@@ -64,7 +64,7 @@
 						<div class="col-right">
 							<div class="numberRow totalFund">
 								<h1 class="number moneyFormat">$&nbsp;${cfBean.fundsNow}</h1>
-								<p class="metaText">目標 $${cfBean.fundsGoal}</p>
+								<p class="metaText" style="text-align:right;"><span style="font-size:20px;">Goal</span> $${cfBean.fundsGoal}</p>
 							</div>
 							<div class="numberRow totalPeople">
 								<h1>${cfBean.backerNum}</h1>

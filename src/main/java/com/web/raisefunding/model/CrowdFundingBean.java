@@ -28,7 +28,7 @@ public class CrowdFundingBean implements Serializable {
 	private Integer fundsNow;
 	private Integer fundsGoal;
 	@Transient
-	private double percent;
+	private int percent;
 	
 	private Integer backerNum;
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
@@ -79,11 +79,11 @@ public class CrowdFundingBean implements Serializable {
 	public void setBackerNum(Integer backerNum) {
 		this.backerNum = backerNum;
 	}
-	public double getPercent() {
+	public int getPercent() {
 		return percent;
 	}
 
-	public void setPercent(double percent) {
+	public void setPercent(int percent) {
 		this.percent = percent;
 	}
 	

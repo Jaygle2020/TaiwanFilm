@@ -142,11 +142,13 @@ section {
 
 .projectContentUpper .container .upperContent .col-right {
   width: 28%;
-  padding-left: 15px;
   display: inline-block;
   margin-left: 20px;
   position: relative;
   top: -55px;
+  border-radius: 13px;
+  border: solid lightslategray;
+
 }
 
 .projectContentUpper .container .upperContent .col-right h1 {
@@ -161,12 +163,15 @@ section {
   line-height: 0.9;
   margin-left: 20%;
 }
-
+.projectContentUpper .container .upperContent .col-right>div{
+	
+	padding:5px;
+}
 .projectContentUpper .container .upperContent .col-right p {
-    text-align: right;
+    text-align: center;
     font-weight: bold;
-    font-size: 20px;
-    border-bottom: gray solid;
+    font-size: 15px;
+    border-bottom: #8080804a solid;
 }
 
 .projectContentUpper .container .upperContent .col-right .colorPart{
@@ -178,7 +183,7 @@ section {
 
 .projectContentUpper .container .upperContent .col-right .splitButtonContainer{
 	text-align: center;
-    border: solid #00bbd6;
+   
 	
 }
 .text-center {
@@ -269,6 +274,7 @@ section {
   text-align: center;
   margin: 15px;
   background-color:white;
+  padding: 10px;
 }
 .plan .projectThumb{
   width: 100%;
