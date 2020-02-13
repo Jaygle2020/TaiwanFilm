@@ -47,7 +47,7 @@ fieldset {
 			<fieldset>
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for='title'>
-						書名 </label>
+						商品 </label>
 					<div class="col-lg-10">
 						<form:input id="title" path="title" type='text'
 							class='form:input-large' />
@@ -56,12 +56,22 @@ fieldset {
 
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for='author'>
-						作者 </label>
+						電影 </label>
 					<div class="col-lg-10">
 						<form:input id="author" path="author" type='text'
 							class='form:input-large' />
 					</div>
 				</div>
+
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2"
+						for='productDescription'> 商品描述 </label>
+					<div class="col-lg-10">
+						<form:input id="productDescription" path="productDescription"
+							type='text' class='form:input-large' />
+					</div>
+				</div>
+
 
 
 
@@ -69,11 +79,16 @@ fieldset {
 					<label class='control-label col-lg-2 col-lg-2' for="category">
 						類別</label>
 					<div class='col-lg-10'>
-						<form:input id="category" path="category" type='text'
-							class='form:input-large' />
+						<%-- <form:input id="category" path="category" type='text'
+							class='form:input-large' /> --%>
+						<div class='col-lg-10'>
+							<form:select path="category">
+								<form:option value="-1" label="請挑選" />
+								<form:options items="${categoryList}" />
+							</form:select>
+						</div>
 					</div>
 				</div>
-
 
 
 
@@ -95,14 +110,14 @@ fieldset {
 							class='form:input-large' />
 					</div>
 				</div>
-				<div class="form-group">
+				<%-- <div class="form-group">
 					<label class='control-label col-lg-2 col-lg-2' for="fileName">
 						圖片名稱</label>
 					<div class='col-lg-10'>
 						<form:input id="fileName" path="fileName" type='text'
 							class='form:input-large' />
 					</div>
-				</div>
+				</div> --%>
 
 				<div class="form-group">
 					<label class='control-label col-lg-2 col-lg-2' for="productImage">
@@ -110,9 +125,32 @@ fieldset {
 					<div class='col-lg-10'>
 						<form:input id="productImage" path="productImage" type='file'
 							class='form:input-large' />
+						原圖：<form:input id="fileName" path="fileName" type='text' disabled="true" style="border: aliceblue;"
+							class='form:input-large' />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class='control-label col-lg-2 col-lg-2' for="productImage2">
+						圖片2 </label>
+					<div class='col-lg-10'>
+						<input id="productImage2" name="productImage2" type='file'
+							class='form:input-large' />
+						原圖：<form:input id="fileName2" path="fileName2" type='text' disabled="true" style="border: aliceblue;"
+							class='form:input-large' />
 
 					</div>
 				</div>
+				<div class="form-group">
+					<label class='control-label col-lg-2 col-lg-2' for="productImage3">
+						圖片3 </label>
+					<div class='col-lg-10'>
+						<input id="productImage3" name="productImage3" type='file'
+							class='form:input-large' />
+						原圖：<form:input id="fileName3" path="fileName3" type='text'  disabled="true" style="border: aliceblue;"
+							class='form:input-large' />
+					</div>
+				</div>
+
 
 
 				<div class="form-group">
