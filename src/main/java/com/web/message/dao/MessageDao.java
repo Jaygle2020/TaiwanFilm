@@ -50,4 +50,6 @@ public interface MessageDao {
 
 	List<MessageBean> getMessagesByDate();
 
+	void deleteReplyB(Integer replyId);
+
 }

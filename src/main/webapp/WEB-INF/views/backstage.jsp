@@ -158,9 +158,7 @@
 		<div class="backStage-title">
 			<div class="back-message backstage-title">留言板</div>
 			<div class="choose-list-message choose-list">
-				<a href=""><div class="i-bar1">i1</div></a>
-				<a href=""><div class="i-bar2">i2</div></a>
-				<a href=""><div class="i-bar3">i3</div></a>
+				<a href="${pageContext.request.contextPath}/replysB"><div class="i-bar1">被檢舉留言</div></a>	
 			</div>
 		</div>
 	</div> 

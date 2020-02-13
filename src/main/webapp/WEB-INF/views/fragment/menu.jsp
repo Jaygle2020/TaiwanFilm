@@ -19,7 +19,7 @@
 
 	<div class="fixed"></div>
 	<div class="left-bar">  
-		<a href="${pageContext.request.contextPath}/TaiwanFilm" style="text-decoration: none">
+		<a href="${pageContext.request.contextPath}/" style="text-decoration: none">
 			<div class='goToMid-l' style="text-decoration: none">
 				<div>Taiwan Films</div>   
 			</div>	
@@ -55,7 +55,7 @@
 			</a>
 			
 			<a href="messages">
-			 <div class="menu-buttonStyle">留言板</div>
+			 <div class="${pageContext.request.contextPath}/messages">留言板</div>
 			</a>
 			
 			<c:if test="${testNum == 2}">			

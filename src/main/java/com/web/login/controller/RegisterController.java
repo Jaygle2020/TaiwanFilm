@@ -126,6 +126,7 @@ public class RegisterController {
 			
 
 		if (bean.getMemberMode().equals("2") || bean.getMemberMode().equals("1") ) {
+			bean.setMemberImage(null);
 			model.addAttribute("members", bean);
 			System.out.println("登入成功");
 			
