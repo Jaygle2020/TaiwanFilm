@@ -40,21 +40,26 @@
 	<div class="menu-bar">
 		<div class="close-menu menu-buttonStyle">CLOSE</div>
 		<div class="menu-button">
-			<a href="activities">
+			<a href="${pageContext.request.contextPath}/activities">
 				<div class="menu-buttonStyle">活動情報</div>
 			</a>
 			<a href="${pageContext.request.contextPath}/getAllProject">
 				<div class="menu-buttonStyle">贊助電影</div>
 			</a>
-			<a href="products">
+			<a href="${pageContext.request.contextPath}/products">
 				<div class="menu-buttonStyle">電影周邊</div>
 			</a>
-			<a href="movieIntro">
+			<a href="${pageContext.request.contextPath}/movieIntro">
 				<div class="menu-buttonStyle">網路訂票</div>
 			</a>
 			
+<<<<<<< Updated upstream
 			<a href="messages">
 			 <div class="${pageContext.request.contextPath}/messages">留言板</div>
+=======
+			<a href="${pageContext.request.contextPath}/createDate">
+			 <div class="menu-buttonStyle">留言板</div>
+>>>>>>> Stashed changes
 			</a>
 			
 			<c:if test="${testNum == 2}">			

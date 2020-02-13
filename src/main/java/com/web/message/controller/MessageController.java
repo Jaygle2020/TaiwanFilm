@@ -90,10 +90,10 @@ public class MessageController {
 
 	}
 
-	// 所有like排序
+	// 所有date排序
 	@RequestMapping("/createDate")
 	public String Date(Integer id, Model model) {
-		List<MessageBean> list = service.getMessagesByLike();
+		List<MessageBean> list = service.getMessagesByDate();
 		model.addAttribute("messages", list);
 		return "message/messages";
 
@@ -212,7 +212,7 @@ public class MessageController {
 		service.deleteMessage(messageId);
 		model.addAttribute("messageBean", mb);
 		System.out.println(messageId);
-		return "redirect:/messages";
+		return "redirect:/createDate";
 	}
 
 	// @RequestMapping("/reply")
@@ -264,7 +264,7 @@ public class MessageController {
 
 		bb.setMemberBean(mem1);
 		service.addMessage(bb);
-		return "redirect:/messages";
+		return "redirect:/createDate";
 	}
 
 	// 按讚

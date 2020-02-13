@@ -34,7 +34,11 @@
 left: 0px;
 }
 .container{
+<<<<<<< Updated upstream
 width: 80%;display: inline-block;padding-top: 100px}
+=======
+width: 80%;display: inline-block;position: absolute;padding-top: 100px}
+>>>>>>> Stashed changes
 </style>
 
 
