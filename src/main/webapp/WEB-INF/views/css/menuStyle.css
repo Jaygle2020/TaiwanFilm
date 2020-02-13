@@ -238,6 +238,7 @@ body{
 	height: 10%;
 	display: inline-block;
 	transition: 1s;
+	cursor:grab;
 }
 
 .menu-click:hover {

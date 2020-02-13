@@ -31,9 +31,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.web.activity.service.ActivityService;
 import com.web.login.Model.MembersBean;
 import com.web.login.Service.MembersService;
-import com.web.message.model.MessageBean;
 
 
 @Controller
@@ -101,11 +101,11 @@ public class RegisterController {
 		}
 
 		return "redirect:/ToIndex";
-
+ 
 	}
 	
-
-
+	@Autowired
+	ActivityService ActiveService;
 	@PostMapping("/Checklogin")
 	public String memberCheckLogin(@ModelAttribute("MembersBean") MembersBean member, Model model, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response) {
@@ -170,7 +170,7 @@ public class RegisterController {
 				System.out.println("會員資料修改失敗");
 				return "_01_register/DomodifyMember";
 			}		
-		
+	
 	}
 	@RequestMapping(value = "/_01_register/DomodifyMember", method = RequestMethod.POST)
 	public String DomodifyMember(@RequestParam("memImage")
@@ -365,6 +365,7 @@ public String list(Model model) {
 
 	@GetMapping("/FuzzyQuery")
 	public String FuzzyQuery(String keyword,Model model)  {
+
 		List<MembersBean> list = service.getMemberByEmail(keyword); 
 		model.addAttribute("members", list);
 		System.out.println("keyword 是:" + keyword);
