@@ -1,7 +1,9 @@
 function DaysCountdown(sLimitDay){
-	var nowDate ,limitDay , countDay;
+	var nowDate ,limitDay , countDay,result;
 	nowDate = new Date();
 	limitDay = new Date(sLimitDay);
-	countDay = parseInt(Math.abs(limitDay - nowDate)/1000/60/60/24);
+	result = limitDay - nowDate;
+	if(result<=0)return "已截止";
+	countDay = parseInt(Math.abs(result)/1000/60/60/24);
 	return countDay;
 	}

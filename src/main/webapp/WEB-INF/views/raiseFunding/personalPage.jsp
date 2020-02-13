@@ -28,7 +28,7 @@
             <c:if test="${pcBeans!=null}">
             <c:forEach items="${pcBeans}"  var="pcBean">
             <div class="inner" id="project12">
-                <div class="projectThumb" style="background-image:url('${pageContext.request.contextPath}/img/supermark/ok.png');">
+                <div class="projectThumb" style="background-image:url('${pageContext.request.contextPath}/getProject/photo/${pcBean.projBean.projectId}');">
                 </div>
                 <div class="project">
                     <p class="title">${pcBean.projBean.projectName}</p>
@@ -42,7 +42,7 @@
                 <div class="plan">
                     <span class="money">目前募得$${pcBean.projBean.cfBean.fundsNow}元</span> <span
                         class="percent">${pcBean.projBean.cfBean.percent}%</span> <span class="date">還剩
-                        <strong class="dayCount" data-endDay="${pcBean.projBean.cfBean.dateEnd}"></strong>天
+                        <strong class="dayCount" data-endDay="${pcBean.projBean.cfBean.dateEnd}"></strong>
                     </span>
                 </div>
             </div>
@@ -53,5 +53,25 @@
 
     </div>
     <jsp:include page="../fragment/footer.jsp" />
+    <script>
+    $(".dayCount").each(function(){
+		var dayCount = $(this).attr("data-endDay");
+		console.log(DaysCountdown(dayCount));
+		var result = DaysCountdown(dayCount);
+		$(this).text(result);
+	});
+    
+    function DaysCountdown(sLimitDay){
+		var nowDate ,limitDay ,countDay,result;
+		nowDate = new Date();
+		limitDay = new Date(sLimitDay);
+		result = limitDay - nowDate;
+		if(result>0){
+		countDay = parseInt( Math.abs(result) / 1000 / 60 / 60 / 24 );
+		return "還剩"+countDay+"天";
+		}
+		return "已截止";
+	}
+    </script>
 </body>
 </html>

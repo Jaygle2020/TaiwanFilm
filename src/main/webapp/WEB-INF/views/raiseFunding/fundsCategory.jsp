@@ -49,8 +49,8 @@
 							</div>
 							<div class="plan">
 								<span class="money">$ ${proj.fundsNow}</span> <span
-									class="percent">${proj.percent}%</span> <span class="date">還剩
-									<strong id="dayCount" data-endDay="${proj.dateEnd}"></strong>天
+									class="percent">${proj.percent}%</span> <span class="date">
+									<strong class="dayCount" data-endDay="${proj.dateEnd}"></strong>
 								</span>
 							</div>
 						</div>
@@ -75,8 +75,8 @@
 							</div>
 							<div class="plan">
 								<span class="money">$ ${proj.fundsNow}</span> <span
-									class="percent">${proj.percent}%</span> <span class="date">還剩
-									<strong id="dayCount" data-endDay="${proj.dateEnd}"></strong>天
+									class="percent">${proj.percent}%</span> <span class="date">
+									<strong class="dayCount" data-endDay="${proj.dateEnd}"></strong>
 								</span>
 							</div>
 						</div>
@@ -101,8 +101,8 @@
 							</div>
 							<div class="plan">
 								<span class="money">$ ${proj.fundsNow}</span> <span
-									class="percent">${proj.percent}%</span> <span class="date">還剩
-									<strong id="dayCount" data-endDay="${proj.dateEnd}"></strong>天
+									class="percent">${proj.percent}%</span> <span class="date">
+									<strong class="dayCount" data-endDay="${proj.dateEnd}"></strong>
 								</span>
 							</div>
 						</div>
@@ -114,6 +114,15 @@
 	<jsp:include page="../fragment/footer.jsp" />
 	<script>
 		//點擊切換
+				
+			
+			$(".dayCount").each(function(){
+				var dayCount = $(this).attr("data-endDay");
+				console.log(DaysCountdown(dayCount));
+				var result = DaysCountdown(dayCount);
+				$(this).text(result);
+			});
+	
 			$("#hot-button").click(function(){
 				$(".buttonBorder").removeClass("active buttonBorder-active");
 				$(this).addClass("active buttonBorder-active");	
@@ -136,8 +145,18 @@
 			$(location).attr('href',url);
 
 		});
-		var dayCount = $("#dayCount").attr("data-endDay");
-	    $("#dayCount").text(DaysCountdown(dayCount));
+
+function DaysCountdown(sLimitDay){
+		var nowDate ,limitDay ,countDay,result;
+		nowDate = new Date();
+		limitDay = new Date(sLimitDay);
+		result = limitDay - nowDate;
+		if(result>0){
+		countDay = parseInt( Math.abs(result) / 1000 / 60 / 60 / 24 );
+		return "還剩"+countDay+"天";
+		}
+		return "已截止";
+	}
 	</script>
 </body>
 </html>

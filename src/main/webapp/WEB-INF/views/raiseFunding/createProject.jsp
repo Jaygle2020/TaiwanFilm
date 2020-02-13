@@ -354,6 +354,7 @@
 					for(var i = 0 ; i<count;i++){
 						var url =  "${pageContext.request.contextPath}/infoPhoto/"+${ProjectBean.projectId}+"/"+i;    
 					$("#preViewArea").find("img").attr("src", url);
+					alert("資料建立成功");
 					}
 				},
 				error:function(){

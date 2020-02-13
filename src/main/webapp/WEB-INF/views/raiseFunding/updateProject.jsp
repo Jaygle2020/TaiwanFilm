@@ -38,7 +38,7 @@
 			<section class="formSection">
 				
 					<div class="active create-basic productlist form-group">
-					<form method="POST" action="${pageContext.request.contextPath}/updateSubmit"
+					<form method="POST" action="${pageContext.request.contextPath}/submitProject"
 					enctype="multipart/form-data" id="projectForm">
 						<div class="createFormIntro partialWidthBlock">
 							<p>在這個區塊您將填寫專案內容中最吸引人募資影片、封面圖片和專案說明。</p>
@@ -362,6 +362,7 @@
 						var url =  "${pageContext.request.contextPath}/infoPhoto/"+${ProjectBean.projectId}+"/"+i;    
 					$("#preViewArea").find("img").attr("src", url);
 					}
+					alert("資料建立成功")
 				},
 				error:function(){
 					alert("fail");

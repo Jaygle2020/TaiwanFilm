@@ -41,7 +41,7 @@
 .pageWrapper .down .inner .projectThumb {
   width: 100%;
   height: 113px;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
