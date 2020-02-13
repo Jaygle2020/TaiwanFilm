@@ -22,40 +22,40 @@ public class HomeController {
 
 	@Autowired
 	ActivityService ActiveService;
-	
+
 	@Autowired
 	bookingService bookingService;
-	
+
 	@Autowired
 	ProposalService PropService;
+
 	@RequestMapping("/") // 看到斜線 就走去index
-	public String home(Model model,HttpSession session) {
+	public String home(Model model, HttpSession session) {
 		List<activityBean> activityList = ActiveService.getAllActivitiesExceptStatusEqualOne();
 		model.addAttribute("activityList", activityList);
-		
+
 		List<activityBean> activityListViews = ActiveService.getAllActivitiesExceptStatusEqualOneViews();
 		model.addAttribute("activitiesViews", activityListViews);
-		
+
 		List<activityBean> activityListStart = ActiveService.getAllActivitiesExceptStatusEqualOneStart();
 		model.addAttribute("activitiesStart", activityListStart);
-		
+
 		List<activityBean> activityListEnd = ActiveService.getAllActivitiesExceptStatusEqualOneStart();
 		model.addAttribute("activitiesEnd", activityListEnd);
-		
+
 		List<movieBean> list = bookingService.getAllMovies();
 		model.addAttribute("movies", list);
-		
+
 		ProjectBean projBean = PropService.GetProjBean(1);
-		model.addAttribute("projectBean",projBean);
-		
+		model.addAttribute("projectBean", projBean);
+
 		String testNum = "0";
 		MembersBean mbBean = (MembersBean) session.getAttribute("members");
-		if(mbBean !=null ) {
+		if (mbBean != null) {
 			testNum = mbBean.getMemberMode();
 		}
 		model.addAttribute("testNum",testNum);
 		return "index";
 	}
-	
-	
+
 }

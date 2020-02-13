@@ -27,7 +27,7 @@
 	</div>
 	<div class="right-bar">
 		<div class="goToMid">
-			<div class="menu-click" style="cursor:grab; ">Menu</div>
+			<div class="menu-click">Menu</div>
 			<!-- 移動時會有小點點隨著你移動到的地方變色 -->
 			 <!-- <div class="dots">
 				<div id="home-area" class="dot dot-pink"></div>

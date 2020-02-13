@@ -87,6 +87,10 @@
 .ename {
 	word-wrap: break-word;
 }
+
+#category{
+	background-image: url(img/wall1.jpeg);
+}  
 </style>
 </head>
 <body>
@@ -96,7 +100,7 @@
 	<div class="section" id="popular">
 		<div class="section" id="category">
 			<div class="width-limit">
-				<h1>電影選擇</h1>
+				<h1 style="font-family: Microsoft JhengHei;">電影選擇</h1>
 				<div class="change-category">
 					<div class="change-menu">
 						<div class="buttonBorder-active buttonBorder" id="trend-button">現正熱映</div>
@@ -245,6 +249,8 @@
 			</div>
 		</div>
 	</div>
+	
+	<jsp:include page="../fragment/footer.jsp" />
 </body>
 <script>
 	$('.downList').hide();

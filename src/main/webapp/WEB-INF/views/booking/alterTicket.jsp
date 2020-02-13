@@ -5,22 +5,32 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="zh-TW">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<head>
-<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
-<title>Taiwam Films - 查看訂票</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/movie.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/menuStyle.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<head>
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath }/favicon.ico" />
+<title>Taiwam Films - 查看訂票</title>
 <style>
 body {
 	background: #f1f1f1;
+}
+
+#category {
+	background-image: url(img/wall1.jpeg);
+}
+
+fieldset {
+	background: white;
+	margin-bottom: 70px;
 }
 </style>
 </head>
@@ -30,34 +40,35 @@ body {
 	<div class="section" id="popular">
 		<div class="section" id="category">
 			<div class="width-limit">
-				<h1>查看訂票</h1>
+				<h1 style="font-family: Microsoft JhengHei;">查看訂票</h1>
 			</div>
 
 			<section class="container">
-				<fieldset class='form-horizontal'>
-					<div class="form-group">
-						<h4>
-							<label class="control-label col-lg-2">電影名稱 </label>
-						</h4>
-						<h4>
-							<label class="control-label col-lg-2" style="width: 17%;">放映資訊
-							</label>
-						</h4>
-						<h4>
-							<label class="control-label col-lg-2" style="width: 13%;">戲院</label>
-						</h4>
-						<h4>
-							<label class="control-label col-lg-2 col-lg-2"
-								style="width: 30%;">座位</label>
-						</h4>
-						<h4>
-							<label class="control-label col-lg-2" style="width: 10%;">狀態</label>
-						</h4>
-						<h4>
-							<label class="control-label col-lg-2" style="width: 10%;">編輯</label>
-						</h4>
-					</div>
-					<c:forEach var='view' items='${views }'>
+				<c:forEach var='view' items='${views }'>
+					<fieldset class='form-horizontal'>
+						<div class="form-group">
+							<h4>
+								<label class="control-label col-lg-2">電影名稱 </label>
+							</h4>
+							<h4>
+								<label class="control-label col-lg-2" style="width: 17%;">放映資訊
+								</label>
+							</h4>
+							<h4>
+								<label class="control-label col-lg-2" style="width: 13%;">戲院</label>
+							</h4>
+							<h4>
+								<label class="control-label col-lg-2 col-lg-2"
+									style="width: 30%;">座位</label>
+							</h4>
+							<h4>
+								<label class="control-label col-lg-2" style="width: 10%;">狀態</label>
+							</h4>
+							<h4>
+								<label class="control-label col-lg-2" style="width: 10%;">編輯</label>
+							</h4>
+						</div>
+
 						<div class="form-group">
 							<label class="control-label col-lg-2 col-lg-2">
 								${view.movieName}<br>${view.englishName}
@@ -78,11 +89,13 @@ body {
 							</div>
 						</div>
 						<br>
-					</c:forEach>
-				</fieldset>
+					</fieldset>
+				</c:forEach>
 			</section>
 		</div>
 	</div>
+
+	<jsp:include page="../fragment/footer.jsp" />
 </body>
 <script>
 	$(".deleteBtn a").click(function() {

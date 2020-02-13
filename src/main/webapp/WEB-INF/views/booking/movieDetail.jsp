@@ -63,6 +63,10 @@
 	font-family: Microsoft JhengHei;
 	padding: 50px 300px;
 }
+
+#category{
+	background-image: url(img/wall1.jpeg);
+}  
 </style>
 </head>
 <body>
@@ -73,7 +77,7 @@
 	<div class="section" id="popular">
 		<div class="section" id="category">
 			<div class="width-limit">
-				<h1>${movie.movieName }</h1>
+				<h1 style="font-family: Microsoft JhengHei;">電影資訊</h1>
 			</div>
 
 			<div class="movieMain">
@@ -138,5 +142,6 @@
 		</div>
 	</div>
 
+	<jsp:include page="../fragment/footer.jsp" />
 </body>
 </html>

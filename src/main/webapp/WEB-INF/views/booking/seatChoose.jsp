@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/movie2.css">
+	href="${pageContext.request.contextPath }/css/movie.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/menuStyle.css">
 <meta charset="UTF-8">
@@ -87,6 +87,10 @@ form {
 	border-radius: 3px;
 	height: 25px;
 	width: 50px;
+}
+
+body{
+	background-image: url(img/wall1.jpeg);
 }
 </style>
 </head>
@@ -1863,6 +1867,8 @@ form {
 
 		</div>
 	</form:form>
+	
+	<jsp:include page="../fragment/footer.jsp" />
 </body>
 <script>
 	var fullStr = 0;

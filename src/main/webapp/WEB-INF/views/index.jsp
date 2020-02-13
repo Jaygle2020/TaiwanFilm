@@ -141,7 +141,7 @@
 		</div>
 	</div>
 	
-	<jsp:include page="footer.jsp" /> 
+	<jsp:include page="fragment/footer.jsp" /> 
 
 </body>
 

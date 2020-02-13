@@ -199,6 +199,7 @@ body{
 }
 
 .close-menu {
+	cursor:pointer;
 	writing-mode: tb-rl;;
 	position: absolute;
 	right: 4%;
@@ -238,7 +239,7 @@ body{
 	height: 10%;
 	display: inline-block;
 	transition: 1s;
-	cursor:grab;
+	cursor:pointer;
 }
 
 .menu-click:hover {
