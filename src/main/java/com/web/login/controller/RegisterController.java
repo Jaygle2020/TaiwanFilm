@@ -93,10 +93,8 @@ public class RegisterController {
 		try {
 			service.saveMembers(member);
 		} catch (org.hibernate.exception.ConstraintViolationException e) {
-			System.out.println("org.hibernate.exception.ConstraintViolationException");
 			return "_01_register/registerNewMember";
 		} catch (Exception ex) {
-			System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
 			return "_01_register/registerNewMember";
 		}
 
@@ -109,9 +107,7 @@ public class RegisterController {
 	@PostMapping("/Checklogin")
 	public String memberCheckLogin(@ModelAttribute("MembersBean") MembersBean member, Model model, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Login頁面");
 		MembersBean bean = service.login(request.getParameter("email"),request.getParameter("password"));
-		System.out.println("這是BEAN" + bean);
 		if (request.getParameter("email") == null || request.getParameter("password") == null) {
 			model.addAttribute("errorMessage", "帳號或密碼欄不能為空");
 			return "_01_register/register";}
@@ -119,8 +115,8 @@ public class RegisterController {
 			
 
 		if (bean.getMemberMode().equals("2") || bean.getMemberMode().equals("1") ) {
+			bean.setMemberImage(null);
 			model.addAttribute("members", bean);
-			System.out.println("登入成功");
 			if(session.getAttribute("requestURI")!=null) {
 				return "redirect:/"+session.getAttribute("requestURI");
 			}
@@ -132,7 +128,6 @@ public class RegisterController {
 //			System.out.println("非會員");
 //			return "_01_register/MemberBackstage";
 //		}		
-			System.out.println("無帳號");
 			return "_01_register/register";
 		}
 		// 記住原本的頁面, 登入後系統自動轉回原本的頁面。
@@ -197,23 +192,19 @@ public class RegisterController {
 				byte[] b = picture.getBytes();
 				Blob blob = new SerialBlob(b);		
 				member.setMemberImage(blob);
-				System.out.println("取到照片" + member.getMemberImage());
 			} catch (Exception e) {
 				e.printStackTrace();
 				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());}
 		}else {
-			System.out.println("沒給照片");
 			member.setFileName(member1.getFileName());
 			member.setMemberImage(member1.getMemberImage());
 		}
 			model.addAttribute("members", member);
 
 		if(service.updateMembers(member)) {
-			System.out.println("會員資料修改成功");
 			model.addAttribute("members", service.getAllMembers());
 			return "_01_register/allMembers";
 		} else {
-			System.out.println("會員資料修改失敗");
 			return "_01_register/DomodifyMember";
 		}
 		
@@ -243,7 +234,6 @@ public class RegisterController {
 				byte[] b = picture.getBytes();
 				Blob blob = new SerialBlob(b);
 				member.setMemberImage(blob);
-				System.out.println("取到照片" + member.getMemberImage());
 			} catch (Exception e) {
 				e.printStackTrace();
 				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());}
@@ -252,10 +242,8 @@ public class RegisterController {
 			model.addAttribute("members", member);
 
 		if(service.updateMembers(member)) {
-			System.out.println("會員資料修改成功");
 			return "redirect:/ToIndex";
 		} else {
-			System.out.println("會員資料修改失敗");
 			return "redirect:/ToIndex";
 		}
 	}
@@ -263,7 +251,6 @@ public class RegisterController {
 	@SuppressWarnings("unused")
 	@GetMapping("/crm/picture/{id}")
 	public ResponseEntity<byte[]> getPicture(@PathVariable("id") Integer id) {
-		System.out.println("!!!!!");		
 		byte[] body = null;
 		ResponseEntity<byte[]> re = null;
 		MediaType mediaType = null;
@@ -271,7 +258,6 @@ public class RegisterController {
 		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
 
 		MembersBean member = service.getMemberById(id);
-		System.out.println(" 照片"+member.getMemberImage());
 		if (member == null) {
 			return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
 		}
@@ -285,7 +271,6 @@ public class RegisterController {
 			}
 		}
 		Blob blob = member.getMemberImage();
-		System.out.println(member.getMemberImage());
 		if (blob != null) {
 			body = blobToByteArray(blob);
 		} else {
@@ -370,7 +355,6 @@ public String list(Model model) {
 
 		List<MembersBean> list = service.getMemberByEmail(keyword); 
 		model.addAttribute("members", list);
-		System.out.println("keyword 是:" + keyword);
 		return "_01_register/FuzzyQuery";
 	}
 
