@@ -13,43 +13,98 @@
 	
 	<title>movie</title>
 	<style>
-	.sign {
+body{
+	background-color:white;
+	}
+.sign {
     vertical-align: top;
     width: 300px;
     height: 230px;
     display: inline-block;
 }
+.registrTotalDiv{     
+height:570px;
+}
+
+.sign{
+text-align: left;
+}
+
+#sign-in{
+
+	hight:230px;
+	margin: 0px 30px;
+	border-radius: 5px;
+    margin: 0px 50px;
+}
+#sign-up{
+	margin: 5px;
+	hight:230px;
+	border-radius: 5px;
+}
+
+.loginOrOut{
+display:none;
+}
+
+.nobooder{
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+b{
+	font-size: 46px;
+	 margin-bottom: 30px;
+}
+
+.but{
+	font-size: 16px;
+    background-color: black;
+    color: white;
+    border-block-end: none;
+    border-color: white;
+    border: 0;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+input:not(.nobooder){
+    border-radius: 5px;
+	margin: 0px 10px;
+}
 	
 	</style>
 </head>
-<body style="background: #ebebeb">
+<body style="background-color:white;">
+<jsp:include page="../fragment/menu.jsp" /> 
 
-	<div class="registrTotalDiv">
+	<div class="registrTotalDiv" >
 		<div >
 			
 			<div class="sign" id="sign-in">
-				<h1>登入</h1>
+				<b>登入</b>
 				<p class="login-box-msg">${errorMessage}</p>
 				<form action='${pageContext.request.contextPath}/Checklogin' method='post'>
-				<input name="email" class="nobooder" type='email' placeholder='電子信箱'  required /><br>
-				<input name="password" class="nobooder" type='password' placeholder='密碼' required /><br>
+				<input name="email" class="nobooder" type='email' placeholder='輸入電子信箱'  required /><br>
+				<input name="password" class="nobooder" type='password' placeholder='輸入密碼' required /><br>
+			<br>
+			<input class="but" type='reset' value='清除' />
+			<input class="but" type='submit' value='確認加入' onclick='return check()' />
 			
-			<input type='reset' value='清除' />
-			<input type='submit' value='確認加入' onclick='return check()' />
 			</form>
 				<label for="remember" class="grey dark">			
 				<br><input type="checkbox" />記得我</label>		
-			<p style="font-size: 10px">忘記密碼?</p>
+<!-- 			<p style="font-size: 10px">忘記密碼?</p> -->
 			</div>
 			
 			<div class="sign" id="sign-up">
-			<h1 >新使用者</h1>
-			<p class="smalltext" >若您還未註冊會員</p>
-			<p class="smalltext">我們將會請您提供必需資訊</p>
-			<button type=""><a href="members/add">登入/註冊</a></button>
+			<b >新使用者</b>
+			<br><br>
+			<p class="smalltext" >若您還未註冊TaiwanFilm.com會員</p><br>
+			<p class="smalltext">我們將會請您提供必需資訊以便使用</p><br>
+			<button class="but" ><a class="but" href="members/add">登入 / 註冊</a></button>
 					
 			</div>
 		</div>
 	</div>
+	<jsp:include page="../fragment/bottom.jsp" /> 
 </body>
 </html>

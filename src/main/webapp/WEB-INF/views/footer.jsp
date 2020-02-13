@@ -16,7 +16,7 @@
 	.social{
 	margin: 30px 0px}
 	.social-area{
-	width: 10%;display: inline-block;font-size: 20px}
+	width: 15%;display: inline-block;font-size: 20px}
 	.social-area i {
 		font-size: 30px;
 		color: black;
@@ -32,7 +32,7 @@
 
 
 	<div class="footer-area">
-		<div style="font-size: 50px">TaiwanFilms</div>
+		<div style="font-size: 50px;color:#EA0082;font-weight:bold">TaiwanFilms</div>
 		<div class="social">
 			<div class="social-area"><i class="fab fa-instagram"></i>Instagrem</div>
 			<div class="social-area"><i class="fab fa-twitter"></i>Twitter</div>

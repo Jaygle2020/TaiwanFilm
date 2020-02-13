@@ -22,6 +22,20 @@ public class MessageInfoBean implements Serializable {
 private Integer mesInfoId;
 @Column(columnDefinition="TEXT")
 private String innerText;
+private String messageTitle;
+private String messageCategory;
+public String getMessageCategory() {
+	return messageCategory;
+}
+public void setMessageCategory(String messageCategory) {
+	this.messageCategory = messageCategory;
+}
+public String getMessageTitle() {
+	return messageTitle;
+}
+public void setMessageTitle(String messageTitle) {
+	this.messageTitle = messageTitle;
+}
 private Integer photoCount;
 private String img01;
 private Blob image01;

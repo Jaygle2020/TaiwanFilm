@@ -1,11 +1,17 @@
 package com.web.message.controller;
 
+import java.sql.Blob;
 import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.CacheControl;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +26,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.web.config.ControllerUtil;
 
 import com.web.login.Model.MembersBean;
 import com.web.message.model.MessageBean;
@@ -35,7 +44,12 @@ public class MessageController {
 	public void setService(MessageService service) {
 		this.service = service;
 	}
+	@Autowired
+	ControllerUtil util;
 
+
+
+	
 	ServletContext context;
 
 	@Autowired
@@ -57,17 +71,32 @@ public class MessageController {
 	@RequestMapping("/messages")
 	public String list(Integer id, Model model) {
 		List<MessageBean> list = service.getAllMessages();
-		
+
 		model.addAttribute("messages", list);
 		return "message/messages";
 	}
+	
+	//所有like排序
+		@RequestMapping("/messageLike")
+		public String like(Integer id, Model model) {
+			List<MessageBean> list = service.getMessagesByLike();
+			
+			model.addAttribute("messages", list);
+			return "message/messages";
+			
+		}
+		
+		//所有like排序
+		@RequestMapping("/createDate")
+		public String Date(Integer id, Model model) {
+			List<MessageBean> list = service.getMessagesByLike();
+			
+			model.addAttribute("messages", list);
+			return "message/messages";
+			
+		}
 
-//	@RequestMapping("/replys")
-//	public String replyList(Model model) {
-//		List<ReplyBean> list = service.getAllReplys();
-//		model.addAttribute("replys", list);
-//		return "replys";
-//	}
+
 
 //查詢分類
 	@RequestMapping("/queryByCategory")
@@ -185,12 +214,15 @@ public class MessageController {
 //		model.addAttribute("reply", service.getReplyById(id));
 //		return "message";
 //	}
+	
+
+
 //新增文章
 	@RequestMapping(value = "/messages/add", method = RequestMethod.GET)
 	public String getAddNewMessage(Model model, HttpSession session) {
 		MessageBean bb = new MessageBean();
 		model.addAttribute("messageBean", bb);
-		System.out.println(bb.getMessageTitle());
+		
 		MembersBean mem1 = (MembersBean) session.getAttribute("members");
 		String requestURI = "messages";
 		if (mem1 == null) {
@@ -202,10 +234,29 @@ public class MessageController {
 	}
 
 	@RequestMapping(value = "/messages/add", method = RequestMethod.POST)
-	public String processAddNewMessage(@ModelAttribute("messageBean") MessageBean bb, BindingResult result,
+	public String processAddNewMessage(@ModelAttribute("messageBean") MessageBean bb, 
+//			@RequestParam("messageTitle") String messageTitle, 
+//			@RequestParam("innerText") String innerText, @RequestParam("photoCount") Integer photoCount,
+//			@RequestParam(value = "image0", required = false) MultipartFile file0,
+//			@RequestParam(value = "image1", required = false) MultipartFile file1,
+//			@RequestParam(value = "image2", required = false) MultipartFile file2,
+//			@RequestParam(value = "image3", required = false) MultipartFile file3
+			BindingResult result,
 			HttpSession session) {
 		MembersBean mem1 = (MembersBean) session.getAttribute("members");
-
+//		bb.setInnerText(innerText);
+//		bb.setMessageTitle(messageTitle);
+//		bb.setPhotoCount(photoCount);
+//		
+//		bb.setImage01(image01);
+//		bb.setImg01(util.getFileName(file0));
+//bb.setImage02(util.fileTransformBlob(byte[] file1));
+//		bb.setImg02(util.getFileName(file1));
+//	bb.setImage03(util.fileTransformBlob(file2));
+//		bb.setImg03(util.getFileName(file2));
+//		bb.setImage04(util.fileTransformBlob(file3));
+//		bb.setImg04(util.getFileName(file3));
+		
 		bb.setMemberBean(mem1);
 		service.addMessage(bb);
 		return "redirect:/messages";
@@ -230,7 +281,53 @@ public class MessageController {
 
 	@InitBinder
 	public void messageWhiteListing(WebDataBinder binder) {
-		binder.setAllowedFields("messageContent", "messageCategory", "messageTitle", "messageId", "messageDelete");
+		binder.setAllowedFields("messageContent", "messageCategory", "messageTitle", "messageId", "messageDelete","innerText"
+				,"photoCount","img01","image01","img02","image02","img03","image03","img04","image04");
 	}
+	//得到圖片
+//	@GetMapping("/infoPhoto/{num}")
+//	public ResponseEntity<byte[]> getDonatePicture(@PathVariable("messageId") Integer messageId,
+//			@PathVariable("num") Integer num) {
+//		byte[] body = null;
+//		MediaType mediaType = null;
+//		HttpHeaders headers = new HttpHeaders();
+//		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+//		Blob blob = null;
+//		String fileName=null;
+//		List<MessageBean> messageBeans = service.getMessageInfo(messageId);
+//		MessageBean messageBean = messageBeans.get(0);
+//		if (messageBean == null)
+//			return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
+//			switch (num) {
+//			case 0:
+//				fileName = messageBean.getImg01();
+//				blob = messageBean.getImage01();
+//				break;
+//			case 1:
+//				fileName = messageBean.getImg02();
+//				blob = messageBean.getImage02();
+//				break;
+//			case 2:
+//				fileName = messageBean.getImg03();
+//				blob = messageBean.getImage03();
+//				break;
+//			case 3:
+//				fileName = messageBean.getImg04();
+//				blob = messageBean.getImage04();
+//				break;
+//			}
+//			if (fileName.toLowerCase().endsWith("jfif")) {
+//				mediaType = MediaType.valueOf(context.getMimeType("dummy.jpeg"));
+//			} else {
+//				mediaType = MediaType.valueOf(context.getMimeType(fileName));
+//				headers.setContentType(mediaType);
+//			}
+//			
+//			if (blob != null) {
+//				body = util.blobToByteArray(blob);
+//			}
+//			return new ResponseEntity<byte[]>(body, headers, HttpStatus.OK);
+//	}
+
 
 }

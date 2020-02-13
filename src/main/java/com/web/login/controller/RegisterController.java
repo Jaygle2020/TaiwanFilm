@@ -31,11 +31,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.web.activity.model.activityBean;
 import com.web.activity.service.ActivityService;
 import com.web.login.Model.MembersBean;
 import com.web.login.Service.MembersService;
-import com.web.message.model.MessageBean;
 
 
 @Controller
@@ -103,10 +101,9 @@ public class RegisterController {
 		}
 
 		return "redirect:/ToIndex";
-
+ 
 	}
 	
-
 	@Autowired
 	ActivityService ActiveService;
 	@PostMapping("/Checklogin")
@@ -138,21 +135,6 @@ public class RegisterController {
 			System.out.println("無帳號");
 			return "_01_register/register";
 		}
-		member = service.getMemberByBean(member);
-		model.addAttribute("members", member);
-		
-		 List<activityBean> activityList = ActiveService.getAllActivitiesExceptStatusEqualOne();
-			model.addAttribute("activityList", activityList);
-			
-			List<activityBean> activityListViews = ActiveService.getAllActivitiesExceptStatusEqualOneViews();
-			model.addAttribute("activitiesViews", activityListViews);
-			
-			List<activityBean> activityListStart = ActiveService.getAllActivitiesExceptStatusEqualOneStart();
-			model.addAttribute("activitiesStart", activityListStart);
-			
-			List<activityBean> activityListEnd = ActiveService.getAllActivitiesExceptStatusEqualOneStart();
-			model.addAttribute("activitiesEnd", activityListEnd);
-		
 		// 記住原本的頁面, 登入後系統自動轉回原本的頁面。
 //		String requestURI = (String) session.getAttribute("requestURI");
 //		System.out.println("請求URI requestURI:"+requestURI);
@@ -190,7 +172,7 @@ public class RegisterController {
 				System.out.println("會員資料修改失敗");
 				return "_01_register/DomodifyMember";
 			}		
-//		return "_01_register/registerUpdateMember" ;
+	
 	}
 	@RequestMapping(value = "/_01_register/DomodifyMember", method = RequestMethod.POST)
 	public String DomodifyMember(@RequestParam("memImage")
@@ -385,6 +367,7 @@ public String list(Model model) {
 
 	@GetMapping("/FuzzyQuery")
 	public String FuzzyQuery(String keyword,Model model)  {
+
 		List<MembersBean> list = service.getMemberByEmail(keyword); 
 		model.addAttribute("members", list);
 		System.out.println("keyword 是:" + keyword);

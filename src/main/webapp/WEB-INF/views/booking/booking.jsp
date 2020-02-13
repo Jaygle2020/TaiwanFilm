@@ -6,6 +6,8 @@
 <html lang="zh-TW">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/movie.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/menuStyle.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
@@ -21,6 +23,10 @@
 <style>
 body {
 	background: #f1f1f1;
+}
+
+ul {
+	margin: 0;
 }
 
 ul li {
@@ -87,6 +93,7 @@ i {
 
 .cinemaCountry img {
 	display: inline-block;
+	-webkit-filter:sepia(1);
 }
 
 .cinemaCountry section {

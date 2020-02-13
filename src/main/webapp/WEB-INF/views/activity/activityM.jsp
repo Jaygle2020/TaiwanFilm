@@ -33,14 +33,9 @@
 	width: 100%;
 	font-size: 20px;
 }
-
-.activityImg{
-	text-align: center;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-image: url('getPicture/${activity.activityId}');
-	height: 500px;
-}
+.container{
+width: 80%;display: inline-block;position: absolute;left: 17%}
+  
 
 </style>
 </head>
@@ -51,23 +46,30 @@
 
 
 
-	<section class="container">
-		<h2>${activity.activityTitle}(後台)</h2>
-		<hr>
-		<div class="row">
-			<div class="activityimg">
-				<%-- <img src="<c:url value='/getPicture/${activity.activityId}'/>" /> --%>
-			</div>	
+		<section class="container">
+			<h2>${activity.activityTitle}</h2>
 			<hr>
-			<div class="col-md-5">
-				<h2>${activity.activityTitle}</h2>
-				<h3 style="font-size: 20px;text-align: center">${activity.activityMainContent}</h3>
-				<p style="font-size: 18px">${activity.activityContent}</p>
-				<p style="font-size: 18px">活動狀態: ${activity.status}</p>	
-					<strong>活動編號: </strong> <span class='label label-warning'>
-						${activity.activityId} </span>
-				</p>
-				<p>
+			<div class="row">  
+				<div style="text-align: center;	text-align: center; 
+						background-position: center;
+						background-repeat: no-repeat;
+						background-image: url('../getPicture/${activity.activityId}');
+						height: 500px;
+						background-size: 100%">
+					 
+				</div>
+				<hr> 
+				<div class="col-md-5">
+					<h2>${activity.activityTitle}</h2>
+					<h3 style="font-size: 20px;text-align: center">${activity.activityMainContent}</h3>
+					<p style="font-size: 18px">${activity.activityContent}</p>
+					<p>所屬類別: ${activity.category}</p>
+					
+					<p>
+						<strong>活動編號: </strong> <span class='label label-warning'>
+							${activity.activityId} </span>
+					</p>  
+					<p>  
 					<a href="<spring:url value='/activitiesM' />" class="btn btn-default">
 						<span class="glyphicon-hand-left glyphicon"></span>返回
 					</a> 
@@ -75,10 +77,14 @@
 						class="btn btn-default"> <span
 						class="glyphicon-hand-left glyphicon" style="width: 40%;display: inline-block"></span>修改
 					</a> 
-				</p>
+						<%-- <a href="<spring:url value='/SignUpActivity?id=${activity.activityId}' />"class="btn btn-default">
+						<span class="glyphicon-hand-left glyphicon"></span>註冊活動</a> --%>
+					</p>
+				</div>  
 			</div>
-		</div>
-	</section>
+		</section>
+					
+
 
 
 

@@ -27,54 +27,34 @@ fieldset {
 	</section>
 	<hr
 		style="height: 1px; border: none; color: #333; background-color: blue;">
-	<section class="container">
-		<!--       三個地方要完全一樣 -->
+	<!--       三個地方要完全一樣 -->
+	<fieldset>
 		<form:form method='POST' modelAttribute="messageBean"
-			class='form-horizontal' enctype="multipart/form-data"
-			>
-			<fieldset>
-				<div class="form-group">
-					<label class='control-label col-lg-2 col-lg-2'
-						for="messageCategory"> 分類 </label>
-					<div class='col-lg-10'>
-						<form:select path="messageCategory">
-							<form:option value="國片討論">
-								國片討論
-							</form:option>
-							<form:option value="募資討論">
-								募資討論
-							</form:option>
-							<%-- 					<form:options items="${categoryList}" /> --%>
-						</form:select>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for='messageTitle'>
-						標題 </label>
-					<div class="col-lg-10">
-						<form:input id="messageTitle" path="messageTitle" type='text'
-							class='form:input-large' />
-					</div>
-				</div>
+			class='form-horizontal' enctype="multipart/form-data">
+			<div class="toolBar">
 
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for=messageContent>
-						內文 </label>
-					<div class="col-lg-10">
-						<form:textarea id="messageContent" path="messageContent"
-							type='text' class='form:input-large' rows="5" cols="45" />
-					</div>
+					<select name="messageCategory">
+						<option value="國片討論">國片討論
+						<option value="募資討論">募資討論
+							<%-- <options items="${categoryList}"></options> --%>
+					</select>
 				</div>
+				<div>標題</div>
+				<div class="col-lg-10">
+					<input id="messageTitle" name="messageTitle" type='text'>
+				</div>
+				<div style="margin: 0 auto; width: 700px">
+					<textarea id="editor" name="messageContent"></textarea>
+				</div>
+				<input name="messageDelete" value="1" type="hidden"> <input
+					type="submit" value="輸入" /> <input type="reset" value="重寫" />
+			</div>
 
-				<div class="form-group">
-					<div class='col-lg-offset-2 col-lg-10'>
-						<input id="btnAdd" type='submit' class='btn btn-primary'
-							value="送出" /> <input type="reset" value="重寫"> <input
-							type="button" value="回上一頁" onClick="history.back()">
-					</div>
-				</div>
-			</fieldset>
 		</form:form>
-	</section>
+	</fieldset>
+	<script>
+		CKEDITOR.replace('editor');
+	</script>
 </body>
 </html>
