@@ -70,8 +70,10 @@ public class ProposalServieImp implements ProposalService {
 	@Override   //測Spring form tag 用
 	public CrowdFundingBean getCrowdFundingBean(Integer projectId) {
 		CrowdFundingBean cfBean = cfDao.getCrowdFundingBean(projectId);
+		if(cfBean.getFundsNow()!=null&&cfBean.getFundsGoal()!=null) {
 		double num = (double)cfBean.getFundsNow()/cfBean.getFundsGoal();
 		cfBean.setPercent((int)Math.round(num*100));
+		}
 		return cfBean;
 	}
 	

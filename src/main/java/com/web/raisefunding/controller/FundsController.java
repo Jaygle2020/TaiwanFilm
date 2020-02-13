@@ -209,6 +209,10 @@ public class FundsController {
 		List<DonatePlanBean> dpBeans = propService.getAllDonatePlanBean(id);
 		ProjectInfoBean infoBean = propService.getProjectInfo(id);// 無法使用新增跟更新同時進行所以寫使用List 待改
 		List<PurchaseBean> pcBeans = donateService.getProjMemberByPurchase(id);
+		if(infoBean.getPhotoCount() == null) {
+			infoBean.setPhotoCount(0);
+			infoBean.setProjBean(cfBean.getProjBean());
+		}
 		model.addAttribute("dpBeans", dpBeans);
 		model.addAttribute("cfBean", cfBean);
 		model.addAttribute("pcBeans", pcBeans);
@@ -328,6 +332,7 @@ public class FundsController {
 		infoBean.setProjectTittle(textTittle);
 		infoBean.setPhotoCount(photoCount);
 		infoBean.setImage01(util.fileTransformBlob(file0));
+		System.out.println(file0);
 		infoBean.setImgName01(util.getFileName(file0));
 		infoBean.setImage02(util.fileTransformBlob(file1));
 		infoBean.setImgName02(util.getFileName(file1));

@@ -12,6 +12,7 @@ import com.web.message.dao.MessageDao;
 import com.web.message.model.MessageBean;
 import com.web.message.model.ReplyBean;
 import com.web.message.service.MessageService;
+import com.web.raisefunding.model.ProjectInfoBean;
 
 @Service
 public class MessageServiceImpl implements MessageService {
@@ -132,5 +133,22 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public void deleteMessage(Integer messageId ) {
 		dao.deleteMessage(messageId);
+	}
+	
+	@Transactional
+	@Override
+	public List<MessageBean> getMessageInfo(Integer messageId) {
+		return dao.getMessageInfo(messageId);
+	}
+	@Transactional
+	@Override
+	public List<MessageBean> getMessagesByLike() {
+		return dao.getMessagesByLike();
+	}
+	
+	@Transactional
+	@Override
+	public List<MessageBean> getMessagesByDate() {
+		return dao.getMessagesByDate();
 	}
 }

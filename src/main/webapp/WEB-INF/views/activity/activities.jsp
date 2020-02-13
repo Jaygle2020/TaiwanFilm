@@ -19,7 +19,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/movie.css"
 	type="text/css">
-<link rel="stylesheet"
+<link rel="stylesheet"  
 	href="${pageContext.request.contextPath }/css/menuStyle.css"
 	type="text/css">
 <style>
@@ -314,7 +314,45 @@ border-bottom: 5px solid #EA0082;
 		</div>
 	</div>
 
+	<%-- <jsp:include page="../fragment/bottom.jsp" />  --%>  
 
+<!-- 		@Bean
+	public DataSource mySQLDataSource() {
+		 ComboPooledDataSource ds = new ComboPooledDataSource();
+	        ds.setUser("root");
+	        ds.setPassword("1234567890");
+	        try {
+	            ds.setDriverClass("com.mysql.cj.jdbc.Driver");
+	        } catch (PropertyVetoException e) {
+	            e.printStackTrace();
+	        }
+	        ds.setJdbcUrl("jdbc:mysql://localhost:3306/jspdb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
+	        ds.setInitialPoolSize(4);
+	        ds.setMaxPoolSize(8);
+	        return ds;
+	}
+	@Bean
+	public LocalSessionFactoryBean sessionFactory() {
+		LocalSessionFactoryBean factory = new LocalSessionFactoryBean();
+		factory.setPackagesToScan(new String[] {
+				"com.web.raisefunding.model",
+				"com.web.login.Model",
+				"com.web.booking.model",
+				"com.web.activity.model",
+				"com.web.message.model",
+				"com.web.store.model",
+				"com.web.shoppingCart.model"
+				
+		});
+		if (SystemConstant.DB_TYPE == SystemConstant.MYSQL) {
+			factory.setDataSource(mySQLDataSource());
+			factory.setHibernateProperties(additionalPropertiesMySQL());	
+		} else if (SystemConstant.DB_TYPE == SystemConstant.SQL_SERVER) {
+			factory.setDataSource(msSQLDataSource());
+			factory.setHibernateProperties(additionalPropertiesMsSQL());	
+		} 
+		return factory;
+	}	 -->
 
 
 

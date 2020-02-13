@@ -33,6 +33,8 @@
 .left-bar{
 left: 0px;
 }
+.container{
+width: 80%;display: inline-block;position: absolute;padding-top: 100px}
 </style>
 
 
@@ -40,11 +42,12 @@ left: 0px;
 <body style="text-align: center;background-image: url(${pageContext.request.contextPath}/img/wall1.jpeg)">
 
 	<jsp:include page="../fragment/menu.jsp" />
-		<section class="container" style="width: 80%;display: inline-block">
+	
+		<section class="container">
 			<h2>${activity.activityTitle}</h2>
 			<hr>
-			<div class="row">
-				<div style="text-align: center;	text-align: center;
+			<div class="row">  
+				<div style="text-align: center;	text-align: center; 
 						background-position: center;
 						background-repeat: no-repeat;
 						background-image: url('../getPicture/${activity.activityId}');

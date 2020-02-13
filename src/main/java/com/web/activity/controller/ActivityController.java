@@ -116,12 +116,13 @@ public class ActivityController {
 
 	/* 查單筆M */
 	@RequestMapping("/activityM/{activityId}")
-	public String getActivityByIdM(@RequestParam("id") Integer activityId, Model model) {
+	public String getActivityByIdM(@PathVariable("activityId") Integer activityId, Model model) {
 		activityBean ab = service.getActivityById(activityId);
 		model.addAttribute("activity", ab);
 		return "activity/activityM";
 
 	}	
+ 
 	
 	
 	
