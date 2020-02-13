@@ -212,7 +212,7 @@
 	<script>
 		var dataDpBeans = null;
 		$(function() {
-			
+			$("#preViewArea").find("img").a
 			$(".datepicker").datepicker();
 			//設定方案日期按鈕
 			donateOptionElm();

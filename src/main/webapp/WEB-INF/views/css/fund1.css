@@ -10,6 +10,10 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
 body{
 	background-image:url('../img/wall1.jpeg')
 }
+wrapper.{
+	margin-left: 5%;
+    margin-right: 2%;
+}
 section {
   margin-bottom: 30px;
 }

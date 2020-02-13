@@ -46,7 +46,7 @@ public class HomeController {
 		List<movieBean> list = bookingService.getAllMovies();
 		model.addAttribute("movies", list);
 
-		ProjectBean projBean = PropService.GetProjBean(1);
+		ProjectBean projBean = PropService.GetProjBean(4);
 		model.addAttribute("projectBean", projBean);
 
 		String testNum = "0";

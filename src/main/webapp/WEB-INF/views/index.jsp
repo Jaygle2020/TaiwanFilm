@@ -56,12 +56,12 @@
 		<div class="funds-trailer" >  
 			<div class="Ftrailer-video">
 				<iframe width="800px" height="400px"
-					src="https://www.youtube.com/embed/eZxkpvoJI2Q" frameborder="0"
+					src="https://www.youtube.com/embed/${projectBean.videoLink}" frameborder="0"
 					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 					allowfullscreen></iframe>
 			</div>
-			<div class="Ftrailer-title">FUNDS</div>
-			<div class="Ftrailer-txt">測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字</div>
+			<div class="Ftrailer-title">${projectBean.projectName}</div>
+			<div class="Ftrailer-txt">${projectBean.projDescript}</div>
 		</div>
 		<div class="funds">      
 			<div class="introduction">
@@ -76,26 +76,21 @@
 				<div class="f-content">
 					<div class="f-content-pad">
 						<h3>募資介紹</h3>
-						<p>
-							ドキュメンタリー映画では、2016年に学生団体「SEALDs」の活動を追った『わたしの自由について』が北米最大のドキュメンタリー映画祭・HotDocsに正式出品、毎日映画コンクール
-							ドキュメンタリー部門にノミネートされ、2017年に、目と耳の両方に障害のある「盲ろう者」の日常を追った『もうろうをいきる』を発表し、劇映画では、『Starting
-							Over』(2014)が東京国際映画祭をはじめ、国内外10以上の映画祭に正式招待され高い評価を得た西原孝至監督が、初めてドキュメンタリーと劇映画が混在した実験的なモノクロ映画を制作。
-
-							西原監督は、2015年から、東京に住んでいる若い女性たちの生き方をオムニバスで紹介するドキュメンタリー映画を作ろうと動き始めたが、2017年10月に#MeToo運動が広がると、劇映画部分を思いつき、4年間撮り貯めてきた登場人物の生活に加え、新たに劇映画の要素を撮影し、1本の映画にまとめた。もともとは、“フェミニズム”をテーマにして制作を始めたが、性別に限らず、「世の中にはいろいろな生き方があって、その人がその人であることがまず素晴らしいということを大切にしたい。」という、“多様性”を肯定する映画に仕上がった
-						</p>
+						<h2>國片平台集資成趨勢</h2>
+<p>近年來，國片的募資方式多轉移到募資平台上，相信是最節省人力物力及較便捷的方法，也會有集資公司輔導，效益能發揮到最大。</p>
+<p>一般情況下，群眾集資的專案會以「全有全無（All or Nothing）」的模式進行；若集資失敗，提案中募資的款項將會退還給贊助者，專案也不會按計劃進行。
+提到近來衆多國片會在平台上募資的原因，貝殼放大集資專案經理韓婷如表示，台灣電影集資以紀錄片為主，多半是帶有核心關懷的議題，非常適合透過群眾集資的方式，在募集資金的同時，能讓議題逐漸加溫。
+						</p><br>
+						<p>群眾募資對於提案者或贊助者而言，都是一個新的體驗，與過去純然的銷售或籌資完全不同，因此即將計劃的你不妨也加入我們。</p>
 					</div>
 				</div>
-				<div class="f-txt">測試文字測試文字測試文字測試文字測試文字測試文字測試文字測試文字測</div>
+				<div class="f-txt"></div>
 			</div>
 			<div class="story">
 				<div class="f-content">
 					<div class="f-content-pad">
 						<h3>募資故事</h3>
-						<p>東京で暮らす私たち。
-							ドキュメンタリー映画監督の池田（岩瀬亮）は、フェミニズムに関するドキュメンタリーの公開に向け、取材を受ける日々を送っている。池田はある日、パートナーのユカ（秋月三佳）に、体調の悪い母親の介護をするため、彼女が暮らすカナダに移住すると告げられる。
-							ヌードモデルの兎丸（兎丸愛美）は、淳太（戸塚純貴）との関係について悩んでいる友人の大学生・美帆（遠藤新菜）に誘われて、池田の資料映像用のインタビュー取材に応じ、自らの家庭環境やヌードモデルになった経緯を率直に答えていく。
-							独立レーベルで活動を続けている歌手のBOMI（BOMI）がインタビューで語る、“幸せとは”に触発される池田。
-							それぞれの人間関係が交錯しながら、人生の大切な決断を下していく。</p>
+						<p>${projectBean.projStory}</p>
 					</div>
 				</div>
 				<div class="f-inner">
