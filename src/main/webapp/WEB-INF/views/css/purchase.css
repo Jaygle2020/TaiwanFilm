@@ -21,7 +21,8 @@ body{
   line-height: 1.2rem;
   color: #2e2e2e;
   magin-left:10%;
-  magin-right:10%
+  magin-right:10%;
+  margin-bottom: 23%;
 }
 
 .purchaseWrapper .purchaseContainer {
@@ -202,7 +203,7 @@ body{
   border: 1px solid #cdcdcd;
   border-radius: 10px;
   width: 250px;
-  height:350px;
+  height:400px;
   display: inline-block;
   text-align: center;
   margin: 15px;
@@ -230,12 +231,13 @@ body{
    width: 90%;
     position: relative;
     display: block;
+      height: 100px;
 }
 .plan .planText .description{
 	white-space: pre-line;
     text-overflow: ellipsis;
     word-wrap: break-word;
-    height: 40px;
+  
 	
 }
 .plan .planText .shipping {

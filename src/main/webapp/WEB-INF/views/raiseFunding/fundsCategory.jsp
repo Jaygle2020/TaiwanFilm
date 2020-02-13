@@ -111,6 +111,7 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="../fragment/footer.jsp" />
 	<script>
 		//點擊切換
 			$("#hot-button").click(function(){

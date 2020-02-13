@@ -27,12 +27,17 @@
           box-shadow: 0 0 3px 3px #666a6f;
   border-radius: 10px;
   width: 200px;
+  height: 300px;
   display: inline-block;
   text-align: center;
   margin: 10px;
   background-color: white;
 }
 
+.small-title{
+	height: 35px;
+    overflow: hidden;
+}
 .pageWrapper .down .inner .projectThumb {
   width: 100%;
   height: 113px;

@@ -139,7 +139,7 @@
 			</section>
 		</div>
 	</div>
-
+<jsp:include page="../fragment/footer.jsp" />
 	<script>
 		$(function() {
 			var date = new Date().toLocaleDateString();

@@ -25,7 +25,7 @@
 <img src="${pageContext.request.contextPath}/img/supermark/ok.png">
 </div>
 </div>
-
+<jsp:include page="../fragment/footer.jsp" />
 <script>
 setTimeout(function(){ 
 	alert("即將跳轉回首頁");

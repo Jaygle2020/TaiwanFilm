@@ -273,7 +273,7 @@ section {
   border: 1px solid #cdcdcd;
   border-radius: 10px;
   width: 250px;
-  height:350px;
+  height:400px;
   display: inline-block;
   text-align: center;
   margin: 15px;
@@ -301,12 +301,13 @@ section {
    width: 90%;
     position: relative;
     display: block;
+    height:100px;
 }
 .projectContentDown .container .col-right .plan .planText .description{
 	white-space: pre-line;
     text-overflow: ellipsis;
     word-wrap: break-word;
-    height: 40px;
+   
 	
 }
 .projectContentDown .container .col-right .plan .planText .shipping {

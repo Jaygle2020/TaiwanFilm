@@ -147,6 +147,7 @@
 			</section>
 		</section>
 	</div>
+	<jsp:include page="../fragment/footer.jsp" />
 </body>
 
 <script>

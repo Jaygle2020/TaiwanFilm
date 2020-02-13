@@ -181,7 +181,7 @@ address, ol, p, ul {
   border: 1px solid #cdcdcd;
   border-radius: 10px;
   width: 250px;
-  height:350px;
+  height:400px;
   display: inline-block;
   text-align: center;
   margin: 15px;
@@ -204,12 +204,13 @@ address, ol, p, ul {
     width: 90%;
     position: relative;
     display: block;
+      height: 100px;
 }
 .plan .planText .description{
 	white-space: pre-line;
     text-overflow: ellipsis;
     word-wrap: break-word;
-    height: 40px;
+  
 	
 }
 .plan .planText .shipping{
