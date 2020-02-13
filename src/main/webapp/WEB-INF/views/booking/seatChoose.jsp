@@ -1868,7 +1868,7 @@ body{
 		</div>
 	</form:form>
 	
-	<jsp:include page="../fragment/footer.jsp" />
+	<jsp:include page="../fragment/bottom.jsp" />
 </body>
 <script>
 	var fullStr = 0;
