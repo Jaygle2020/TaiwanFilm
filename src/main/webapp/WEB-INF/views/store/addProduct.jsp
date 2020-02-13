@@ -36,7 +36,7 @@ fieldset {
 			<fieldset>
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for='title'>
-						品名 </label>
+						商品 </label>
 					<div class="col-lg-10">
 						<form:input id="title" path="title" type='text'
 							class='form:input-large' />
@@ -51,17 +51,25 @@ fieldset {
 							class='form:input-large' />
 					</div>
 				</div>
-
+				
 				<div class="form-group">
-					<label class='control-label col-lg-2 col-lg-2' for="category">
-						類型 </label>
-					<div class='col-lg-10'>
-						<form:select path="category">
-							<form:option value="-1" label="請挑選" />
-							<form:options items="${categoryList}" />
-						</form:select>
+					<label class="control-label col-lg-2 col-lg-2" for='productDescription'>
+						商品描述 </label>
+					<div class="col-lg-10">
+						<form:input id="productDescription" path="productDescription" type='textarea'
+							class='form:input-large' />
 					</div>
 				</div>
+
+				 <div class="form-group">
+					<label class='control-label col-lg-2 col-lg-2' for="category">
+						類別 </label>
+					<div class='col-lg-10'>
+						<form:input id="category" path="category" type='text'
+							class='form:input-large' />
+					</div>
+				</div> 
+			
 
 				<div class="form-group">
 					<label class='control-label col-lg-2 col-lg-2' for="price">
@@ -71,14 +79,16 @@ fieldset {
 							class='form:input-large' />
 					</div>
 				</div>
-				<div class="form-group">
-					<label class='control-label col-lg-2 col-lg-2' for="productNo">
-						編號 </label>
+				
+					<div class="form-group">
+					<label class='control-label col-lg-2 col-lg-2' for="stock">
+						庫存 </label>
 					<div class='col-lg-10'>
-						<form:input id="productNo" path="productNo" type='text'
+						<form:input id="stock" path="stock" type='text'
 							class='form:input-large' />
 					</div>
 				</div>
+				
 
 				<div class="form-group">
 					<label class='control-label col-lg-2 col-lg-2' for="companyId">
@@ -99,6 +109,26 @@ fieldset {
 							class='form:input-large' />
 					</div>
 				</div>
+				
+				<div class="form-group subImg2" style="display:none;">
+					<label class='control-label col-lg-2 col-lg-2' for="productImage2">
+						圖片2 </label>
+					<div class='col-lg-10'>
+						<input id="productImage2" name="productImage2" type='file'
+							class='form:input-large' />
+					</div>
+				</div>
+				<div class="form-group subImg3" style="display:none;">
+					<label class='control-label col-lg-2 col-lg-2' for="productImage3">
+						圖片3 </label>
+					<div class='col-lg-10'>
+						<input id="productImage3" name="productImage3" type='file'
+							class='form:input-large' />
+					</div>
+				</div>
+				
+				<a href="#" id="addImages" >加入圖片</a>
+				
 
 
 
@@ -121,25 +151,31 @@ fieldset {
 							value="送出" />
 					</div>
 				</div>
-				<a href="#" rel="external nofollow" rel="external nofollow"
-					rel="external nofollow" id="AddMoreFileBox" class="btn btn-info">新增更多的input輸入框</a></span>
-				</p>
-			
+
+
 
 			</fieldset>
 		</form:form>
-		<button onclick="add()">123</button>
-		<div id="aaa"></div>
+		
 
 	</section>
 </body>
 <script>
-	function add() {
-		var cont = '<input type="text">';
+		
+		//新增圖片按紐
+		var count = 0;
+		$('#addImages').click(function(){
+			$('.subImg2').show();
+			count++;
+		if(count == 2){
+			$('.subImg3').show();
+		}
+		});
+		
+		
+		
+		
 
-		$('#aaa').append(cont);
 
-	};
-	
 </script>
 </html>

@@ -48,11 +48,7 @@ public class ReplyController  {
 	@PostMapping("/replys/add")
 	public String AddReplys(@ModelAttribute ReplyBean rr , BindingResult result ,
 			@RequestParam("messageId") Integer messageId,
-			Model model,HttpSession session) {
-//		List<ReplyBean> list = service.getReplysByMessageId(messageId);
-//		model.addAttribute("messageId", list);
-//		MembersBean mb=new MembersBean();
-		
+			Model model,HttpSession session) {	
 		MembersBean mem1 = (MembersBean) session.getAttribute("members");
 		
 		String requestURI = "message?id=" +messageId;
@@ -62,9 +58,6 @@ public class ReplyController  {
 			return "redirect:/register";
 		}
 		rr.setMembersBean(mem1);
-//		rr.setMemberId(mem1.getMemberId());
-		
-		
 		service.addReply(rr);
 		return "redirect:/message?id="+messageId;
 	}

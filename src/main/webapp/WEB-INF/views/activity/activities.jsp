@@ -153,12 +153,12 @@ border-bottom: 5px solid #EA0082;
 			<div class="activityContent active" id="new">
 				<div class="activity-content-show">
 					<div style="width: 10%;display: inline-block"></div> 
-					<div class="acitivityUpdateWidth-t" style="width: 38%;display: inline-block">活動照片</div>
-					<div class="acitivityUpdateWidth-t" style="width: 10%;display: inline-block">活動主題/廠商</div>
-					<div class="acitivityUpdateWidth-t" style="width: 10%;display: inline-block">活動開始時間</div>
-					<div class="acitivityUpdateWidth-t" style="width: 18%;display: inline-block">觀看次數</div>
-					<div class="activityUpdateButton"  style="width: 9%;display: inline-block">進入</div>  
-				</div>
+					<div class="acitivityUpdateWidth-t" style="width: 30%;display: inline-block">活動照片</div>
+					<div class="acitivityUpdateWidth-t" style="width: 25%;display: inline-block">活動主題/廠商</div>
+					<div class="acitivityUpdateWidth-t" style="width: 13%;display: inline-block">活動開始時間</div>
+					<div class="acitivityUpdateWidth-t" style="width: 7%;display: inline-block">觀看次數</div>
+				
+				</div> 
 				<c:forEach var='activity' items='${activityList}'>
 					<c:if test="${activity.category == '1'}">
 						<a
@@ -192,11 +192,10 @@ border-bottom: 5px solid #EA0082;
 			<div class="activityContent" id="trend">
 				<div class="activity-content-show">
 					<div style="width: 10%;display: inline-block"></div> 
-					<div class="acitivityUpdateWidth-t" style="width: 38%;display: inline-block">活動照片</div>
-					<div class="acitivityUpdateWidth-t" style="width: 10%;display: inline-block">活動主題/廠商</div>
-					<div class="acitivityUpdateWidth-t" style="width: 10%;display: inline-block">活動開始時間</div>
-					<div class="acitivityUpdateWidth-t" style="width: 18%;display: inline-block">觀看次數</div>
-					<div class="activityUpdateButton"  style="width: 9%;display: inline-block">進入</div>  
+					<div class="acitivityUpdateWidth-t" style="width: 30%;display: inline-block">活動照片</div>
+					<div class="acitivityUpdateWidth-t" style="width: 25%;display: inline-block">活動主題/廠商</div>
+					<div class="acitivityUpdateWidth-t" style="width: 13%;display: inline-block">活動開始時間</div>
+					<div class="acitivityUpdateWidth-t" style="width: 7%;display: inline-block">觀看次數</div>
 				</div>
 				<c:forEach var='activity' items='${activitiesViews}'>
 					<c:if test="${activity.category == '1'}">
@@ -233,11 +232,10 @@ border-bottom: 5px solid #EA0082;
 			<div class="activityContent" id="coming"> 
 				<div class="activity-content-show">
 					<div style="width: 10%;display: inline-block"></div> 
-					<div class="acitivityUpdateWidth-t" style="width: 38%;display: inline-block">活動照片</div>
-					<div class="acitivityUpdateWidth-t" style="width: 10%;display: inline-block">活動主題/廠商</div>
-					<div class="acitivityUpdateWidth-t" style="width: 10%;display: inline-block">活動開始時間</div>
-					<div class="acitivityUpdateWidth-t" style="width: 18%;display: inline-block">觀看次數</div>
-					<div class="activityUpdateButton"  style="width: 9%;display: inline-block">進入</div>  
+					<div class="acitivityUpdateWidth-t" style="width: 30%;display: inline-block">活動照片</div>
+					<div class="acitivityUpdateWidth-t" style="width: 25%;display: inline-block">活動主題/廠商</div>
+					<div class="acitivityUpdateWidth-t" style="width: 13%;display: inline-block">活動開始時間</div>
+					<div class="acitivityUpdateWidth-t" style="width: 7%;display: inline-block">觀看次數</div>
 				</div>
 				<c:forEach var='activity' items='${activitiesStart}'>
 					<c:if test="${activity.category == '3'}">
@@ -275,11 +273,10 @@ border-bottom: 5px solid #EA0082;
 			<div class="activityContent" id="end">
 				<div class="activity-content-show">
 					<div style="width: 10%;display: inline-block"></div> 
-					<div class="acitivityUpdateWidth-t" style="width: 38%;display: inline-block">活動照片</div>
-					<div class="acitivityUpdateWidth-t" style="width: 10%;display: inline-block">活動主題/廠商</div>
-					<div class="acitivityUpdateWidth-t" style="width: 10%;display: inline-block">活動開始時間</div>
-					<div class="acitivityUpdateWidth-t" style="width: 18%;display: inline-block">觀看次數</div>
-					<div class="activityUpdateButton"  style="width: 9%;display: inline-block">進入</div>  
+					<div class="acitivityUpdateWidth-t" style="width: 30%;display: inline-block">活動照片</div>
+					<div class="acitivityUpdateWidth-t" style="width: 25%;display: inline-block">活動主題/廠商</div>
+					<div class="acitivityUpdateWidth-t" style="width: 13%;display: inline-block">活動開始時間</div>
+					<div class="acitivityUpdateWidth-t" style="width: 7%;display: inline-block">觀看次數</div>
 				</div> 
 				<c:forEach var='activity' items='${activitiesEnd}'>
 					<c:if test="${activity.category == '1'}">

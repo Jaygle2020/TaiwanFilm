@@ -49,4 +49,6 @@ public interface MessageService {
 
 	List<MessageBean> getMessagesByDate();
 
+	void deleteReplyB(Integer replyId);
+
 }

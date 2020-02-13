@@ -54,7 +54,7 @@
 			</a>
 			
 			<a href="messages">
-			 <div class="menu-buttonStyle">留言板</div>
+			 <div class="${pageContext.request.contextPath}/messages">留言板</div>
 			</a>
 			
 			<c:if test="${testNum == 2}">			

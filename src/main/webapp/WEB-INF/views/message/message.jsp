@@ -12,20 +12,31 @@
 <title>Message</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/movie.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
+	integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+	crossorigin="anonymous"></link>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+<style>
+#messageBackground {
+	background-image: url(${pageContext.request.contextPath}/img/wall1.jpeg);
+}
+</style>
 </head>
 <body>
-	<jsp:include page="../fragment/top.jsp"></jsp:include>
-	<div style="display: inline-block; text-align: center; width: 100%">
+	<jsp:include page="../fragment/menu.jsp"></jsp:include>
+
+	<div id="messageBackground"
+		style="display: inline-block; text-align: center; width: 100%">
 
 		<div
 			style="display: inline-block; text-align: left; width: 80%; border-style: none">
-			<div style="text-align: left; display: inline-block; font-size: 40px">${message.messageTitle}</div>
+			<div
+				style="text-align: left; display: inline-block; font-size: 40px; padding-top: 50px;">${message.messageTitle}</div>
 			<div style="display: inline-block; width: 100%">
-				<div style="display: inline-block; width: 80%">
+				<div style="display: inline-block; width: 85%; font-size: 20px">
 					發文者 : <img width='20' height='20'
 						src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
 					<%-- ${message.memberBean.memberImage} --%>
@@ -36,32 +47,42 @@
 						<a
 							href="<spring:url value='/deleteMessage/${message.messageId}' />">刪除</a>
 					</c:if>
+
+
 				</div>
+				<div id="likes"
+					style="font-size: 20px; padding: 10px 0px; display: inline-block; width: 10%; font-size: 20px">${message.messageLike}人按讚</div>
+				<button id="likebutton" onclick="like(${message.messageId})"
+					style="background-image: url(${pageContext.request.contextPath}/img/wall1.jpeg); border:0">
+					<i class="far fa-thumbs-up" style="font-size: 25px"></i>
+				</button>
+			</div>
+			<div style="display: inline-block; width: 100%; font-size: 20px">
+				<div style="display: inline-block; font-size: 20px; width: 84%">時間
+					: ${message.createDate}</div>
 				<div
-					style="display: inline-block; width: 20%; text-align: right; float: right">
-					<button id="likebutton" onclick="like(${message.messageId})">讚</button>
+					style="display: inline-block; text-align: right; font-size: 20px; width: 13%">
+					<a href="${pageContext.request.contextPath}/messages">返回文章列表</a>
 				</div>
 			</div>
-			<div id="likes">${message.messageLike}人按讚</div>
-			<div>時間 : ${message.createDate}</div>
 			<p>
-			<div style="font-size: 20px">${message.messageContent}</div>
+			<div id="messageC" style="font-size: 30px; padding: 20px 0px">${message.messageContent}</div>
 		</div>
 		<div
-			style="display: inline-block; text-align: left; text-valign: center; width: 80%; border-style: none; background-color: #E8E8E8">
+			style="display: inline-block; text-align: left; text-valign: center; width: 80%; border-style: none; background-color: #E8E8E8; font-size: 20px">
 
 			<c:forEach var='replys' items='${replys}'>
 				<c:if test="${ replys.replyDelete ==1}">
 					<div style="display: inline-block; width: 100%">
-						<div style="display: inline-block; width: 8%">
+						<div style="display: inline-block; width: 5%">
 							<img width='20' height='20'
 								src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
 						</div>
-						<div style="display: inline-block; width: 8%">${replys.membersBean.memberName }</div>
+						<div style="display: inline-block; width: 9%">${replys.membersBean.memberName }</div>
 						<div id="content${replys.replyId}"
-							style="display: inline-block; width: 49%">${replys.replyContent}</div>
+							style="display: inline-block; width: 54%">${replys.replyContent}</div>
 						<div id="date${replys.replyId }"
-							style="display: inline-block; width: 15%">${replys.replyDate }</div>
+							style="display: inline-block; width: 19%">${replys.replyDate }</div>
 
 						<c:if test="${replys.membersBean.memberId==members.memberId }">
 							<div style="display: inline-block; text-align: right; width: 5%">
@@ -79,7 +100,7 @@
 							</form>
 						</c:if>
 						<c:if test="${replys.membersBean.memberId!=members.memberId }">
-							<div style="display: inline-block; text-align: right; width: 7%">
+							<div style="display: inline-block; text-align: right; width: 10%">
 								<button id="reportbutton${replys.replyId}"
 									onclick="report(${replys.replyId})">檢舉</button>
 							</div>
@@ -93,7 +114,7 @@
 			<form method='POST'
 				action="${pageContext.request.contextPath}/replys/add">
 				<fieldset>
-					<div style="display: inline-block; text-align: left; width: 80%">
+					<div style="display: inline-block; text-align: left; width: 90%">
 						<input name="replyContent" value="${replyContent}" type="text"
 							placeholder="我要留言...." /><input type="submit" value="留言" />
 					</div>
@@ -118,7 +139,6 @@
 		
 			var  messageLike= parseInt($("#messageLike").val())+1;
 
-		alert(messageLike);
 	 		$.ajax({
 				url:"like",
 				type:"POST",
@@ -126,14 +146,13 @@
 			success:function(messageId){
 				$("#messageLike").val(messageLike);
 				$("#likes").text(messageLike+"人按讚");
-				$("#likebutton").text("收回讚");
+				$("#likebutton").html('<i class="fas fa-thumbs-up"style="font-size:25px ;color:blue" ></i>');
 				$("#likebutton").attr("onclick","notlike(${message.messageId})");
 			}
 			}) 
 	}
 	function notlike(messageId){
 		var  messageLike= parseInt($("#messageLike").val())-1;
-		alert(messageLike);
  		$.ajax({
 			url:"like",
 			type:"POST",
@@ -141,7 +160,7 @@
 			success:function(messageId){
 				$("#messageLike").val(messageLike);
 				$("#likes").text(messageLike+"人按讚");
-				$("#likebutton").text("讚");
+				$("#likebutton").html('<i class="far fa-thumbs-up" style="font-size:25px"></i>');
 				$("#likebutton").attr("onclick","like(${message.messageId})");
 			}
  		})
@@ -176,7 +195,6 @@
 		} 
 		} 
 	function report(replyId){ 
-		alert(replyId);
 		if(!confirm("確認要檢舉？")){ 
 		window.event.returnValue = false; 
 		} 
@@ -198,7 +216,6 @@
 		})
 		} 
 	function notreport(replyId){ 
-		alert(replyId);
 		if(!confirm("確認要放棄檢舉？")){ 
 		window.event.returnValue = false; 
 		} 
@@ -219,7 +236,10 @@
 			}
 		})
 		} 
-	
+	$(function() {
+		$("#messageC img").css("width","100%");
+	})
 	</script>
+	<jsp:include page="../fragment/bottom.jsp"></jsp:include>
 </body>
 </html>

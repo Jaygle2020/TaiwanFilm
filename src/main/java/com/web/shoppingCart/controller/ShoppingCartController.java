@@ -42,8 +42,6 @@ public class ShoppingCartController {
 		this.context = context;
 	}
 
-
-	
 //	@RequestMapping("/CartNum")
 //	public @ResponseBody Integer CartNum(HttpServletRequest request,HttpSession session){
 //		
@@ -55,15 +53,19 @@ public class ShoppingCartController {
 //	}
 
 	@RequestMapping("/ShowCartContent")
-	public String shoppingCart(Model model,HttpServletRequest request,HttpSession session) {
+	public String shoppingCart(Model model, HttpServletRequest request, HttpSession session) {
 
-		
+		MembersBean mem = (MembersBean) session.getAttribute("members");
+
+		if (mem == null) {
+			// 請使用者登入
+
+			return "redirect:/register";
+		}
 
 		return "store/ShowCartContent";
-		
+
 	}
-
-
 
 	// 修改刪除購物車
 	@PostMapping("/UpdateItem")
@@ -79,7 +81,7 @@ public class ShoppingCartController {
 			// 如果找不到購物車(通常是Session逾時)，沒有必要往下執行
 			// 導向首頁
 			return "index";
-			
+
 		}
 		// cmd可能是DEL或是MOD
 		String cmd = request.getParameter("cmd");
@@ -138,7 +140,7 @@ public class ShoppingCartController {
 		}
 		MembersBean mb = (MembersBean) session.getAttribute("members");
 		if (mb == null) {
-			
+
 			return "index";
 		}
 		ShoppingCart sc = (ShoppingCart) session.getAttribute("ShoppingCart");
@@ -154,14 +156,15 @@ public class ShoppingCartController {
 
 			return "index";
 		}
-		Integer memberId = mb.getMemberId();  						// 取出會員代號
+		Integer memberId = mb.getMemberId(); // 取出會員代號
 		double totalAmount = Math.round(sc.getSubtotal()); // 計算訂單總金額
 		String shippingAddress = request.getParameter("ShippingAddress"); // 出貨地址
 		String bNO = request.getParameter("BNO"); // 發票的統一編號
 		String invoiceTitle = request.getParameter("InvoiceTitle"); // 發票的抬頭
 		Date today = new Date(); // 新增訂單的時間
 		// 新建訂單物件。OrderBean:封裝一筆訂單資料的容器，包含訂單主檔與訂單明細檔的資料。目前只存放訂單主檔的資料。
-		OrderBean ob = new OrderBean(null, memberId, totalAmount, shippingAddress, bNO, invoiceTitle, today, null, null);
+		OrderBean ob = new OrderBean(null, memberId, totalAmount, shippingAddress, bNO, invoiceTitle, today, null,
+				null);
 		System.out.println(ReflectionToStringBuilder.toString(ob));
 		// 取出存放在購物車內的商品，放入Map型態的變數cart，準備將其內的商品一個一個轉換為OrderItemBean，
 
@@ -190,7 +193,7 @@ public class ShoppingCartController {
 			session.removeAttribute("ShoppingCart");
 
 			return "redirect://products";
-			
+
 		} catch (RuntimeException ex) {
 			String message = ex.getMessage();
 			String shortMsg = "";
@@ -202,34 +205,40 @@ public class ShoppingCartController {
 		}
 	}
 
-	
 	//
 	@GetMapping("/orderList.do")
 	public String orderListdo(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 //		System.out.println("進入orderList");
-		if (session == null) { // 使用逾時
-			return "index";
+
+		MembersBean mem = (MembersBean) session.getAttribute("members");
+
+		if (mem == null) {
+			// 請使用者登入
+
+			return "redirect:/register";
 		}
+//		if (session == null) { // 使用逾時
+//			return "index";
+//		}
 		MembersBean mb = (MembersBean) session.getAttribute("members");
 //		OrderService os = new OrderServiceImpl();
 //		ServletContext sc = getServletContext();
 //		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(sc);
 //		OrderService os = ctx.getBean(OrderService.class);
-		
+
 		List<OrderBean> memberOrders = service.getMemberOrders(mb.getMemberId());
 		request.setAttribute("memberOrders", memberOrders);
 
 		return "store/OrderList";
 	}
-	
 
 	@GetMapping("/orderDetail.do")
 	public String orderDetail(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
-		
+
 		MembersBean mb = (MembersBean) session.getAttribute("members");
-		
+
 		String orderNo = request.getParameter("orderNo");
 		int no = Integer.parseInt(orderNo.trim());
 
@@ -238,11 +247,10 @@ public class ShoppingCartController {
 //		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(sc);
 //		OrderService orderService = ctx.getBean(OrderService.class);
 		OrderBean ob = service.getOrder(no);
-		request.setAttribute("OrderBean", ob);   // 將OrderBean物件暫存到請求物件內
+		request.setAttribute("OrderBean", ob); // 將OrderBean物件暫存到請求物件內
 		List<OrderBean> memberOrders = service.getMemberOrders(mb.getMemberId());
 		System.out.println(ob);
-		
-		
+
 		return "store/ShowOrderDetail";
 	}
 
@@ -256,9 +264,9 @@ public class ShoppingCartController {
 		System.out.println("ob.getShippingAddress=" + ob.getShippingAddress());
 		System.out.println("ob.getCancelTag=" + ob.getCancelTag());
 		System.out.println("==============訂單明細=================");
-		
+
 		Set<OrderItemBean> items = ob.getItems();
-		
+
 		for (OrderItemBean oib : items) {
 			System.out.println("---------------一筆明細---------------");
 			System.out.println("   oib.getSeqno()=" + oib.getSeqno());
@@ -269,6 +277,6 @@ public class ShoppingCartController {
 			System.out.println("   oib.getUnitPrice()=" + oib.getUnitPrice());
 			System.out.println("   oib.getDiscount()=" + oib.getDiscount());
 		}
-		
+
 	}
 }
