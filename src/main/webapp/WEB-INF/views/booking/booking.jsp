@@ -13,7 +13,8 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <head>
-<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath }/favicon.ico" />
 <title>Taiwam Films - 戲院選擇</title>
 <link
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -93,7 +94,7 @@ ul li i {
 
 .cinemaCountry img {
 	display: inline-block;
-	-webkit-filter:sepia(1);
+	-webkit-filter: sepia(1);
 }
 
 .cinemaCountry section {
@@ -103,9 +104,9 @@ ul li i {
 	display: inline-block;
 }
 
-#category{
+#category {
 	background-image: url(img/wall1.jpeg);
-}  
+}
 </style>
 </head>
 <body>
@@ -162,40 +163,43 @@ ul li i {
 					<span style="color: red;">*網路訂票僅開放部份座位訂票，實際剩餘座位數請洽現場售票窗口</span>&ensp;*黃色底時間代表即將售完
 					/ 紅色底時間為完售
 					<c:forEach var='session' items='${sessions }' varStatus='count'>
-						<div class="sessionDetail" id="${session.cinemaId }">
-							<p>${session.sessionDate.substring(0, 4) }年
-								${session.sessionDate.substring(4, 6) } 月
-								${session.sessionDate.substring(6, 8) } 日 ${session.sessionDay }</p>
-							<input type="button" style="width: 200px; height: 30px;"
-								value="${session.sessionTime }"
-								onclick="javascript:location.href='<spring:url value='/seatChoose?id=${session.sessionId }' />'" />
-							<%-- 					<a href="<spring:url value='/seatChoose?id=${session.sessionId }' />">${session.sessionTime }</a> --%>
-						</div>
-					</c:forEach>
+						<c:if test="${count.count % 3 == 1 }">
+							<div class="sessionDetail" id="${session.cinemaId }">
+								<p>${session.sessionDate.substring(0, 4) }年
+									${session.sessionDate.substring(4, 6) } 月
+									${session.sessionDate.substring(6, 8) } 日 ${session.sessionDay }</p>
+						</c:if>
+						<input type="button" style="width: 200px; height: 30px;"
+							value="${session.sessionTime }"
+							onclick="javascript:location.href='<spring:url value='/seatChoose?id=${session.sessionId }' />'" />
+						<%-- 					<a href="<spring:url value='/seatChoose?id=${session.sessionId }' />">${session.sessionTime }</a> --%>
+						<c:if test="${count.count % 3 == 0 }">
 				</div>
-
-				<c:forEach var='cinema' items='${cinemas }'>
-					<div class="cinemaDetail" id="${cinema.cinemaId }">
-						<h2>戲院資訊</h2>
-						<ul>
-							<li><i class="fa fa-phone pr-10" style="font-size: 24px"></i>服務專線&ensp;:
-								<p>${cinema.cinemaPhone }</p></li>
-							<li><i class="fa fa-map-marker pr-10"
-								style="font-size: 24px"></i>戲院地址&ensp;:
-								<p>${cinema.cinemaAddress }</p></li>
-							<li><i class="fa fa-bus pr-10" style="font-size: 24px"></i>交通資訊&ensp;:
-								<p>-&ensp;捷運&ensp;:&ensp;${cinema.cinemaMrt }</p>
-								<p>-&ensp;公車&ensp;:&ensp;${cinema.cinemaBus }</p></li>
-						</ul>
-						<iframe height='270' frameborder='0' scrolling='no'
-							marginheight='0' marginwidth='0'
-							src='https://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q=${cinema.cinemaName }&z=16&output=embed&t='></iframe>
-					</div>
+				</c:if>
 				</c:forEach>
 			</div>
+
+			<c:forEach var='cinema' items='${cinemas }'>
+				<div class="cinemaDetail" id="${cinema.cinemaId }">
+					<h2>戲院資訊</h2>
+					<ul>
+						<li><i class="fa fa-phone pr-10" style="font-size: 24px"></i>服務專線&ensp;:
+							<p>${cinema.cinemaPhone }</p></li>
+						<li><i class="fa fa-map-marker pr-10" style="font-size: 24px"></i>戲院地址&ensp;:
+							<p>${cinema.cinemaAddress }</p></li>
+						<li><i class="fa fa-bus pr-10" style="font-size: 24px"></i>交通資訊&ensp;:
+							<p>-&ensp;捷運&ensp;:&ensp;${cinema.cinemaMrt }</p>
+							<p>-&ensp;公車&ensp;:&ensp;${cinema.cinemaBus }</p></li>
+					</ul>
+					<iframe height='270' frameborder='0' scrolling='no'
+						marginheight='0' marginwidth='0'
+						src='https://maps.google.com.tw/maps?f=q&hl=zh-TW&geocode=&q=${cinema.cinemaName }&z=16&output=embed&t='></iframe>
+				</div>
+			</c:forEach>
 		</div>
 	</div>
-	
+	</div>
+
 	<jsp:include page="../fragment/footer.jsp" />
 </body>
 
