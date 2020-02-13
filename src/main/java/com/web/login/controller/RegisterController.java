@@ -115,6 +115,7 @@ public class RegisterController {
 		try {
 			
 		if (bean.getMemberMode().equals("2") || bean.getMemberMode().equals("1") ) {
+			//這個一定要有 bean.setMemberImage(null);
 			bean.setMemberImage(null);
 			model.addAttribute("members", bean);
 			System.out.println("登入成功");
@@ -369,7 +370,8 @@ public String list(Model model) {
 
 		List<MembersBean> list = service.getMemberByEmail(keyword); 
 		model.addAttribute("members", list);
-		return "_01_register/FuzzyQuery";
+		System.out.println("keyword 是:" + keyword);
+		return "_01_register/allMembers";
 	}
 
  
