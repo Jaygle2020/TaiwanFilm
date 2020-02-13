@@ -314,7 +314,7 @@ border-bottom: 5px solid #EA0082;
 		</div>
 	</div>
 
-
+	<jsp:include page="../fragment/bottom.jsp" /> 
 
 <!-- 		@Bean
 	public DataSource mySQLDataSource() {

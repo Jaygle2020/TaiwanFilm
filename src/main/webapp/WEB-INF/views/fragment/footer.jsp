@@ -11,8 +11,8 @@
 <style>
 	
 	
-	.footer-area{
-	width: 100%;background:white;padding: 50px 100px;height: 500px;text-align: center}
+	.Myfooter-area{
+	width: 100%;background:white;padding: 50px 100px;text-align: center}
 	.social{
 	margin: 30px 0px}
 	.social-area{
@@ -22,7 +22,7 @@
 		color: black;
 		padding:0px 10px}
 		
-	.footer-content{
+	.Myfooter-content{
 	width: 50%;display: inline-block;background:black;padding:5px 10px;margin-top: 20px;color: white;font-size: 25px}
 	
 </style>
@@ -31,14 +31,14 @@
 <body>
 
 
-	<div class="footer-area">
+	<div class="Myfooter-area">
 		<div style="font-size: 50px;color:#EA0082;font-weight:bold">TaiwanFilms</div>
 		<div class="social">
 			<div class="social-area"><i class="fab fa-instagram"></i>Instagrem</div>
 			<div class="social-area"><i class="fab fa-twitter"></i>Twitter</div>
 			<div class="social-area"><i class="fab fa-facebook-f">Facebook</i></div>
 		</div>
-		<div class="footer-content">傻眼貓咪傻眼貓咪</div>
+		<div class="Myfooter-content">傻眼貓咪傻眼貓咪</div>
 			<p style="margin-top: 30px;">傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪<p>
 			<p style="margin-top: 30px">傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪<p>
 			<p style="font-weight: bold">©2019 傻眼貓咪 factory</p>
