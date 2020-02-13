@@ -78,7 +78,7 @@
 		</div>
 	</section>
 
-
+	<jsp:include page="../fragment/footer.jsp" /> 
 	<script>
 	
 	

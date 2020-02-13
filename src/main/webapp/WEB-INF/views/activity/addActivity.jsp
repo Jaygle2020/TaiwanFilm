@@ -100,7 +100,7 @@ input {
 <jsp:include page="../backstage.jsp" />
  
 	<section>
-		<div class="container"style="width: 80%;display: inline-block;float:right;padding-top: 40px;">
+		<div class="container"style="width: 80%;display: inline-block;float:right;padding-top: 40px;margin-top: 20px">
 			<h1 style="text-align: center; font-weight: bold; font-size: 35px">新增活動資料</h1>
 			<button class="demo" style="color:black;border: 1px solid black;display: inline-block;width: 10% "onclick="demo()">DEMO用資料</button>  
 		</div>     
@@ -289,6 +289,20 @@ input {
 
 <script language="javascript">
 
+	$("#activityTitle").val("《你的情歌》唱破1500萬票房");
+	$("#activityAuthor").val("Mirror Media")
+	$("#activityMainContent").val("《你的情歌》票房最佳，上映至今全台票房已破1,500萬，成為今年賀歲華語片冠軍。");
+	$("#activityContent").val("今年春節賀歲檔電影普遍票房欠佳，國片更是首當其衝，3部國片票房加起來還不及去年的《寒單》。其中《你的情歌》票房最佳，上映至今全台票房已破1,500萬，成為今年賀歲華語片冠軍。片中讓上萬粉絲敲碗等候的強打曲〈Better〉也終於公開完整版MV，2天內累積近7萬人點閱。除了票房巨星甄子丹的《肥龍過江》外，《你的情歌》是另一部在今年賀歲檔中能有破千萬票房紀錄的華語片，片中多首金曲均牢牢抓住觀眾耳朵；除了由Tank演唱的電影主題曲狂吸近300萬次瀏覽之外，謝博安演唱的〈Better〉完整版MV也搶在情人節前夕發布。MV開頭是謝博安飾演的李東朔帶著余靜（柯佳嬿）到祕密基地的經典場景，拍攝取景地詢問度爆表，柯佳嬿表示那個場景是在金山的水尾漁港，劇組扛著機器走過一段很難走的石頭路，從晚上一直拍到隔天天亮，她說：「余靜跟阿東的心境就像那座山洞，有點潮濕、陰暗卻有著海面上反射的微光和陣陣的海浪聲，他們有各自的憂傷和希望，我很喜歡那場戲的氛圍。」日前導演安竹間率柯佳嬿、謝博安在元宵節（2月8日）當天親臨戲院會粉絲，現場更應景玩起燈謎猜歌大賽，柯佳嬿特別喜歡的其中一題：「胡迪和其他玩具不見了」，她特別指定要讓觀眾搶猜這道題目，答案是五月天的歌曲《盛夏光年》（剩下光年）。而謝博安再次化身「人體點唱機」，把影廳瞬間變成小型演唱會，而柯佳嬿更鬧場點歌：「你加碼唱〈酒後的心聲〉獻給粉絲吧。」元宵節過後，主創團隊還會在2月14日前進信義威秀影城與喜滿客絕色影城陪影迷歡度情人節，現場除了謝博安將帶來獨家的Live情歌演出之外，幸運的觀眾還有機會獲得限定珍藏版海報，詳情請洽甲上娛樂官方粉絲頁。");
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	function ShowTime(){
 		  var date = new Date();
 		  var y = date.getFullYear();
@@ -331,6 +345,8 @@ input {
 	
 	document.getElementById('activityNumber').setAttribute("value", zz);
 	document.getElementById('activityNumber').innerHTML =  zz ;
+	
+	
 	
 	
 	 
