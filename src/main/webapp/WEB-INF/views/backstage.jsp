@@ -102,9 +102,9 @@
 				<a href="${pageContext.request.contextPath}/ShowAllMembers">
 					<div class="m-bar1">查詢全部會員</div>
 				</a>  
-				<a href="${pageContext.request.contextPath}/FuzzyQuery">
-					<div class="m-bar2">模糊查詢</div>
-				</a>
+<%-- 				<a href="${pageContext.request.contextPath}/FuzzyQuery"> --%>
+<!-- 					<div class="m-bar2">模糊查詢</div> -->
+<!-- 				</a> -->
 <!-- 				<a href=""> -->
 <!-- 					<div class="m-bar3">新增活動</div> -->
 <!-- 				</a>       -->
