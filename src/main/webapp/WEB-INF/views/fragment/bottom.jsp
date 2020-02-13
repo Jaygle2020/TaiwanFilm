@@ -1,43 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<div class="section" id="footer">
-		<div class="width-limit">
-			<div class="footer-content">
-				<h3>關於</h3>
-				<ul>
-					<li>關於我們</li>
-					<li>人才招募</li>
-					<li>媒體資源</li>
-					<li>商標使用規範</li>
-				</ul>
-			</div>
-			<div class="footer-content">
-				<h3>條款</h3>
-				<ul>
-					<li>網站使用條款</li>
-					<li>探索者合約</li>
-				</ul>
-			</div>
-			<div class="footer-content">
-				<h3>協助</h3>
-				<ul>
-					<li>常見問題</li>
-					<li>使用手冊</li>
-					<li>提案百科</li>
-				</ul>
-			</div>
-			<div class="footer-content">
-				<h3>更多</h3>
-				<ul>
-					<li>關於我們</li>
-					<li>人才招募</li>
-					<li>媒體資源</li>
-					<li>商標使用規範</li>
-				</ul>
-			</div>
-			<div class="copyright">
-				<p>FLYINGV © 2012-2020.</p>
-				<p>ALL RIGHTS RESERVED.</p>
-			</div>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+
+	
+	
+	
+	
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+
+
+	<div class="Myfooter-area">
+		<div style="font-size: 50px;color:#EA0082;font-weight:bold">TaiwanFilms</div>
+		<div class="social">
+			<div class="social-area"><i class="fab fa-instagram"></i>Instagrem</div>
+			<div class="social-area"><i class="fab fa-twitter"></i>Twitter</div>
+			<div class="social-area"><i class="fab fa-facebook-f">Facebook</i></div>
 		</div>
-	</div>
+		<div class="Myfooter-content">傻眼貓咪傻眼貓咪</div>
+			<p style="margin-top: 30px;">傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪<p>
+			<p style="margin-top: 30px">傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪<p>
+			<p style="font-weight: bold">©2019 傻眼貓咪 factory</p>
+		</div>
+
+
+</body>
+
+
+
+</html>   

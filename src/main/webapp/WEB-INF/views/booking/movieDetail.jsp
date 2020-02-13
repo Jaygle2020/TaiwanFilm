@@ -6,12 +6,15 @@
 <html lang="zh-TW">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/movie.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/menuStyle.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <head>
-<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath }/favicon.ico" />
 <title>Taiwam Films - ${movie.movieName }</title>
 <style>
 .movieImage img {
@@ -21,20 +24,21 @@
 
 .movieMain {
 	text-align: left;
-	padding: 50px 15%;
+	padding: 50px 10%;
 	/* 	height: 550px; */
 	margin-bottom: 50px;
 }
 
 .movieMain figure {
 	display: inline-block;
-	margin: 0px 100px;
+	margin: 0px 10%;
 }
 
 .movieInfo {
 	padding-left: 5%;
 	display: inline-block;
 	vertical-align: text-bottom;
+	width: 45%;
 }
 
 .infoArea {
@@ -60,6 +64,10 @@
 	font-family: Microsoft JhengHei;
 	padding: 50px 300px;
 }
+
+#category{
+	background-image: url(img/wall1.jpeg);
+}  
 </style>
 </head>
 <body>
@@ -70,7 +78,7 @@
 	<div class="section" id="popular">
 		<div class="section" id="category">
 			<div class="width-limit">
-				<h1>${movie.movieName }</h1>
+				<h1 style="font-family: Microsoft JhengHei;">電影資訊</h1>
 			</div>
 
 			<div class="movieMain">
@@ -135,5 +143,6 @@
 		</div>
 	</div>
 
+	<jsp:include page="../fragment/bottom.jsp" />
 </body>
 </html>

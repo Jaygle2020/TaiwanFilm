@@ -5,14 +5,17 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/movie2.css">
+	href="${pageContext.request.contextPath }/css/movie.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/menuStyle.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
 <head>
-<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath }/favicon.ico" />
 <title>Taiwam Films - 網路訂票</title>
 <link
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -54,8 +57,9 @@ form {
 }
 
 .leftbar {
-	width: 69%;
+	width: 60%;
 	display: inline-block;
+	padding-left: 9%;
 }
 
 #select-seats-container {
@@ -63,13 +67,14 @@ form {
 }
 
 .ticketSelect table {
-	width: 65%;
+	width: 71%;
 	text-align: left;
 	padding: 5px;
 	border-collapse: collapse;
 }
 
 .ticketSelect th {
+	padding-left: 5px;
 	height: 40px;
 	background-color: lightsteelblue;
 }
@@ -82,6 +87,10 @@ form {
 	border-radius: 3px;
 	height: 25px;
 	width: 50px;
+}
+
+body{
+	background-image: url(img/wall1.jpeg);
 }
 </style>
 </head>
@@ -172,16 +181,16 @@ form {
 			<div id="select-seats-container">
 				<div id="divLegend">
 					<span class="legend-container"> <img
-						src="/movieTwProj/img/standard_selected.png" alt="您的座位"> <span
+						src="/TaiwanFilm/img/standard_selected.png" alt="您的座位"> <span
 						class="Legend">您的座位</span>
 					</span> <span class="legend-container"> <img
-						src="/movieTwProj/img/standard_available.png" alt="可選"> <span
+						src="/TaiwanFilm/img/standard_available.png" alt="可選"> <span
 						class="Legend">可選</span>
 					</span> <span class="legend-container"> <img
-						src="/movieTwProj/img/wheelchair_available.png" alt="輪椅座(需至影城購買)">
+						src="/TaiwanFilm/img/wheelchair_available.png" alt="輪椅座(需至影城購買)">
 						<span class="Legend">輪椅座(需至影城購買)</span>
 					</span> <span class="legend-container"> <img
-						src="/movieTwProj/img/sold.png" alt="已售"> <span
+						src="/TaiwanFilm/img/sold.png" alt="已售"> <span
 						class="Legend">已售</span>
 					</span>
 
@@ -191,7 +200,7 @@ form {
 						<div id="objSeatPlan" class="Seating-Control">
 							<div style="height: 275px;">
 								<div class="Seating-Screen" style="width: 600px;">
-									<img src="/movieTwProj/img/SeatScreen.png"
+									<img src="/TaiwanFilm/img/SeatScreen.png"
 										style="width: 100.6061%; position: absolute; left: -1.1px;">
 								</div>
 								<div class="Seating-Container"
@@ -256,28 +265,28 @@ form {
 														data-col="1" data-seatnum="22" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;">1</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="A-2" class="" data-type="Empty" data-name="A"
 														data-col="2" data-seatnum="21" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;">2</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="A-3" class="" data-type="Empty" data-name="A"
 														data-col="3" data-seatnum="20" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;">3</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="A-4" class="" data-type="Empty" data-name="A"
 														data-col="4" data-seatnum="19" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;">4</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -285,28 +294,28 @@ form {
 														data-col="5" data-seatnum="17" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;">5</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="A-6" class="" data-type="Empty" data-name="A"
 														data-col="6" data-seatnum="16" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;">6</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="A-7" class="" data-type="Empty" data-name="A"
 														data-col="7" data-seatnum="15" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;">7</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="A-8" class="" data-type="Empty" data-name="A"
 														data-col="8" data-seatnum="14" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;">8</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="A-W1" class="unselectable" data-type="Special"
@@ -314,7 +323,7 @@ form {
 														data-status="4" data-areanum="1"
 														data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;"></p> <img
-														src="/movieTwProj/img/wheelchair_available.png"
+														src="/TaiwanFilm/img/wheelchair_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -323,7 +332,7 @@ form {
 														data-status="4" data-areanum="1"
 														data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;"></p> <img
-														src="/movieTwProj/img/wheelchair_available.png"
+														src="/TaiwanFilm/img/wheelchair_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -332,28 +341,28 @@ form {
 														data-status="4" data-areanum="1"
 														data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;"></p> <img
-														src="/movieTwProj/img/wheelchair_available.png"
+														src="/TaiwanFilm/img/wheelchair_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="A-14" class="" data-type="Empty" data-name="A"
 														data-col="14" data-seatnum="8" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;">14</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="A-15" class="" data-type="Empty" data-name="A"
 														data-col="15" data-seatnum="7" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;">15</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="A-16" class="" data-type="Empty" data-name="A"
 														data-col="16" data-seatnum="6" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;">16</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -361,28 +370,28 @@ form {
 														data-col="17" data-seatnum="4" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;">17</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="A-18" class="" data-type="Empty" data-name="A"
 														data-col="18" data-seatnum="3" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;">18</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="A-19" class="" data-type="Empty" data-name="A"
 														data-col="19" data-seatnum="2" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;">19</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="A-20" class="" data-type="Empty" data-name="A"
 														data-col="20" data-seatnum="1" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="11">
 														<p style="line-height: 25px; width: 25px;">20</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -395,28 +404,28 @@ form {
 														data-col="1" data-seatnum="22" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">1</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-2" class="" data-type="Empty" data-name="B"
 														data-col="2" data-seatnum="21" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">2</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-3" class="" data-type="Empty" data-name="B"
 														data-col="3" data-seatnum="20" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">3</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-4" class="" data-type="Empty" data-name="B"
 														data-col="4" data-seatnum="19" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">4</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -424,84 +433,84 @@ form {
 														data-col="5" data-seatnum="17" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">5</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-6" class="" data-type="Empty" data-name="B"
 														data-col="6" data-seatnum="16" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">6</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-7" class="" data-type="Empty" data-name="B"
 														data-col="7" data-seatnum="15" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">7</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-8" class="" data-type="Empty" data-name="B"
 														data-col="8" data-seatnum="14" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">8</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-9" class="" data-type="Empty" data-name="B"
 														data-col="9" data-seatnum="13" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">9</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-10" class="" data-type="Empty" data-name="B"
 														data-col="10" data-seatnum="12" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">10</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-11" class="" data-type="Empty" data-name="B"
 														data-col="11" data-seatnum="11" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">11</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-12" class="" data-type="Empty" data-name="B"
 														data-col="12" data-seatnum="10" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">12</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-13" class="" data-type="Empty" data-name="B"
 														data-col="13" data-seatnum="9" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">13</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-14" class="" data-type="Empty" data-name="B"
 														data-col="14" data-seatnum="8" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">14</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-15" class="" data-type="Empty" data-name="B"
 														data-col="15" data-seatnum="7" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">15</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-16" class="" data-type="Empty" data-name="B"
 														data-col="16" data-seatnum="6" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">16</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -509,28 +518,28 @@ form {
 														data-col="17" data-seatnum="4" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">17</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-18" class="" data-type="Empty" data-name="B"
 														data-col="18" data-seatnum="3" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">18</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-19" class="" data-type="Empty" data-name="B"
 														data-col="19" data-seatnum="2" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">19</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="B-20" class="" data-type="Empty" data-name="B"
 														data-col="20" data-seatnum="1" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="10">
 														<p style="line-height: 25px; width: 25px;">20</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -543,28 +552,28 @@ form {
 														data-col="1" data-seatnum="22" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">1</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-2" class="" data-type="Empty" data-name="C"
 														data-col="2" data-seatnum="21" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">2</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-3" class="" data-type="Empty" data-name="C"
 														data-col="3" data-seatnum="20" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">3</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-4" class="" data-type="Empty" data-name="C"
 														data-col="4" data-seatnum="19" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">4</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -572,84 +581,84 @@ form {
 														data-col="5" data-seatnum="17" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">5</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-6" class="" data-type="Empty" data-name="C"
 														data-col="6" data-seatnum="16" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">6</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-7" class="" data-type="Empty" data-name="C"
 														data-col="7" data-seatnum="15" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">7</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-8" class="" data-type="Empty" data-name="C"
 														data-col="8" data-seatnum="14" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">8</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-9" class="" data-type="Empty" data-name="C"
 														data-col="9" data-seatnum="13" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">9</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-10" class="" data-type="Empty" data-name="C"
 														data-col="10" data-seatnum="12" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">10</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-11" class="" data-type="Empty" data-name="C"
 														data-col="11" data-seatnum="11" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">11</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-12" class="" data-type="Empty" data-name="C"
 														data-col="12" data-seatnum="10" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">12</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-13" class="" data-type="Empty" data-name="C"
 														data-col="13" data-seatnum="9" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">13</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-14" class="" data-type="Empty" data-name="C"
 														data-col="14" data-seatnum="8" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">14</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-15" class="" data-type="Empty" data-name="C"
 														data-col="15" data-seatnum="7" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">15</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-16" class="" data-type="Empty" data-name="C"
 														data-col="16" data-seatnum="6" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">16</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -657,28 +666,28 @@ form {
 														data-col="17" data-seatnum="4" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">17</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-18" class="" data-type="Empty" data-name="C"
 														data-col="18" data-seatnum="3" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">18</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-19" class="" data-type="Empty" data-name="C"
 														data-col="19" data-seatnum="2" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">19</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="C-20" class="" data-type="Empty" data-name="C"
 														data-col="20" data-seatnum="1" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="9">
 														<p style="line-height: 25px; width: 25px;">20</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -691,28 +700,28 @@ form {
 														data-col="1" data-seatnum="22" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">1</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-2" class="" data-type="Empty" data-name="D"
 														data-col="2" data-seatnum="21" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">2</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-3" class="" data-type="Empty" data-name="D"
 														data-col="3" data-seatnum="20" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">3</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-4" class="" data-type="Empty" data-name="D"
 														data-col="4" data-seatnum="19" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">4</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -720,84 +729,84 @@ form {
 														data-col="5" data-seatnum="17" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">5</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-6" class="" data-type="Empty" data-name="D"
 														data-col="6" data-seatnum="16" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">6</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-7" class="" data-type="Empty" data-name="D"
 														data-col="7" data-seatnum="15" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">7</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-8" class="" data-type="Empty" data-name="D"
 														data-col="8" data-seatnum="14" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">8</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-9" class="" data-type="Empty" data-name="D"
 														data-col="9" data-seatnum="13" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">9</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-10" class="" data-type="Empty" data-name="D"
 														data-col="10" data-seatnum="12" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">10</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-11" class="" data-type="Empty" data-name="D"
 														data-col="11" data-seatnum="11" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">11</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-12" class="" data-type="Empty" data-name="D"
 														data-col="12" data-seatnum="10" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">12</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-13" class="" data-type="Empty" data-name="D"
 														data-col="13" data-seatnum="9" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">13</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-14" class="" data-type="Empty" data-name="D"
 														data-col="14" data-seatnum="8" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">14</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-15" class="" data-type="Empty" data-name="D"
 														data-col="15" data-seatnum="7" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">15</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-16" class="" data-type="Empty" data-name="D"
 														data-col="16" data-seatnum="6" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">16</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -805,28 +814,28 @@ form {
 														data-col="17" data-seatnum="4" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">17</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-18" class="" data-type="Empty" data-name="D"
 														data-col="18" data-seatnum="3" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">18</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-19" class="" data-type="Empty" data-name="D"
 														data-col="19" data-seatnum="2" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">19</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="D-20" class="" data-type="Empty" data-name="D"
 														data-col="20" data-seatnum="1" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="8">
 														<p style="line-height: 25px; width: 25px;">20</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -839,28 +848,28 @@ form {
 														data-col="1" data-seatnum="22" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">1</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-2" class="" data-type="Empty" data-name="E"
 														data-col="2" data-seatnum="21" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">2</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-3" class="" data-type="Empty" data-name="E"
 														data-col="3" data-seatnum="20" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">3</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-4" class="" data-type="Empty" data-name="E"
 														data-col="4" data-seatnum="19" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">4</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -868,84 +877,84 @@ form {
 														data-col="5" data-seatnum="17" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">5</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-6" class="" data-type="Empty" data-name="E"
 														data-col="6" data-seatnum="16" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">6</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-7" class="" data-type="Empty" data-name="E"
 														data-col="7" data-seatnum="15" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">7</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-8" class="" data-type="Empty" data-name="E"
 														data-col="8" data-seatnum="14" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">8</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-9" class="" data-type="Empty" data-name="E"
 														data-col="9" data-seatnum="13" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">9</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-10" class="" data-type="Empty" data-name="E"
 														data-col="10" data-seatnum="12" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">10</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-11" class="" data-type="Empty" data-name="E"
 														data-col="11" data-seatnum="11" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">11</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-12" class="" data-type="Empty" data-name="E"
 														data-col="12" data-seatnum="10" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">12</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-13" class="" data-type="Empty" data-name="E"
 														data-col="13" data-seatnum="9" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">13</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-14" class="" data-type="Empty" data-name="E"
 														data-col="14" data-seatnum="8" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">14</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-15" class="" data-type="Empty" data-name="E"
 														data-col="15" data-seatnum="7" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">15</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-16" class="" data-type="Empty" data-name="E"
 														data-col="16" data-seatnum="6" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">16</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -953,28 +962,28 @@ form {
 														data-col="17" data-seatnum="4" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">17</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-18" class="" data-type="Empty" data-name="E"
 														data-col="18" data-seatnum="3" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">18</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-19" class="" data-type="Empty" data-name="E"
 														data-col="19" data-seatnum="2" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">19</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="E-20" class="" data-type="Empty" data-name="E"
 														data-col="20" data-seatnum="1" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="7">
 														<p style="line-height: 25px; width: 25px;">20</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -987,28 +996,28 @@ form {
 														data-col="1" data-seatnum="22" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">1</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-2" class="" data-type="Empty" data-name="F"
 														data-col="2" data-seatnum="21" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">2</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-3" class="" data-type="Empty" data-name="F"
 														data-col="3" data-seatnum="20" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">3</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-4" class="" data-type="Empty" data-name="F"
 														data-col="4" data-seatnum="19" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">4</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -1016,84 +1025,84 @@ form {
 														data-col="5" data-seatnum="17" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">5</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-6" class="" data-type="Empty" data-name="F"
 														data-col="6" data-seatnum="16" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">6</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-7" class="" data-type="Empty" data-name="F"
 														data-col="7" data-seatnum="15" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">7</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-8" class="" data-type="Empty" data-name="F"
 														data-col="8" data-seatnum="14" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">8</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-9" class="" data-type="Empty" data-name="F"
 														data-col="9" data-seatnum="13" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">9</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-10" class="" data-type="Empty" data-name="F"
 														data-col="10" data-seatnum="12" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">10</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-11" class="" data-type="Empty" data-name="F"
 														data-col="11" data-seatnum="11" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">11</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-12" class="" data-type="Empty" data-name="F"
 														data-col="12" data-seatnum="10" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">12</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-13" class="" data-type="Empty" data-name="F"
 														data-col="13" data-seatnum="9" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">13</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-14" class="" data-type="Empty" data-name="F"
 														data-col="14" data-seatnum="8" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">14</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-15" class="" data-type="Empty" data-name="F"
 														data-col="15" data-seatnum="7" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">15</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-16" class="" data-type="Empty" data-name="F"
 														data-col="16" data-seatnum="6" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">16</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -1101,28 +1110,28 @@ form {
 														data-col="17" data-seatnum="4" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">17</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-18" class="" data-type="Empty" data-name="F"
 														data-col="18" data-seatnum="3" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">18</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-19" class="" data-type="Empty" data-name="F"
 														data-col="19" data-seatnum="2" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">19</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="F-20" class="" data-type="Empty" data-name="F"
 														data-col="20" data-seatnum="1" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="6">
 														<p style="line-height: 25px; width: 25px;">20</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -1163,28 +1172,28 @@ form {
 														data-col="1" data-seatnum="22" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">1</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-2" class="" data-type="Empty" data-name="G"
 														data-col="2" data-seatnum="21" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">2</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-3" class="" data-type="Empty" data-name="G"
 														data-col="3" data-seatnum="20" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">3</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-4" class="" data-type="Empty" data-name="G"
 														data-col="4" data-seatnum="19" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">4</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -1192,84 +1201,84 @@ form {
 														data-col="5" data-seatnum="17" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">5</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-6" class="" data-type="Empty" data-name="G"
 														data-col="6" data-seatnum="16" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">6</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-7" class="" data-type="Empty" data-name="G"
 														data-col="7" data-seatnum="15" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">7</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-8" class="" data-type="Empty" data-name="G"
 														data-col="8" data-seatnum="14" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">8</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-9" class="" data-type="Empty" data-name="G"
 														data-col="9" data-seatnum="13" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">9</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-10" class="" data-type="Empty" data-name="G"
 														data-col="10" data-seatnum="12" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">10</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-11" class="" data-type="Empty" data-name="G"
 														data-col="11" data-seatnum="11" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">11</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-12" class="" data-type="Empty" data-name="G"
 														data-col="12" data-seatnum="10" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">12</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-13" class="" data-type="Empty" data-name="G"
 														data-col="13" data-seatnum="9" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">13</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-14" class="" data-type="Empty" data-name="G"
 														data-col="14" data-seatnum="8" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">14</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-15" class="" data-type="Empty" data-name="G"
 														data-col="15" data-seatnum="7" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">15</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-16" class="" data-type="Empty" data-name="G"
 														data-col="16" data-seatnum="6" data-status="5"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">16</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -1277,28 +1286,28 @@ form {
 														data-col="17" data-seatnum="4" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">17</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-18" class="" data-type="Empty" data-name="G"
 														data-col="18" data-seatnum="3" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">18</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-19" class="" data-type="Empty" data-name="G"
 														data-col="19" data-seatnum="2" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">19</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="G-20" class="" data-type="Empty" data-name="G"
 														data-col="20" data-seatnum="1" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="4">
 														<p style="line-height: 25px; width: 25px;">20</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -1311,28 +1320,28 @@ form {
 														data-col="1" data-seatnum="22" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">1</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-2" class="" data-type="Empty" data-name="H"
 														data-col="2" data-seatnum="21" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">2</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-3" class="" data-type="Empty" data-name="H"
 														data-col="3" data-seatnum="20" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">3</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-4" class="" data-type="Empty" data-name="H"
 														data-col="4" data-seatnum="19" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">4</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -1340,84 +1349,84 @@ form {
 														data-col="5" data-seatnum="17" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">5</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-6" class="" data-type="Empty" data-name="H"
 														data-col="6" data-seatnum="16" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">6</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-7" class="" data-type="Empty" data-name="H"
 														data-col="7" data-seatnum="15" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">7</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-8" class="" data-type="Empty" data-name="H"
 														data-col="8" data-seatnum="14" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">8</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-9" class="" data-type="Empty" data-name="H"
 														data-col="9" data-seatnum="13" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">9</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-10" class="" data-type="Empty" data-name="H"
 														data-col="10" data-seatnum="12" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">10</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-11" class="" data-type="Empty" data-name="H"
 														data-col="11" data-seatnum="11" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">11</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-12" class="" data-type="Empty" data-name="H"
 														data-col="12" data-seatnum="10" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">12</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-13" class="" data-type="Empty" data-name="H"
 														data-col="13" data-seatnum="9" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">13</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-14" class="" data-type="Empty" data-name="H"
 														data-col="14" data-seatnum="8" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">14</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-15" class="" data-type="Empty" data-name="H"
 														data-col="15" data-seatnum="7" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">15</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-16" class="" data-type="Empty" data-name="H"
 														data-col="16" data-seatnum="6" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">16</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -1425,28 +1434,28 @@ form {
 														data-col="17" data-seatnum="4" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">17</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-18" class="" data-type="Empty" data-name="H"
 														data-col="18" data-seatnum="3" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">18</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-19" class="" data-type="Empty" data-name="H"
 														data-col="19" data-seatnum="2" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">19</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="H-20" class="" data-type="Empty" data-name="H"
 														data-col="20" data-seatnum="1" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="3">
 														<p style="line-height: 25px; width: 25px;">20</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -1459,28 +1468,28 @@ form {
 														data-col="1" data-seatnum="22" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">1</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-2" class="" data-type="Empty" data-name="I"
 														data-col="2" data-seatnum="21" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">2</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-3" class="" data-type="Empty" data-name="I"
 														data-col="3" data-seatnum="20" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">3</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-4" class="" data-type="Empty" data-name="I"
 														data-col="4" data-seatnum="19" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">4</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -1488,84 +1497,84 @@ form {
 														data-col="5" data-seatnum="17" data-status="3"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">5</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-6" class="" data-type="Empty" data-name="I"
 														data-col="6" data-seatnum="16" data-status="3"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">6</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-7" class="" data-type="Empty" data-name="I"
 														data-col="7" data-seatnum="15" data-status="3"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">7</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-8" class="" data-type="Empty" data-name="I"
 														data-col="8" data-seatnum="14" data-status="3"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">8</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-9" class="" data-type="Empty" data-name="I"
 														data-col="9" data-seatnum="13" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">9</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-10" class="" data-type="Empty" data-name="I"
 														data-col="10" data-seatnum="12" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">10</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-11" class="" data-type="Empty" data-name="I"
 														data-col="11" data-seatnum="11" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">11</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-12" class="" data-type="Empty" data-name="I"
 														data-col="12" data-seatnum="10" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">12</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-13" class="" data-type="Empty" data-name="I"
 														data-col="13" data-seatnum="9" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">13</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-14" class="" data-type="Empty" data-name="I"
 														data-col="14" data-seatnum="8" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">14</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-15" class="" data-type="Empty" data-name="I"
 														data-col="15" data-seatnum="7" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">15</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-16" class="" data-type="Empty" data-name="I"
 														data-col="16" data-seatnum="6" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">16</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -1573,28 +1582,28 @@ form {
 														data-col="17" data-seatnum="4" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">17</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-18" class="" data-type="Empty" data-name="I"
 														data-col="18" data-seatnum="3" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">18</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-19" class="" data-type="Empty" data-name="I"
 														data-col="19" data-seatnum="2" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">19</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="I-20" class="" data-type="Empty" data-name="I"
 														data-col="20" data-seatnum="1" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="2">
 														<p style="line-height: 25px; width: 25px;">20</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -1607,28 +1616,28 @@ form {
 														data-col="1" data-seatnum="22" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">1</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-2" class="" data-type="Empty" data-name="J"
 														data-col="2" data-seatnum="21" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">2</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-3" class="" data-type="Empty" data-name="J"
 														data-col="3" data-seatnum="20" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">3</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-4" class="" data-type="Empty" data-name="J"
 														data-col="4" data-seatnum="19" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">4</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -1636,84 +1645,84 @@ form {
 														data-col="5" data-seatnum="17" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">5</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-6" class="" data-type="Empty" data-name="J"
 														data-col="6" data-seatnum="16" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">6</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-7" class="" data-type="Empty" data-name="J"
 														data-col="7" data-seatnum="15" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">7</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-8" class="" data-type="Empty" data-name="J"
 														data-col="8" data-seatnum="14" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">8</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-9" class="" data-type="Empty" data-name="J"
 														data-col="9" data-seatnum="13" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">9</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-10" class="" data-type="Empty" data-name="J"
 														data-col="10" data-seatnum="12" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">10</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-11" class="" data-type="Empty" data-name="J"
 														data-col="11" data-seatnum="11" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">11</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-12" class="" data-type="Empty" data-name="J"
 														data-col="12" data-seatnum="10" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">12</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-13" class="" data-type="Empty" data-name="J"
 														data-col="13" data-seatnum="9" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">13</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-14" class="" data-type="Empty" data-name="J"
 														data-col="14" data-seatnum="8" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">14</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-15" class="" data-type="Empty" data-name="J"
 														data-col="15" data-seatnum="7" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">15</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-16" class="" data-type="Empty" data-name="J"
 														data-col="16" data-seatnum="6" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">16</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -1721,28 +1730,28 @@ form {
 														data-col="17" data-seatnum="4" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">17</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-18" class="" data-type="Empty" data-name="J"
 														data-col="18" data-seatnum="3" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">18</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-19" class="" data-type="Empty" data-name="J"
 														data-col="19" data-seatnum="2" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">19</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td id="J-20" class="" data-type="Empty" data-name="J"
 														data-col="20" data-seatnum="1" data-status="0"
 														data-areanum="1" data-areacode="0000000001" data-row="1">
 														<p style="line-height: 25px; width: 25px;">20</p> <img
-														src="/movieTwProj/img/standard_available.png"
+														src="/TaiwanFilm/img/standard_available.png"
 														style="width: 25px; height: 25px;">
 													</td>
 													<td></td>
@@ -1858,6 +1867,8 @@ form {
 
 		</div>
 	</form:form>
+	
+	<jsp:include page="../fragment/bottom.jsp" />
 </body>
 <script>
 	var fullStr = 0;
@@ -1904,7 +1915,7 @@ form {
 		var s = Math.floor(time % 60);
 		$('#clock').text(s < 10 ? "0" + m + ":0" + s : "0" + m + ":" + s);
 		if (time == 0) {
-			location.href = '/movieTwProj'; //跳轉位置
+			location.href = '/TaiwanFilm'; //跳轉位置
 		}
 	}, 1000);
 
@@ -1912,7 +1923,7 @@ form {
 	var SoldSeats = soldstr.split(","); //切割字串以逗號隔開
 	for (var i = 0; i < SoldSeats.length; i++) {
 		$("#" + SoldSeats[i]).find("img").attr("src",
-				"/movieTwProj/img/sold.png");
+				"/TaiwanFilm/img/sold.png");
 		$("#" + SoldSeats[i]).attr("data-type", "Sold");
 	}
 	$("td[data-type='Sold']").click(function() {
@@ -1929,13 +1940,13 @@ form {
 				}
 				if (SelectSeats.length == (fullQuan + couponQuan)) {
 					$("#" + SelectSeats[0]).find("img").attr("src",
-							"/movieTwProj/img/standard_available.png");
+							"/TaiwanFilm/img/standard_available.png");
 					SelectSeats.splice(0, 1); //刪掉第一個
 				}
 				if (SelectSeats.length > (fullQuan + couponQuan)) { //購買數量小於已選位置數
 					for (var i = 0; i < SelectSeats.length; i++) {
 						$("#" + SelectSeats[i]).find("img").attr("src",
-								"/movieTwProj/img/standard_available.png");
+								"/TaiwanFilm/img/standard_available.png");
 					}
 					SelectSeats.splice(0, (fullQuan + couponQuan)); //刪掉全部
 					alert("請重新選位!!");
@@ -1944,7 +1955,7 @@ form {
 					if (fullQuan + couponQuan != 0) {
 						SelectSeats.push($(this).attr("id"));
 						$(this).find("img").attr("src",
-								"/movieTwProj/img/standard_selected.png");
+								"/TaiwanFilm/img/standard_selected.png");
 						$("#seatLocation").val(SelectSeats);
 						if (SelectSeats.length == (fullQuan + couponQuan)) { //條件達成才可submit
 							$('#submitBtn').attr('disabled', false);

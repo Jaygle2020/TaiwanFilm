@@ -72,10 +72,13 @@ body {
 	padding:3px;
 	border-radius:3px
 }
-</style>
+
+</style> 
 </head>
 <body> 
 	<jsp:include page="../backstage.jsp" />
+	
+		
   
 	<section class="container" style="position:absolute;left: 17%;width: 80%;padding-top: 100px">
 		<div class="category-content">     

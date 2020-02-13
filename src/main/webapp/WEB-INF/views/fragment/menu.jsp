@@ -62,7 +62,7 @@
 			<a href="backstage">
 				<div class="menu-buttonStyle">進入後台</div>
 			</a>    
-			</c:if> --%>
+			</c:if> 
 		</div>
 
 	</div>

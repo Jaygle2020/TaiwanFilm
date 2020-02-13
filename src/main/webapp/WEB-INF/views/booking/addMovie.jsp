@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/movie2.css">
+	href="${pageContext.request.contextPath }/css/movie.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
@@ -16,22 +16,50 @@
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <style>
+label {
+	color: #428bca;
+	font-size: 16px;
+}
+
+input, select {
+	height: 35px;
+	border-radius: 5px;
+}
+
+textarea {
+	border-radius: 5px;
+}
+
+input[type="checkbox"] {
+	height: 20px;
+	width: 20px;
+}
+
+span {
+	font-size: 16px;
+}
+
 .inputLarge {
 	width: 500px;
+}
+
+.category-content {
+	margin-bottom: 50px;
+}
+
+fieldset {
+	padding-left: 170px;
 }
 </style>
 </head>
 <body>
-	<jsp:include page="../fragment/top.jsp" />
+	<jsp:include page="../backstage.jsp" />
 
-	<section>
-		<div class="container">
-			<h1 style="text-align: center">新增電影</h1>
+	<section class="container"
+		style="position: absolute; left: 17%; width: 80%; padding-top: 100px">
+		<div class="category-content">
+			<h1 style="text-align: center; margin: 0">新增電影</h1>
 		</div>
-	</section>
-	<hr
-		style="height: 1px; border: none; color: #333; background-color: #333;">
-	<section class="container">
 		<!--       三個地方要完全一樣 -->
 		<form:form method='POST' modelAttribute="movieBean"
 			class='form-horizontal' enctype="multipart/form-data">
@@ -86,37 +114,37 @@
 						類型 </label>
 					<div class="col-lg-10" id="type">
 						<form:checkbox path="type" value="動作" />
-						動作
+						<span>動作</span>
 						<form:checkbox path="type" value="冒險" />
-						冒險
+						<span>冒險</span>
 						<form:checkbox path="type" value="喜劇" />
-						喜劇
+						<span>喜劇</span>
 						<form:checkbox path="type" value="劇情" />
-						劇情
+						<span>劇情</span>
 						<form:checkbox path="type" value="動畫" />
-						動畫
+						<span>動畫</span>
 						<form:checkbox path="type" value="偵探推理" />
-						偵探推理
+						<span>偵探推理</span>
 						<form:checkbox path="type" value="紀錄" />
-						紀錄
+						<span>紀錄</span>
 						<form:checkbox path="type" value="英雄" />
-						英雄<br>
+						<span>英雄</span><br>
 						<form:checkbox path="type" value="警匪" />
-						警匪
+						<span>警匪</span>
 						<form:checkbox path="type" value="科幻" />
-						科幻
+						<span>科幻</span>
 						<form:checkbox path="type" value="懸疑" />
-						懸疑
+						<span>懸疑</span>
 						<form:checkbox path="type" value="驚悚" />
-						驚悚
+						<span>驚悚</span>
 						<form:checkbox path="type" value="溫馨" />
-						溫馨
+						<span>溫馨</span>
 						<form:checkbox path="type" value="戰爭" />
-						戰爭
+						<span>戰爭</span>
 						<form:checkbox path="type" value="勵志" />
-						勵志
+						<span>勵志</span>
 						<form:checkbox path="type" value="家庭" />
-						家庭
+						<span>家庭</span>
 					</div>
 				</div>
 
@@ -191,10 +219,8 @@
 				</div>
 			</fieldset>
 		</form:form>
+		<br> <br> <br> <br>
 	</section>
-
-	<jsp:include page="../fragment/bottom.jsp" />
-
 </body>
 <script>
 	$(document)
@@ -205,7 +231,7 @@
 								.val(
 										"《五月天人生無限公司》由怪獸、石頭、瑪莎、冠佑、阿信領銜主演，黃渤、梁家輝特別主演，415萬社員演員共同主演，仙草影像、陳奕仁執導。由「昨日歡樂街頭戰」揭開故事序幕，五月天化身五位具有超能力的救世英雄，組成一支菁英戰隊「第五分隊」，吉他手怪獸飾演紅色盔甲身手矯健的 Mr. Monster；吉他手石頭飾演堅硬如石的 Lonely Stone；鼓手冠佑飾演搞笑運氣又超好的十字弓射手 Mini Ming，就連蹲下撿錢都可以躲過一波攻擊；貝斯手瑪莎飾演尖酸幽默坐擁重裝軍火的地獄貓 Hell Kitty；主唱阿信則飾演有著魔法超能力，天才慧黠的 Honey Potter。五人歷經大戰後回到「今日魯蛇唱片行」，過著話當年的平凡生活，直到長官現身「重新召集大家」對抗剛烈的怪獸，看著「今日魯蛇唱片行」將成為攻擊範圍，「第五分隊」決定起身拯救地球，捍衛最初的音樂，重新訓練與迎戰，「人生無限公司」122個夜晚結束之後，五位英雄人物又何去何從？做了什麼？吃了多少火鍋？怪獸的自拍鏡頭又紀錄了哪些旅程呢？「人生無限公司」將在大銀幕繼續營業。");
 						$("#type input").each(function() {
-							if ($(this).val()=="劇情") {
+							if ($(this).val() == "劇情") {
 								$(this).attr("checked", "checked");
 							}
 						});

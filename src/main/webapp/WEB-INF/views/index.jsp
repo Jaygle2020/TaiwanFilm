@@ -15,6 +15,9 @@
 	rel="stylesheet">
 <link rel="stylesheet" href="css/finalIndex.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/movie.css"
+	type="text/css">
 <!-- 	<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap" rel="stylesheet">
 
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet"> -->
@@ -120,13 +123,14 @@
 						<p>上班太忙錯過了首輪強檔好片嗎？</p>
 						<p>首輪秒下口碑卻爆棚的好片來不及看嗎？</p>
 						<p>荷包緊緊但想要大螢幕環繞音響的享受嗎？</p>
-						<p>二輪電影的文化不該被沒落，錯過的電影不知道去哪看嗎？我們來幫你訂票，讓你不在錯過你想看的電影！！</p>
+						<p>二輪電影的文化不該被沒落，錯過的電影不知道去哪看嗎？</p>
+						<p>我們來幫你訂票，讓你不在錯過你想看的電影！！</p>
 					</div>
 				</div>
 			</div>
 			<div class="area">
 				<div class="movie-pad">
-					<c:forEach var='movie' items='${movies }'>
+					<c:forEach var='movie' end="5" items='${movies }'>
 						<a href="<spring:url value='/movieDetail?id=${movie.movieId}' />"><div
 								class="background${movie.movieId } pictures"
 								id="test${movie.movieId }"
@@ -137,7 +141,7 @@
 		</div>
 	</div>
 	
-	<jsp:include page="footer.jsp" /> 
+	<jsp:include page="fragment/bottom.jsp" /> 
 
 </body>
 

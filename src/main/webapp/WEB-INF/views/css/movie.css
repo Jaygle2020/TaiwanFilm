@@ -101,11 +101,11 @@ a {
       padding: 10px 0px;
       float: left; }
       #category .change-category .change-menu .buttonBorder-active {
-        border-bottom: 5px solid red; }
+       border-bottom: 4px solid #EA0082;  }
     #category .change-category div {
       width: 10%;
       display: inline-block;
-      color: red;
+      color: black;
       font-size: 15px;
       font-weight: bold;
       float: left; }
@@ -223,19 +223,11 @@ a {
     height: 250px;
     display: inline-block;
 }    
-#sign-in{
-	background-color: #ffffff;
-	margin: 5px;
-	hight:230px
-}
-#sign-up{
-	margin: 5px;
-	background-color: #ffffff;
-	hight:230px
-}
+
 .registrTotalDiv{
 	padding-top:100px;
 text-align:center;     
+height:570px;
 }
 /* .registrMainDiv{	 */
 /* 	width:30%; */
@@ -259,10 +251,7 @@ text-align:center;
 .box input{
 	Border-radius: 10px;	
 }
-.#category .change-category div{
+.buttonBorder{
 	color: black;
 }
-#category .change-category .change-menu .buttonBorder-active{
-	border-bottom: 5px solid #EA0082; 
-}
-    
+   
