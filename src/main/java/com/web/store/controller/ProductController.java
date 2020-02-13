@@ -494,7 +494,7 @@ public class ProductController {
 
 		String productIdStr = request.getParameter("productId");
 		int productId = Integer.parseInt(productIdStr.trim());
-
+		System.out.println("productId"+productId);
 		
 		String qtyStr = request.getParameter("qty");
 		Integer qty = 0;
@@ -507,6 +507,7 @@ public class ProductController {
 		try {
 			// 進行資料型態的轉換
 			qty = Integer.parseInt(qtyStr.trim());
+			System.out.println("qty"+qty);
 		} catch (NumberFormatException e) {
 			throw new ServletException(e);
 		}
@@ -514,9 +515,16 @@ public class ProductController {
 		
 
 		System.out.println(productId);
-		// 將訂單資料(價格，數量，折扣與BookBean)封裝到OrderItemBean物件內
+		 //將訂單資料(價格，數量，折扣與BookBean)封裝到OrderItemBean物件內
 		OrderItemBean oib = new OrderItemBean(null, null, productId, null, qty, bean.getPrice(), null,
 				bean.getTitle(), bean.getAuthor(),bean.getCompanyBean().getName(),bean.getStock());
+//		oib.setBookId(productId);
+//		oib.setQuantity(qty);
+//		oib.setUnitPrice(bean.getPrice());
+//		oib.setTitle(bean.getTitle());
+//		oib.setAuthor(bean.getAuthor());
+//		oib.setCompanyName(bean.getCompanyBean().getName());
+//		oib.setStock(bean.getStock());
 		
 		// 將OrderItem物件內加入ShoppingCart的物件內
 		cart.addToCart(productId, oib);
@@ -562,7 +570,7 @@ public class ProductController {
 
 			ProductBean bean = service.getProductById(pgId);
 			
-			
+			System.out.println("pgId"+pgId);
 
 			try {
 				// 進行資料型態的轉換
@@ -574,6 +582,8 @@ public class ProductController {
 			
 
 			System.out.println("productsId="+pgId);
+			
+			
 			// 將訂單資料(價格，數量，折扣與BookBean)封裝到OrderItemBean物件內
 			OrderItemBean oib = new OrderItemBean(null, null, pgId, null, qty, bean.getPrice(), null,
 					bean.getTitle(), bean.getAuthor(),bean.getCompanyBean().getName(),bean.getStock());
