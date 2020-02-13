@@ -43,32 +43,32 @@
 						<div class="form-group">
 							<div class="input-group topic">收件人姓名</div>
 							<div class="input-group textIn">
-								<form:input path="buyerName" />
+								<form:input  id="buyerName" path="buyerName" />
 							</div>
 							<br>
 							<div class="input-group topic">郵遞區號</div>
 							<div class="input-group textIn">
-								<form:input path="postNumber" />
+								<form:input id="postNumber" path="postNumber" />
 							</div>
 							<br>
 							<div class="input-group topic">收件地址</div>
 							<div class="input-group textIn">
-								<form:input path="adress" />
+								<form:input id="adress" path="adress" />
 							</div>
 							<br>
 							<div class="input-group topic">連絡電話</div>
 							<div class="input-group textIn">
-								<form:input path="phone" />
+								<form:input id="phone" path="phone" />
 							</div>
 							<br>
 							<div class="input-group topic">聯絡信箱</div>
 							<div class="input-group textIn">
-								<form:input path="email" />
+								<form:input id="email" path="email" />
 							</div>
 							<br>
 							<div class="input-group topic">備註</div>
 							<div class="input-group textIn">
-								<form:input path="note" />
+								<form:input  id="note" path="note" />
 							</div>
 							<br>
 						</div>
@@ -112,7 +112,7 @@
 						<form:checkbox path="incognito" />匿名贊助
                         <input type="hidden" name="planId"
 							value="${dpBean.planId}">
-						<input type="submit" value="進行付款">
+						<input type="submit" value="進行付款">	<button id="touch" type="button" onclick="oneTouch()">oneTouch</button>
 					</form:form>
 				</div>
 				<div class="choosenData">
@@ -176,6 +176,16 @@
 					}
 					$("#payAmount").val($(".payAmount").text());
 				})
+				
+				
+		function oneTouch(){
+			$("#buyerName").val("大安金城武");
+			$("#postNumber").val("10667");
+			$("#adress").val("106台北市大安區復興南路一段390號2樓");
+			$("#phone").val("02 6631 6666");
+			$("#email").val("eeit110@gmail.com");
+			$("#note").val("上課買不到口罩，寄一點3Q");
+		}
 	</script>
 </body>
 

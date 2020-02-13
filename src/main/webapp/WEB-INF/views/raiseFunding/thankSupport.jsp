@@ -10,7 +10,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/menuStyle.css" />
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/thank.css" />
+	href="${pageContext.request.contextPath}/css/thank1.css" />
 <style>
 
 

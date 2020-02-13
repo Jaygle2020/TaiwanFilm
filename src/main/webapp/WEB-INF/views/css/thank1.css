@@ -38,9 +38,10 @@ body{
         display: inline-block;
         width:45%;
         height:100%;
+        margin-left:5%;
         
     }
     .col-right img{
         width: 50%;
-
+	
     }
