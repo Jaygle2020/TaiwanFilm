@@ -19,15 +19,16 @@
 <jsp:include page="../fragment/menu.jsp" />
     <div class="pageWrapper">   
         <div class="upper">
-            <P class="memberName" data-memberId="${mbBean.memberId}">${mbBean.memberName}&ensp;&ensp;您好</P>
-            <P>其他消息</P>
+           	<h2>贊助記錄</h2>
+            <P style="margin-top: 38px">在專案結束之前，您都可修改你的回饋寄送資訊，ATM 轉帳與超商付款請於繳費期限內繳款。逾期後訂單會自動消失。</P>
+             <div style="text-align: left">已支持的項目</div>
         </div>
         <div class="down">
-            <P>已支持的項目</P>
+           
             <c:if test="${pcBeans!=null}">
             <c:forEach items="${pcBeans}"  var="pcBean">
             <div class="inner" id="project12">
-                <div class="projectThumb" style="background-image:url('${pageContext.request.contextPath}/img/supermark/ok.png');">
+                <div class="projectThumb" style="background-image:url('${pageContext.request.contextPath}/getProject/photo/${pcBean.projBean.projectId}');">
                 </div>
                 <div class="project">
                     <p class="title">${pcBean.projBean.projectName}</p>
@@ -41,7 +42,7 @@
                 <div class="plan">
                     <span class="money">目前募得$${pcBean.projBean.cfBean.fundsNow}元</span> <span
                         class="percent">${pcBean.projBean.cfBean.percent}%</span> <span class="date">還剩
-                        <strong class="dayCount" data-endDay="${pcBean.projBean.cfBean.dateEnd}"></strong>天
+                        <strong class="dayCount" data-endDay="${pcBean.projBean.cfBean.dateEnd}"></strong>
                     </span>
                 </div>
             </div>
@@ -51,6 +52,26 @@
 
 
     </div>
+    <jsp:include page="../fragment/footer.jsp" />
+    <script>
+    $(".dayCount").each(function(){
+		var dayCount = $(this).attr("data-endDay");
+		console.log(DaysCountdown(dayCount));
+		var result = DaysCountdown(dayCount);
+		$(this).text(result);
+	});
     
+    function DaysCountdown(sLimitDay){
+		var nowDate ,limitDay ,countDay,result;
+		nowDate = new Date();
+		limitDay = new Date(sLimitDay);
+		result = limitDay - nowDate;
+		if(result>0){
+		countDay = parseInt( Math.abs(result) / 1000 / 60 / 60 / 24 );
+		return "還剩"+countDay+"天";
+		}
+		return "已截止";
+	}
+    </script>
 </body>
 </html>

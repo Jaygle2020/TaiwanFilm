@@ -7,10 +7,16 @@
 <title>Insert title here</title>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<link rel="stylesheet" href="css/menuStyle.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/menuStyle.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/thank.css" />
 </head>
 <body>
 <jsp:include page="../fragment/menu.jsp" />
+
+<div class="receiptWrapper">
+
 <h2>感謝購買</h2>
 <p>請至下列合作的超商進行付款</p>
 <div><img src="${pageContext.request.contextPath}/img/supermark/familymart.png">
@@ -18,8 +24,8 @@
 <img src="${pageContext.request.contextPath}/img/supermark/life.png">
 <img src="${pageContext.request.contextPath}/img/supermark/ok.png">
 </div>
-
-
+</div>
+<jsp:include page="../fragment/footer.jsp" />
 <script>
 setTimeout(function(){ 
 	alert("即將跳轉回首頁");

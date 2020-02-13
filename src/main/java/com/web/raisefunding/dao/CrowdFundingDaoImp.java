@@ -67,6 +67,44 @@ public class CrowdFundingDaoImp implements CrowdFundingDao {
 			}
 			return list;
 	}
+	
+	@Override
+	public List<CrowdFundingBean> getAllFundingById() {
+		Session session = factory.getCurrentSession();
+		String hql = "From CrowdFundingBean order by actionId desc";
+		List<CrowdFundingBean> list= session.createQuery(hql).getResultList();
+		
+			for(CrowdFundingBean cfBean:list) {
+				if(cfBean.getFundsGoal()!= null) {
+				double num = (double)cfBean.getFundsNow()/cfBean.getFundsGoal();
+				cfBean.setPercent((int)Math.round(num*100));
+				}
+			}
+			return list;
+	}
+	
+	
+	@Override
+	public List<CrowdFundingBean> getAllFundingByDate() {
+		Session session = factory.getCurrentSession();
+		String hql = "From CrowdFundingBean where ";
+		List<CrowdFundingBean> list= session.createQuery(hql).getResultList();
+		
+			for(CrowdFundingBean cfBean:list) {
+				if(cfBean.getFundsGoal()!= null) {
+				double num = (double)cfBean.getFundsNow()/cfBean.getFundsGoal();
+				System.out.println(num);
+				cfBean.setPercent((int)Math.round(num*100));
+				System.out.println("-----------test--------:"+cfBean.getPercent());
+				}
+			}
+			return list;
+	}
+	
+	
+	
+	
+	
 	@Override
 	public void addNewBacker(PurchaseBean pcBean) {
 		String hql = "From CrowdFundingBean where projectId = :projectId";

@@ -13,8 +13,8 @@
 	href="${pageContext.request.contextPath}/css/create.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/menuStyle.css" />
-<link rel="stylesheet" 
 
+<link rel="stylesheet" 
 	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -63,7 +63,7 @@
 							<h2>上傳專案圖片</h2>
 							<span>專案區塊圖:目前圖片${ProjectBean.photoFileName}</span><br><input type="file" name="photoStr"
 								accept="image/jpeg,image/png,image/bmp"><br>
-							<span>故事介紹圖:目前圖片${ProjectBean.photoFileName2}</span><br><input type="file" name="photoStr2" 
+							<span>故事介紹圖目前圖片${ProjectBean.photoFileName2}</span><br><input type="file" name="photoStr2" 
 								accept="image/jpeg,image/png,image/bmp">
 							<h2>專案影片 &nbsp; (注意某些私人youtube影片是不開放其他網站載入)</h2>
 							
@@ -93,13 +93,11 @@
 				
 
 				<div class="create-info productlist form-group"></div>
-
+						
 				<div class="create-reward productlist ">
-					
-					<div class="dplan-view" >
 					<c:if test="${dpBeans!=null}">
 						<c:forEach items="${dpBeans}" var="dpBean" >
-							<div class="plan" id="donatePlan${dpBean.planId}" data-planId="${dpBean.planId}">
+							<div class="plan" id="donatePlan${dpBean.planId}">
 								<div>
 									<h2 class="donateMoney">$${dpBean.donateMoney}</h2>
 								</div>
@@ -113,7 +111,6 @@
 											default="單純贊助，不需回饋，小額贊助給予劇組鼓勵和支持。"></c:out>
 									</div>
 									<span class="shipping" data-shipping="${dpBean.shipping}">沒有運送服務</span>
-									<hr>
 									<span class="deliverDate">預計寄送時間 ${dpBean.dliverDate}</span> <span
 										class="limit">限量 <strong>${dpBean.limitNum}</strong>份
 									</span>
@@ -121,12 +118,12 @@
 							</div>
 						</c:forEach>
 					</c:if>
-					</div>
+					<div class="dplan-view" ></div>
 					<button id="create-user">新增贊助方塊</button>
 					
 					<!--         dialog-Form 隱藏的跳出視窗起始點               -->
 					
-					<div id="dialog-form" title="建立一個新的贊助方案">
+					<div id="dialog-form" title="Create new user">
 						<p class="validateTips">所有表格都必須填寫</p>
 						<div class="create-reward productlist form-group">
 							<form method="POST" id='rewardPlan' action="${pageContext.request.contextPath}/createDonatePlan" 
@@ -136,7 +133,7 @@
 										<label for="donateMoney">回饋金額，最低100元</label> 
 										<input type="number" name="donateMoney" id="donateMoney" min="100"><br>
 										<label for="donateDescription"><h2>內容摘要</h2></label>
-										<textarea name="donateDescription" form="rewardPlan" rows="11"
+										<textarea name="donateDescription" form="rewardPlan" rows="11" id="donateDescription"
 											cols="40" >單純支持</textarea>
 									</div>
 									<div class="previewCard">
@@ -159,8 +156,7 @@
 										<input type="hidden" id="dliverDate" name="dliverDate" value=""> <br>
 											<label for="limit"><h2>限量份數</h2></label> 
 											<input  type="number" name="limit" id="limit" min="1" max="999999">
-											<input type="hidden"  id="updateId" name="updateId" value="0">
-										<input type="hidden" id="dphidden" name="projectId" value="${ProjectBean.projectId}">
+										<input type="hidden"  name="projectId" value="${ProjectBean.projectId}">
 									</div>
 								</div>
 							</form>
@@ -207,18 +203,14 @@
 
 	</div>
 
-
-
 	<script>
 		var dataDpBeans = null;
 		$(function() {
-			
 			$(".datepicker").datepicker();
-			//設定方案日期按鈕
 			donateOptionElm();
 			$("#dliverDate").val(
 			$("#deliverYear").val() + "-" + $("#deliverMonth").val());
-		
+			
 			
 			//取得簡介圖片
 			var count = ${infoBean.photoCount};
@@ -228,7 +220,7 @@
 				var url =  "${pageContext.request.contextPath}/infoPhoto/"+projectId+"/"+i;          
 			$("#image"+i).attr("src", url);
 			}
-			//啟用方案彈出功能
+			
 			var dialog, limit = $("#limit"), donateMoney = $("#donateMoney"),
 			allFields = $(
 					[]).add(limit).add(donateMoney), tips = $(".validateTips");
@@ -252,7 +244,6 @@
 				}
 			}
 			
-			//彈出式視窗內的資料送進SERVER
 			function addDonatePlan() {
 				var valid = true;
 				allFields.removeClass("ui-state-error");
@@ -270,36 +261,17 @@
 						cache:false,
 						contentType: false,
 						processData: false,
-						success:function(data){	
+						success:function(data){
 							dataDpBeans = JSON.parse(data);
 							dpPlanForEach(dataDpBeans);
-							$( ".plan" ).on( "click", getPlanForm);
 						},
 						error:function(){
 							alert("fail");
 						}
 					})
-					$("#updateId").val("0");
 					dialog.dialog("close");
 				}
 				
-			}
-			//回傳DPBEAN叫回跳出視窗
-			function getPlanForm(){
-				var url = "${pageContext.request.contextPath}/getDonatePlan/projId"+${ProjectBean.projectId}+
-				"/actionId"+$(this).attr("data-planId");
-				$.ajax({
-					type:'get',
-					url:url,
-					dataType:"json",
-					success:function(data){
-						updateForm(data);
-						dialog.dialog("open");
-					},
-					error:function(){
-						alert("fail");
-					}	
-				})
 			}
 
 			dialog = $("#dialog-form").dialog({
@@ -326,12 +298,12 @@
 			      event.preventDefault();
 			      addDonatePlan();
 			    });
-			
+			//點擊新增開新表格
 			$("#create-user").button().on("click", function() {
 				dialog.dialog("open");
 			});
 			
-			$(".plan").click()
+			//點擊個別專案開啟修改
 			
 		});
 		
@@ -346,6 +318,7 @@
 			$("#textTittle").val(dataTittle);
 			$("#innerTesxt").val(dataHtml);
 			$("#photoCount").val(imageNum);
+		<!--	$("#viewArea").html(""); -->
 			var form = document.getElementById("formArea");
 			var url = $("#formArea").attr("action");
 			var formData = new FormData(form);
@@ -362,7 +335,6 @@
 						var url =  "${pageContext.request.contextPath}/infoPhoto/"+${ProjectBean.projectId}+"/"+i;    
 					$("#preViewArea").find("img").attr("src", url);
 					}
-					alert("資料建立成功")
 				},
 				error:function(){
 					alert("fail");
@@ -390,14 +362,14 @@
 			$('.create-reward').addClass("active");
 			$('.option3').addClass("actived");
 		});
-		//重新掃回方案方塊回頁面
+		
 function dpPlanForEach(dpBeans){
 	$(".dplan-view").html("");
 	for(var dpBean of dpBeans){
-		var dplan = $("<div class='plan' id='donatePlan"+dpBean.planId+"' data-planId='"+dpBean.planId+"'>"+
+		var dplan = $("<div class='plan' id='donatePlan"+dpBean.planId+"'>"+
 			"<div><h2 class='donateMoney'>$"+dpBean.donateMoney+"</h2></div>"+
 			"<div class='projectThumb'><img src='${pageContext.request.contextPath}"+
-			"/getDonatePlan/photo/"+dpBean.planId+"?t="+Math.random()+"'></div><div class='planText'><div class='description'>"+
+			"/getDonatePlan/photo/"+dpBean.planId+"'></div><div class='planText'><div class='description'>"+
 			dpBean.donateDescription+"</div><span class='shipping'"+ 
 			"data-shipping='"+dpBean.shipping+"'>沒有運送服務</span>"+
 			"<span class='deliverDate'>預計寄送時間 "+dpBean.dliverDate+"</span>"+
@@ -406,20 +378,6 @@ function dpPlanForEach(dpBeans){
 		$(".dplan-view").append(dplan);
 	}
 }
-//點擊方案方塊叫回原方案的資料進表格
-function updateForm(dpBean){
-		$("#donateMoney").val(dpBean.donateMoney);
-		$("#donateDescription").text(dpBean.donateDescription);
-		var img = $("<img width='300' height='200'>").attr('src',
-				"${pageContext.request.contextPath}/getDonatePlan/photo/"+dpBean.planId
-				);
-		$("#photoPre").html("").append(img);
-		$("#limit").val(dpBean.limitNum);
-		$("#updateId").val(dpBean.planId);
-		
-}
-
-
 	</script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/js/createProj.js"></script>
