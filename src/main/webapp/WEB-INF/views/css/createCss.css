@@ -7,23 +7,40 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
   vertical-align: baseline;
 }
 
+input,textarea{
+	border-radius:5px;
+	
+}
+h2{
+	font-color:	#00bbd6;
+	font-weight:bold;
+	margin-bottom:5px;
+}
 
 .createWrapper {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background-color: #f7f7f7;
   padding: 0;
   margin-left:17%;
   margin-top:5%;
 }
+.createFormIntro {
+	text-align: center;
+    font-weight: bold;
+    padding: 10px;
+}
+
 
 .createWrapper .createContainer {
   max-width: 820px;
   padding: 50px 20px;
   color: #000;
-  margin-right: auto;
-  margin-left: auto;
+
+ 
+}
+.partialWidthBlock{
+	
 }
 
 .createWrapper .createContainer .createMenu ul {
@@ -71,7 +88,6 @@ address, ol, p, ul {
 
 .formSection .active {
   display: block;
-  background-color: lightsteelblue;
 }
 
 .rewardItem {

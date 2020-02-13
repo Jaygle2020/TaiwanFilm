@@ -12,7 +12,7 @@
 <title>Document</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/purchase1.css">
+	href="${pageContext.request.contextPath}/css/purchase.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/menuStyle.css" />
 
