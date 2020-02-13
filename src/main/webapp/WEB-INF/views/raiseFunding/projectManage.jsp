@@ -25,22 +25,22 @@
 	href='${pageContext.request.contextPath}/css/movie.css' type="text/css" />
 
 <style>
-.activity-content{
+.activity-content {
 	width: 100%;
-	padding:10px;
-	border-radius:10px;
-	margin:10px;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 10px;
 	font-weight: bold;
 	background: white;
-	display: inline-block; 
+	display: inline-block;
 	height: 100px;
 }
 
-.activity-content-show{
+.activity-content-show {
 	width: 100%;
-	padding:10px;
-	border-radius:10px;
-	margin:10px;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 10px;
 	font-weight: bold;
 	display: inline-block;
 }
@@ -51,34 +51,31 @@
 	display: inline-block;
 }
 
-
-.acitivityUpdateWidth{
-	width:21%;
-	padding:20px;
+.acitivityUpdateWidth {
+	width: 21%;
+	padding: 20px;
 	display: inline-block;
-	vertical-align:top; 
+	vertical-align: top;
 	text-align: center;
 	color: black;
-	
 }
 
-.activityUpdateButton{
+.activityUpdateButton {
 	width: 7%;
-	display:inline-block;
-	margin-top:12px;
-	text-align: center;  
+	display: inline-block;
+	margin-top: 12px;
+	text-align: center;
 	vertical-align: top;
 	padding-top: 5px;
 }
 
-.activityUpdateButtonStyle{
-	width:100%;
-	color:white;
-	background-color:red;
-	padding:3px;
-	border-radius:3px
+.activityUpdateButtonStyle {
+	width: 100%;
+	color: white;
+	background-color: red;
+	padding: 3px;
+	border-radius: 3px
 }
-
 </style>
 
 
@@ -87,11 +84,8 @@
 <body>
 	<jsp:include page="../fragment/backStageInclud.jsp" />
 	<div class="pageWrapper">
-		<div class="functionWrapper">
-
+		<div class="">
 			<h2>目前存在專案</h2>
-
-
 		</div>
 		<div class="formWrapper">
 			<table>
@@ -117,46 +111,10 @@
 					</c:forEach>
 				</c:if>
 			</table>
-			<div class="category-content">
-				<div class="activity-content-show">  
-				<div class="acitivityUpdateWidth">募資名稱</div> 
-				<div class="acitivityUpdateWidth">募資起始日</div>
-				<div class="acitivityUpdateWidth">募資截止日</div>
-				<div class="acitivityUpdateWidth">目前金額</div>
-				<div class="acitivityUpdateWidth">目標金額</div>
-				<div class="acitivityUpdateWidth">進度百分比</div>
-				<div class="activityUpdateButton">
-				<div class="activityUpdateButtonStyle">上架</div>
-				</div> 
-			</div> 
-				<c:if test="${cfBeans!=null}">
-					<c:forEach items="${cfBeans}" var="cfBean">
-				<div class="activity-inner"
-					data-number="${cfBean.projBean.projectId}">
-<!-- 					<div class="activityThumb" -->
-<%-- 						style="background-image: url('/getDonatePlan/photo/${cfBean.}');background-size:cover	"> --%>
-<!-- 					</div> -->
-					<div class="activity-content">
-						<p class="activity-title">${cfBean.projBean.projectName}</p>
-					    <p class="activity-author">${cfBean.dateBegin}</p> 
-						<p class="activity-maincontent">${cfBean.dateEnd}</p>
-						<p class="activity-maincontent">${cfBean.fundsNow}</p>
-						<p class="activity-maincontent">${cfBean.fundsGoal}</p>
-						<p class="activity-maincontent">${cfBean.percent}</p>
-						<p class="activity-Watched">
-						<i class="fas fa-eye"></i>test</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-				</c:forEach>
-				</c:if>
-			</div>
 		</div>
 	</div>
+
 	<script>
-		function addProject() {
-			window.location.href = "${pageContext.request.contextPath}/createProjectFirst";
-		}
 
 		$("td:last-child")
 				.click(

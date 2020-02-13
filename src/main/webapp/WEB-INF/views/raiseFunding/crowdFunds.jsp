@@ -63,7 +63,7 @@
 						</div>
 						<div class="col-right">
 							<div class="numberRow totalFund">
-								<h1 class="number moneyFormat">${cfBean.fundsNow}</h1>
+								<h1 class="number moneyFormat">$&nbsp;${cfBean.fundsNow}</h1>
 								<p class="metaText">目標 $${cfBean.fundsGoal}</p>
 							</div>
 							<div class="numberRow totalPeople">

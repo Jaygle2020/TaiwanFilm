@@ -144,6 +144,9 @@ section {
   width: 28%;
   padding-left: 15px;
   display: inline-block;
+  margin-left: 20px;
+      position: relative;
+    top: -55px;
 }
 
 .projectContentUpper .container .upperContent .col-right h1 {
@@ -152,7 +155,7 @@ section {
   font-weight: 700;
   letter-spacing: 1px;
   text-align: left;
-  color: #4a4a4a;
+  color: red;
   margin-bottom: 8px;
   margin-top:8px;
   line-height: 0.9;
@@ -209,7 +212,7 @@ section {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  margin-left:5%;
+  margin-left:2%;
 }
 .projectContentDown .container .col-left .middleFrame {
   margin: auto;
@@ -335,6 +338,7 @@ section {
   -webkit-box-direction: normal;
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
+          margin-right: 4%;
 }
 
 h1.projectContentHeading {

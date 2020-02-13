@@ -331,6 +331,7 @@ body{
 
 #category .inner .projectThumb img {
   width: 100%;
+  height: 107%;
 }
 
 #category .inner .content {
