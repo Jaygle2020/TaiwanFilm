@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.web.activity.service.ActivityService;
 import com.web.login.Model.MembersBean;
 import com.web.login.Service.MembersService;
 
@@ -100,7 +101,7 @@ public class RegisterController {
 		}
 
 		return "redirect:/ToIndex";
-
+ 
 	}
 	
 	@Autowired

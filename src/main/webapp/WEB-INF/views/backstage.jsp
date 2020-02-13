@@ -18,37 +18,38 @@
 		body{
 		background-color: #f1f1f1;margin:0}
 		.TaiwanFilms{
-		display: inline-block;font-size: 50px;font-weight: bold;color: #428bca;  
+		display: inline-block;font-size: 35px;font-weight: bold;color: #428bca; padding:15px 5px; 
 		}
 		.backStage-top{  
-			 width: 100%;		
-			 height: 80px;
-			background: #f1f1f1;
+			width: 100%;		
+			height: 80px;
+			background: white;
 			position: fixed;   
 			margin-top: -12px;
 			z-index:99 ;
-			border-bottom: 1px solid black;
-			} 
+			box-shadow: 0 0.25rem 0.125rem 0 rgba(0,0,0,0.05);
+			}         
 		
 		.backStage-bar{
 			width: 15%; 
 			display: inline-block;
 			position: fixed;
 			height: 800px;
-			background: #f1f1f1;  
-			top: 70px; 
+			background: #428bca;  
+			top: 65px; 
 			left: 0px;    
-			border-right: 1px solid black;  
+			border-right: 1px solid black;    
 			padding: 5px; 
 			
 		}
 		.backStage-title{
-			width: 100%;
+			width: 100%;  
+			color: white; 
+			font-weight: bold; 
+			background: #428bca;
+			text-align: left;    
 			font-size: 25px;
-			color: black;
-			text-align :center;
-			font-size: 15px;  
-			background: #f1f1f1;
+			border-bottom: 1px solid white; 
 			} 
 			
 		     
@@ -64,13 +65,9 @@
 		}
 		.choose-list a div{
 			text-decoration: none;
+			color: #1e2a3a;
 		}  
-		.backstage-title{
-		/*	background: #EA0082;*/
-			background: #f1f1f1;
-			text-align: left;   
-			font-size: 30px;
-		}  
+ 
 		.choose-list a{
 		text-decoration: none; font-size: 18px;}
 		
@@ -94,10 +91,10 @@
 		<a href="/TaiwanFilm">
 			<div class="TaiwanFilms">TaiwanFilms</div>
 		</a>
-		<a href="backstage" style="float:right"> 
-			<div class="TaiwanFilms">回到後台首頁</div>
+		<a href="${pageContext.request.contextPath }/backstage" style="float:right"> 
+			<div class="TaiwanFilms" style="font-size: 20px;color: black;padding-top: 30px">回到後台首頁</div>
 		</a>  
-	</div>         
+	</div>           
 	<div class="backStage-bar">
 		<div class="backStage-title">
 			<div class="back-member backstage-title">會員管理</div>
@@ -112,7 +109,7 @@
 <!-- 					<div class="m-bar3">新增活動</div> -->
 <!-- 				</a>       -->
 				
-			</div> 
+			</div>  
 		</div>
 		<div class="backStage-title">
 			<div class="back-activity backstage-title">活動</div>
@@ -164,9 +161,7 @@
 			</div>
 		</div>
 	</div> 
-	<div style="width: 80%;display: inline-block">
-		<%-- <jsp:include page="activity/allactivityM.jsp" /> --%>
-	</div>
+	  
 <!-- 	 style="width: 80%;display: inline-block;vertical-align:top;background:gray;height: 700px" -->
 <!-- </body> -->            
  
