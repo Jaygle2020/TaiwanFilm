@@ -11,9 +11,10 @@
 </head>
 <body>
 
-<form  type="get" action="${pageContext.request.contextPath}/FuzzyQuery">
-	<input class="query" type="text" name="keyword" value=""
-			placeholder="搜尋文章⋯">查詢會員
+<form  method="GET" action="${pageContext.request.contextPath}/FuzzyQuery">
+
+	<input class="query" type="text" name="keyword" placeholder="搜尋文章⋯">查詢會員
+
 </form>
 		<table border='1' cellpadding="3" cellspacing="1" >
 			<tr>

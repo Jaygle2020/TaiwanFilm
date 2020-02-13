@@ -64,13 +64,10 @@ public class RootAppConfig {
 				"com.web.shoppingCart.model"
 				
 		});
-		if (SystemConstant.DB_TYPE == SystemConstant.MYSQL) {
-			factory.setDataSource(mySQLDataSource());
-			factory.setHibernateProperties(additionalPropertiesMySQL());	
-		} else if (SystemConstant.DB_TYPE == SystemConstant.SQL_SERVER) {
+
 			factory.setDataSource(msSQLDataSource());
-			factory.setHibernateProperties(additionalPropertiesMsSQL());	
-		} 
+			factory.setHibernateProperties(additionalPropertiesMySQL());	
+
 		return factory;
 	}
 	@Bean(name="transactionManager")

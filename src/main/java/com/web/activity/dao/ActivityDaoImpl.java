@@ -91,7 +91,7 @@ public class ActivityDaoImpl implements ActivityDao {
 		session.save(activity);
 
 	}
-
+	//查詢單筆活動
 	@Override
 	public activityBean getActivityById(int activityId) {
 		Session session = factory.getCurrentSession();
