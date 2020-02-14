@@ -7,6 +7,13 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
   vertical-align: baseline;
 }
 
+body{
+	background-image:url('../img/wall1.jpeg')
+}
+wrapper.{
+	margin-left: 5%;
+    margin-right: 2%;
+}
 section {
   margin-bottom: 30px;
 }
@@ -14,13 +21,12 @@ section {
 .projectContentUpper {
   position: relative;
   padding-top: 45px;
-  background: #eee;
   margin-bottom: 30px;
   display: block;
 }
 
 .projectContentUpper .container {
-  width: 1170px;
+  width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -28,17 +34,17 @@ section {
 }
 
 .projectContentUpper .container .projectTitle {
+      padding: 50px;
+    font-weight: bolder;
+    font-size: 45px;
   margin-bottom: 40px;
   position: relative;
   padding-left: 50px;
   padding-right: 50px;
   line-height: 2.2rem;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-size: 25px;
   letter-spacing: 1.5px;
-  color: #000;
+  color: gray;
   max-width: 670px;
   margin: 0 auto;
 }
@@ -76,7 +82,7 @@ section {
   content: "";
   position: absolute;
   top: 32.5%;
-  left: 43%;
+  left: 50.5%;
   border: 5px solid #e4e4e4;
   border-bottom-style: none;
   border-radius: 50% 50% 0% 0%;
@@ -115,6 +121,7 @@ section {
   padding: 0px 17px;
   top: 35%;
   position: absolute;
+  margin-left: 7%;
 }
 
 .projectContentUpper .container .upperContent #projectShowWrapper .progressBar .wholePercent {
@@ -139,8 +146,13 @@ section {
 
 .projectContentUpper .container .upperContent .col-right {
   width: 28%;
-  padding-left: 15px;
   display: inline-block;
+  margin-left: 20px;
+  position: relative;
+  top: -55px;
+  border-radius: 13px;
+  border: solid lightslategray;
+
 }
 
 .projectContentUpper .container .upperContent .col-right h1 {
@@ -149,16 +161,35 @@ section {
   font-weight: 700;
   letter-spacing: 1px;
   text-align: left;
-  color: #4a4a4a;
+  color: red;
   margin-bottom: 8px;
+  margin-top:8px;
   line-height: 0.9;
+  margin-left: 20%;
 }
-
+.projectContentUpper .container .upperContent .col-right>div{
+	
+	padding:5px;
+}
 .projectContentUpper .container .upperContent .col-right p {
-  font-size: 14px;
-  font-weight: 500;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    border-bottom: #8080804a solid;
 }
 
+.projectContentUpper .container .upperContent .col-right .colorPart{
+	display: block;
+    padding: 15px;
+    background-color: #00bbd6;
+    text-align: center;
+}
+
+.projectContentUpper .container .upperContent .col-right .splitButtonContainer{
+	text-align: center;
+   
+	
+}
 .text-center {
   text-align: center;
 }
@@ -190,7 +221,7 @@ section {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  margin-left:5%;
+  margin-left:2%;
 }
 .projectContentDown .container .col-left .middleFrame {
   margin: auto;
@@ -242,11 +273,12 @@ section {
   border: 1px solid #cdcdcd;
   border-radius: 10px;
   width: 250px;
-  height:350px;
+  height:400px;
   display: inline-block;
   text-align: center;
   margin: 15px;
   background-color:white;
+  padding: 10px;
 }
 .plan .projectThumb{
   width: 100%;
@@ -269,12 +301,13 @@ section {
    width: 90%;
     position: relative;
     display: block;
+    height:100px;
 }
 .projectContentDown .container .col-right .plan .planText .description{
 	white-space: pre-line;
     text-overflow: ellipsis;
     word-wrap: break-word;
-    height: 40px;
+   
 	
 }
 .projectContentDown .container .col-right .plan .planText .shipping {
@@ -316,6 +349,7 @@ section {
   -webkit-box-direction: normal;
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
+          margin-right: 4%;
 }
 
 h1.projectContentHeading {

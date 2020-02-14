@@ -62,19 +62,31 @@
 					: ${message.createDate}</div>
 				<div
 					style="display: inline-block; text-align: right; font-size: 20px; width: 13%">
+<<<<<<< Updated upstream
 					<a href="${pageContext.request.contextPath}/messages">返回文章列表</a>
+=======
+					<a href="${pageContext.request.contextPath}/createDate">返回文章列表</a>
+>>>>>>> Stashed changes
 				</div>
 			</div>
 			<p>
 			<div id="messageC" style="font-size: 30px; padding: 20px 0px">${message.messageContent}</div>
 		</div>
 		<div
+<<<<<<< Updated upstream
 			style="display: inline-block; text-align: left; text-valign: center; width: 80%; border-style: none; background-color: #E8E8E8; font-size: 20px">
+=======
+			style="display: inline-block; text-align: left; text-valign: center; width: 80%; border-style: none; background-color: #E8E8E8; font-size: 20px;padding-bottom:50px ">
+>>>>>>> Stashed changes
 
 			<c:forEach var='replys' items='${replys}'>
 				<c:if test="${ replys.replyDelete ==1}">
 					<div style="display: inline-block; width: 100%">
+<<<<<<< Updated upstream
 						<div style="display: inline-block; width: 5%">
+=======
+						<div style="display: inline-block; width: 5%;text-align: center;">
+>>>>>>> Stashed changes
 							<img width='20' height='20'
 								src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
 						</div>
@@ -112,11 +124,11 @@
 			</c:forEach>
 
 			<form method='POST'
-				action="${pageContext.request.contextPath}/replys/add">
+				action="${pageContext.request.contextPath}/replys/add" style="text-align: center;">
 				<fieldset>
 					<div style="display: inline-block; text-align: left; width: 90%">
 						<input name="replyContent" value="${replyContent}" type="text"
-							placeholder="我要留言...." /><input type="submit" value="留言" />
+							placeholder="我要留言...."  "/><input type="submit" value="留言" />
 					</div>
 					<div>
 						<input name="messageId" value="${message.messageId}" type="hidden">
@@ -236,9 +248,18 @@
 			}
 		})
 		} 
+<<<<<<< Updated upstream
 	$(function() {
 		$("#messageC img").css("width","100%");
 	})
+=======
+/* 	$(function() {
+		if($("#messageC img").css("width") >$("#messageC img").css("850px")){
+			$("#messageC img").css("width","100%"); 
+		}else{
+		}
+	}) */
+>>>>>>> Stashed changes
 	</script>
 	<jsp:include page="../fragment/bottom.jsp"></jsp:include>
 </body>

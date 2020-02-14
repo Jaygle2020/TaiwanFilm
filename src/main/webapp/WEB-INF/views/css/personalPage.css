@@ -1,23 +1,19 @@
 .pageWrapper {
   margin: 10%;
-  margin-top: 10%;
+  margin-top: 5%;
   width: 80%;
 }
 
 .pageWrapper .upper {
-  width: 100%;
-  height: 200px;
-  border: 2px solid black;
-  padding: 0px 20px 0px 20px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+ 	width: 100%;
+    text-align: center;
+    padding: 0px 20px 0px 20px;
+    box-sizing: border-box;
+    border-bottom: solid;
 }
 
 .pageWrapper .down {
   margin-top: 15px;
-  background: -webkit-gradient(linear, left top, left bottom, from(white), to(#67affb));
-  background: linear-gradient(to bottom, white, #67affb);
-  border: 2px solid black;
   padding: 0px 25px 15px 25px;
 }
 
@@ -31,16 +27,21 @@
           box-shadow: 0 0 3px 3px #666a6f;
   border-radius: 10px;
   width: 200px;
+  height: 300px;
   display: inline-block;
   text-align: center;
   margin: 10px;
   background-color: white;
 }
 
+.small-title{
+	height: 35px;
+    overflow: hidden;
+}
 .pageWrapper .down .inner .projectThumb {
   width: 100%;
   height: 113px;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 

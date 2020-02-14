@@ -40,6 +40,7 @@
 body {
 	background-color: white;
 }
+<<<<<<< Updated upstream
 b {
 	font-size: 46px;
 	margin-bottom: 10px;
@@ -60,7 +61,44 @@ input:not (.allBt ){
 	border-radius: 5px;
 	margin: 0px 10px 10px 10px;
 }
+.memimg{
+	
+ width:160;
+ height:160;
+ border-radius: 50%;
+=======
+>>>>>>> Stashed changes
 
+b {
+	font-size: 46px;
+	margin-bottom: 10px;
+}
+	input:not(.allBt){
+	margin: 0px 10px;
+	font-size: 20px;
+    margin: 0px 10px 10px 10px;
+}
+<<<<<<< Updated upstream
+
+=======
+.allBt{
+    background-color: black;
+    border: 0;
+    color: white;
+    font-size: 16px;
+    padding: 10px 30px;
+    border-radius: 5px;
+    margin: 0px 10px 10px 10px;
+}
+/* #memberImage{ */
+/*     background-color: black; */
+/*     border: 0; */
+/*     color: white; */
+/*     font-size: 16px; */
+/*     padding: 10px 30px; */
+/*     border-radius: 5px; */
+/* } */
+>>>>>>> Stashed changes
 </style>
 </head>
 <body>
@@ -73,6 +111,9 @@ input:not (.allBt ){
 			<form method="POST" id="UpdateMember"
 				action="${pageContext.request.contextPath}/_01_register/DoUpdateMember"
 				enctype='multipart/form-data'>
+<<<<<<< Updated upstream
+				<table>
+=======
 
 				<table>
 					<th>
@@ -93,6 +134,7 @@ input:not (.allBt ){
 							value='${sessionScope.members.memberName}' />
 						<td><input type="radio" id="gender" name="gender" value="男生" />男生
 							<input type="radio" id="gender" name="gender" value="女生" />女生
+>>>>>>> Stashed changes
 					<tr>
 						<td class="AllText">聯絡信箱
 						<td class="AllText">生日

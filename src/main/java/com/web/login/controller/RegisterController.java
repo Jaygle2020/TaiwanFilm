@@ -94,10 +94,8 @@ public class RegisterController {
 		try {
 			service.saveMembers(member);
 		} catch (org.hibernate.exception.ConstraintViolationException e) {
-			System.out.println("org.hibernate.exception.ConstraintViolationException");
 			return "_01_register/registerNewMember";
 		} catch (Exception ex) {
-			System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
 			return "_01_register/registerNewMember";
 		}
 
@@ -110,7 +108,6 @@ public class RegisterController {
 	@PostMapping("/Checklogin")
 	public String memberCheckLogin(@ModelAttribute("MembersBean") MembersBean member, Model model, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Login頁面");
 		MembersBean bean = service.login(request.getParameter("email"),request.getParameter("password"));
 		if (request.getParameter("email") == null || request.getParameter("password") == null) {
 			model.addAttribute("errorMessage", "帳號或密碼欄不能為空");
@@ -118,6 +115,7 @@ public class RegisterController {
 		try {
 			
 		if (bean.getMemberMode().equals("2") || bean.getMemberMode().equals("1") ) {
+			//這個一定要有 bean.setMemberImage(null);
 			bean.setMemberImage(null);
 			model.addAttribute("members", bean);
 
@@ -200,23 +198,19 @@ public class RegisterController {
 				byte[] b = picture.getBytes();
 				Blob blob = new SerialBlob(b);		
 				member.setMemberImage(blob);
-				System.out.println("取到照片" + member.getMemberImage());
 			} catch (Exception e) {
 				e.printStackTrace();
 				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());}
 		}else {
-			System.out.println("沒給照片");
 			member.setFileName(member1.getFileName());
 			member.setMemberImage(member1.getMemberImage());
 		}
 			model.addAttribute("members", member);
 
 		if(service.updateMembers(member)) {
-			System.out.println("會員資料修改成功");
 			model.addAttribute("members", service.getAllMembers());
 			return "_01_register/allMembers";
 		} else {
-			System.out.println("會員資料修改失敗");
 			return "_01_register/DomodifyMember";
 		}
 		
@@ -245,7 +239,6 @@ public class RegisterController {
 				byte[] b = picture.getBytes();
 				Blob blob = new SerialBlob(b);
 				member.setMemberImage(blob);
-				System.out.println("取到照片" + member.getMemberImage());
 			} catch (Exception e) {
 				e.printStackTrace();
 				throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());}
@@ -257,7 +250,6 @@ public class RegisterController {
 			System.out.println("會員資料修改成功");
 			return "redirect:/";
 		} else {
-			System.out.println("會員資料修改失敗");
 			return "redirect:/ToIndex";
 		}
 	}
@@ -265,7 +257,6 @@ public class RegisterController {
 	@SuppressWarnings("unused")
 	@GetMapping("/crm/picture/{id}")
 	public ResponseEntity<byte[]> getPicture(@PathVariable("id") Integer id) {
-		System.out.println("!!!!!");		
 		byte[] body = null;
 		ResponseEntity<byte[]> re = null;
 		MediaType mediaType = null;
@@ -273,7 +264,6 @@ public class RegisterController {
 		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
 
 		MembersBean member = service.getMemberById(id);
-		System.out.println(" 照片"+member.getMemberImage());
 		if (member == null) {
 			return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
 		}
@@ -287,7 +277,6 @@ public class RegisterController {
 			}
 		}
 		Blob blob = member.getMemberImage();
-		System.out.println(member.getMemberImage());
 		if (blob != null) {
 			body = blobToByteArray(blob);
 		} else {
