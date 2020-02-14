@@ -75,7 +75,7 @@
 
 		<c:if test="${not empty sessionScope.members.email}">
 			<div class="myAccount">
-				<p style="z-index: 800"  onclick="memberButton()">${sessionScope.members.memberName}
+				<p style="z-index: 800"  onclick="memberButton()" >${sessionScope.members.memberName}
 				
 				<!--  如果沒有給照片的話    性別是女生 就給女生照片   無照片跟男性給男生照片 -->
 				<c:if test="${empty sessionScope.members.fileName}">
@@ -101,12 +101,12 @@
 		</c:if>
 	</div>
 		<div id="memberDetail"
-		style="padding: 5px; display: none; width: 100px; height: 110px; background: #ebebeb; 
-		position: absolute; right: 5px; top: 68px; z-index: 800">
-		<a href="${pageContext.request.contextPath}/UpdateMember">修改個人資料</a> <br>
-		<a href="${pageContext.request.contextPath}/member/purchase">個人贊助</a> <br>
-		<a href="alterTicket">訂票資料</a> <br>
-		<a href="${pageContext.request.contextPath}/logout">登出</a> 
+		style="padding: 5px; display: none; height: 110px; background: gray; 
+		position: absolute; right: 5px; top: 68px; z-index: 800;text-align:left;border-radius: 5px">
+		<a href="${pageContext.request.contextPath}/UpdateMember" style="color:white;font-weight: bold">修改個人資料</a> <br>
+		<a href="${pageContext.request.contextPath}/member/purchase" style="color:white;font-weight: bold">個人贊助</a> <br>
+		<a href="alterTicket" style="color:white;font-weight: bold">訂票資料</a> <br>
+		<a href="${pageContext.request.contextPath}/logout" style="color:white;font-weight: bold">登出</a> 
 	</div>
 	</div>
 
