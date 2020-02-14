@@ -126,7 +126,7 @@ b {
 					<tr>
 						<td><input name="email" id="email" type="email"
 							value='${sessionScope.members.email}' />
-						<td><input type="date" name="birthDay" id="birthDay" />
+						<td><input type="date" name="birthDay" id="birthDay" value="${sessionScope.members.birthDay}"/>
 					<tr>
 						<td class="AllText">個人照片
 						<td class="AllText">預覽照片
@@ -157,6 +157,17 @@ b {
 	<jsp:include page="../fragment/bottom.jsp" />
 
 	<script>
+	
+
+		$(document).ready(function() {
+
+			if(${sessionScope.members.gender =='男生'}){
+				$("input[name='gender'][value=男生]").attr("checked",true); 
+			}else if(${sessionScope.members.gender =='女生'}){
+				$("input[name='gender'][value=女生]").attr("checked",true); 
+			}
+		});
+	
 		$("#memberImage").change(function() {
 			//當檔案改變後，做一些事 
 			readURL(this); // this代表<input id="memberImage">
