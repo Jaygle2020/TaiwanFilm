@@ -156,7 +156,7 @@
 		} else if(1000 > scrollVal && scrollVal > 100){
 			$(".mainContent-coverImg").css("margin-top",test())
 			function test(){
-				var y =($(this).scrollTop()/50 + "%");                      
+				var y =($(this).scrollTop()/30 + "%");                      
 				return y;        
 			}      
 		} 
