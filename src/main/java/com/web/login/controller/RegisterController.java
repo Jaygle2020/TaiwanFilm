@@ -328,7 +328,7 @@ public class RegisterController {
 	
 @GetMapping("/ShowAllMembers")
 public String list(Model model) {
-		model.addAttribute("members", service.getAllMembers());
+		model.addAttribute("memberlist", service.getAllMembers());
 	 return "_01_register/allMembers";
  }
  

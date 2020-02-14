@@ -227,13 +227,13 @@
 					<TR>
 						<TD colspan='3'
 							style="text-align: left; border: 0.5px solid #d1d1d1; padding-left: 39px; background: floralwhite;">
-							會員地址：台北市</TD>
+							會員地址：台北市萬華區長泰街109號4樓</TD>
 					</TR>
 					<TR>
 						<TD colspan='3'
 							style="text-align: left; border: 0.5px solid #d1d1d1; padding-left: 39px; background: floralwhite;">
 							出貨地址：<Input style="background: #d1d1d1;" size="60" type="text"
-							id='ShippingAddress' name="ShippingAddress" value=""> <font
+							id='ShippingAddress' name="ShippingAddress" value="台北市大安區復興南路一段390號2樓"> <font
 							color='red'>${errorMsg.ShippingAddress}</font>
 						</TD>
 					</TR>

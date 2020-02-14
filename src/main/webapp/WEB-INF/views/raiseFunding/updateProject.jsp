@@ -331,7 +331,7 @@
 				dialog.dialog("open");
 			});
 			
-			$(".plan").click()
+			$( ".plan" ).on( "click", getPlanForm);
 			
 		});
 		
