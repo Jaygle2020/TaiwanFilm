@@ -7,14 +7,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="utf-8">
-<link
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link
 	href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou&display=swap"
-	rel="stylesheet">
+	rel="stylesheet"> -->
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <title>顯示商品資訊</title>
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
 <style type="text/css">
-#main {
+/* #main {
 	position: relative;
 	top: 5px;
 	left: 40px;
@@ -121,26 +127,91 @@ a {
 
 .thispage {
 	text-decoration: underline;
-}
+} */
 
-.pages {
+/* .pages {
 	display: none;
 }
 
 .holder {
 	font-size: 20px;
+} */
+body {
+	background: white;
+}
+
+.products-content {
+	width: 100%;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 10px;
+	font-weight: bold;
+	background: white;
+	display: inline-block;
+	height: 100px;
+}
+
+.products-content-show {
+	width: 100%;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 10px;
+	font-weight: bold;
+	display: inline-block;
+}
+
+.allprodoctM-width {
+	width: 25%;
+	height: 200px;
+	display: inline-block;
+}
+
+.productsUpdateWidth {
+	width: 21%;
+	padding: 20px;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	color: black;
+}
+
+.productsUpdateButton {
+	width: 7%;
+	display: inline-block;
+	margin-top: 12px;
+	text-align: center;
+	vertical-align: top;
+	padding-top: 5px;
+}
+
+.alterBtn {
+	position: relative;
+	top: -14px;
+	right: -9px;
+}
+
+.alterBtn a:nth-child(2) {
+	margin-top: 5px;
+}
+
+.productsUpdateButtonStyle {
+	width: 100%;
+	color: white;
+	background-color: red;
+	padding: 3px;
+	border-radius: 3px
 }
 </style>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
-<body style="background-color: #fffcfa;">
-	<jsp:include page="topMVC.jsp" />
+<body>
+	<jsp:include page="../backstage.jsp" />
 
 
 
 
-	<div class="productlist active" id="popular">
+	<%-- <div class="productlist active" id="popular">
 
 		<div class="holder">
 			<a href="#" class="p-previous">← previous</a> <a href="#" id="page1"
@@ -151,11 +222,12 @@ a {
 				id="page7">7</a><span>...</span> <a href="#" class="p-next">next
 				→</a>
 		</div>
-		<div class="addProduct">
+
+		<!-- 	<div class="addProduct">
 			<a href='products/add'> <input class="addProduct-buttom"
 				type="button" value="新增資料" />
 			</a>
-		</div>
+		</div> -->
 
 		<c:forEach var='product' items='${products}' varStatus="paging">
 			<c:if test='${paging.last}'>
@@ -171,101 +243,76 @@ a {
 					<div id="pageproduct${paging.count}" class="product">
 				</c:otherwise>
 			</c:choose>
-			
-				<div style="width: 100%">
-					<img src="<c:url value='/getPicture/store/${product.productId}'/>"
-						style="width: 75%; height: 300px;">
+
+			<div style="width: 100%">
+				<img src="<c:url value='/getPicture/store/${product.productId}'/>"
+					style="width: 75%; height: 300px;">
+			</div>
+			<div>
+				<p>品名 : ${product.title}</p>
+				<p>作者 : ${product.author}</p>
+				<p>目前在庫數量 : ${product.stock}本</p>
+				目前狀態 : <span class="product-status" value="${product.status}">${product.status}</span>
+				<p></p>
+			</div>
+			<div class="query-product" style="display: inline-block;">
+				<a href="<spring:url value='productM?id=${product.productId}'/>">
+					<input type="button" value="詳細資料" />
+				</a>
+			</div>
+
+			<div class="modify-product" style="display: inline-block;">
+				<a
+					href="<spring:url value='/update/products/${product.productId}'/>">
+					<input type="button" value="修改資料" />
+				</a>
+			</div>
+	</div>
+
+	</c:forEach>
+	</div> --%>
+
+	<section class="container"
+		style="position: absolute; left: 17%; width: 80%; padding-top: 100px">
+		<div class="category-content">
+			<!-- 	<h1 style="text-align: center; margin: 0">商品編輯</h1> -->
+			<div class="products-content-show">
+				<div class="productsUpdateWidth">商品照片</div>
+				<div class="productsUpdateWidth" style="padding-right: 50px;">商品名稱</div>
+				<div class="productsUpdateWidth" style="padding-left: 0px;">目前在庫數量</div>
+				<div class="productsUpdateWidth" style="padding-right: 45px;">商城狀態</div>
+				<div class="productsUpdateButton">
+					<div class="productsUpdateButtonStyle">編輯</div>
 				</div>
-				<div>
-					<p>品名 : ${product.title}</p>
-					<p>作者 : ${product.author}</p>
-					<p>目前在庫數量 : ${product.stock}本</p>
-					目前狀態 : <span class="product-status" value="${product.status}">${product.status}</span>
-					<p></p>
-				</div>
-				<div class="query-product" style="display: inline-block;">
+			</div>
+		</div>
+
+		<c:forEach var='product' items='${products}'>
+			<div class="products-inner" data-number="${movie.movieId}">
+				<div class="products-content">
 					<a href="<spring:url value='productM?id=${product.productId}'/>">
-						<input type="button" value="詳細資料" />
+						<div class="productsThumb"
+							style="background-image: url('getPicture/store/${product.productId}');background-size: cover;
+    background-position: center;height: 80px;width:20%;display: inline-block;	">
+						</div>
 					</a>
+					<div class="productsUpdateWidth" style="font-size: 18px;">${product.title}</div>
+					<div class="productsUpdateWidth">${product.stock}</div>
+					<div class="productsUpdateWidth">${product.status}</div>
+					<div class="productsUpdateButton alterBtn">
+						<a
+							href="<spring:url value='/update/products/${product.productId}' />"
+							class='btn btn-primary' style="margin-top: 11px;">修改</a>
+					</div>
 				</div>
-
-				<div class="modify-product" style="display: inline-block;">
-					<a
-						href="<spring:url value='/update/products/${product.productId}'/>">
-						<input type="button" value="修改資料" />
-					</a>
-				</div>
-
-
 			</div>
-
 		</c:forEach>
-	</div>
+		<br> <br> <br> <br>
+	</section>
 
-	<div class="productlist" id="newest">
 
-		<div class="product">
-			<!-- 				<a href="http://shop.studioa.com.tw/SalePage/Index/5249087"> -->
-			<div style="width: 100%">
-				<img src="../images/BlackPanther.jpg" style="width: 100%">
-			</div>
-			<div>
-				<h3>字字字字字字字</h3>
-				<p>字字字字字字字字字字字字字字字字字</p>
-			</div>
-			<!-- 					</a> -->
-		</div>
-
-	</div>
-
-	<div class="productlist" id="loaclfilms">
-
-		<div class="product">
-			<!-- 				<a href="http://shop.studioa.com.tw/SalePage/Index/5249087"> -->
-			<div style="width: 100%">
-				<img src="../images/BlackPanther.jpg" style="width: 100%">
-			</div>
-			<div>
-				<h3>字字字字字字字</h3>
-				<p>字字字字字字字字字字字字字字字字字</p>
-			</div>
-		</div>
-
-	</div>
-
-	<div class="productlist" id="crossover">
-
-		<div class="product">
-			<!-- 				<a href="http://shop.studioa.com.tw/SalePage/Index/5249087"> -->
-			<div style="width: 100%">
-				<img src="../images/BlackPanther.jpg" style="width: 100%">
-			</div>
-			<div>
-				<h3>字字字字字字字</h3>
-				<p>字字字字字字字字字字字字字字字字字</p>
-			</div>
-			<!-- 					</a> -->
-		</div>
-	</div>
-
-	<div class="productlist" id="activity">
-
-		<div class="product">
-			<!-- 				<a href="http://shop.studioa.com.tw/SalePage/Index/5249087"> -->
-			<div style="width: 100%">
-				<img src="../images/BlackPanther.jpg" style="width: 100%">
-			</div>
-			<div>
-				<h3>字字字字字字字</h3>
-				<p>字字字字字字字字字字字字字字字字字</p>
-			</div>
-
-		</div>
-	</div>
-
-	
 	<script>
-		/* $('.option1').click(function() {
+		/*$('.option1').click(function() {
 			$('.productlist').removeClass('active');
 			$('#popular').addClass("active");
 
@@ -291,16 +338,15 @@ a {
 
 		// 		var x = $('.product-status').val();
 		// 		console.log(x);
-
 		// 		if (x == 1) {
 		// 			$('.product-status').html('on');
 		// 		} else {
 		// 			$('.product-status').html('off');
 		// 		};
-		$('#page1').click(function() {
+		/* $('#page1').click(function() {
 			$('.holder a').removeClass("thispage");
 			$('#page1').addClass("thispage");
-			
+
 			$('.product').hide();
 			$('#pageproduct1').show();
 			$("#pageproduct2").show();
@@ -431,7 +477,7 @@ a {
 			$('#page2').show();
 		case 1:
 			$('#page1').show();
-		};
+		}; */
 	</script>
 
 </body>

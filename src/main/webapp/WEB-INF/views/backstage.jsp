@@ -147,8 +147,8 @@
 				<a href="${pageContext.request.contextPath}/productsM"> 
 					<div class="a-bar1">商品管理</div>
 				</a>  
-				<a href=""><div class="s-bar2">s2</div></a>
-				<a href=""><div class="s-bar3">s3</div></a>
+				<a href="${pageContext.request.contextPath}/products/add"><div class="s-bar2">新增商品</div></a>
+				<!-- <a href=""><div class="s-bar3">s3</div></a> -->
 			</div>
 		</div>   
 		<div class="backStage-title">

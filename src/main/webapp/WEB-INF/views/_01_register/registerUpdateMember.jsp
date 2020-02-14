@@ -40,7 +40,6 @@
 body {
 	background-color: white;
 }
-
 b {
 	font-size: 46px;
 	margin-bottom: 10px;
@@ -59,14 +58,7 @@ b {
     border-radius: 5px;
     margin: 0px 10px 10px 10px;
 }
-/* #memberImage{ */
-/*     background-color: black; */
-/*     border: 0; */
-/*     color: white; */
-/*     font-size: 16px; */
-/*     padding: 10px 30px; */
-/*     border-radius: 5px; */
-/* } */
+
 </style>
 </head>
 <body>
@@ -81,7 +73,7 @@ b {
 				enctype='multipart/form-data'>
 
 				<table>
-				<th><th><th><th>
+
 					<tr>
 						<td class="AllText">顯示名稱 <td class="AllText">性別
 					<tr>
@@ -96,37 +88,54 @@ b {
 							value='${sessionScope.members.email}' />
 						<td><input type="date" name="birthDay" id="birthDay" />
 					<tr>
-						<td class="AllText">個人照片
+						<td class="AllText">個人照片<td class="AllText">照片預覽
 					<tr>
 						<td><input type='file' name="memImage" id="memberImage"
 							class='form:input-large' />
-
-						
+						<td>
+						<img width='150' height='150' src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
+						<img src="">
+						<form action="/somewhere/to/upload" enctype="multipart/form-data">
+						<input name="progressbarTW_img" type="file" id="imgInp"  />
+<!-- 						accept="image/gif, image/jpeg, image/png" -->
+						<img id="preview_progressbarTW_img" src="#" />
+						</form>
 					<tr>
 						<td><input type="submit" class="allBt" id="bt1" value="確認" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="reset" class="allBt" id="bt2" value="清空" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<!-- 							<button> -->
-<!-- 								<a href="/TaiwanFilm">回首頁</a> -->
-<!-- 							</button> -->
+
 				</table>
 			</form>
 			<!-- 			<input type="button" value="一鍵輸入" id="oneButtonInport" onclick="oneButtonInport()">			 -->
 		</div>
+	<input  id="oneEntry"type="button" onclick="oneEntry1()" value="DEMO用" />
 	</div>
 	<jsp:include page="../fragment/bottom.jsp" />
 	<script>
-		$(document).ready(function() {
-			$("#oneButtonInport").onclick()
-			{
-				$("#memberName").text("管理員01");
-				$("#memberName").val("管理員01");
-				$("#email").val("eeit@gmail.com");
-				$("#gender").val("男生");
-				$("#birthDay").val("1989-01-26");
-
+	
+	 $("#imgInp").change(function(){
+	      //當檔案改變後，做一些事 
+	     readURL(this);   // this代表<input id="imgInp">
+	   });
+	 function readURL(input){
+		  if(input.files && input.files[0]){
+		    var reader = new FileReader();
+		    reader.onload = function (e) {
+		       $("#preview_progressbarTW_img").attr('src', e.target.result);
+		    }
+		    reader.readAsDataURL(input.files[0]);
+		  }
+	
+	
+		function oneEntry1() {
+			 var email = "jeter@gmail.com";
+			 var name = "DerekJeter";
+			 var bir = "1974-06-26"; 
+			$("input[name=gender][value='男生']").attr('checked',true); 
+			 $("#email").val(email);
+			 $("#birthDay").val(bir);
+			 $("#memberName").val(name); 
 			}
-
-		})
 	</script>
 </body>
 </html>

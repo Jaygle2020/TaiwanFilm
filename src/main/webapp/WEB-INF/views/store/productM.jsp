@@ -74,10 +74,10 @@
 }
 
 .productContent {
-	width: 80%;
+	width: 90%;
 	display: inline-block;
 	position: relative;
-	left: 250px;
+	left: 417px;
 	vertical-align: top;
 }
 
@@ -92,6 +92,7 @@
 	display: inline-block;
 	position: relative;
 	vertical-align: top;
+	margin-left: 60px;
 }
 
 .optioneffect {
@@ -141,32 +142,36 @@ a {
 .productDescription-text li {
 	font-size: 20px;
 }
+
 .subImg {
 	display: none;
+}
+
+.allProductPage a:hover {
+	color: #ca9a16;
 }
 </style>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
 <body style="background-color: #fffcfa;">
-	<jsp:include page="topMVC.jsp" />
+	<%-- 	<jsp:include page="topMVC.jsp" /> --%>
+	<jsp:include page="../backstage.jsp" />
 
 
-	<%-- <div class="option">
+	<br>
+	<br>
+	<div>
+		<div class="allProductPage"
+			style="padding-left: 419px; padding-top: 56px; font-size: 22px; font-family: monospace;">
+			<a href="<c:url value='productsM' />">回商品管理</a>
 
-		<div>
-			<p
-				style="text-align: center; border-bottom: 5px solid #828080; padding-bottom: 20px; margin: 30px 0px;">分類</p>
 		</div>
-		<a href='${pageContext.request.contextPath}/productsM'
-			style="text-decoration: none; color: black;">
-			<div class="option1 optioneffect">人氣商品推薦</div>
-			<div class="option2 optioneffect">最新商品推薦</div>
-			<div class="option3 optioneffect">國片分類專區</div>
-			<div class="option4 optioneffect">聯名商品專區</div>
-			<div class="option5 optioneffect">活動商品專區</div>
-		</a>
-	</div> --%>
+
+		<hr style="margin-right: 230px; margin-left: 417px;">
+
+	</div>
+	<br>
 
 	<div class="productContent">
 
@@ -177,11 +182,11 @@ a {
 			<div class="subImage">
 				<img class="subImage1 subImg" id="${product.coverImage}"
 					src="<c:url value='getPicture/store/${product.productId}'/>"
-					style="width: 25%; height: 30%;">
-					 <img class="subImage2 subImg" id="${product.coverImage2}"
+					style="width: 25%; height: 30%;"> <img
+					class="subImage2 subImg" id="${product.coverImage2}"
 					src="<c:url value='getPicture2/store/${product.productId}'/>"
-					style="width: 25%; height: 30%;"> 
-					<img class="subImage3 subImg" id="${product.coverImage3}"
+					style="width: 25%; height: 30%;"> <img
+					class="subImage3 subImg" id="${product.coverImage3}"
 					src="<c:url value='getPicture3/store/${product.productId}'/>"
 					style="width: 25%; height: 30%;">
 			</div>
@@ -192,9 +197,9 @@ a {
 			<h1>${product.title}</h1>
 			<br>
 			<div style="border-left: 5px solid gray; padding-left: 10px;">
-				<p>至02/20 23:59截止 全店，新年大樂透！</p>
-				<p>單筆消費滿$1688，即贈2020好運紅包</p>
-				<p>全店，宅配費用｜免運優惠，滿1000元(含以上)免運費</p>
+				<p>商品內容</p>
+				<div style="width: 60%; color: dimgrey;">${product.productDescription}</div>
+
 			</div>
 			<div>
 				<h2>NT $ ${product.price}</h2>
@@ -208,8 +213,8 @@ a {
 			<!-- 				<button>放入購物車</button> -->
 			<!-- 			</div> -->
 			<div>
-				<h3 id="product-stock" style="color: red" value="${product.stock}">現庫存量
-					: ${product.stock} 件</h3>
+				<h4 id="product-stock" style="color: #e65151"
+					value="${product.stock}">現庫存量 : ${product.stock} 件</h4>
 			</div>
 
 			<!-- 		展開收和內容 -->
@@ -242,13 +247,13 @@ a {
 
 		<div
 			style="border-top: 1px solid black; width: 60%; color: #82713d; margin-top: 40px">
-		<!-- 	<h3>商品描述</h3> -->
+			<!-- 	<h3>商品描述</h3> -->
 		</div>
-		
+
 		<div class="productDescription">
 
 			<div class="productDescription-text">
-<!-- 				<br> -->
+				<!-- 				<br> -->
 				<ul>
 					<!-- <li>42000Hz標準超音波頻率</li>
 					<li>透明面蓋，清洗過程一目了然</li>
@@ -289,7 +294,7 @@ a {
 
 			<div
 				style="border-top: 1px solid black; width: 100%; color: #82713d; margin-top: 50px;">
-				
+
 			</div>
 		</div>
 
@@ -346,23 +351,23 @@ a {
 				});
 
 			});
-			
+
 			//小圖變大圖判斷（長度）
 			var subImage1 = $('.subImage1').attr('id');
 			console.log(subImage1);
 			if (subImage1.length > 0) {
 				$('.subImage1').show();
 			}
- 			var subImage2 = $('.subImage2').attr('id');
+			var subImage2 = $('.subImage2').attr('id');
 			console.log(subImage2);
 			if (subImage2.length > 0) {
 				$('.subImage2').show();
 			}
 			var subImage3 = $('.subImage3').attr('id');
 			console.log(subImage3);
-			if (subImage3 .length > 0) {
+			if (subImage3.length > 0) {
 				$('.subImage3').show();
-			}  
+			}
 		</script>
 </body>
 </html>

@@ -106,6 +106,7 @@
 		<a href="${pageContext.request.contextPath}/UpdateMember">修改個人資料</a> <br>
 		<a href="${pageContext.request.contextPath}/member/purchase">個人贊助</a> <br>
 		<a href="alterTicket">訂票資料</a> <br>
+		<a href="${pageContext.request.contextPath}/orderList.do">購物清單</a><br>
 		<a href="${pageContext.request.contextPath}/logout">登出</a> 
 	</div>
 	</div>

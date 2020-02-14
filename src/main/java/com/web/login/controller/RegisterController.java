@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -117,29 +118,45 @@ public class RegisterController {
 			return "_01_register/register";}
 		try {
 			
-
 		if (bean.getMemberMode().equals("2") || bean.getMemberMode().equals("1") ) {
 			bean.setMemberImage(null);
 			model.addAttribute("members", bean);
 			System.out.println("登入成功");
-			
+			//建立Remember Cookie的預設值
+			Cookie emCookie = new Cookie("remEmail",null);
+			Cookie pasCookie = new Cookie("remPassword",null);
+			//檢查Remember有沒有被打勾
+			System.out.println("記住我按鈕為真" + request.getParameter("rememberBox"));
+			if(request.getParameter("rememberBox") != null) {
+				emCookie = new Cookie("remEmail",request.getParameter("email"));
+				pasCookie = new Cookie("remPassword",request.getParameter("password"));
+				System.out.println(emCookie);
+				System.out.println(pasCookie);
+			}else {
+				emCookie.setMaxAge(0);
+				pasCookie.setMaxAge(0);
+			}
+			response.addCookie(emCookie);
+	        response.addCookie(pasCookie);		        
+	    	//	 記住原本的頁面, 登入後系統自動轉回原本的頁面。
+			String requestURI = (String) session.getAttribute("requestURI");
+			System.out.println("請求URI requestURI:"+requestURI);
+			if (requestURI != null) {
+				return "redirect:" + requestURI;
+			}
 			return "redirect:/";
-		}
+			
+		}else if(bean.getMemberMode() == "0") {
+			System.out.println("非會員");
+			return "_01_register/register";
+		}	
 		} catch (Exception e) {
 		
-//		else if(bean.getMemberMode() == "0") {
-//			System.out.println("非會員");
-//			return "_01_register/MemberBackstage";
-//		}		
+	
 			System.out.println("無帳號");
 			return "_01_register/register";
 		}
-		// 記住原本的頁面, 登入後系統自動轉回原本的頁面。
-//		String requestURI = (String) session.getAttribute("requestURI");
-//		System.out.println("請求URI requestURI:"+requestURI);
-//		if (requestURI != null) {
-//			return "redirect:" + requestURI;
-//		}
+
 		return "_01_register/register";
 	}
 

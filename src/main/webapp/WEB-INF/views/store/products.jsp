@@ -131,6 +131,9 @@ a {
 	margin-left: -80px;
 	width: 40px;
 }
+.allProductPage a:hover {
+	color: #ca9a16;
+}
 </style>
 
 <script type="text/javascript"
@@ -147,7 +150,7 @@ a {
 	<br>
 	<br>
 	<div>
-		<div style="padding-left: 165px; padding-top: 74px; font-size: 30px;">
+		<div class="allProductPage" style="padding-left: 165px; padding-top: 74px; font-size: 30px;font-family: serif;">
 			<a href="<c:url value='products' />">全部商品</a>
 
 		</div>
