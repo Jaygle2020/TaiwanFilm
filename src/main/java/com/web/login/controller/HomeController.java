@@ -54,6 +54,7 @@ public class HomeController {
 		if (mbBean != null) {
 			testNum = mbBean.getMemberMode();
 		}
+		model.addAttribute("members",mbBean);
 		model.addAttribute("testNum",testNum);
 		return "index";
 	}

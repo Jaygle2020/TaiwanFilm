@@ -3,10 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 
 	<div class="backStage-top">      
-		<a href="/TaiwanFilm">
+		<a href="${pageContext.request.contextPath}/">
 			<div class="TaiwanFilms">TaiwanFilms</div>
 		</a>
-		<a href="backstage" style="float:right"> 
+		<a href="${pageContext.request.contextPath }/backstage" style="float:right"> 
 			<div class="TaiwanFilms">回到後台首頁</div>
 		</a>  
 	</div>         

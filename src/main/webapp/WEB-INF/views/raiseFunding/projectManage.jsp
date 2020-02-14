@@ -16,7 +16,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/Manage.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/menuStyle.css" />
+	href="${pageContext.request.contextPath}/css/menuStyle1.css" />
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
 <link rel="stylesheet"
@@ -118,6 +118,7 @@ body{
 			text-align: left;    
 			font-size: 25px;
 			border-bottom: 1px solid white; 
+			
 			} 
 			
 		     

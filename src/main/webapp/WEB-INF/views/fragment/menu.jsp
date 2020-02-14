@@ -53,13 +53,13 @@
 				<div class="menu-buttonStyle">網路訂票</div>
 			</a>
 			
-<<<<<<< Updated upstream
+
 			<a href="messages">
 			 <div class="${pageContext.request.contextPath}/messages">留言板</div>
-=======
+
 			<a href="${pageContext.request.contextPath}/createDate">
 			 <div class="menu-buttonStyle">留言板</div>
->>>>>>> Stashed changes
+
 			</a>
 			
 			<c:if test="${testNum == 2}">			
