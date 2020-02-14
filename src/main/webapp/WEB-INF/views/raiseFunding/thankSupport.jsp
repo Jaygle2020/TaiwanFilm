@@ -47,10 +47,10 @@
 </div>
 <jsp:include page="../fragment/footer.jsp" />
 <script>
-// setTimeout(function(){ 
-// 	alert("即將跳轉回首頁");
-// 	window.location.replace("${pageContext.request.contextPath}/");
-// }, 3000);
+setTimeout(function(){ 
+	alert("即將跳轉回首頁");
+ 	window.location.replace("${pageContext.request.contextPath}/");
+}, 3000); 
 </script>
 </body>
 </html>

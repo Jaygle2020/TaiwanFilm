@@ -12,7 +12,7 @@
 <link rel=stylesheet type="text/css"
 	href="${pageContext.request.contextPath}/css/create.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/menuStyle.css" />
+	href="${pageContext.request.contextPath}/css/menuStyle1.css" />
 <link rel="stylesheet" 
 
 	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -324,7 +324,7 @@
 				dialog.dialog("open");
 			});
 			
-			$(".plan").click()
+			$( ".plan" ).on( "click", getPlanForm);
 			
 		});
 		

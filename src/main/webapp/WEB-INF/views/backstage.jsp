@@ -91,9 +91,9 @@
 		<a href="${pageContext.request.contextPath}/">
 			<div class="TaiwanFilms">TaiwanFilms</div>
 		</a>
-		<a href="${pageContext.request.contextPath }/backstage" style="float:right"> 
+		<%-- <a href="${pageContext.request.contextPath }/backstage" style="float:right"> 
 			<div class="TaiwanFilms" style="font-size: 20px;color: black;padding-top: 30px">回到後台首頁</div>
-		</a>  
+		</a>   --%>
 	</div>           
 	<div class="backStage-bar">
 		<div class="backStage-title">

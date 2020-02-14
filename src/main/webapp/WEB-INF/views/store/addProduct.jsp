@@ -137,10 +137,10 @@ fieldset {
 					<label class='control-label col-lg-2 col-lg-2' for="companyId">
 						廠商 </label>
 					<div class='col-lg-10'>
-						 <form:select path="companyId">
+						<form:select path="companyId">
 							<form:option value="-1" label="請挑選" />
 							<form:options items="${companyList}" />
-						</form:select> 
+						</form:select>
 					</div>
 				</div>
 
@@ -172,7 +172,7 @@ fieldset {
 
 				<div class="form-group">
 					<button
-						style="border-style: groove;color: lightcyan;border-radius: 9%; display: inline-block; margin-left: 178px; font-size: 14px; background: mediumturquoise; padding: 10px 10px;"
+						style="border-style: groove; color: lightcyan; border-radius: 9%; display: inline-block; margin-left: 178px; font-size: 14px; background: mediumturquoise; padding: 10px 10px;"
 						type="button" id="addImages">+ img</button>
 				</div>
 
@@ -204,6 +204,8 @@ fieldset {
 
 			</fieldset>
 		</form:form>
+		<input type="button" value="DEMO" onclick="oneButtonInportADD()"
+			style="display: inline-block; margin-left: 800px;">
 
 	<input type="button" value="新增商品" onclick="oneButtonInportADD()">
 

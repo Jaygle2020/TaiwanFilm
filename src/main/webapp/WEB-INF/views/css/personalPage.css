@@ -32,6 +32,7 @@
   text-align: center;
   margin: 10px;
   background-color: white;
+
 }
 
 .small-title{
@@ -49,7 +50,7 @@
   width: 90%;
   display: inline-block;
   text-align: left;
-  height: 100px;
+  height: 120px;
 }
 
 .pageWrapper .down .inner .project span {

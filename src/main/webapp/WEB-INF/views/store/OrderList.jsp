@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/menuStyle.css">
 <title>訂單列表</title>
 <style type="text/css">
 #borderA {

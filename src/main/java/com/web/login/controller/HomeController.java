@@ -46,7 +46,7 @@ public class HomeController {
 		List<movieBean> list = bookingService.getAllMovies();
 		model.addAttribute("movies", list);
 
-		ProjectBean projBean = PropService.GetProjBean(4);
+		ProjectBean projBean = PropService.GetProjBean(1);
 		model.addAttribute("projectBean", projBean);
 
 		String testNum = "0";
@@ -54,6 +54,7 @@ public class HomeController {
 		if (mbBean != null) {
 			testNum = mbBean.getMemberMode();
 		}
+		model.addAttribute("members",mbBean);
 		model.addAttribute("testNum",testNum);
 		return "index";
 	}

@@ -16,7 +16,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/Manage.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/menuStyle.css" />
+	href="${pageContext.request.contextPath}/css/menuStyle1.css" />
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
 <link rel="stylesheet"
@@ -25,6 +25,8 @@
 	href='${pageContext.request.contextPath}/css/movie.css' type="text/css" />
 
 <style>
+/* 
+
 .activity-content {
 	width: 100%;
 	padding: 10px;
@@ -75,10 +77,84 @@
 	background-color: red;
 	padding: 3px;
 	border-radius: 3px
-}
-</style>
+} */
 
-<style>
+
+
+
+
+body{
+		background-color: #f1f1f1;margin:0}
+		.TaiwanFilms{
+		display: inline-block;font-size: 35px;font-weight: bold;color: #428bca; padding:15px 5px; 
+		}
+		.backStage-top{  
+			width: 100%;		
+			height: 80px;
+			background: white;
+			position: fixed;   
+			margin-top: -12px;
+			z-index:99 ;
+			box-shadow: 0 0.25rem 0.125rem 0 rgba(0,0,0,0.05);
+			}         
+		
+		.backStage-bar{
+			width: 15%; 
+			display: inline-block;
+			position: fixed;
+			height: 800px;
+			background: #428bca;  
+			top: 65px; 
+			left: 0px;    
+			border-right: 1px solid black;    
+			padding: 5px; 
+			
+		}
+		.backStage-title{
+			width: 100%;  
+			color: white; 
+			font-weight: bold; 
+			background: #428bca;
+			text-align: left;    
+			font-size: 25px;
+			border-bottom: 1px solid white; 
+			
+			} 
+			
+		     
+     
+		.choose-list{
+			display: none;
+			text-align: left;    
+ 
+		}
+
+		.backStage-title div{
+			width: 100%;
+		}
+		.choose-list a div{
+			text-decoration: none;
+			color: #1e2a3a;
+		}  
+ 
+		.choose-list a{
+		text-decoration: none; font-size: 18px;}
+		
+		.a-bar1:hover{background: #EA0082;}.a-bar2:hover{background: #EA0082;}.a-bar3:hover{background: #EA0082;}
+		.f-bar1:hover{background: #EA0082;}.f-bar2:hover{background: #EA0082;}.f-bar3:hover{background: #EA0082;}
+		.m-bar1:hover{background: #EA0082;}.m-bar2:hover{background: #EA0082;}.m-bar3:hover{background: #EA0082;}
+		.s-bar1:hover{background: #EA0082;}.s-bar2:hover{background: #EA0082;}.s-bar3:hover{background: #EA0082;}
+		.i-bar1:hover{background: #EA0082;}.i-bar2:hover{background: #EA0082;}.i-bar3:hover{background: #EA0082;}
+	
+		.back-member:hover{background:#EA0082}
+		.back-funds:hover{background:#EA0082} 
+		.back-activity:hover{background:#EA0082} 
+		.back-movie:hover{background:#EA0082} 
+		.back-message:hover{background:#EA0082} 
+		.back-shopping:hover{background:#EA0082} 
+
+
+
 
 
 .content {
