@@ -27,7 +27,8 @@ body {
 }
 
 .registrTotalDiv {
-	height: 570px;
+	
+	margin-bottom: 10%;
 }
 
 .sign {
@@ -80,6 +81,8 @@ input:not (.nobooder ){
 </head>
 <body style="background-color: white;">
 	<jsp:include page="../fragment/menu.jsp" />
+	 
+	
 
 	<div class="registrTotalDiv">
 		<div>
@@ -90,14 +93,14 @@ input:not (.nobooder ){
 				<form action='${pageContext.request.contextPath}/Checklogin'
 					method='post'>
 					<input id="email" name="email" class="nobooder" type='email'
-						placeholder='輸入電子信箱' required /><br> <input id="password"
-						name="password" class="nobooder" type='password'
-						placeholder='輸入密碼' required /><br> <br> <label
-						for="remember"> <br>
-					<input type="checkbox" id="rememberBox" name="rememberBox" />記得我
-					</label> <br> <input class="but" type='reset' value='清除' /> <input
-						class="but" type='submit' value='確認加入' onclick='return check()' />
-
+						placeholder='輸入電子信箱' required /><br> 
+						<input id="password" name="password" class="nobooder" type='password'
+						placeholder='輸入密碼' required /><br> 
+						<label for="remember" class="grey dark"> <br>
+					<input type="checkbox" name="rememberBox" id="checkbox" />記得我
+					</label> <br> <br> <input class="but" type='reset' value='清除' />
+					<input class="but" type='submit' value='確認加入'
+						onclick='return check()' />
 				</form>
 
 				<!-- 			<p style="font-size: 10px">忘記密碼?</p> -->
@@ -117,44 +120,37 @@ input:not (.nobooder ){
 			</div>
 		</div>
 	</div>
-
-	<input type="button" onclick="oneEntry()" value="DEMO用管理員"/>
-	<input type="button" onclick="oneEntry1()" value="DEMO用一般會員"/>
+	<input type="button" value="DEMO管理員" onclick="oneButtonInport2()"> 
+	<input type="button" value="DEMO一般會員" onclick="oneButtonInport1()">
 	<jsp:include page="../fragment/bottom.jsp" />
-
-	<script
-		src="${pageContext.request.contextPath}/_01_register/JQUERY/jquery.cookie.js"></script>
-
-	<!-- <script src="/JQUERY/jquery.cookie.js"></script>	 -->
-
+	<script	src="${pageContext.request.contextPath}/_01_register/JQ/jquery.cookie.js"></script>
 	<script>
 
-	function oneEntry() {
-	 var email = "eeit@gmail.com"
-	 var pass = "Sa123456"
-	 $("#email").val(email);
-	 $("#password").val(pass); 
-	}
-	
-	function oneEntry1() {
-		 var email = "jeter@gmail.com"
-		 var pass = "Sa123456"
-		 var name = "基特"
-		 $("#email").val(email);
-		 $("#password").val(pass);
-
-
-		}
-
+		
 	<%-- 如果有儲存帳號cookie, 將帳號載入 +打勾remember--%>
 		if ($.cookie("remEmail")) {
-			$("#rememberBox").prop("checked", true);
+			$("#checkbox").prop("checked", true);
 			$("#email").val($.cookie("remEmail"));
 		}
 	<%-- 如果有儲存密碼cookie, 將密碼載入 --%>
 		if ($.cookie("remPassword")) {
 			$("#password").val($.cookie("remPassword"));
 		}
+		//管理員帳號密碼輸入在此
+		function oneButtonInport2() {
+			var em = "eeit@gmail.com";
+			var pwd = "Sa123456";		
+			$("#email").val(em);
+			$("#password").val(pwd);
+		}
+// 		一般會員帳號密碼一鍵輸入
+		function oneButtonInport1() {
+			var em = "eeit11040@gmail.com";
+			var pwd = "Sa123456";		
+			$("#email").val(em);
+			$("#password").val(pwd);
+		}
+		
 	</script>
 </body>
 </html>

@@ -88,7 +88,7 @@
 </head>
 <body>
 	<div class="backStage-top">      
-		<a href="/TaiwanFilm">
+		<a href="${pageContext.request.contextPath}/">
 			<div class="TaiwanFilms">TaiwanFilms</div>
 		</a>
 		<a href="${pageContext.request.contextPath }/backstage" style="float:right"> 

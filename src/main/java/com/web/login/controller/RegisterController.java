@@ -112,7 +112,6 @@ public class RegisterController {
 			HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("Login頁面");
 		MembersBean bean = service.login(request.getParameter("email"),request.getParameter("password"));
-		System.out.println("這是BEAN" + bean);
 		if (request.getParameter("email") == null || request.getParameter("password") == null) {
 			model.addAttribute("errorMessage", "帳號或密碼欄不能為空");
 			return "_01_register/register";}
@@ -121,38 +120,29 @@ public class RegisterController {
 		if (bean.getMemberMode().equals("2") || bean.getMemberMode().equals("1") ) {
 			bean.setMemberImage(null);
 			model.addAttribute("members", bean);
-			System.out.println("登入成功");
+
 			//建立Remember Cookie的預設值
-			Cookie emCookie = new Cookie("remEmail",null);
+			Cookie emailCookie = new Cookie("remEmail",null);
 			Cookie pasCookie = new Cookie("remPassword",null);
 			//檢查Remember有沒有被打勾
-			System.out.println("記住我按鈕為真" + request.getParameter("rememberBox"));
 			if(request.getParameter("rememberBox") != null) {
-				emCookie = new Cookie("remEmail",request.getParameter("email"));
+				emailCookie = new Cookie("remEmail",request.getParameter("email"));
 				pasCookie = new Cookie("remPassword",request.getParameter("password"));
-				System.out.println(emCookie);
-				System.out.println(pasCookie);
 			}else {
-				emCookie.setMaxAge(0);
+				emailCookie.setMaxAge(0);
 				pasCookie.setMaxAge(0);
 			}
-			response.addCookie(emCookie);
-	        response.addCookie(pasCookie);		        
-	    	//	 記住原本的頁面, 登入後系統自動轉回原本的頁面。
+			response.addCookie(emailCookie);
+	        response.addCookie(pasCookie);
+			// 記住原本的頁面, 登入後系統自動轉回原本的頁面。
 			String requestURI = (String) session.getAttribute("requestURI");
 			System.out.println("請求URI requestURI:"+requestURI);
 			if (requestURI != null) {
 				return "redirect:" + requestURI;
-			}
+			}	        
 			return "redirect:/";
-			
-		}else if(bean.getMemberMode() == "0") {
-			System.out.println("非會員");
-			return "_01_register/register";
-		}	
-		} catch (Exception e) {
-		
-	
+		}
+		} catch (Exception e) {	
 			System.out.println("無帳號");
 			return "_01_register/register";
 		}
@@ -161,9 +151,11 @@ public class RegisterController {
 	}
 
 	@RequestMapping(value = "/UpdateMember")
-	public String UpdateMember(Model model, @ModelAttribute("MembersBean") MembersBean member, HttpSession session) {
+	public String UpdateMember(Model model, @ModelAttribute("MembersBean") MembersBean member, 
+			HttpSession session) {
 		member = service.getMemberByBean(member);
-		model.addAttribute("members", member);
+		MembersBean member1 = (MembersBean) session.getAttribute("members");		
+		model.addAttribute("members", member1);
 		return "_01_register/registerUpdateMember";
 	}
 	
@@ -173,13 +165,8 @@ public class RegisterController {
 			Model model, 
 			HttpSession session) {
 			MembersBean member = new MembersBean();
-			System.out.println(" controller控制台 取到ID"+request.getParameter("memberId"));
-			System.out.println(" controller控制台 取到信箱"+request.getParameter("email"));
-			System.out.println(" controller控制台 取到會員身分"+request.getParameter("memberMode"));
 			member.setEmail(request.getParameter("email"));		
-			member.setMemberMode(request.getParameter("memberMode"));
-
-		
+			member.setMemberMode(request.getParameter("memberMode"));	
 			if(service.modifyMembers(member)) {
 				System.out.println("會員狀態修改成功");
 				model.addAttribute("members", service.getAllMembers());
@@ -249,9 +236,8 @@ public class RegisterController {
 
 				request.getParameter("memberName"),request.getParameter("email"),
 				request.getParameter("gender"),request.getParameter("birthDay"));		
-//		MultipartFile picture = (MultipartFile) (request.getParameter("memImage"));
+		member.setPassword(member1.getPassword());
 		member.setMemberId(member1.getMemberId());
-//		System.out.println("member.getmemImage() :照片"+member.getmemImage());
 		String originalFilename = picture.getOriginalFilename();
 		if (originalFilename.length() > 0 && originalFilename.lastIndexOf(".") > -1) {
 			member.setFileName(originalFilename);}
@@ -269,7 +255,7 @@ public class RegisterController {
 
 		if(service.updateMembers(member)) {
 			System.out.println("會員資料修改成功");
-			return "redirect:/ToIndex";
+			return "redirect:/";
 		} else {
 			System.out.println("會員資料修改失敗");
 			return "redirect:/ToIndex";
@@ -384,7 +370,7 @@ public String list(Model model) {
 		List<MembersBean> list = service.getMemberByEmail(keyword); 
 		model.addAttribute("members", list);
 		System.out.println("keyword 是:" + keyword);
-		return "_01_register/FuzzyQuery";
+		return "_01_register/allMembers";
 	}
 
  
