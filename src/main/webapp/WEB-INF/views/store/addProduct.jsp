@@ -205,8 +205,11 @@ fieldset {
 			</fieldset>
 		</form:form>
 
+	<input type="button" value="新增商品" onclick="oneButtonInportADD()">
 
 	</section>
+	
+	
 </body>
 <script>
 	//新增圖片按紐
@@ -218,5 +221,21 @@ fieldset {
 			$('.subImg3').show();
 		}
 	});
+	
+	
+	function oneButtonInportADD() {
+		var tit = "KANO-紀念球";
+		var auth = "KANO";
+		var productDes = "1931年，嘉農球員們將苦練的成果發揮到極致，打破錦旗不過濁水溪的傳統，拿下台灣總冠軍；更代表台灣首次跨海打進日本甲子園總決賽，贏得全場觀眾的最高致意，也揭開了台灣棒球躍上世界舞台的序幕！";		
+		var pri = "2499";
+		var stoc = "8";
+	
+		$("#title").val(tit);
+		$("#author").val(auth);
+		$("#productDescription").val(productDes);
+		$("#price").val(pri);
+		$("#stock").val(stoc);
+	
+	}
 </script>
 </html>
