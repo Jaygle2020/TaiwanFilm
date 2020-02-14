@@ -12,6 +12,9 @@
 	href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou&display=swap"
 	rel="stylesheet">
 
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/menuStyle.css">
+
 
 
 
@@ -131,6 +134,7 @@ a {
 	margin-left: -80px;
 	width: 40px;
 }
+
 .allProductPage a:hover {
 	color: #ca9a16;
 }
@@ -150,7 +154,8 @@ a {
 	<br>
 	<br>
 	<div>
-		<div class="allProductPage" style="padding-left: 165px; padding-top: 74px; font-size: 30px;font-family: serif;">
+		<div class="allProductPage"
+			style="padding-left: 165px; padding-top: 74px; font-size: 30px; font-family: serif;">
 			<a href="<c:url value='products' />">全部商品</a>
 
 		</div>
@@ -503,7 +508,7 @@ a {
 
 		//商品頁面加入購物車
 		function pgaddCart(elm) {
-			
+
 			var name = "test" + elm.getAttribute("data-id");
 			var form = document.getElementById(name);
 			var formData = new FormData(form);
