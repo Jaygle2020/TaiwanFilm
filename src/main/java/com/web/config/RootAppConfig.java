@@ -74,13 +74,13 @@ public class RootAppConfig {
 	public DataSource mySQLDataSource() {
 		 ComboPooledDataSource ds = new ComboPooledDataSource();
 	        ds.setUser("root");
-	        ds.setPassword("lz913654");
+	        ds.setPassword("00000000");
 	        try {
 	            ds.setDriverClass("com.mysql.cj.jdbc.Driver");
 	        } catch (PropertyVetoException e) {
 	            e.printStackTrace();
 	        }
-	        ds.setJdbcUrl("jdbc:mysql://localhost:3306/jspdb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
+	        ds.setJdbcUrl("jdbc:mysql://localhost:3306/taiwanFilm?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
 	        ds.setInitialPoolSize(4);
 	        ds.setMaxPoolSize(8);
 	        return ds;
@@ -98,13 +98,10 @@ public class RootAppConfig {
 				"com.web.shoppingCart.model"
 				
 		});
-		if (SystemConstant.DB_TYPE == SystemConstant.MYSQL) {
-			factory.setDataSource(mySQLDataSource());
-			factory.setHibernateProperties(additionalPropertiesMySQL());	
-		} else if (SystemConstant.DB_TYPE == SystemConstant.SQL_SERVER) {
+
 			factory.setDataSource(msSQLDataSource());
 			factory.setHibernateProperties(additionalPropertiesMsSQL());	
-		} 
+
 		return factory;
 	}
 	

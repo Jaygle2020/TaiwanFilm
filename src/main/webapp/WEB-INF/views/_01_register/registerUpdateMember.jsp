@@ -18,7 +18,7 @@
 <style>
 .memberDetailTotalDiv2 {
 	width: 100%;
-	height:570px;
+	height: 570px;
 	background-color: white;
 	text-align: center;
 }
@@ -40,6 +40,35 @@
 body {
 	background-color: white;
 }
+<<<<<<< Updated upstream
+b {
+	font-size: 46px;
+	margin-bottom: 10px;
+}
+
+input:not (.allBt ){
+	margin: 0px 10px;
+	font-size: 20px;
+	margin: 0px 10px 10px 10px;
+}
+
+.allBt {
+	background-color: black;
+	border: 0;
+	color: white;
+	font-size: 16px;
+	padding: 10px 30px;
+	border-radius: 5px;
+	margin: 0px 10px 10px 10px;
+}
+.memimg{
+	
+ width:160;
+ height:160;
+ border-radius: 50%;
+=======
+>>>>>>> Stashed changes
+
 b {
 	font-size: 46px;
 	margin-bottom: 10px;
@@ -49,6 +78,9 @@ b {
 	font-size: 20px;
     margin: 0px 10px 10px 10px;
 }
+<<<<<<< Updated upstream
+
+=======
 .allBt{
     background-color: black;
     border: 0;
@@ -58,7 +90,15 @@ b {
     border-radius: 5px;
     margin: 0px 10px 10px 10px;
 }
-
+/* #memberImage{ */
+/*     background-color: black; */
+/*     border: 0; */
+/*     color: white; */
+/*     font-size: 16px; */
+/*     padding: 10px 30px; */
+/*     border-radius: 5px; */
+/* } */
+>>>>>>> Stashed changes
 </style>
 </head>
 <body>
@@ -71,71 +111,89 @@ b {
 			<form method="POST" id="UpdateMember"
 				action="${pageContext.request.contextPath}/_01_register/DoUpdateMember"
 				enctype='multipart/form-data'>
+<<<<<<< Updated upstream
+				<table>
+=======
 
 				<table>
+					<th>
+					<th>
+					<th>
+					<th>
+					<tr>
+						<td>
+						<td><input name="password" id="password" type="text"
+							value='${sessionScope.members.password}' style="display: none" />
+					<tr>
+						<td class="AllText">顯示名稱
+						<td class="AllText">性別
+					<tr>
 
-					<tr>
-						<td class="AllText">顯示名稱 <td class="AllText">性別
-					<tr>
+
 						<td><input name="memberName" id="memberName" type="text"
 							value='${sessionScope.members.memberName}' />
-							<td><input type="radio" id="gender" name="gender" value="男生" />男生
+						<td><input type="radio" id="gender" name="gender" value="男生" />男生
 							<input type="radio" id="gender" name="gender" value="女生" />女生
+>>>>>>> Stashed changes
 					<tr>
-						<td class="AllText">聯絡信箱<td class="AllText">生日
+						<td class="AllText">聯絡信箱
+						<td class="AllText">生日
 					<tr>
 						<td><input name="email" id="email" type="email"
 							value='${sessionScope.members.email}' />
 						<td><input type="date" name="birthDay" id="birthDay" />
 					<tr>
-						<td class="AllText">個人照片<td class="AllText">照片預覽
+						<td class="AllText">個人照片
+						<td class="AllText">預覽照片
 					<tr>
+
 						<td><input type='file' name="memImage" id="memberImage"
 							class='form:input-large' />
-						<td>
-						<img width='150' height='150' src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
-						<img src="">
-						<form action="/somewhere/to/upload" enctype="multipart/form-data">
-						<input name="progressbarTW_img" type="file" id="imgInp"  />
-<!-- 						accept="image/gif, image/jpeg, image/png" -->
-						<img id="preview_progressbarTW_img" src="#" />
-						</form>
+						<td><img style="dsiplay: inline-block" id="oldMemberImage"
+							src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
+							<img id="preview_memImage" src="#" style="display: none" />
 					<tr>
 						<td><input type="submit" class="allBt" id="bt1" value="確認" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="reset" class="allBt" id="bt2" value="清空" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+							
 				</table>
 			</form>
-			<!-- 			<input type="button" value="一鍵輸入" id="oneButtonInport" onclick="oneButtonInport()">			 -->
+			
+
 		</div>
-	<input  id="oneEntry"type="button" onclick="oneEntry1()" value="DEMO用" />
+	<div style="text-align:left"><input type="button" value="DEMO用" onclick="oneButtonInport()" > </div>
 	</div>
+	
 	<jsp:include page="../fragment/bottom.jsp" />
+
 	<script>
-	
-	 $("#imgInp").change(function(){
-	      //當檔案改變後，做一些事 
-	     readURL(this);   // this代表<input id="imgInp">
-	   });
-	 function readURL(input){
-		  if(input.files && input.files[0]){
-		    var reader = new FileReader();
-		    reader.onload = function (e) {
-		       $("#preview_progressbarTW_img").attr('src', e.target.result);
-		    }
-		    reader.readAsDataURL(input.files[0]);
-		  }
-	
-	
-		function oneEntry1() {
-			 var email = "jeter@gmail.com";
-			 var name = "DerekJeter";
-			 var bir = "1974-06-26"; 
-			$("input[name=gender][value='男生']").attr('checked',true); 
-			 $("#email").val(email);
-			 $("#birthDay").val(bir);
-			 $("#memberName").val(name); 
+		$("#memberImage").change(function() {
+			//當檔案改變後，做一些事 
+			readURL(this); // this代表<input id="memberImage">
+			$("#preview_memImage").css("display", "inline-block");
+			$("#oldMemberImage").css("display", "none");
+		});
+
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$("#preview_memImage").attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
 			}
+		}
+
+		function oneButtonInport() {
+			var name = "王曉明";
+			var em = "eeit11040@gmail.com";
+			var gerd = 	"男生";
+			var birt = "1988-01-26";
+			$("#memberName").val(name);			
+			$("#email").val(em);
+			$("input[name='gender'][value=男生]").attr("checked",true); 
+			$("#birthDay").val(birt);
+		}
 	</script>
 </body>
 </html>

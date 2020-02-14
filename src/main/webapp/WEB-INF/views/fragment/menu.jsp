@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
-<!DOCTYPE html>
-<html>
-<link rel="stylesheet"
- href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
- integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
- crossorigin="anonymous"></link>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" type="text/css">
+
+<!-- <script -->
+<!-- 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script> -->
+<!-- <meta charset="UTF-8"> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Mukta&display=swap" -->
+<!-- 	rel="stylesheet"> -->
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" type="text/css"> --%>
 <!-- 	<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap" rel="stylesheet">
 
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet"> -->
@@ -45,21 +40,26 @@
 	<div class="menu-bar">
 		<div class="close-menu menu-buttonStyle">CLOSE</div>
 		<div class="menu-button">
-			<a href="activities">
+			<a href="${pageContext.request.contextPath}/activities">
 				<div class="menu-buttonStyle">活動情報</div>
 			</a>
 			<a href="${pageContext.request.contextPath}/getAllProject">
 				<div class="menu-buttonStyle">贊助電影</div>
 			</a>
-			<a href="products">
+			<a href="${pageContext.request.contextPath}/products">
 				<div class="menu-buttonStyle">電影周邊</div>
 			</a>
-			<a href="movieIntro">
+			<a href="${pageContext.request.contextPath}/movieIntro">
 				<div class="menu-buttonStyle">網路訂票</div>
 			</a>
 			
+<<<<<<< Updated upstream
 			<a href="messages">
 			 <div class="${pageContext.request.contextPath}/messages">留言板</div>
+=======
+			<a href="${pageContext.request.contextPath}/createDate">
+			 <div class="menu-buttonStyle">留言板</div>
+>>>>>>> Stashed changes
 			</a>
 			
 			<c:if test="${testNum == 2}">			

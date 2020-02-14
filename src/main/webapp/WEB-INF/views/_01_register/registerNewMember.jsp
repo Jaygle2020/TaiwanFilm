@@ -140,7 +140,10 @@
 		</div>
 </form:form>
 </div>
-<jsp:include page="../fragment/bottom.jsp" /> 
+
+
+	<input type="button" value="DEMO用" onclick="oneButtonInport()">
+<div style="bottom:0px;"><jsp:include page="../fragment/bottom.jsp" /></div> 
 		<script	src="${pageContext.request.contextPath }/js/registerNewMember.js"></script>
 		<script>
 
@@ -248,6 +251,18 @@
 				 })
 			})
 		})
+		
+		function oneButtonInport() {
+			var name = "Jeter";
+			var em = "Jeter1983@gmail.com";
+			var pwd = "Sa123456"
+			var pwd1 = "Sa123456"
+			$("#memberName").val(name);			
+			$("#email").val(em);
+			$("#password").val(pwd);
+			$("#password1").val(pwd1);
+		}
+		
 		
 		</script>	 
 </body>

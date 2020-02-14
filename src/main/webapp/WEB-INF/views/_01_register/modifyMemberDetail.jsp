@@ -121,6 +121,7 @@ top:2px;
 <title>更新會員資料</title>
 </head>
 <body>
+<jsp:include page="../backstage.jsp" />
 <div align='center'>
 <h3>更新會員資料</h3>
 <hr>
