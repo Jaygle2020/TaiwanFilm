@@ -13,8 +13,7 @@
 <title>Insert title here</title>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/movie.css" />
+<link rel="stylesheet"	href="${pageContext.request.contextPath}/css/menuStyle.css" />
 <style>
 .memberDetailTotalDiv2 {
 	width: 100%;
@@ -66,21 +65,13 @@ input:not (.allBt ){
  width:160;
  height:160;
  border-radius: 50%;
-=======
->>>>>>> Stashed changes
-
-b {
-	font-size: 46px;
-	margin-bottom: 10px;
 }
-	input:not(.allBt){
-	margin: 0px 10px;
-	font-size: 20px;
-    margin: 0px 10px 10px 10px;
+.DEMOONE{
+	position:absolute;
+	top:100px;
+	right:100px;
 }
-<<<<<<< Updated upstream
 
-=======
 .allBt{
     background-color: black;
     border: 0;
@@ -90,6 +81,10 @@ b {
     border-radius: 5px;
     margin: 0px 10px 10px 10px;
 }
+b {
+    font-size: 46px;
+    margin-bottom: 30px;
+}
 /* #memberImage{ */
 /*     background-color: black; */
 /*     border: 0; */
@@ -98,7 +93,7 @@ b {
 /*     padding: 10px 30px; */
 /*     border-radius: 5px; */
 /* } */
->>>>>>> Stashed changes
+
 </style>
 </head>
 <body>
@@ -111,15 +106,8 @@ b {
 			<form method="POST" id="UpdateMember"
 				action="${pageContext.request.contextPath}/_01_register/DoUpdateMember"
 				enctype='multipart/form-data'>
-<<<<<<< Updated upstream
 				<table>
-=======
 
-				<table>
-					<th>
-					<th>
-					<th>
-					<th>
 					<tr>
 						<td>
 						<td><input name="password" id="password" type="text"
@@ -128,13 +116,10 @@ b {
 						<td class="AllText">顯示名稱
 						<td class="AllText">性別
 					<tr>
-
-
 						<td><input name="memberName" id="memberName" type="text"
 							value='${sessionScope.members.memberName}' />
 						<td><input type="radio" id="gender" name="gender" value="男生" />男生
 							<input type="radio" id="gender" name="gender" value="女生" />女生
->>>>>>> Stashed changes
 					<tr>
 						<td class="AllText">聯絡信箱
 						<td class="AllText">生日
@@ -149,19 +134,24 @@ b {
 
 						<td><input type='file' name="memImage" id="memberImage"
 							class='form:input-large' />
+							<BR>
+							<BR>
+							<BR>
+							<BR>
+							<input type="submit" class="allBt" id="bt1" value="確認" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="reset" class="allBt" id="bt2" value="清空" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<td><img style="dsiplay: inline-block" id="oldMemberImage"
 							src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
 							<img id="preview_memImage" src="#" style="display: none" />
 					<tr>
-						<td><input type="submit" class="allBt" id="bt1" value="確認" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="reset" class="allBt" id="bt2" value="清空" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<td>
 							
 				</table>
 			</form>
 			
 
 		</div>
-	<div style="text-align:left"><input type="button" value="DEMO用" onclick="oneButtonInport()" > </div>
+	<div class="DEMOONE" style="text-align:left"><input type="button" value="DEMO用" onclick="oneButtonInport()" > </div>
 	</div>
 	
 	<jsp:include page="../fragment/bottom.jsp" />

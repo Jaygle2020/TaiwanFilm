@@ -116,12 +116,16 @@ top:2px;
 	display: inline-block;
 	font-size: 5pt;
 }
+.name{
+ padding:100px 0px 0px 17%
+}
 </style>
 <meta charset="UTF-8">
 <title>更新會員資料</title>
 </head>
 <body>
 <jsp:include page="../backstage.jsp" />
+<div class="name">
 <div align='center'>
 <h3>更新會員資料</h3>
 <hr>
@@ -150,13 +154,14 @@ top:2px;
 
 			<div>
 			<hr>
-			<button ><a href="/TaiwanFilm/ShowAllMembers" style="text-decoration: none; color: black;">上一頁</a></button>
-			<button ><a href="/TaiwanFilm/_01_register/MemberBackstage" style="text-decoration: none; color: black;">管理者頁面</a></button>
+			<button ><a href="/TaiwanFilm/ShowAllMembers" style="text-decoration: none; color: black;">回到管理會員</a></button>
+<!-- 			<button ><a href="/TaiwanFilm/_01_register/MemberBackstage" style="text-decoration: none; color: black;">管理者頁面</a></button> -->
 				
 		</form>
 
 
 
+</div>
 </div>
 </body>
 </html>

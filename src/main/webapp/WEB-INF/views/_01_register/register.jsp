@@ -8,10 +8,9 @@
 <html lang="zh-TW">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/movie.css" />
+<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<%-- <link rel="stylesheet"	href="${pageContext.request.contextPath}/css/movie.css" /> --%>
+<link rel="stylesheet"	href="${pageContext.request.contextPath}/css/menuStyle.css" />
 
 <title>movie</title>
 <style>
@@ -27,8 +26,9 @@ body {
 }
 
 .registrTotalDiv {
-	
+    padding-top: 100px;	
 	margin-bottom: 10%;
+	text-align: center;
 }
 
 .sign {
@@ -77,6 +77,12 @@ input:not (.nobooder ){
 	border-radius: 5px;
 	margin: 0px 10px;
 }
+
+.DEMOONE{
+	position:absolute;
+	top:100px;
+	right:100px;
+}
 </style>
 </head>
 <body style="background-color: white;">
@@ -99,7 +105,7 @@ input:not (.nobooder ){
 						<label for="remember" class="grey dark"> <br>
 					<input type="checkbox" name="rememberBox" id="checkbox" />記得我
 					</label> <br> <br> <input class="but" type='reset' value='清除' />
-					<input class="but" type='submit' value='確認加入'
+					<input class="but" type='submit' value='確認登入'
 						onclick='return check()' />
 				</form>
 
@@ -120,8 +126,10 @@ input:not (.nobooder ){
 			</div>
 		</div>
 	</div>
+	<div class="DEMOONE">
 	<input type="button" value="DEMO管理員" onclick="oneButtonInport2()"> 
 	<input type="button" value="DEMO一般會員" onclick="oneButtonInport1()">
+	</div>
 	<jsp:include page="../fragment/bottom.jsp" />
 	<script	src="${pageContext.request.contextPath}/_01_register/JQ/jquery.cookie.js"></script>
 	<script>

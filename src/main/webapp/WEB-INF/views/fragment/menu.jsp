@@ -14,7 +14,7 @@
 <!-- <link id="MonoTypeFontApiFontTracker" type="text/css" rel="stylesheet" href="https://fast.fonts.net/t/1.css?apiType=js&amp;projectid=b2d946f7-734c-4b45-a07f-3923a384b0dd"> -->
 
 
-<body style="margin: 0">	  
+<!-- <body style="margin: 0">	   -->
 
 	<div class="fixed"></div>
 	<div class="left-bar">  
@@ -75,7 +75,7 @@
 
 		<c:if test="${not empty sessionScope.members.email}">
 			<div class="myAccount">
-				<p style="z-index: 800"  onclick="memberButton()">${sessionScope.members.memberName}
+				<p style="z-index: 800"  onclick="memberButton()" >${sessionScope.members.memberName}
 				
 				<!--  如果沒有給照片的話    性別是女生 就給女生照片   無照片跟男性給男生照片 -->
 				<c:if test="${empty sessionScope.members.fileName}">

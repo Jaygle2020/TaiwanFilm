@@ -10,9 +10,9 @@
 			<div class="social-area"><i class="fab fa-twitter"></i>Twitter</div>
 			<div class="social-area"><i class="fab fa-facebook-f">Facebook</i></div>
 		</div>
-		<div class="Myfooter-content">傻眼貓咪傻眼貓咪</div>
-			<p style="margin-top: 30px;">傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪<p>
-			<p style="margin-top: 30px">傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪傻眼貓咪<p>
-			<p style="font-weight: bold">©2019 傻眼貓咪 factory</p>
+		<div class="Myfooter-content">台灣電影募資平台</div>
+			<p style="margin-top: 30px;">台北市大安區復興台北市大安區復興南路一段390號二樓一段390號二樓<p>
+			<p style="margin-top: 30px">財團法人<p>
+			<p style="font-weight: bold">©2019 TaiwanFilms</p>
 		</div>
    

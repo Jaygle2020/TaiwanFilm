@@ -7,8 +7,7 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/movie2.css" />
+<link rel="stylesheet"	href="${pageContext.request.contextPath}/css/menuStyle.css" />
 <meta charset="UTF-8">
 <title>新增會員</title>
 
@@ -23,9 +22,9 @@
 	height: 570px;
 	background-color:white;
 	text-align:center;
+	padding-top:100px;
 }
 .memberNewMainDiv {
-	margin-top: 30px;
 	width:450px;
 	display: inline-block;
 	background-color: white;
@@ -73,7 +72,11 @@
     border-radius: 5px;
     margin: 0px 10px 10px 10px;
 }
-
+.DEMOONE{
+	position:absolute;
+	top:100px;
+	right:100px;
+}
 </style>
 </head>
 <body>
@@ -135,14 +138,14 @@
 				<div  style="font-size:8px;"> 已閱讀並同意：
 				<b id="focusToBlue" >使用者協定</b>和
 				<b id="focusToBlue" > 隱私政策</b></div>
-			<br><input  id="oneEntry"type="button" onclick="oneEntry1()" value="DEMO用註冊會員"/>
+			<br>
 		</div>
 		</div>
 </form:form>
 </div>
-
-
-	<input type="button" value="DEMO用" onclick="oneButtonInport()">
+<div class="DEMOONE">
+<input  id="oneEntry"type="button" onclick="oneEntry1()" value="DEMO用註冊會員"/>
+</div>
 <div style="bottom:0px;"><jsp:include page="../fragment/bottom.jsp" /></div> 
 		<script	src="${pageContext.request.contextPath }/js/registerNewMember.js"></script>
 		<script>
