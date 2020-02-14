@@ -91,7 +91,7 @@ font-size:36px;
 						<div class="content-area">會員狀態</div>
 						<div class="content-area">確認</div>
 					</div>
-					<c:forEach var='member' items='${members}'>
+					<c:forEach var='member' items='${memberlist}'>
 						<div class="content">
 							<div class="content-area">
 								<a
