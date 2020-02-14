@@ -81,7 +81,7 @@
 	position: relative;
 	left: 250px;
 	vertical-align: top;
-	margin-left: 83px;
+	margin-left: 29px;
 }
 
 .productImage {
@@ -95,6 +95,7 @@
 	display: inline-block;
 	position: relative;
 	vertical-align: top;
+	margin-left: 60px;
 }
 
 .optioneffect {
@@ -126,7 +127,7 @@ a {
 	font-family: 'Arial';
 	display: none;
 	font-family: 'Arial';
-	width: 60%;
+	width: 49%;
 }
 
 .productDescription {
@@ -148,20 +149,56 @@ a {
 .subImg {
 	display: none;
 }
+
+.cartIcon {
+	text-align: center;
+	padding-left: 100p;
+	float: right;
+	/* padding-right: 100px; */
+	height: 50px;
+	width: 109px;
+	background-image: url(images/shopcart2.png);
+	background-repeat: no-repeat;
+	background-size: 50px 50px;
+	display: inline-block;
+	margin-top: px;
+	margin-top: -47px;
+	margin-right: 206px;
+	font-size: 23px;
+}
+
+.allProductPage a:hover {
+	color: #ca9a16;
+}
 </style>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
 <body style="background-color: #fffcfa;">
-	<%-- <jsp:include page="../fragment/menu.jsp" /> --%>
-	<jsp:include page="topMVC.jsp" />
+	<jsp:include page="../fragment/menu.jsp" />
+	<%-- <jsp:include page="topMVC.jsp" /> --%>
 
-	<div style="padding-left: 205px; padding-top: 6px; font-size: 30px;">
-		<a href="<c:url value='products' />">全部商品</a>
+	<br>
+	<br>
+	<div>
+		<div class="allProductPage"
+			style="padding-left: 280px; padding-top: 4px; font-size: 30px;font-family: serif;">
+			<a href="<c:url value='products' />">返回商城</a> /
+			<div style="display: inline-block; color: #545454;font-family: serif;">${product.author}</div>
+		</div>
+		<div>
+
+			<div class='cartIcon'>
+				<a href="<c:url value='/ShowCartContent' />"><div
+						id="showCartNum"
+						style="height: 50px; width: 110px; background-image: url('images/shopcart2.png'); background-repeat: no-repeat; background-size: 50px 50px">0</div>
+				</a>
+			</div>
+		</div>
+		<hr style="margin-right: 252px; margin-left: 278px;">
 
 	</div>
-	<p>/</p>
-	<div>${product.author}</div>
+
 
 	<!-- div class="option">
 
@@ -178,6 +215,8 @@ a {
 		</a>
 	</div>
  -->
+
+	<br>
 
 	<div class="productContent">
 
@@ -202,7 +241,7 @@ a {
 
 
 			<br>
-			<h1>${product.title}</h1>
+			<h1 style="color: currentColor; font-family: serif; font-size: 40px;">${product.title}</h1>
 			<br>
 			<div style="border-left: 5px solid gray; padding-left: 10px;">
 				<p>商品內容</p>
@@ -227,15 +266,16 @@ a {
 					<!-- 這些隱藏欄位都會送到後端 -->
 					<Input type='hidden' name='productId' value='${product.productId}'>
 
-					<button id="addsubm" type="button" onclick="addCart()">加入購物車</button>
+					<button id="addsubm" type="button" onclick="addCart()"
+						style="border-radius: 8%; font-size: 14px;">加入購物車</button>
 
 				</FORM>
 
 
 			</div>
 			<div>
-				<h3 id="product-stock" style="color: red" value="${product.stock}">現庫存量
-					: ${product.stock} 件</h3>
+				<h4 id="product-stock" style="color: #e65151"
+					value="${product.stock}">現庫存量 : ${product.stock} 件</h4>
 			</div>
 
 			<!-- 		展開收和內容 -->

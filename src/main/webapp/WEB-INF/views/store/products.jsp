@@ -94,7 +94,7 @@ a {
 }
 
 .holder {
-	font-size: 24px;
+	font-size: 21px;
 	text-align: center;
 	margin-bottom: 60px;
 }
@@ -112,13 +112,13 @@ a {
 	display: inline-block;
 	margin-top: px;
 	margin-top: -47px;
-	margin-right: 165px;
+	margin-right: 130px;
 	font-size: 23px;
 }
 
 .keyQuery {
 	color: #9a5105;
-	margin-right: 1173px;
+	margin-right: 926px;
 	display: inline-block;
 	font-size: 18px;
 	font-family: fantasy;
@@ -130,6 +130,9 @@ a {
 	display: inline-block;
 	margin-left: -80px;
 	width: 40px;
+}
+.allProductPage a:hover {
+	color: #ca9a16;
 }
 </style>
 
@@ -147,7 +150,7 @@ a {
 	<br>
 	<br>
 	<div>
-		<div style="padding-left: 205px; padding-top: 6px; font-size: 30px;">
+		<div class="allProductPage" style="padding-left: 165px; padding-top: 74px; font-size: 30px;font-family: serif;">
 			<a href="<c:url value='products' />">全部商品</a>
 
 		</div>
@@ -158,7 +161,7 @@ a {
 			</a>
 		</div>
 	</div>
-	<hr style="margin-right: 210px; margin-left: 205px;">
+	<hr style="margin-right: 168px; margin-left: 164px;">
 
 	<div class="productlist active">
 
@@ -237,7 +240,7 @@ a {
 					<Input type='hidden' name='pgId' value='${product.productId}'>
 
 					<button
-						style="height: 55px; font-size: 24px; background: darkcyan; color: antiquewhite; width: 451px; border-radius: 6%;"
+						style="height: 55px; font-size: 24px; background: darkcyan; color: antiquewhite; width: 362px; border-radius: 6%;"
 						id="addsubm" type="button" data-id="${product.productId}"
 						onclick="pgaddCart(this)">加入購物車</button>
 

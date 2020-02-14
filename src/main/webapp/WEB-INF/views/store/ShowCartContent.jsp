@@ -13,6 +13,128 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+.whole {
+	text-align: center;
+	width: 100%
+}
+
+.ball-area {
+	width: 80%;
+	display: inline-block
+}
+
+.number {
+	position: relative;
+	padding-top: 7px;
+	color: white;
+	font-weight: bold;
+}
+
+.Process {
+	width: 100%;
+}
+
+.Process-area {
+	text-align: center;
+	width: 100%;
+	display: inline-block;
+}
+
+.ball1 {
+	width: 70px;
+	height: 40px;
+	display: inline-block;
+	font-size: 14px;
+}
+
+.ball2 {
+	width: 270px;
+	display: inline-block;
+}
+
+.ball-area1 {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: #cccccc;
+	display: inline-block
+}
+
+.ball-area2 {
+	width: 300px;
+	height: 5px;
+	background: #f8f9fa;
+	display: inline-block;
+}
+
+.area {
+	width: 80%;
+	display: inline-block;
+	text-align: center
+}
+
+.process1 {
+	background: #9c9c90;
+}
+
+.shopping {
+	text-align: center;
+	display: inline-block;
+	width: 80%;
+	background: #f6f6f6;
+}
+
+.shopping-title {
+	text-align: left;
+	padding: 20px;
+	font-size: 20px;
+}
+
+.content {
+	width: 100%;
+	background: white;
+	padding: 10px 0px;
+	display: inline-block;
+}
+
+.content-area {
+	width: 13%;
+	display: inline-block;
+	padding-top: 15px;
+	text-align: center
+}
+
+.Information {
+	width: 15%;
+	text-align: left;
+}
+
+.img {
+	width: 100%;
+	display: inline-block;
+	margin-left: -17px;
+}
+
+.desc {
+	width: 65%;
+	display: inline-block;
+}
+
+.ball-area {
+	width: 80%;
+	text-align: center;
+}
+
+.ball {
+	width: 50px;
+	height: 50px;
+	margin: 0px 50px;
+	border-radius: 50%;
+	display: inline-block;
+	background: red;
+}
+</style>
 <script type="text/javascript">
 function confirmDelete(n) {
 	if (confirm("確定刪除此項商品 ? ") ) {
@@ -90,7 +212,7 @@ function Abort() {
 <body>
 
 	<c:set var="funcName" value="CHE" scope="session" />
-	<jsp:include page="topMVC.jsp" />
+	<jsp:include page="../fragment/menu.jsp" />
 
 
 
@@ -104,10 +226,15 @@ function Abort() {
 			<c:set var="subtotal" value="0" />
 		</c:otherwise>
 	</c:choose>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
-	<table
+	<%-- 	<table
 		style="margin: 0 auto; margin-top: 100px; width: 820px; border: 0.5px solid #d1d1d1; text-align: center;">
-		<%-- <tr>
+		<tr>
 			<td colspan='4'>
 				<!--          購物車的標題          -->
 				<table style="width: 820px">
@@ -123,7 +250,7 @@ function Abort() {
 					</tr>
 				</table>
 			</td>
-		</tr> --%>
+		</tr>
 
 		<tr>
 			<td>
@@ -143,15 +270,15 @@ function Abort() {
 						items="${ShoppingCart.content}">
 						<tr height='16'>
 							<td>${anEntry.value.title}</td>
-							<%-- <td style="text-align: center;">${fn:substring(anEntry.value.author, 0, 3)}</td> --%>
+							<td style="text-align: center;">${fn:substring(anEntry.value.author, 0, 3)}</td>
 							<td style="text-align: center;">${fn:substring(anEntry.value.companyName, 0,10)}</td>
 							<td style="text-align: center;"><fmt:formatNumber
 									value="${anEntry.value.unitPrice * 1 }" pattern="#,###" />元</td>
 							<td style="text-align: center;">
-								<%-- <Input class='selectQty' id="newQty${vs.index}" style="width: 28px; text-align: right; dispaly:none; "
+								<Input class='selectQty' id="newQty${vs.index}" style="width: 28px; text-align: right; dispaly:none; "
 							 name="newQty" type="text"
 								value="<fmt:formatNumber value="${anEntry.value.quantity}" />"
-								name="qty"  />  --%> <%-- <div style="display:none;" id="newQty2${vs.index}" class="selectQty"  >${anEntry.value.quantity}</div> --%>
+								name="qty"  />  <div style="display:none;" id="newQty2${vs.index}" class="selectQty"  >${anEntry.value.quantity}</div>
 
 								<select class="selectQty" id="newQty${vs.index}"
 								style="width: 40px; text-align: right" name='newQty' name="qty"
@@ -166,7 +293,7 @@ function Abort() {
 									</c:forEach>
 
 
-									<%-- <option style="display: none;"
+									<option style="display: none;"
 										value="<fmt:formatNumber value="${anEntry.value.quantity}" />">${anEntry.value.quantity}</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -177,10 +304,10 @@ function Abort() {
 									<option value="7">7</option>
 									<option value="8">8</option>
 									<option value="9">9</option>
-									<option value="10">10</option> --%>
+									<option value="10">10</option>
 
-							</select> 
-						
+							</select>
+
 							</td>
 							<td style="text-align: center;" value="${anEntry.value.stock}">${anEntry.value.stock}</td>
 							<td style="text-align: center;"><fmt:formatNumber
@@ -201,7 +328,7 @@ function Abort() {
 								pattern="#,###,###" />元</td>
 						<!-- <td align='right'>&nbsp;</td> -->
 					</tr>
-					<%-- <tr>
+					<tr>
 						<td colspan='5' align='right'>營業稅：</td>
 						<c:set var="VAT" value="${subtotal*0.05 + 0.0001}" />
 						<td align='right'><fmt:formatNumber value="${VAT}"
@@ -213,7 +340,7 @@ function Abort() {
 						<td align='right'><fmt:formatNumber
 								value="${subtotal + VAT }" pattern="#,###,###" />元</td>
 						<!-- <td align='right'>&nbsp;</td> -->
-					</tr> --%>
+					</tr>
 				</table>
 
 			</td>
@@ -233,6 +360,136 @@ function Abort() {
 				</table>
 			</td>
 		</tr>
+	</table>
+	<div style='text-align: center;'>
+		<c:if test='${not empty OrderErrorMessage}'>
+			<font color='red'>${OrderErrorMessage}</font>
+			<c:remove var="OrderErrorMessage" />
+		</c:if>
+	</div>
+
+	<form>
+		<input type="hidden" name="a" />
+	</form> --%>
+
+	<div class="whole">
+		<div class="ball-area">
+			<div class="Process">
+				<div class="Process-area">
+					<div class="ball-area1  process1">
+						<div class="number">1</div>
+					</div>
+					<div class="ball-area2"></div>
+					<div class="ball-area1  process2">
+						<div class="number">2</div>
+					</div>
+					<div class="ball-area2"></div>
+					<div class="ball-area1  process3">
+						<div class="number">3</div>
+					</div>
+				</div>
+			</div>
+			<div class="Process">
+				<div class="Process-area">
+					<div class="ball1">購物車</div>
+					<div class="ball2"></div>
+					<div class="ball1">填寫資料</div>
+					<div class="ball2"></div>
+					<div class="ball1">訂單確認</div>
+				</div>
+			</div>
+		</div>
+		<div class="shopping">
+			<div class="shopping-title">
+				購物車( 
+				<div style="display: inline-block;" id="showCartNum"></div>
+				 件)
+			</div>
+			<div style="width: 100%">
+				<div class="content" style="border-bottom: 1px solid black">
+					<div class="content-area Information">商品資訊</div>
+					<div class="content-area">廠商</div>
+					<div class="content-area">單價</div>
+					<div class="content-area">數量</div>
+					<div class="content-area">可賣量</div>
+					<div class="content-area">小計</div>
+					<div class="content-area"></div>
+				</div>
+
+				<!--  寫foreach -->
+				<c:forEach varStatus="vs" var="anEntry"
+					items="${ShoppingCart.content}">
+					<div class="content">
+						<div class="content-area Information">
+							<div class="img">${anEntry.value.title}</div>
+							<!-- <div class="desc"></div> -->
+						</div>
+						<div class="content-area">${fn:substring(anEntry.value.companyName, 0,10)}</div>
+						<div class="content-area">${anEntry.value.unitPrice * 1 }</div>
+						<div class="content-area">
+							<select class="selectQty" id="newQty${vs.index}"
+								style="width: 40px; text-align: right" name='newQty' name="qty"
+								onkeypress="return isNumberKey(event)">
+
+
+								<c:forEach begin="1" end="${anEntry.value.stock}" var="i">
+									<option class="buyQty" style="display: none;"
+										value="<fmt:formatNumber value="${anEntry.value.quantity}" />">${anEntry.value.quantity}</option>
+									<option value="${i}">${i}</option>
+
+								</c:forEach>
+							</select>
+						</div>
+						<div class="content-area">${anEntry.value.stock}</div>
+						<div class="content-area">${anEntry.value.unitPrice * anEntry.value.quantity}</div>
+						<div class="content-area" style="width: 12%;">
+							<Input style="display: none" id='modfy${vs.index}' type="button"
+								name="update" value="修改"
+								onclick="modify(${anEntry.key}, ${anEntry.value.quantity}, ${vs.index})">
+
+							<Input type="button" name="delete" value="取消"
+								style="font-size: 17px; border-radius: 10%; background: lightcoral;"
+								onclick="confirmDelete(${anEntry.key})">
+						</div>
+					</div>
+				</c:forEach>
+
+				<div height='16'>
+
+					<div align='right'
+						style="padding-bottom: 21px;; background: #fdfffd; text-align: end; padding-right: 211px; height: 20px; margin-top: 10p; padding-top: 17px; color: red;">
+						總金額：
+						<fmt:formatNumber value="${subtotal}" pattern="#,###,###" />
+						元
+					</div>
+					<!-- <td align='right'>&nbsp;</td> -->
+				</div>
+				<div style='text-align: left; padding: 10px'>已享用之優惠</div>
+				<div style="text-align: left; padding: 10px">
+					<div
+						style="padding: 5px 10px; background: green; display: inline-block">促銷優惠</div>
+					<div style="width: 50%; display: inline-block;">宅配優惠|免運優惠，滿1000元(含以上)免運費</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<tr height='80'>
+		<td>
+			<table
+				style="margin: auto; padding: 20px; color: #c7903d; cursor: pointer; font-size: 20px;">
+				<tr>
+					<td width="265" align='center'><a
+						style="text-decoration: none; color: #c7903d;"
+						href="<c:url value='products' />">返回商城</a></td>
+					<td width="265" align='center'><a style="cursor: pointer;"
+						onClick="return Checkout(${subtotal});">結帳去</a></td>
+					<td width="265" align='center'><a style="cursor: pointer;"
+						onClick="return Abort();">清空購物車</a></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
 	</table>
 	<div style='text-align: center;'>
 		<c:if test='${not empty OrderErrorMessage}'>
@@ -278,6 +535,21 @@ function Abort() {
 		  
 		   $('#modfy'+newid).click();
 		});
+		
+		 $(document).ready(function() {
+				
+				$.ajax({
+					url : "CartNum",
+					type : "GET",
+					data : "num",
+					async : false,
+					success : function(data) {
+						console.log("data=" + data)
+						$("#showCartNum").html(data);
+					}
+
+				});
+			});  
 		
 		
 		

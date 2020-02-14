@@ -18,7 +18,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.web.booking.model.ticketBean;
 import com.web.login.Model.MembersBean;
 import com.web.shoppingCart.model.OrderBean;
 import com.web.shoppingCart.model.OrderItemBean;
@@ -192,7 +194,7 @@ public class ShoppingCartController {
 
 			session.removeAttribute("ShoppingCart");
 
-			return "redirect://products";
+			return "store/orderSuccess";
 
 		} catch (RuntimeException ex) {
 			String message = ex.getMessage();
@@ -279,4 +281,6 @@ public class ShoppingCartController {
 		}
 
 	}
+	
+	
 }

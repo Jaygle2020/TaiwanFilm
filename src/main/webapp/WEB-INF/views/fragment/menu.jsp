@@ -75,7 +75,7 @@
 
 		<c:if test="${not empty sessionScope.members.email}">
 			<div class="myAccount">
-				<p style="z-index: 800"  onclick="memberButton()">${sessionScope.members.memberName}
+				<p style="z-index: 800"  onclick="memberButton()" >${sessionScope.members.memberName}
 				
 				<!--  如果沒有給照片的話    性別是女生 就給女生照片   無照片跟男性給男生照片 -->
 				<c:if test="${empty sessionScope.members.fileName}">
@@ -106,6 +106,7 @@
 		<a href="${pageContext.request.contextPath}/UpdateMember">修改個人資料</a> <br>
 		<a href="${pageContext.request.contextPath}/member/purchase">個人贊助</a> <br>
 		<a href="alterTicket">訂票資料</a> <br>
+		<a href="${pageContext.request.contextPath}/orderList.do">購物清單</a><br>
 		<a href="${pageContext.request.contextPath}/logout">登出</a> 
 	</div>
 	</div>

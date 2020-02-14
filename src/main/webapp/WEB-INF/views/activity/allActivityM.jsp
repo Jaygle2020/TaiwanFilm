@@ -127,7 +127,7 @@ body {
 				<div class="acitivityUpdateWidth">活動廠商</div>
 				<div class="acitivityUpdateWidth">活動開始時間</div>
 				<div class="activityUpdateButton">
-					<div class="activityUpdateButtonStyle">未上架</div>
+					<div class="activityUpdateButtonStyle">即將上架</div>
 				</div> 
 			</div>
 			<c:forEach var='activity' items='${activities}'>
@@ -157,6 +157,41 @@ body {
 			</c:forEach>
 
 
+			<div class="activity-content-show">
+				<div class="acitivityUpdateWidth">活動照片</div>
+				<div class="acitivityUpdateWidth">活動主題</div>
+				<div class="acitivityUpdateWidth">活動廠商</div>
+				<div class="acitivityUpdateWidth">活動開始時間</div>
+				<div class="activityUpdateButton">
+					<div class="activityUpdateButtonStyle">活動下架</div>
+				</div> 
+			</div>
+			
+			<c:forEach var='activity' items='${activities}'>
+				<c:if test="${activity.status == '0'}">
+					<a href="<spring:url value='/activity?id=${activity.activityId}' />"
+						class="anchor-style"> 
+						<a href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
+								<div class="activity-inner"
+									data-number="${activity.activityWatched}">
+									<div class="activity-content">       
+										<div class="activityThumb"
+									style="background-image: url('getPicture/${activity.activityId}');background-size:cover;height: 80px;width:20%;display: inline-block;	">
+								</div> 
+										<div class="acitivityUpdateWidth" style="font-size: 18px;">${activity.activityTitle}</div>
+										<div class="acitivityUpdateWidth">${activity.activityAuthor}</div>
+										<div class="acitivityUpdateWidth">${activity.startTime}</div>
+										<div class="activityUpdateButton"><a href="<spring:url value='/update/activities/${activity.activityId}' />"
+												class="btn btn-primary"> <span
+												class="glyphicon-info-sigh glyphicon"></span>編輯 
+											</a>  
+										</div>  
+									</div> 	
+								</div>    
+							</a>
+					</a> 
+				</c:if>
+			</c:forEach>
 		</div>
 	</section>
 
