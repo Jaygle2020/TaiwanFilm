@@ -159,7 +159,6 @@ h1 {
    					}else if(${sessionScope.members.gender =='女生'}){
    						$("input[name='gender'][value=女生]").attr("checked",true); 
    					}
-
    				});
    				//這個alert 語法是錯誤的!!!
    				</script>
