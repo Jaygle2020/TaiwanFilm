@@ -9,12 +9,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" />
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https:///code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel=stylesheet type="text/css"
-	href="${pageContext.request.contextPath}/css/fund.css">
+	href="${pageContext.request.contextPath}/css/fund1.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/UtilTool.js" ></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" />
+
 </head>
 
 <body>
@@ -25,11 +26,9 @@
 			<section class="projectContentUpper">
 				<div class="container stickyNavTrigger">
 					<div class="projectTitle">
-
 						<div class="projectShare">
-							<a href=""></a> <span class="metaText">提醒我</span>
+							<h1 class="text-center ptitle">${cfBean.projBean.projectName}</h1>
 						</div>
-						<h1 class="text-center ptitle">${cfBean.projBean.projectName}</h1>
 					</div>
 					<div class="upperContent">
 						<div class="col-left">
@@ -64,8 +63,8 @@
 						</div>
 						<div class="col-right">
 							<div class="numberRow totalFund">
-								<h1 class="number moneyFormat">${cfBean.fundsNow}</h1>
-								<p class="metaText">目標 $${cfBean.fundsGoal}</p>
+								<h1 class="number moneyFormat">$&nbsp;${cfBean.fundsNow}</h1>
+								<p class="metaText" style="text-align:right;"><span style="font-size:20px;">Goal</span> $${cfBean.fundsGoal}</p>
 							</div>
 							<div class="numberRow totalPeople">
 								<h1>${cfBean.backerNum}</h1>
@@ -75,14 +74,12 @@
 								<h1 id="dayCount" data-endDay="${cfBean.dateEnd}"></h1>
 								<p class="metaText">天結束</p>
 							</div>
-							<blockquote>
-								專案正在募資中!!<br> 在${cfBean.dateEnd}
-								23:59募資結束前，至少募得$${cfBean.fundsGoal}便募資成功。
+							<blockquote class="colorPart">
+								專案正在募資中!! 
 							</blockquote>
-							<a href="連結到贊助專案網址" class="btn fRed btn-block">贊助專案</a>
 							<div class="splitButtonContainer">
-								<a href="聯絡提案人" class="btn btn-red-ghost btn-block">聯絡提案人</a> <a
-									href="分享連結" class="splitShares share">分享</a>
+								募資將於${cfBean.dateEnd}<br>
+								23:59 結束
 							</div>
 						</div>
 					</div>
@@ -150,6 +147,7 @@
 			</section>
 		</section>
 	</div>
+	<jsp:include page="../fragment/footer.jsp" />
 </body>
 
 <script>

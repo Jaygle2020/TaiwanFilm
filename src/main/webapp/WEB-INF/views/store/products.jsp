@@ -46,7 +46,6 @@
 	width: 100%;
 	display: none;
 	position: relative;
-	left: 40px;
 	vertical-align: top;
 	text-align: center;
 }
@@ -95,8 +94,45 @@ a {
 }
 
 .holder {
-	font-size: 20px;
+	font-size: 21px;
 	text-align: center;
+	margin-bottom: 60px;
+}
+
+.cartIcon {
+	text-align: center;
+	padding-left: 100p;
+	float: right;
+	/* padding-right: 100px; */
+	height: 50px;
+	width: 109px;
+	background-image: url(images/shopcart2.png);
+	background-repeat: no-repeat;
+	background-size: 50px 50px;
+	display: inline-block;
+	margin-top: px;
+	margin-top: -47px;
+	margin-right: 130px;
+	font-size: 23px;
+}
+
+.keyQuery {
+	color: #9a5105;
+	margin-right: 926px;
+	display: inline-block;
+	font-size: 18px;
+	font-family: fantasy;
+	display: inline-block;
+	margin-left: -34px;
+}
+
+.selectQuery {
+	display: inline-block;
+	margin-left: -80px;
+	width: 40px;
+}
+.allProductPage a:hover {
+	color: #ca9a16;
 }
 </style>
 
@@ -107,35 +143,56 @@ a {
 
 </head>
 <body style="background-color: #fffcfa;">
-	<jsp:include page="topMVC.jsp" />
+	<%-- <jsp:include page="topMVC.jsp" /> --%>
+	<jsp:include page="../fragment/menu.jsp" />
 
 
 	<br>
 	<br>
+	<div>
+		<div class="allProductPage" style="padding-left: 165px; padding-top: 74px; font-size: 30px;font-family: serif;">
+			<a href="<c:url value='products' />">全部商品</a>
+
+		</div>
+		<div class='cartIcon'>
+			<a href="<c:url value='/ShowCartContent' />"><div
+					id="showCartNum"
+					style="height: 50px; width: 110px; background-image: url('images/shopcart2.png'); background-repeat: no-repeat; background-size: 50px 50px">0</div>
+			</a>
+		</div>
+	</div>
+	<hr style="margin-right: 168px; margin-left: 164px;">
+
 	<div class="productlist active">
 
 		<div>
-			<!-- 模糊查詢 -->
-			<form action="${pageContext.request.contextPath}/keyQuery" type="Get">
-				<p>
-					搜尋：<input name="keyWord" type="text"></input>
-				<p>
-			</form>
-			<!-- 類別搜尋 -->
-			<form
-				action="${pageContext.request.contextPath}/selectQuery"
-				type="Get">
- 				
-			 	<select class="selectCategory" name="category" onchange="">
-					<option style="display:none;" value="" selected disabled>類別</option>
-					 <c:forEach var="categorys" items='${categoryList}'> 
-						
-						<option value="${categorys}">${categorys}</option>
-					 </c:forEach> 
-				</select>  
-				<input style="display:none" class="categorySubmit" type="submit" value="Submit" onclick=""></input>
-			</form>
+			<div class="keyQuery">
+				<!-- 模糊查詢 -->
+				<form action="${pageContext.request.contextPath}/keyQuery"
+					type="Get">
+					<p>
+						搜尋：<input name="keyWord" type="text"></input>
+					<p>
+				</form>
+			</div>
 
+			<div class="selectQuery">
+				<!-- 類別搜尋 -->
+				<form action="${pageContext.request.contextPath}/selectQuery"
+					type="Get">
+
+					<select class="selectCategory" name="category" onchange=""
+						style="width: 70px; height: 30px; font-size: 16px;">
+						<option style="display: none;" value="" selected disabled>類別</option>
+						<c:forEach var="categorys" items='${categoryList}'>
+
+							<option value="${categorys}">${categorys}</option>
+						</c:forEach>
+					</select> <input style="display: none" class="categorySubmit" type="submit"
+						value="Submit" onclick=""></input>
+				</form>
+
+			</div>
 		</div>
 
 		<c:forEach var='product' items='${products}' varStatus="paging">
@@ -155,15 +212,41 @@ a {
 			<a href="<spring:url value='product?id=${product.productId}' />">
 
 				<div style="width: 100%">
-					<img style="width: 75%; height: 300px;"
+					<img style="width: 80%; height: 350px;"
 						src="<c:url value='/getPicture/store/${product.productId}'/>" />
 				</div>
 				<div>
-					<p>品名 : ${product.title}</p>
-					<p>電影 : ${product.author}</p>
-					<p>類別 : ${product.category}</p>
+					<p style="font-size: 24px; font-family: serif; margin: 15px 0;">${product.title}</p>
+
+					<%-- <p>電影 : ${product.author}</p>
+					<p>類別 : ${product.category}</p> --%>
 					<%-- <p>目前在庫數量 : ${product.stock}</p> --%>
 				</div>
+			</a>
+
+			<div style="display: inline-block;">
+
+				<FORM id="test${product.productId}"
+					action="<c:url value='pgaddToCart' />" method="POST">
+					<select style="display: none;" name="qty" class="selectBuyQty">
+
+						<c:forEach begin="1" end="${product.stock}" var="i">
+							<option value="${i}">${i}</option>
+						</c:forEach>
+
+					</select>
+
+					<!-- 這些隱藏欄位都會送到後端 -->
+					<Input type='hidden' name='pgId' value='${product.productId}'>
+
+					<button
+						style="height: 55px; font-size: 24px; background: darkcyan; color: antiquewhite; width: 362px; border-radius: 6%;"
+						id="addsubm" type="button" data-id="${product.productId}"
+						onclick="pgaddCart(this)">加入購物車</button>
+
+				</FORM>
+
+			</div>
 	</div>
 
 	</c:forEach>
@@ -254,11 +337,10 @@ a {
 
 
 	<script>
-	
-	$('.selectCategory').change(function(){
-		console.log("123");
-		$('.categorySubmit').click(); 
-	});
+		$('.selectCategory').change(function() {
+			console.log("123");
+			$('.categorySubmit').click();
+		});
 		/*	$('.option1').click(function() {
 		 $('.productlist').removeClass('active');
 		 $('#popular').addClass("active");
@@ -418,9 +500,39 @@ a {
 		case 1:
 			$('#page1').show();
 		};
-		
-		
-		
+
+		//商品頁面加入購物車
+		function pgaddCart(elm) {
+			
+			var name = "test" + elm.getAttribute("data-id");
+			var form = document.getElementById(name);
+			var formData = new FormData(form);
+			var url = $("#" + name).attr('action');
+			$.ajax({
+				url : url,
+				type : "POST",
+				data : formData,
+				dataType : false,
+				contentType : false,
+				processData : false,
+				async : false,
+				success : function() {
+					$.ajax({
+						url : "CartNum",
+						type : "GET",
+						data : "num",
+						async : false,
+						success : function(data) {
+							console.log("data=" + data)
+							$("#showCartNum").html(data);
+						}
+
+					});
+
+				}
+
+			});
+		}
 	</script>
 </body>
 </html>

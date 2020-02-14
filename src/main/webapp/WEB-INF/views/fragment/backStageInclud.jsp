@@ -45,7 +45,7 @@
 			<div class="back-funds backstage-title">募款</div>
 			<div class="choose-list-funds choose-list">
 				<a href="${pageContext.request.contextPath}/manage/getAllProject"><div class="f-bar1">目前的募款清單</div></a>
-<!-- 				<a href=""><div class="f-bar2">f2</div></a> -->
+				<a href="${pageContext.request.contextPath}/createProjectFirst"><div class="f-bar2">新增一項募資專案</div></a>
 <!-- 				<a href=""><div class="f-bar3">f3</div></a> -->
 			</div>
 		</div>

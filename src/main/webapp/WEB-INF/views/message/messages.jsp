@@ -28,13 +28,25 @@ p {
 .messageT {
 	height: 50px;
 	font-size: 20px
+<<<<<<< Updated upstream
+=======
+	
+}
+.messagebar:nth-child(odd){
+	background-color: 	#E8E8E8	;
+	color: white;
+>>>>>>> Stashed changes
 }
 </style>
 </head>
 <body>
 	<jsp:include page="../fragment/menu.jsp"></jsp:include>
 	
+<<<<<<< Updated upstream
 	<div id="messageBackground">
+=======
+	<div id="messageBackground" >
+>>>>>>> Stashed changes
 		<form type="get"
 			action="${pageContext.request.contextPath}/queryMessages"
 			id="search-bar" style="text-align: center">
@@ -47,7 +59,11 @@ p {
 				style="display: inline-block; text-align: left; width: 80%; border-style: none">
 				<div id="query" class="messageT"
 					style="display: inline-block; text-align: center; width: 10%">
+<<<<<<< Updated upstream
 					<a href="${pageContext.request.contextPath}/messages">全部主題</a>
+=======
+					<a href="${pageContext.request.contextPath}/createDate">全部主題</a>
+>>>>>>> Stashed changes
 				</div>
 				<c:forEach var='messageCategory' items='${categoryList}'>
 					<div id="query${ messageCategory }" class="messageT"
@@ -58,6 +74,7 @@ p {
 				</c:forEach>
 				<div id="query3" class="messageT"
 					style="display: inline-block; text-align: center; width: 10%">
+<<<<<<< Updated upstream
 					<a href="${pageContext.request.contextPath}/messageLike">讚數排序</a>
 				</div>
 				<div id="query1" class="messageT"
@@ -66,6 +83,17 @@ p {
 				</div>
 				<div id="query2" class="messageT"
 					style="display: inline-block; text-align: center; width: 10%">
+=======
+					<a href="${pageContext.request.contextPath}/messageLike">人氣文章</a>
+				</div>
+				<%-- <div id="query1" class="messageT"
+					style="display: inline-block; text-align: center; width: 10%">
+					<a href="${pageContext.request.contextPath}/createDate">時間排序</a>
+				</div> --%>
+				<div style="display: inline-block; text-align: center; width: 45%"></div>
+				<div id="query2" class="messageT"
+					style="display: inline-block; text-align:center; width: 10%">
+>>>>>>> Stashed changes
 					<a href='${pageContext.request.contextPath}/messages/add'>新增文章</a>
 				</div>
 			</div>
@@ -96,14 +124,21 @@ p {
 			<c:forEach var='message' items='${messages}' varStatus="Id">
 				<c:if test="${message.messageDelete==1}">
 
+<<<<<<< Updated upstream
 					<div id="${Id.count}"
 						style="display: inline-block; text-align: center; width: 80%; border-style: none; border-color: yellow; height: px; font-size: 25px">
 						<div style="display: inline-block; text-align: center; width: 9%">
+=======
+					<div class="messagebar"
+						style="display: inline-block; text-align: center; width: 80%; border-style: none; border-color: yellow; height: px; font-size: 25px; padding:20px 0px">
+						<div style="display: inline-block; text-align: center; width: 9% ;padding-top:45px">
+>>>>>>> Stashed changes
 							<a
 								href='${pageContext.request.contextPath}/messages/${messageCategory}'>${message.messageCategory}</a><br>
 						</div>
 						<div style="display: inline-block; text-align: left; width: 5%"></div>
 
+<<<<<<< Updated upstream
 						<div style="display: inline-block; text-align: left; width: 50%;">
 							<a href="<spring:url value='/message?id=${message.messageId}' />">
 								<div id="mt"
@@ -111,16 +146,34 @@ p {
 							</a> <a
 								href="<spring:url value='/message?id=${message.messageId}' />">
 								<div id="viewArea">${message.messageContent}</div>
+=======
+						<div style="display: inline-block; text-align: left; width: 50%;vertical-align:top;color: #428bca" >
+							<a href="<spring:url value='/message?id=${message.messageId}' />">
+								<div class="mt"
+									style="display: inline-block; text-align: center; font-size: 30px;">${message.messageTitle}</div>
+							</a> <a
+								href="<spring:url value='/message?id=${message.messageId}' />">
+								<div id="viewArea" class="viewAreas">${message.messageContent}</div>
+>>>>>>> Stashed changes
 							</a>
 						</div>
 						<div style="display: inline-block; text-align: left; width: 1%">
 						</div>
+<<<<<<< Updated upstream
 						<div style="display: inline-block; text-align: left; width: 7%">
 							${message.messageLike }</div>
 						<div style="display: inline-block; text-align: center; width: 9%">
 							<span title="發文者">${message.memberBean.memberName }</span>
 						</div>
 						<div style="display: inline-block; text-align: center; width: 15%">
+=======
+						<div style="display: inline-block; text-align: left; width: 7% ;padding-top:45px">
+							${message.messageLike }</div>
+						<div style="display: inline-block; text-align: center; width: 9%;padding-top:45px ;color:black">
+							<span title="發文者">${message.memberBean.memberName }</span>
+						</div>
+						<div style="display: inline-block; text-align: center; width: 15%;padding-bottom:15px;color:black">
+>>>>>>> Stashed changes
 							${message.createDate }
 						</div>
 					</div>
@@ -145,12 +198,20 @@ p {
 		$("#query").mouseout(function() {
 			$(this).css("border-bottom", "0px solid ");
 		})
+<<<<<<< Updated upstream
 		$("#query1").mouseover(function() {
+=======
+/* 		$("#query1").mouseover(function() {
+>>>>>>> Stashed changes
 			$(this).css("border-bottom", "3px solid red");
 		})
 		$("#query1").mouseout(function() {
 			$(this).css("border-bottom", "0px solid ");
+<<<<<<< Updated upstream
 		})
+=======
+		}) */
+>>>>>>> Stashed changes
 		$("#query2").mouseover(function() {
 			$(this).css("border-bottom", "3px solid red");
 		})
@@ -180,7 +241,11 @@ p {
 		}
 		$(function() {
 			var len = 19; // 超過50個字以"..."取代
+<<<<<<< Updated upstream
 			$("#mt").each(function(i) {
+=======
+			$(".mt").each(function(i) {
+>>>>>>> Stashed changes
 				if ($(this).text().length > len) {
 					$(this).attr("title", $(this).text());
 					var text = $(this).text().substring(0, len - 1) + "...";
@@ -189,8 +254,13 @@ p {
 			});
 		});
 		$(function() {
+<<<<<<< Updated upstream
 			var len = 23; // 超過50個字以"..."取代
 			$("#viewArea").each(function(i) {
+=======
+			var len = 45; // 超過50個字以"..."取代
+			$(".viewAreas").each(function(i) {
+>>>>>>> Stashed changes
 				if ($(this).text().length > len) {
 					$(this).attr("title", $(this).text());
 					var text = $(this).text().substring(0, len - 1) + "...";
@@ -198,6 +268,11 @@ p {
 				}
 			});
 		});
+<<<<<<< Updated upstream
+=======
+
+		 
+>>>>>>> Stashed changes
 	</script>
 	<jsp:include page="../fragment/bottom.jsp"></jsp:include>
 </body>

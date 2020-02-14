@@ -7,61 +7,136 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
 <style type="text/css">
+label
+:not
+ 
+(
+#fake
+ 
+)
+{
+color
+:
+ 
+#428bca
+;
+
+	
+font-size
+:
+ 
+16
+px
+;
+
+
+}
+input[type="checkbox"] {
+	height: 20px;
+	width: 20px;
+}
+
+input, select {
+	height: 35px;
+	border-radius: 5px;
+}
+
+textarea {
+	border-radius: 5px;
+}
+
+span {
+	font-size: 16px;
+}
+
+.inputLarge {
+	width: 500px;
+}
+
+.category-content {
+	margin-bottom: 50px;
+}
+
 fieldset {
-	border: 1px solid rgb(255, 232, 57);
-	width: 400px;
-	margin: auto;
+	padding-left: 170px;
 }
 
-.inner {
-	vertical-align: top;
+label {
+	position: relative;
 }
 
-#status {
-	width: 80px;
-	height: 30px;
+#fileImage {
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+}
+
+#btn {
+	margin-right: 5px;
+	height: 23px;
+	border-radius: 0px;
+}
+
+#text {
+	font-weight: lighter;
 }
 </style>
 <title>Products</title>
-<link rel='stylesheet'
-	href='${pageContext.request.contextPath}/css/movie.css' type="text/css" />
+
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
-<body style="background-color: #fffcfa;">
+<body>
 
-	<section>
-		<div class="container">
-			<h1 style="text-align: center">修改產品資料</h1>
+	<jsp:include page="../backstage.jsp" />
+
+
+
+
+	<section class="container"
+		style="position: absolute; left: 17%; width: 80%; padding-top: 100px">
+
+		<div class="category-content">
+			<h1 style="text-align: center; margin: 0">商品修改</h1>
 		</div>
-	</section>
-	<hr
-		style="height: 1px; border: none; color: #333; background-color: #333;">
-	<section class="container">
+
 		<!-- 三個地方要完全一樣 -->
 		<form:form method='POST' modelAttribute="ProductBean"
 			class='form-horizontal' enctype="multipart/form-data">
 			<fieldset>
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for='title'>
-						書名 </label>
+						商品 </label>
 					<div class="col-lg-10">
 						<form:input id="title" path="title" type='text'
-							class='form:input-large' />
+							class='inputLarge' />
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label class="control-label col-lg-2 col-lg-2" for='author'>
-						作者 </label>
+						電影 </label>
 					<div class="col-lg-10">
 						<form:input id="author" path="author" type='text'
-							class='form:input-large' />
+							class='inputLarge' />
 					</div>
 				</div>
+
+				<div class="form-group">
+					<label class="control-label col-lg-2 col-lg-2"
+						for='productDescription'> 商品描述 </label>
+					<div class="col-lg-10">
+						<form:textarea id="productDescription" path="productDescription"
+							rows="5" cols="30" class='inputLarge' />
+					</div>
+				</div>
+
 
 
 
@@ -69,11 +144,16 @@ fieldset {
 					<label class='control-label col-lg-2 col-lg-2' for="category">
 						類別</label>
 					<div class='col-lg-10'>
-						<form:input id="category" path="category" type='text'
-							class='form:input-large' />
+						<%-- <form:input id="category" path="category" type='text'
+							class='form:input-large' /> --%>
+						<div class='col-lg-10'>
+							<form:select style="margin-left: -13px;" path="category" class='form:input-large'>
+								<form:option value="-1" label="請挑選" />
+								<form:options items="${categoryList}" />
+							</form:select>
+						</div>
 					</div>
 				</div>
-
 
 
 
@@ -83,7 +163,7 @@ fieldset {
 						價格</label>
 					<div class='col-lg-10'>
 						<form:input id="price" path="price" type='text'
-							class='form:input-large' />
+							class='inputLarge' />
 					</div>
 				</div>
 
@@ -92,34 +172,61 @@ fieldset {
 						庫存</label>
 					<div class='col-lg-10'>
 						<form:input id="stock" path="stock" type='text'
-							class='form:input-large' />
+							class='inputLarge' />
 					</div>
 				</div>
-				<div class="form-group">
+				<%-- <div class="form-group">
 					<label class='control-label col-lg-2 col-lg-2' for="fileName">
 						圖片名稱</label>
 					<div class='col-lg-10'>
 						<form:input id="fileName" path="fileName" type='text'
 							class='form:input-large' />
 					</div>
-				</div>
+				</div> --%>
 
 				<div class="form-group">
 					<label class='control-label col-lg-2 col-lg-2' for="productImage">
 						圖片 </label>
 					<div class='col-lg-10'>
-						<form:input id="productImage" path="productImage" type='file'
+						<form:input  id="fileName" path="fileName" type='text'
+							disabled="true" style="border: aliceblue;background: #f1f1f1;font-size:12px;"
 							class='form:input-large' />
+						<form:input id="productImage" path="productImage" type='file'
+							class='inputLarge' />
+						
+					</div>
+				</div>
+				<div class="form-group">
+					<label class='control-label col-lg-2 col-lg-2' for="productImage2">
+						小圖(1) </label>
+					<div class='col-lg-10'>
+						<form:input id="fileName2" path="fileName2" type='text'
+							disabled="true" style="border: aliceblue;background: #f1f1f1;font-size:12px;"
+							class='form:input-large' />
+						<input id="productImage2" name="productImage2" type='file'
+							class='inputLarge' />
 
 					</div>
 				</div>
+				<div class="form-group">
+					<label class='control-label col-lg-2 col-lg-2' for="productImage3">
+						小圖(2) </label>
+					<div class='col-lg-10'>
+						<form:input id="fileName3" path="fileName3" type='text'
+							disabled="true" style="border: aliceblue;background: #f1f1f1;font-size:12px;"
+							class='form:input-large' />
+						<input id="productImage3" name="productImage3" type='file'
+							class='inputLarge' /> 
+					</div>
+				</div>
+
 
 
 				<div class="form-group">
 					<label class='control-label col-lg-2 col-lg-2' for="status">
 						狀態</label>
 					<div class='col-lg-10'>
-						<form:select class='form:select-large' id="status" path="status">
+						<form:select class='form:input-large' id="status" path="status">
 							<form:option selected="true" value="-1" disabled="true"
 								label="請選擇" />
 							<form:option value="上架中" label="上架" />

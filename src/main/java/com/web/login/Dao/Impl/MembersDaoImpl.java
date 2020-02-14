@@ -48,12 +48,12 @@ public class MembersDaoImpl implements MembersDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<MembersBean> getMemberByEmail(String keyword){
-		String hql="FROM MembersBean mb WHERE mb.memberName like '"+ keyword +" %'";
+		String hql="FROM MembersBean mb WHERE mb.memberName like '%"+keyword+"%'";
 //		List<MembersBean> list = new ArrayList<>();
 		Session session = factory.getCurrentSession();
 		List<MembersBean> list = session.createQuery(hql).getResultList();
 //		list = session.createQuery(hql).getResultList();	
-		System.out.println("在DAO印出參數 :KEYWORD:" + keyword);
+
 		
 		return list ;
 		
@@ -97,12 +97,10 @@ public class MembersDaoImpl implements MembersDao {
 		System.out.println("會員狀態為:" +member.getMemberMode());
 		String hql = "from MembersBean where email = :email";
 		Session session = factory.getCurrentSession();
-		System.out.println("modifyMembersy在DAO取出信箱 : "+member.getEmail());
 		MembersBean mem = (MembersBean) session.createQuery(hql)
 				.setParameter("email", member.getEmail())
 				.getSingleResult();			
 			mem.setMemberMode(member.getMemberMode());
-
 		session.update(mem);
 		return true;
 	}
@@ -111,7 +109,7 @@ public class MembersDaoImpl implements MembersDao {
 	public boolean updateMembers(MembersBean member) {
 		String hql = "from MembersBean where email = :email";
 		Session session = factory.getCurrentSession();
-		System.out.println("取出信箱 : "+member.getEmail());
+
 		MembersBean mem = (MembersBean) session.createQuery(hql)
 				.setParameter("email", member.getEmail())
 				.getSingleResult();
@@ -125,7 +123,6 @@ public class MembersDaoImpl implements MembersDao {
 			if(member.getPassword() !="") {
 				mem.setPassword(member.getPassword());
 			}
-			System.out.println("更新時秀出在Dao取出照片 :"+ member.getmemImage());
 		session.update(mem);
 		return true;
 	}

@@ -70,7 +70,7 @@ public class ProductController {
 	// 產品清單頁面 (選單查詢)
 	@RequestMapping("/selectQuery")
 	public String seleteQuery(String category,Model model) {
-		System.out.println("11111111111111111");
+		
 		List<ProductBean> list = service.getselectQuery(category);
 		model.addAttribute("products", list);
 		System.out.println("list="+list);
@@ -131,8 +131,10 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/products/add", method = RequestMethod.POST)
-	public String processAddNewProductForm(@ModelAttribute("productbean") ProductBean bb) {
+	public String processAddNewProductForm(@RequestParam("productImage2") MultipartFile productImage2,@RequestParam("productImage3") MultipartFile productImage3,@ModelAttribute("productbean") ProductBean bb) {
 		System.out.println("123");
+		
+		
 		MultipartFile productImage = bb.getProductImage();
 		String originalFilename = productImage.getOriginalFilename();
 		bb.setFileName(originalFilename);
@@ -147,6 +149,37 @@ public class ProductController {
 				throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
 			}
 		}
+			
+		//新增圖2
+		String originalFilename2 = productImage2.getOriginalFilename();
+		bb.setFileName2(originalFilename2);
+		// 建立Blob物件，交由Hibernate寫入資料庫
+		if (productImage2 != null && !productImage2.isEmpty()) {
+			try {
+				byte[] b = productImage2.getBytes();
+				Blob blob = new SerialBlob(b);
+				bb.setCoverImage2(blob);
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+			}
+		}
+		
+		//新增圖2
+				String originalFilename3 = productImage3.getOriginalFilename();
+				bb.setFileName3(originalFilename3);
+				// 建立Blob物件，交由Hibernate寫入資料庫
+				if (productImage3 != null && !productImage3.isEmpty()) {
+					try {
+						byte[] b = productImage3.getBytes();
+						Blob blob = new SerialBlob(b);
+						bb.setCoverImage3(blob);
+					} catch (Exception e) {
+						e.printStackTrace();
+						throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+					}
+				}
+		
 
 		service.addProduct(bb);
 
@@ -166,6 +199,8 @@ public class ProductController {
 		return "redirect://products";
 
 	}
+
+
 
 //	@InitBinder
 //	public void whiteListing(WebDataBinder binder) {
@@ -224,6 +259,41 @@ public class ProductController {
 				throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
 			}
 		}
+		
+		
+		//圖片2
+		MultipartFile productImage2 = bb.getProductImage2();
+		String originalFilename2 = productImage2.getOriginalFilename();
+		bb.setFileName2(originalFilename2);
+		// 建立Blob物件，交由Hibernate寫入資料庫
+		if (productImage2 != null && !productImage2.isEmpty()) {
+			try {
+				byte[] b = productImage2.getBytes();
+				Blob blob = new SerialBlob(b);
+				bb.setCoverImage2(blob);
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+			}
+		}
+		
+		
+		//圖片3
+		MultipartFile productImage3 = bb.getProductImage3();
+		String originalFilename3 = productImage3.getOriginalFilename();
+		bb.setFileName3(originalFilename3);
+		// 建立Blob物件，交由Hibernate寫入資料庫
+		if (productImage3 != null && !productImage3.isEmpty()) {
+			try {
+				byte[] b = productImage3.getBytes();
+				Blob blob = new SerialBlob(b);
+				bb.setCoverImage3(blob);
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new RuntimeException("檔案上傳發生異常:" + e.getMessage());
+			}
+		}
+		
 
 		service.updateProduct(bb);
 
@@ -243,7 +313,8 @@ public class ProductController {
 		model.addAttribute("product", service.getProductById(productId));
 		return "redirect://productsM";
 	}
-
+	
+	//取照片1
 	@RequestMapping(value = "/getPicture/store/{productId}", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getPicture(HttpServletResponse resp, @PathVariable Integer productId) {
 
@@ -258,6 +329,96 @@ public class ProductController {
 		if (bean != null) {
 			Blob blob = bean.getCoverImage();
 			filename = bean.getFileName();
+			if (blob != null) {
+				try {
+					len = (int) blob.length();
+					media = blob.getBytes(1, len);
+				} catch (SQLException e) {
+					throw new RuntimeException("ProductController的getPiture()發生SQLException:" + e.getMessage());
+				}
+			} else {
+				media = toByteArray(filePath);
+				filename = filePath;
+			}
+
+		} else {
+			media = toByteArray(filePath);
+			filename = filePath;
+		}
+		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+		String mimeType = context.getMimeType(filename);
+
+		MediaType mediaType = MediaType.valueOf(mimeType);
+		System.out.println("mediaType = " + mediaType);
+
+		headers.setContentType(mediaType);
+
+		ResponseEntity<byte[]> responseEntity = new ResponseEntity<byte[]>(media, headers, HttpStatus.OK);
+
+		return responseEntity;
+
+	}
+	
+	//取照片2
+	@RequestMapping(value = "/getPicture2/store/{productId}", method = RequestMethod.GET)
+	public ResponseEntity<byte[]> getPicture2(HttpServletResponse resp, @PathVariable Integer productId) {
+
+		String filePath = "/images/noImage.jpg";
+		byte[] media = null;
+		HttpHeaders headers = new HttpHeaders();
+
+		String filename = "";
+		int len = 0;
+		ProductBean bean = service.getProductById(productId);
+
+		if (bean != null) {
+			Blob blob = bean.getCoverImage2();
+			filename = bean.getFileName2();
+			if (blob != null) {
+				try {
+					len = (int) blob.length();
+					media = blob.getBytes(1, len);
+				} catch (SQLException e) {
+					throw new RuntimeException("ProductController的getPiture()發生SQLException:" + e.getMessage());
+				}
+			} else {
+				media = toByteArray(filePath);
+				filename = filePath;
+			}
+
+		} else {
+			media = toByteArray(filePath);
+			filename = filePath;
+		}
+		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+		String mimeType = context.getMimeType(filename);
+
+		MediaType mediaType = MediaType.valueOf(mimeType);
+		System.out.println("mediaType = " + mediaType);
+
+		headers.setContentType(mediaType);
+
+		ResponseEntity<byte[]> responseEntity = new ResponseEntity<byte[]>(media, headers, HttpStatus.OK);
+
+		return responseEntity;
+
+	}
+	
+	//取照片3
+	@RequestMapping(value = "/getPicture3/store/{productId}", method = RequestMethod.GET)
+	public ResponseEntity<byte[]> getPicture3(HttpServletResponse resp, @PathVariable Integer productId) {
+
+		String filePath = "/images/noImage.jpg";
+		byte[] media = null;
+		HttpHeaders headers = new HttpHeaders();
+
+		String filename = "";
+		int len = 0;
+		ProductBean bean = service.getProductById(productId);
+
+		if (bean != null) {
+			Blob blob = bean.getCoverImage3();
+			filename = bean.getFileName3();
 			if (blob != null) {
 				try {
 					len = (int) blob.length();
@@ -333,7 +494,7 @@ public class ProductController {
 
 		String productIdStr = request.getParameter("productId");
 		int productId = Integer.parseInt(productIdStr.trim());
-
+		System.out.println("productId"+productId);
 		
 		String qtyStr = request.getParameter("qty");
 		Integer qty = 0;
@@ -346,6 +507,7 @@ public class ProductController {
 		try {
 			// 進行資料型態的轉換
 			qty = Integer.parseInt(qtyStr.trim());
+			System.out.println("qty"+qty);
 		} catch (NumberFormatException e) {
 			throw new ServletException(e);
 		}
@@ -353,9 +515,16 @@ public class ProductController {
 		
 
 		System.out.println(productId);
-		// 將訂單資料(價格，數量，折扣與BookBean)封裝到OrderItemBean物件內
+		 //將訂單資料(價格，數量，折扣與BookBean)封裝到OrderItemBean物件內
 		OrderItemBean oib = new OrderItemBean(null, null, productId, null, qty, bean.getPrice(), null,
 				bean.getTitle(), bean.getAuthor(),bean.getCompanyBean().getName(),bean.getStock());
+//		oib.setBookId(productId);
+//		oib.setQuantity(qty);
+//		oib.setUnitPrice(bean.getPrice());
+//		oib.setTitle(bean.getTitle());
+//		oib.setAuthor(bean.getAuthor());
+//		oib.setCompanyName(bean.getCompanyBean().getName());
+//		oib.setStock(bean.getStock());
 		
 		// 將OrderItem物件內加入ShoppingCart的物件內
 		cart.addToCart(productId, oib);
@@ -363,6 +532,68 @@ public class ProductController {
 		return "redirect://product?id=" + productId;
 
 	}
+	// 商城頁面加入購物車
+		@PostMapping("/pgaddToCart")
+		public String pgAddCart(Model model, HttpServletRequest request, HttpSession session) throws ServletException {
+			
+			
+			if (session == null) {
+				// 請使用者登入
+				
+				return "_01_register/register.jsp";
+			}
+		
+			ShoppingCart cart = (ShoppingCart) session.getAttribute("ShoppingCart");
+			if (cart == null) {
+				// 就新建ShoppingCart物件
+				cart = new ShoppingCart();
+				// 並將此新建ShoppingCart的物件放到session物件內，成為它的屬性物件
+				session.setAttribute("ShoppingCart", cart);
+			
+			
+			}
+
+			System.out.println("=======");
+			System.out.println(cart);
+			System.out.println("=======");
+
+			String pgIdStr = request.getParameter("pgId");
+			
+			int pgId = Integer.parseInt(pgIdStr.trim());
+			
+			
+
+			
+			String qtyStr = request.getParameter("qty");
+			Integer qty = 0;
+			
+
+			ProductBean bean = service.getProductById(pgId);
+			
+			System.out.println("pgId"+pgId);
+
+			try {
+				// 進行資料型態的轉換
+				qty = Integer.parseInt(qtyStr.trim());
+			} catch (NumberFormatException e) {
+				throw new ServletException(e);
+			}
+			
+			
+
+			System.out.println("productsId="+pgId);
+			
+			
+			// 將訂單資料(價格，數量，折扣與BookBean)封裝到OrderItemBean物件內
+			OrderItemBean oib = new OrderItemBean(null, null, pgId, null, qty, bean.getPrice(), null,
+					bean.getTitle(), bean.getAuthor(),bean.getCompanyBean().getName(),bean.getStock());
+			
+			// 將OrderItem物件內加入ShoppingCart的物件內
+			cart.addToCart(pgId, oib);
+			System.out.println(ReflectionToStringBuilder.toString(oib));
+			return "redirect://products";
+
+		}
 	
 	@RequestMapping("/CartNum")
 	public @ResponseBody Integer CartNum(HttpServletRequest request,HttpSession session){

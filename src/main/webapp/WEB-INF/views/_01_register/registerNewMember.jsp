@@ -59,7 +59,7 @@
     padding: 0;
     border-bottom: 1px solid black;
 }
-	input:not(.allBt){
+	input:not(.allBt .oneEntry){
 	margin: 0px 10px;
 	font-size: 24px;
     margin: 0px 10px 10px 10px;
@@ -135,13 +135,29 @@
 				<div  style="font-size:8px;"> 已閱讀並同意：
 				<b id="focusToBlue" >使用者協定</b>和
 				<b id="focusToBlue" > 隱私政策</b></div>
+			<br><input  id="oneEntry"type="button" onclick="oneEntry1()" value="DEMO用註冊會員"/>
 		</div>
 		</div>
 </form:form>
 </div>
-<jsp:include page="../fragment/bottom.jsp" /> 
+
+
+	<input type="button" value="DEMO用" onclick="oneButtonInport()">
+<div style="bottom:0px;"><jsp:include page="../fragment/bottom.jsp" /></div> 
 		<script	src="${pageContext.request.contextPath }/js/registerNewMember.js"></script>
 		<script>
+
+		function oneEntry1() {
+			 var email = "jeter@gmail.com";
+			 var pass = "Sa123456";
+			 var name = "基特";
+			 $("#email").val(email);
+			 $("#password").val(pass);
+			 $("#password1").val(pass);
+			 $("#memberName").val(name); 
+			}
+
+		
 		
 		function registerOK(){		
 			alert("註冊成功")}
@@ -235,6 +251,18 @@
 				 })
 			})
 		})
+		
+		function oneButtonInport() {
+			var name = "Jeter";
+			var em = "Jeter1983@gmail.com";
+			var pwd = "Sa123456"
+			var pwd1 = "Sa123456"
+			$("#memberName").val(name);			
+			$("#email").val(em);
+			$("#password").val(pwd);
+			$("#password1").val(pwd1);
+		}
+		
 		
 		</script>	 
 </body>
