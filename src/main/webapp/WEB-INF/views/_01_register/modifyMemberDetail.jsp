@@ -119,6 +119,11 @@ top:2px;
 .name{
  padding:100px 0px 0px 17%
 }
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+}
 </style>
 <meta charset="UTF-8">
 <title>更新會員資料</title>
@@ -127,7 +132,7 @@ top:2px;
 <jsp:include page="../backstage.jsp" />
 <div class="name">
 <div align='center'>
-<h3>更新會員資料</h3>
+<h1>更新會員資料</h1>
 <hr>
 		<form method='POST' id="modifyMember" action="${pageContext.request.contextPath}/_01_register/DomodifyMember"
 			enctype='multipart/form-data'>
@@ -141,8 +146,22 @@ top:2px;
     			<tr><td width='60'>生日:<td width='360'><input type="date" name="birthDay" id="birthDay" value="${sessionScope.members.birthDay}" /><td>
    				<tr><td width='60'>性別:<td width='360'>
 				<input type="radio"  id="gender" name="gender" value="男生" />男生 
+				
  				<input type="radio"  id="gender" name="gender" value="女生" />女生    		   				
    				<td>
+<%--    				<c:if ${sessionScope.members.gender =='女生'}>CHECKED</c:if> --%>
+   				<script>
+
+   				$(document).ready(function() {
+
+   					if(${sessionScope.members.gender =='男生'}){
+   						$("input[name='gender'][value=男生]").attr("checked",true); 
+   					}else if(${sessionScope.members.gender =='女生'}){
+   						$("input[name='gender'][value=女生]").attr("checked",true); 
+   					}
+   				});
+   				//這個alert 語法是錯誤的!!!
+   				</script>
    				<tr><td width='60'>照片:<td width='360'><input type='file' name="memImage"
 				id="memberImage"  class='form:input-large' /> 
 				<tr><td width='60'><td width='360'>

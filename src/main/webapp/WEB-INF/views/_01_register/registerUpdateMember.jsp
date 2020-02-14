@@ -60,12 +60,7 @@ input:not (.allBt ){
 	border-radius: 5px;
 	margin: 0px 10px 10px 10px;
 }
-.memimg{
-	
- width:160;
- height:160;
- border-radius: 50%;
-}
+
 .DEMOONE{
 	position:absolute;
 	top:100px;
@@ -93,7 +88,13 @@ b {
 /*     padding: 10px 30px; */
 /*     border-radius: 5px; */
 /* } */
+.showImg{
+    border-radius: 50%;
+ 	width:130;
+ 	height:130;
+ 	border-radius: 50%;
 
+}
 </style>
 </head>
 <body>
@@ -124,9 +125,9 @@ b {
 						<td class="AllText">聯絡信箱
 						<td class="AllText">生日
 					<tr>
-						<td><input name="email" id="email" type="email"
-							value='${sessionScope.members.email}' />
-						<td><input type="date" name="birthDay" id="birthDay" />
+						<td>${sessionScope.members.email}
+<%-- 						<input name="email" id="email" type="email"	value='${sessionScope.members.email}' disabled="disabled" /> --%>
+						<td><input type="date" name="birthDay" id="birthDay" value="${sessionScope.members.birthDay}"/>
 					<tr>
 						<td class="AllText">個人照片
 						<td class="AllText">預覽照片
@@ -139,10 +140,11 @@ b {
 							<BR>
 							<BR>
 							<input type="submit" class="allBt" id="bt1" value="確認" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="reset" class="allBt" id="bt2" value="清空" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<td><img style="dsiplay: inline-block" id="oldMemberImage"
+							<input type="reset" class="allBt" id="bt2" value="復原" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<td>
+						<img class="showImg" style="dsiplay: inline-block" id="oldMemberImage"
 							src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
-							<img id="preview_memImage" src="#" style="display: none" />
+							<img class="showImg" id="preview_memImage" src="#" style="display: none" />
 					<tr>
 						<td>
 							
@@ -157,6 +159,16 @@ b {
 	<jsp:include page="../fragment/bottom.jsp" />
 
 	<script>
+	
+		$(document).ready(function() {
+
+				if(${sessionScope.members.gender =='男生'}){
+					$("input[name='gender'][value=男生]").attr("checked",true); 
+				}else if(${sessionScope.members.gender =='女生'}){
+					$("input[name='gender'][value=女生]").attr("checked",true); 
+				}
+			});
+	
 		$("#memberImage").change(function() {
 			//當檔案改變後，做一些事 
 			readURL(this); // this代表<input id="memberImage">
@@ -176,11 +188,9 @@ b {
 
 		function oneButtonInport() {
 			var name = "王曉明";
-			var em = "eeit11040@gmail.com";
 			var gerd = 	"男生";
 			var birt = "1988-01-26";
 			$("#memberName").val(name);			
-			$("#email").val(em);
 			$("input[name='gender'][value=男生]").attr("checked",true); 
 			$("#birthDay").val(birt);
 		}
