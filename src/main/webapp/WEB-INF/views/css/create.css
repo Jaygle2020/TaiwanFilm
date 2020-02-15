@@ -6,11 +6,6 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
   font-size: 100%;
   vertical-align: baseline;
 }
-body{
-	background:url('../img/wall1.jepg')
-	
-}
-
 input,textarea{
 	border-radius:5px;
 	

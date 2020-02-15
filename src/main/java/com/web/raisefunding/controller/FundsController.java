@@ -342,12 +342,12 @@ public class FundsController {
 		infoBean.setImgName04(util.getFileName(file3));
 		ProjectBean projBean = propService.GetProjBean(projectId);
 		infoBean.setProjBean(projBean);
-//		if(propService.getProjectInfo(projectId).get(0)!=null) {
-//			propService.updateProjInfo(infoBean);
-//		}else {  這裡有一個專案介紹表單重複建立的問題 待解決
+		if(propService.checkProjectInfo(projectId)) {
+			propService.updateProjInfo(infoBean);
+		}else {  //這裡有一個專案介紹表單重複建立的問題 待解決
 		propService.createProjInfo(infoBean);
-		// 這裡想要判斷有專案就修改 沒專案就新增 待改
-//		}
+//		 這裡想要判斷有專案就修改 沒專案就新增 待改
+		}
 		model.addAttribute("ProjectBean", projBean);
 		return "raiseFunding/createProject";
 	}

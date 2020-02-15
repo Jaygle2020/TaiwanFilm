@@ -99,8 +99,8 @@ public class RootAppConfig {
 				
 		});
 
-			factory.setDataSource(mySQLDataSource());
-			factory.setHibernateProperties(additionalPropertiesMySQL());	
+			factory.setDataSource(msSQLDataSource());
+			factory.setHibernateProperties(additionalPropertiesMsSQL());	
 
 		return factory;
 	}

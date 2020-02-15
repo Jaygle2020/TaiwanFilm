@@ -34,6 +34,14 @@ private Blob image03;
 @JoinColumn(name="projectId", referencedColumnName="projectId")
 private ProjectBean projBean;
 
+
+
+public Integer getProjInfoId() {
+	return projInfoId;
+}
+public void setProjInfoId(Integer projInfoId) {
+	this.projInfoId = projInfoId;
+}
 public ProjectBean getProjBean() {
 	return projBean;
 }

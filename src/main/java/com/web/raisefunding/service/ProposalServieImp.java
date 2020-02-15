@@ -117,9 +117,16 @@ public class ProposalServieImp implements ProposalService {
 	
 	@Transactional
 	@Override
+	public boolean checkProjectInfo(Integer projectId) {
+		return infoDao.checkProjectInfo(projectId);
+	}
+	
+	@Transactional
+	@Override
 	public int createProjInfo(ProjectInfoBean infoBean) {
 		return infoDao.createProjInfo(infoBean);
 	}
+	
 	
 	@Transactional
 	@Override
