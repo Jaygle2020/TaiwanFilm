@@ -116,7 +116,8 @@
 									<span class="shipping" data-shipping="${dpBean.shipping}">沒有運送服務</span>
 									<div>
 									<span class="deliverDate">預計寄送時間 ${dpBean.dliverDate}</span> 
-									<span class="limit">限量 <strong>${dpBean.limitNum}</strong>份</span>
+									<span class="limit">限量 <strong>${dpBean.limitNum}</strong>份
+</span>
 									</div>
 								</div>
 							</div>
@@ -393,11 +394,12 @@ function dpPlanForEach(dpBeans){
 			"<div><h2 class='donateMoney'>$"+dpBean.donateMoney+"</h2></div>"+
 			"<div class='projectThumb'><img src='${pageContext.request.contextPath}"+
 			"/getDonatePlan/photo/"+dpBean.planId+"?t="+Math.random()+"'></div><div class='planText'><div class='description'>"+
-			dpBean.donateDescription+"</div><span class='shipping'"+ 
-			"data-shipping='"+dpBean.shipping+"'>沒有運送服務</span>"+
+			dpBean.donateDescription+"</div><hr><span class='shipping'"+ 
+			"data-shipping='"+dpBean.shipping+"'>沒有運送服務</span><div>"+
 			"<span class='deliverDate'>預計寄送時間 "+dpBean.dliverDate+"</span>"+
-			"<span class='limit'>限量 <strong>"+dpBean.limitNum+"</strong>份</span></div></div>")
-						
+			"<span class='limit'>限量 <strong>"+dpBean.limitNum+"</strong>份</span></div></div></div>"
+			)
+								
 		$(".dplan-view").append(dplan);
 	}
 }

@@ -168,6 +168,8 @@ address, ol, p, ul {
 }
 .dplan-view{
 	padding:15px;
+	margin:auto;
+	
 }
 
 .plan{
@@ -200,6 +202,7 @@ address, ol, p, ul {
     position: relative;
     display: block;
       height: 100px;
+      margin:auto;
 }
 .plan .planText .description{
 	white-space: pre-line;
@@ -209,8 +212,6 @@ address, ol, p, ul {
 	
 }
 .plan .planText .shipping{
-      position: absolute;
-    bottom: -47px;
     right: 0px;
     font-size: 14px;
     font-weight: bold;
@@ -219,17 +220,15 @@ address, ol, p, ul {
 }
 
 .plan .planText .deliverDate{
-     left: 0px;
-    bottom: -71px;
-    position: absolute;
+    position:relative;
+    left: 0px;
     font-size: 14px;
     font-weight: bold;
     text-align: left;
 }
 .plan .planText .limit{
-  position: absolute;
-    right: -14px;
-    bottom: -70px;
+    position:relative;
+    right: 0px;
     font-size: 14px;
     font-weight: bold;
     text-align: left;
