@@ -177,7 +177,7 @@ address, ol, p, ul {
   background: linear-gradient(top bottom, white lightblue);
   border: 1px solid #cdcdcd;
   border-radius: 10px;
-  width: 250px;
+  width: 280px;
   height:400px;
   display: inline-block;
   text-align: center;
@@ -205,11 +205,8 @@ address, ol, p, ul {
       margin:auto;
 }
 .plan .planText .description{
-	white-space: pre-line;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-  
-	
+    overflow: hidden;
+    height: 75px;
 }
 .plan .planText .shipping{
     right: 0px;

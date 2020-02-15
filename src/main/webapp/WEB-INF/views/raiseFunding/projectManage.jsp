@@ -11,6 +11,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script
 	src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/UtilTool.js"  ></script>
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 <link rel="stylesheet"
@@ -25,63 +26,6 @@
 	href='${pageContext.request.contextPath}/css/movie.css' type="text/css" />
 
 <style>
-/* 
-
-.activity-content {
-	width: 100%;
-	padding: 10px;
-	border-radius: 10px;
-	margin: 10px;
-	font-weight: bold;
-	background: white;
-	display: inline-block;
-	height: 100px;
-}
-
-.activity-content-show {
-	width: 100%;
-	padding: 10px;
-	border-radius: 10px;
-	margin: 10px;
-	font-weight: bold;
-	display: inline-block;
-}
-
-.allActivityM-width {
-	width: 25%;
-	height: 200px;
-	display: inline-block;
-}
-
-.acitivityUpdateWidth {
-	width: 21%;
-	padding: 20px;
-	display: inline-block;
-	vertical-align: top;
-	text-align: center;
-	color: black;
-}
-
-.activityUpdateButton {
-	width: 7%;
-	display: inline-block;
-	margin-top: 12px;
-	text-align: center;
-	vertical-align: top;
-	padding-top: 5px;
-}
-
-.activityUpdateButtonStyle {
-	width: 100%;
-	color: white;
-	background-color: red;
-	padding: 3px;
-	border-radius: 3px
-} */
-
-
-
-
 
 body{
 		background-color: #f1f1f1;margin:0}
@@ -154,9 +98,6 @@ body{
 		.back-shopping:hover{background:#EA0082} 
 
 
-
-
-
 .content {
 	width: 90%;
 	background: white;
@@ -200,8 +141,8 @@ body{
 					<div class="content-area" >${cfBean.projBean.projectName}</div>
 					<div class="content-area">${cfBean.dateBegin}</div>
 					<div class="content-area">${cfBean.dateEnd}</div>
-					<div class="content-area">${cfBean.fundsNow}</div>
-					<div class="content-area">${cfBean.fundsGoal}</div>
+					<div class="content-area dollar" >${cfBean.fundsNow}</div>
+					<div class="content-area dollar" >${cfBean.fundsGoal}</div>
 					<div class="content-area">${cfBean.percent}</div>
 					<div class="content-area"><button id="${cfBean.projBean.projectId}">修改</button></div>
 				</div>
@@ -212,10 +153,11 @@ body{
 		</div>
 	</div>
 
-
-
 	<script>
-		$("button").click(
+	$(".dollar").each(function(){
+		this.innerText = formatNumber(this.innerText);
+	}) 
+	$("button").click(
 						function() {
 							var id = $(this).attr("id");
 							window.location.href = "${pageContext.request.contextPath}/updateProject/"

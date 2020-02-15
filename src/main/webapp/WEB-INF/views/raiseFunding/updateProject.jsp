@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
 <link rel=stylesheet type="text/css"
-	href="${pageContext.request.contextPath}/css/create.css">
+	href="${pageContext.request.contextPath}/css/createCss.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/menuStyle1.css" />
 <link rel="stylesheet" 
@@ -67,7 +67,7 @@
 								accept="image/jpeg,image/png,image/bmp">
 							<h2>專案影片 &nbsp; (注意某些私人youtube影片是不開放其他網站載入)</h2>
 							
-							<input type="text" name="vedio" style='width: 325px' placeholder="請輸入youtube影片連結網址"  value="https://www.youtube.com/watch?v=${ProjectBean.videoLink}">
+							<input type="text" name="vedio" style='width: 350px' placeholder="請輸入youtube影片連結網址"  value="https://www.youtube.com/watch?v=${ProjectBean.videoLink}">
 							<h2>募資目標金額</h2>
 							<p>
 								<input type="number" max="99999999" min="0"

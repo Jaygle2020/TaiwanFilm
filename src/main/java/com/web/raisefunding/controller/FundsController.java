@@ -168,25 +168,26 @@ public class FundsController {
 		dpBean.setDonateMoney(donateMoney);
 		dpBean.setLimitNum(limitNum);
 		dpBean.setShipping(shipping);
-		if (!donatePhoto.isEmpty()) {
-			dpBean.setPicture(util.fileTransformBlob(donatePhoto));
-			dpBean.setPictureFileName(util.getFileName(donatePhoto));
-		} else {
-			dpBean.setPicture(util.fileToBlob(noImage));
-			dpBean.setPictureFileName("noImage.jpg");
-		}
 		dpBean.setProjBean(propService.GetProjBean(projectId));
 		// 判斷如果有ID就執行更新 沒ID就新增
 		System.out.println("chage condition");
 		if (planId > 0) {
-			System.out.println("-------------------test------------");
-
+			if (!donatePhoto.isEmpty()) {
+				dpBean.setPicture(util.fileTransformBlob(donatePhoto));
+				dpBean.setPictureFileName(util.getFileName(donatePhoto));
+			}
 			dpBean.setPlanId(planId);
 			propService.updateDonatePlan(dpBean);
 		} else
+			if (!donatePhoto.isEmpty()) {
+				dpBean.setPicture(util.fileTransformBlob(donatePhoto));
+				dpBean.setPictureFileName(util.getFileName(donatePhoto));
+			} else {
+				dpBean.setPicture(util.fileToBlob(noImage));
+				dpBean.setPictureFileName("noImage.jpg");
+			}
 			propService.createDonatePlan(dpBean);
 //		dpBean.setPlanId(Integer.parseInt(request.getParameter("updateId")));}
-
 		List<DonatePlanBean> dpBeans = propService.getAllDonatePlanBean(projectId);
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String jsonDpBean = gson.toJson(dpBeans);
