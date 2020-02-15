@@ -23,7 +23,7 @@
 <script>
 <!-- 網頁就緒時執行的JS -->
 	$(function() {
-		$(".datepicker").datepicker();
+		$(".datepicker").datepicker({ minDate: new Date()});
 		donateOptionElm();
 		$("#dliverDate").val(
 				$("#deliverYear").val() + "-" + $("#deliverMonth").val());

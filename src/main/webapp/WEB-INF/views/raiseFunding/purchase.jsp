@@ -11,6 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/UtilTool.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/purchase.css">
 <link rel="stylesheet"
@@ -89,19 +90,19 @@
 								<div class="col-left-02">
 									<small>贊助金額</small>
 									<p>
-										<span id="donateMoney">${dpBean.donateMoney}</span>元
+										<span class="dollar1" id="donateMoney">${dpBean.donateMoney}</span>元
 									</p>
 								</div>
 								<div class="col-middle-01">
 									<small>運費</small>
 									<p>
-										<span class="fare">60</span>元
+										<span class="fare dollar1">60</span>元
 									</p>
 								</div>
 								<div class="col-right-02">
 									<small>總金額</small>
 									<p>
-										<span class="payAmount">${dpBean.donateMoney}</span>元
+										<span class="payAmount dollar1">${dpBean.donateMoney}</span>元
 									</p>
 
 								</div>
@@ -118,7 +119,7 @@
 				<div class="choosenData">
 					<div class="plan" id="donatePlan${dpBean.planId}">
 						<div>
-							<h2 class="donateMoney">$${dpBean.donateMoney}</h2>
+							<h2 class="donateMoney dollar">${dpBean.donateMoney}</h2>
 						</div>
 						<div class="projectThumb">
 							<img
@@ -142,10 +143,18 @@
 <jsp:include page="../fragment/footer.jsp" />
 	<script>
 		$(function() {
+			$(".dollar").text(function(){
+				$(this).text("$"+formatNumber($(this).text())) ;
+			})
+			$(".dollar1").text(function(){
+						$(this).text(formatNumber($(this).text())) ;
+					})
 			var date = new Date().toLocaleDateString();
 			$(".LocaleDate").text(date);
 			$("#localeDate").val(date);
 			$("#payAmount").val($(".payAmount").text());
+			
+			
 		});
 
 		$("#buyerLocation").change(
@@ -156,25 +165,25 @@
 						$(".fare").text("60");
 						var price = Number($("#donateMoney").text())
 								+ Number($(".fare").text());
-						alert(price);
 						$(".payAmount").text(price);
 						break;
 					case "OutOfTaiwan":
 						$(".fare").text("100");
 						var price = Number($("#donateMoney").text())
 								+ Number($(".fare").text());
-						alert(price);
 						$(".payAmount").text(price);
 						break;
 					case "Foreign":
 						$(".fare").text("200");
 						var price = Number($("#donateMoney").text())
 								+ Number($(".fare").text());
-						alert(price);
 						$(".payAmount").text(price);
 						break;
 					}
 					$("#payAmount").val($(".payAmount").text());
+					$(".dollar1").text(function(){
+						$(this).text("$"+formatNumber($(this).text())) ;
+					})
 				})
 				
 				

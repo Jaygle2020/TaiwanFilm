@@ -14,12 +14,11 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/menuStyle1.css" />
 <link rel="stylesheet" 
-
 	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<script src="${pageContext.request.contextPath}/js/UtilTool.js"  ></script>
 
 </head>
 
@@ -101,7 +100,7 @@
 						<c:forEach items="${dpBeans}" var="dpBean" >
 							<div class="plan" id="donatePlan${dpBean.planId}" data-planId="${dpBean.planId}">
 								<div>
-									<h2 class="donateMoney">$${dpBean.donateMoney}</h2>
+									<h2 class="donateMoney dollar">${dpBean.donateMoney}</h2>
 								</div>
 								<div class="projectThumb">
 									<img
@@ -213,7 +212,9 @@
 	<script>
 		var dataDpBeans = null;
 		$(function() {
-			
+			$(".dollar").text(function(){
+				$(this).text("$"+formatNumber($(this).text())) ;
+			})
 			$(".datepicker").datepicker();
 			//設定方案日期按鈕
 			donateOptionElm();
@@ -275,6 +276,9 @@
 							dataDpBeans = JSON.parse(data);
 							dpPlanForEach(dataDpBeans);
 							$( ".plan" ).on( "click", getPlanForm);
+							$(".dollar").text(function(){
+								$(this).text("$"+formatNumber($(this).text())) ;
+							})
 						},
 						error:function(){
 							alert("fail");
@@ -396,7 +400,7 @@ function dpPlanForEach(dpBeans){
 	$(".dplan-view").html("");
 	for(var dpBean of dpBeans){
 		var dplan = $("<div class='plan' id='donatePlan"+dpBean.planId+"' data-planId='"+dpBean.planId+"'>"+
-			"<div><h2 class='donateMoney'>$"+dpBean.donateMoney+"</h2></div>"+
+			"<div><h2 class='donateMoney dollar'>"+dpBean.donateMoney+"</h2></div>"+
 			"<div class='projectThumb'><img src='${pageContext.request.contextPath}"+
 			"/getDonatePlan/photo/"+dpBean.planId+"?t="+Math.random()+"'></div><div class='planText'><div class='description'>"+
 			dpBean.donateDescription+"</div><hr><span class='shipping'"+ 

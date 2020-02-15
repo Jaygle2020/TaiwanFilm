@@ -154,9 +154,10 @@ body{
 	</div>
 
 	<script>
-	$(".dollar").each(function(){
-		this.innerText = formatNumber(this.innerText);
-	}) 
+	$(".dollar").text(function(){
+		$(this).text(formatNumber($(this).text())) ;
+	})
+	
 	$("button").click(
 						function() {
 							var id = $(this).attr("id");
