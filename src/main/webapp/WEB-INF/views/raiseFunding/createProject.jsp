@@ -112,11 +112,12 @@
 										<c:out value="${dpBean.donateDescription}"
 											default="單純贊助，不需回饋，小額贊助給予劇組鼓勵和支持。"></c:out>
 									</div>
-									<span class="shipping" data-shipping="${dpBean.shipping}">沒有運送服務</span>
 									<hr>
-									<span class="deliverDate">預計寄送時間 ${dpBean.dliverDate}</span> <span
-										class="limit">限量 <strong>${dpBean.limitNum}</strong>份
-									</span>
+									<span class="shipping" data-shipping="${dpBean.shipping}">沒有運送服務</span>
+									<div>
+									<span class="deliverDate">預計寄送時間 ${dpBean.dliverDate}</span> 
+									<span class="limit">限量 <strong>${dpBean.limitNum}</strong>份</span>
+									</div>
 								</div>
 							</div>
 						</c:forEach>
