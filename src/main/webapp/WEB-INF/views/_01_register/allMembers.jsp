@@ -149,7 +149,7 @@ h1 {
 			</c:otherwise>
 		</c:choose>
 		<button>
-			<a href="<c:url value='/backstage' />">回前頁</a>
+			<a href="ShowAllMembers"><div class="menu-buttonStyle">回前頁</div></a>    
 		</button>
 
 

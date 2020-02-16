@@ -1,6 +1,5 @@
 package com.web.login.Dao.Impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -12,6 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import com.web.login.Dao.MembersDao;
 import com.web.login.Model.MembersBean;
+
+
 
 @Repository
 public class MembersDaoImpl implements MembersDao {
@@ -87,8 +88,10 @@ public class MembersDaoImpl implements MembersDao {
 					.getSingleResult();
 		}catch (Exception e) {
 			System.out.println("SQL登入失敗");
+
 			member = null;
 		}
+		
 		return member;
 	}
 	
@@ -108,15 +111,14 @@ public class MembersDaoImpl implements MembersDao {
 	
 	@Override
 	public boolean updateMembers(MembersBean member) {
-		System.out.println("修改資料Dao");
+
 		String hql = "from MembersBean where email = :email";
 		Session session = factory.getCurrentSession();
-		System.out.println("修改資料Dao" + hql);
-		System.out.println("修改資料Dao" + member.getEmail());
+
 		MembersBean mem = (MembersBean) session.createQuery(hql)
 				.setParameter("email", member.getEmail())
 				.getSingleResult();
-		System.out.println("修改資料Dao:MEM"+ mem);
+	
 			System.out.println("取出唯一值得信箱:" + member.getEmail());
 			mem.setMemberName(member.getMemberName());
 			mem.setEmail(member.getEmail());
@@ -163,5 +165,6 @@ public class MembersDaoImpl implements MembersDao {
 	public MembersBean get(Integer id) {
 		return factory.getCurrentSession().get(MembersBean.class, id);
 	}
+
 	
 }

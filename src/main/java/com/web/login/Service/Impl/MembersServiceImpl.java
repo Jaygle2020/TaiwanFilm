@@ -39,7 +39,12 @@ public class MembersServiceImpl implements MembersService {
 	@Transactional
 	@Override
 	public MembersBean login(String email, String pwd) {
-		return dao.login(email,pwd);
+		try {
+			return dao.login(email,pwd);			
+		} catch (Exception e) {		
+//			System.out.println("錯誤!!!!!!!!!!!!!!!!!!!!! service catch");
+			return null;
+		}
 	}
 	@Transactional
 	@Override
@@ -66,4 +71,6 @@ public class MembersServiceImpl implements MembersService {
 	public List<MembersBean> getMemberByName(String keyword) {
 		return dao.getMemberByName(keyword);
 	}
+	
+
 }

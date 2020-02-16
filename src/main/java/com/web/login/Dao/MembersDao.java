@@ -25,5 +25,6 @@ public interface MembersDao {
 	//後台編輯會員狀態
 	boolean modifyMembers(MembersBean member);
 	List<MembersBean> getMemberByName(String keyword);
+	
 
 }

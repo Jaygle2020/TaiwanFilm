@@ -108,11 +108,19 @@ public class RegisterController {
 	@PostMapping("/Checklogin")
 	public String memberCheckLogin(@ModelAttribute("MembersBean") MembersBean member, Model model, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response) {
-		MembersBean bean = service.login(request.getParameter("email"),request.getParameter("password"));
 		if (request.getParameter("email") == null || request.getParameter("password") == null) {
 			model.addAttribute("errorMessage", "帳號或密碼欄不能為空");
 			return "_01_register/register";}
-			
+		MembersBean bean = null;
+					bean = service.login(request.getParameter("email"),request.getParameter("password"));
+			System.out.println("CON~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + bean);
+			if(bean ==null) {
+				model.addAttribute("errorMessage", "帳號或密碼錯誤");
+				System.out.println("無此帳號");
+				
+				return "_01_register/register";	
+				
+			}
 		if (bean.getMemberMode().equals("2") || bean.getMemberMode().equals("1") ) {
 			//這個一定要有 bean.setMemberImage(null);
 			bean.setMemberImage(null);
