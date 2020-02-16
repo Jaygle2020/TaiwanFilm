@@ -11,12 +11,13 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script
 	src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/UtilTool.js"  ></script>
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/Manage.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/menuStyle.css" />
+	href="${pageContext.request.contextPath}/css/menuStyle1.css" />
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
 <link rel="stylesheet"
@@ -25,60 +26,76 @@
 	href='${pageContext.request.contextPath}/css/movie.css' type="text/css" />
 
 <style>
-.activity-content {
-	width: 100%;
-	padding: 10px;
-	border-radius: 10px;
-	margin: 10px;
-	font-weight: bold;
-	background: white;
-	display: inline-block;
-	height: 100px;
-}
 
-.activity-content-show {
-	width: 100%;
-	padding: 10px;
-	border-radius: 10px;
-	margin: 10px;
-	font-weight: bold;
-	display: inline-block;
-}
+body{
+		background-color: #f1f1f1;margin:0}
+		.TaiwanFilms{
+		display: inline-block;font-size: 35px;font-weight: bold;color: #428bca; padding:15px 5px; 
+		}
+		.backStage-top{  
+			width: 100%;		
+			height: 80px;
+			background: white;
+			position: fixed;   
+			margin-top: -12px;
+			z-index:99 ;
+			box-shadow: 0 0.25rem 0.125rem 0 rgba(0,0,0,0.05);
+			}         
+		
+		.backStage-bar{
+			width: 15%; 
+			display: inline-block;
+			position: fixed;
+			height: 800px;
+			background: #428bca;  
+			top: 65px; 
+			left: 0px;    
+			border-right: 1px solid black;    
+			padding: 5px; 
+			
+		}
+		.backStage-title{
+			width: 100%;  
+			color: white; 
+			font-weight: bold; 
+			background: #428bca;
+			text-align: left;    
+			font-size: 25px;
+			border-bottom: 1px solid white; 
+			
+			} 
+			
+		     
+     
+		.choose-list{
+			display: none;
+			text-align: left;    
+ 
+		}
 
-.allActivityM-width {
-	width: 25%;
-	height: 200px;
-	display: inline-block;
-}
-
-.acitivityUpdateWidth {
-	width: 21%;
-	padding: 20px;
-	display: inline-block;
-	vertical-align: top;
-	text-align: center;
-	color: black;
-}
-
-.activityUpdateButton {
-	width: 7%;
-	display: inline-block;
-	margin-top: 12px;
-	text-align: center;
-	vertical-align: top;
-	padding-top: 5px;
-}
-
-.activityUpdateButtonStyle {
-	width: 100%;
-	color: white;
-	background-color: red;
-	padding: 3px;
-	border-radius: 3px
-}
-</style>
-
-<style>
+		.backStage-title div{
+			width: 100%;
+		}
+		.choose-list a div{
+			text-decoration: none;
+			color: #1e2a3a;
+		}  
+ 
+		.choose-list a{
+		text-decoration: none; font-size: 18px;}
+		
+		.a-bar1:hover{background: #EA0082;}.a-bar2:hover{background: #EA0082;}.a-bar3:hover{background: #EA0082;}
+		.f-bar1:hover{background: #EA0082;}.f-bar2:hover{background: #EA0082;}.f-bar3:hover{background: #EA0082;}
+		.m-bar1:hover{background: #EA0082;}.m-bar2:hover{background: #EA0082;}.m-bar3:hover{background: #EA0082;}
+		.s-bar1:hover{background: #EA0082;}.s-bar2:hover{background: #EA0082;}.s-bar3:hover{background: #EA0082;}
+		.i-bar1:hover{background: #EA0082;}.i-bar2:hover{background: #EA0082;}.i-bar3:hover{background: #EA0082;}
+	
+		.back-member:hover{background:#EA0082}
+		.back-funds:hover{background:#EA0082} 
+		.back-activity:hover{background:#EA0082} 
+		.back-movie:hover{background:#EA0082} 
+		.back-message:hover{background:#EA0082} 
+		.back-shopping:hover{background:#EA0082} 
 
 
 .content {
@@ -124,8 +141,8 @@
 					<div class="content-area" >${cfBean.projBean.projectName}</div>
 					<div class="content-area">${cfBean.dateBegin}</div>
 					<div class="content-area">${cfBean.dateEnd}</div>
-					<div class="content-area">${cfBean.fundsNow}</div>
-					<div class="content-area">${cfBean.fundsGoal}</div>
+					<div class="content-area dollar" >${cfBean.fundsNow}</div>
+					<div class="content-area dollar" >${cfBean.fundsGoal}</div>
 					<div class="content-area">${cfBean.percent}</div>
 					<div class="content-area"><button id="${cfBean.projBean.projectId}">修改</button></div>
 				</div>
@@ -136,10 +153,12 @@
 		</div>
 	</div>
 
-
-
 	<script>
-		$("button").click(
+	$(".dollar").text(function(){
+		$(this).text(formatNumber($(this).text())) ;
+	})
+	
+	$("button").click(
 						function() {
 							var id = $(this).attr("id");
 							window.location.href = "${pageContext.request.contextPath}/updateProject/"

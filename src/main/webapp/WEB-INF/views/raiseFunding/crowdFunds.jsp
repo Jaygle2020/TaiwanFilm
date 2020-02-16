@@ -46,13 +46,13 @@
                                 </div>   
                                 <div class="progressPoint"></div> 
                                 <div class="progressSection">
-                                     <span class="progressMoney">$0</span><br>
+                                     <span class="progressMoney dollar">$0</span><br>
                                      <pre class="space">  
                                      </pre>
                                      <span class="progressTitle">募資開始</span>
                                 </div>
                                 <div class="porgressSuccess">
-                                     <span class="progressMoney">$${cfBean.fundsGoal}</span><br>
+                                     <span class="progressMoney dollar">${cfBean.fundsGoal}</span><br>
                                      <pre class="space"> 
                                      </pre>
                                      <span class="progressTitle">募資階段</span>
@@ -63,8 +63,8 @@
 						</div>
 						<div class="col-right">
 							<div class="numberRow totalFund">
-								<h1 class="number moneyFormat">$&nbsp;${cfBean.fundsNow}</h1>
-								<p class="metaText" style="text-align:right;"><span style="font-size:20px;">Goal</span> $${cfBean.fundsGoal}</p>
+								<h1 class="number moneyFormat dollar">${cfBean.fundsNow}</h1>
+								<p class="metaText" style="text-align:right;"><span style="font-size:20px;">Goal</span> <span class="dollar">${cfBean.fundsGoal}</span></p>
 							</div>
 							<div class="numberRow totalPeople">
 								<h1>${cfBean.backerNum}</h1>
@@ -123,7 +123,7 @@
 								<c:forEach items="${dpBeans}" var="dpBean">
 									<div class="plan" id="donatePlan${dpBean.planId}" >
 										<div>
-											<h2 class="donateMoney">$${dpBean.donateMoney}</h2>
+											<h2 class="donateMoney dollar">${dpBean.donateMoney}</h2>
 										</div>
 										<div class="projectThumb">
 											<img
@@ -152,7 +152,9 @@
 
 <script>
 $(function(){
-	
+	$(".dollar").text(function(){
+		$(this).text("$ "+formatNumber($(this).text())) ;
+	})
 	$( "#tabs" ).tabs();
 	var count = ${infoBean.photoCount};
 	for(var i = 0 ; i<count;i++){

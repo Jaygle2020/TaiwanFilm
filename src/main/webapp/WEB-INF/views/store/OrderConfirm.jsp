@@ -5,6 +5,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <html>
 <head>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/menuStyle.css">
 <style>
 .whole {
 	text-align: center;
@@ -225,13 +227,13 @@
 					<TR>
 						<TD colspan='3'
 							style="text-align: left; border: 0.5px solid #d1d1d1; padding-left: 39px; background: floralwhite;">
-							會員地址：台北市</TD>
+							會員地址：台北市萬華區長泰街109號4樓</TD>
 					</TR>
 					<TR>
 						<TD colspan='3'
 							style="text-align: left; border: 0.5px solid #d1d1d1; padding-left: 39px; background: floralwhite;">
 							出貨地址：<Input style="background: #d1d1d1;" size="60" type="text"
-							id='ShippingAddress' name="ShippingAddress" value=""> <font
+							id='ShippingAddress' name="ShippingAddress" value="台北市大安區復興南路一段390號2樓"> <font
 							color='red'>${errorMsg.ShippingAddress}</font>
 						</TD>
 					</TR>
@@ -268,19 +270,24 @@
 									items="${ShoppingCart.content}">
 
 									<TR height='16'>
-										<TD style="text-align: center; font-size: 11pt;background: azure;">${entry.value.title}</TD>
+										<TD
+											style="text-align: center; font-size: 11pt; background: azure;">${entry.value.title}</TD>
 										<%--  <TD style="text-align:center;font-size: 11pt;">
           	${fn:substring(entry.value.author, 0, 3)}
           </TD> --%>
-										<TD style="text-align: center; font-size: 11pt;background: azure;">
+										<TD
+											style="text-align: center; font-size: 11pt; background: azure;">
 											${fn:substring(entry.value.companyName, 0, 10)}</TD>
-										<TD style="text-align: center; font-size: 11pt;background: azure;">
+										<TD
+											style="text-align: center; font-size: 11pt; background: azure;">
 											${entry.value.quantity}</TD>
-										<TD style="text-align: center; font-size: 11pt;background: azure;">
+										<TD
+											style="text-align: center; font-size: 11pt; background: azure;">
 											<!--        entry.value.discount 暫為1 --> <fmt:formatNumber
 												value="${entry.value.unitPrice * 1 }" pattern="#,###" />元
 										</TD>
-										<TD style="text-align: center; font-size: 11pt;background: azure;">
+										<TD
+											style="text-align: center; font-size: 11pt; background: azure;">
 											<!--        entry.value.discount 暫為1 --> <fmt:formatNumber
 												value="${entry.value.unitPrice * entry.value.quantity}"
 												pattern="#,###,###" />元
@@ -289,9 +296,13 @@
 								</c:forEach>
 
 								<TR height='30'>
-									<TD style="text-align: right; font-size: 11pt;background: azure;" colspan='3'>&nbsp;</TD>
-									<TD style="text-align: center; font-size: 11pt;background: azure;">總計金額</TD>
-									<TD style="text-align: center; font-size: 11pt;background: azure;"><fmt:formatNumber
+									<TD
+										style="text-align: right; font-size: 11pt; background: azure;"
+										colspan='3'>&nbsp;</TD>
+									<TD
+										style="text-align: center; font-size: 11pt; background: azure;">總計金額</TD>
+									<TD
+										style="text-align: center; font-size: 11pt; background: azure;"><fmt:formatNumber
 											value="${ShoppingCart.subtotal}" pattern="#,###,###" />元</TD>
 
 								</TR>
@@ -312,10 +323,10 @@
 
 				</TABLE>
 				<P />
-				<input  type="hidden" name="finalDecision" value=""> <input style="font-size: 50px;"
-					type="button" name="OrderBtn" value="確定送出"
-					onclick="reconfirmOrder()"> <input style="font-size: 50px;" type="button"
-					name="CancelBtn" value="取消訂單" onclick="cancelOrder()">
+				<input type="hidden" name="finalDecision" value=""> <input
+					style="font-size: 50px;" type="button" name="OrderBtn" value="確定送出"
+					onclick="reconfirmOrder()"> <input style="font-size: 50px;"
+					type="button" name="CancelBtn" value="取消訂單" onclick="cancelOrder()">
 			</FORM>
 		</div>
 </body>

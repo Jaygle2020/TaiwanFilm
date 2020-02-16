@@ -10,6 +10,8 @@
 <head>
 <link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath }/favicon.ico" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/menuStyle.css">
 <title>Taiwan Films - 訂購成功</title>
 <style>
 .productContent {

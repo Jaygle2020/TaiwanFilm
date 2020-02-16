@@ -60,12 +60,7 @@ input:not (.allBt ){
 	border-radius: 5px;
 	margin: 0px 10px 10px 10px;
 }
-.memimg{
-	
- width:160;
- height:160;
- border-radius: 50%;
-}
+
 .DEMOONE{
 	position:absolute;
 	top:100px;
@@ -130,8 +125,8 @@ transform: translate(-50%, -50%);
 						<td class="AllText">聯絡信箱
 						<td class="AllText">生日
 					<tr>
-						<td><input name="email" id="email" type="email"
-							value='${sessionScope.members.email}' />
+						<td>${sessionScope.members.email}
+<%-- 						<input name="email" id="email" type="email"	value='${sessionScope.members.email}' disabled="disabled" /> --%>
 						<td><input type="date" name="birthDay" id="birthDay" value="${sessionScope.members.birthDay}"/>
 					<tr>
 						<td class="AllText">個人照片
@@ -167,7 +162,6 @@ transform: translate(-50%, -50%);
 
 	<script>
 	
-
 		$(document).ready(function() {
 
 			if(${sessionScope.members.gender =="男生"}){
@@ -196,11 +190,9 @@ transform: translate(-50%, -50%);
 
 		function oneButtonInport() {
 			var name = "王曉明";
-			var em = "eeit11040@gmail.com";
 			var gerd = 	"男生";
 			var birt = "1988-01-26";
 			$("#memberName").val(name);			
-			$("#email").val(em);
 			$("input[name='gender'][value=男生]").attr("checked",true); 
 			$("#birthDay").val(birt);
 		}

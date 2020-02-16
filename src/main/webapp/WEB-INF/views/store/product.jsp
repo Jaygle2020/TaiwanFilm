@@ -14,7 +14,8 @@
 <link
 	href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou&display=swap"
 	rel="stylesheet">
-
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/menuStyle.css">
 
 
 <title>顯示商品資訊</title>

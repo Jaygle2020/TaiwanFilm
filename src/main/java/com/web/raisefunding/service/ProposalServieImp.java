@@ -59,8 +59,8 @@ public class ProposalServieImp implements ProposalService {
 		projDao.updateProject(projBean);
 		if(cfBean.getFundsNow()==null)cfBean.setFundsNow(0);
 		if(cfBean.getBackerNum()==null)cfBean.setBackerNum(0);
-		cfBean.setProjBean(projBean);
-		projBean.setCfBean(cfBean);
+//		cfBean.setProjBean(projBean);
+//		projBean.setCfBean(cfBean);
 		cfDao.updateFund(cfBean);
 		n++;
 		return n;
@@ -117,9 +117,16 @@ public class ProposalServieImp implements ProposalService {
 	
 	@Transactional
 	@Override
+	public boolean checkProjectInfo(Integer projectId) {
+		return infoDao.checkProjectInfo(projectId);
+	}
+	
+	@Transactional
+	@Override
 	public int createProjInfo(ProjectInfoBean infoBean) {
 		return infoDao.createProjInfo(infoBean);
 	}
+	
 	
 	@Transactional
 	@Override

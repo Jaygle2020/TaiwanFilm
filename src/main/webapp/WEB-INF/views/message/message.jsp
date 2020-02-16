@@ -11,7 +11,8 @@
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <title>Message</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/movie.css">
+	href="${pageContext.request.contextPath }/css/menuStyle.css"
+	type="text/css">
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
 	integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
@@ -37,9 +38,9 @@
 				style="text-align: left; display: inline-block; font-size: 40px; padding-top: 50px;">${message.messageTitle}</div>
 			<div style="display: inline-block; width: 100%">
 				<div style="display: inline-block; width: 85%; font-size: 20px">
-					發文者 : <img width='20' height='20'
-						src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
-					<%-- ${message.memberBean.memberImage} --%>
+				<%-- 	發文者 : <img width='20' height='20'
+						src='${pageContext.request.contextPath}/crm/picture/＄{message.memberBean.memberImage}'> --%>
+					
 					${message.memberBean.memberName}
 					<c:if test="${members.memberId == message.memberBean.memberId}">
 						<a
@@ -62,33 +63,29 @@
 					: ${message.createDate}</div>
 				<div
 					style="display: inline-block; text-align: right; font-size: 20px; width: 13%">
-<<<<<<< Updated upstream
-					<a href="${pageContext.request.contextPath}/messages">返回文章列表</a>
-=======
+
+
 					<a href="${pageContext.request.contextPath}/createDate">返回文章列表</a>
->>>>>>> Stashed changes
+
 				</div>
 			</div>
 			<p>
 			<div id="messageC" style="font-size: 30px; padding: 20px 0px">${message.messageContent}</div>
 		</div>
 		<div
-<<<<<<< Updated upstream
-			style="display: inline-block; text-align: left; text-valign: center; width: 80%; border-style: none; background-color: #E8E8E8; font-size: 20px">
-=======
+
 			style="display: inline-block; text-align: left; text-valign: center; width: 80%; border-style: none; background-color: #E8E8E8; font-size: 20px;padding-bottom:50px ">
->>>>>>> Stashed changes
+
 
 			<c:forEach var='replys' items='${replys}'>
 				<c:if test="${ replys.replyDelete ==1}">
 					<div style="display: inline-block; width: 100%">
-<<<<<<< Updated upstream
-						<div style="display: inline-block; width: 5%">
-=======
+
+
 						<div style="display: inline-block; width: 5%;text-align: center;">
->>>>>>> Stashed changes
-							<img width='20' height='20'
-								src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
+
+						<%-- 	<img width='20' height='20'
+								src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' /> --%>
 						</div>
 						<div style="display: inline-block; width: 9%">${replys.membersBean.memberName }</div>
 						<div id="content${replys.replyId}"
@@ -116,8 +113,7 @@
 								<button id="reportbutton${replys.replyId}"
 									onclick="report(${replys.replyId})">檢舉</button>
 							</div>
-							<div id="hidden22"
-								style="display: none; text-align: right; width: 5%">已檢舉</div>
+					
 						</c:if>
 					</div>
 				</c:if>
@@ -248,19 +244,7 @@
 			}
 		})
 		} 
-<<<<<<< Updated upstream
-	$(function() {
-		$("#messageC img").css("width","100%");
-	})
-=======
-/* 	$(function() {
-		if($("#messageC img").css("width") >$("#messageC img").css("850px")){
-			$("#messageC img").css("width","100%"); 
-		}else{
-		}
-	}) */
->>>>>>> Stashed changes
+
 	</script>
-	<jsp:include page="../fragment/bottom.jsp"></jsp:include>
 </body>
 </html>

@@ -3,10 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 
 	<div class="backStage-top">      
-		<a href="/TaiwanFilm">
+		<a href="${pageContext.request.contextPath}/">
 			<div class="TaiwanFilms">TaiwanFilms</div>
 		</a>
-		<a href="backstage" style="float:right"> 
+		<a href="${pageContext.request.contextPath }/backstage" style="float:right"> 
 			<div class="TaiwanFilms">回到後台首頁</div>
 		</a>  
 	</div>         
@@ -17,9 +17,9 @@
 				<a href="${pageContext.request.contextPath}/ShowAllMembers">
 					<div class="m-bar1">查詢全部會員</div>
 				</a>  
-				<a href="">
+				<!-- <a href="">
 					<div class="m-bar2">模糊查詢</div>
-				</a>
+				</a> -->
 <!-- 				<a href=""> -->
 <!-- 					<div class="m-bar3">新增活動</div> -->
 <!-- 				</a>       -->
@@ -52,27 +52,25 @@
 		<div class="backStage-title">
 			<div class="back-movie backstage-title">電影</div>
 			<div class="choose-list-movie choose-list">
-				<a href=""><div class="m-bar1">m1</div></a>
-				<a href=""><div class="m-bar2">m2</div></a>
-				<a href=""><div class="m-bar3">m3</div></a>
+				<a href="${pageContext.request.contextPath}/alterMovie"><div class="m-bar1">編輯電影</div></a>
+				<a href="${pageContext.request.contextPath}/addMovie"><div class="m-bar2">新增電影</div></a>
+				
 			</div>
 		</div>
 		<div class="backStage-title">
 			<div class="back-shopping backstage-title">購物</div>
 			<div class="choose-list-shopping choose-list">
-				<a href=""><div class="s-bar1">s1</div></a>
-				<a href=""><div class="s-bar2">s2</div></a>
-				<a href=""><div class="s-bar3">s3</div></a>
+				<a href="${pageContext.request.contextPath}/productsM"><div class="s-bar1">商品管理</div></a>
+				<a href="${pageContext.request.contextPath}/products/add"><div class="s-bar2">新增商品</div></a>
 			</div>
 		</div>   
 		<div class="backStage-title">
 			<div class="back-message backstage-title">留言板</div>
 			<div class="choose-list-message choose-list">
-				<a href=""><div class="i-bar1">i1</div></a>
-				<a href=""><div class="i-bar2">i2</div></a>
-				<a href=""><div class="i-bar3">i3</div></a>
+				<a href="${pageContext.request.contextPath}/replysB"><div class="i-bar1">被檢舉留言</div></a>
 			</div>
 		</div>
+		
 	</div> 
 	<div style="width: 80%;display: inline-block">
 		<%-- <jsp:include page="activity/allactivityM.jsp" /> --%>

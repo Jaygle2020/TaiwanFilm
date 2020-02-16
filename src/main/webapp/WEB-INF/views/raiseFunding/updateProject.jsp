@@ -10,16 +10,15 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
 <link rel=stylesheet type="text/css"
-	href="${pageContext.request.contextPath}/css/create.css">
+	href="${pageContext.request.contextPath}/css/createCss.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/menuStyle.css" />
+	href="${pageContext.request.contextPath}/css/menuStyle1.css" />
 <link rel="stylesheet" 
-
 	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<script src="${pageContext.request.contextPath}/js/UtilTool.js"  ></script>
 
 </head>
 
@@ -38,7 +37,7 @@
 			<section class="formSection">
 				
 					<div class="active create-basic productlist form-group">
-					<form method="POST" action="${pageContext.request.contextPath}/submitProject"
+					<form method="POST" action="${pageContext.request.contextPath}/updateSubmit"
 					enctype="multipart/form-data" id="projectForm">
 						<div class="createFormIntro partialWidthBlock">
 							<p>在這個區塊您將填寫專案內容中最吸引人募資影片、封面圖片和專案說明。</p>
@@ -67,7 +66,7 @@
 								accept="image/jpeg,image/png,image/bmp">
 							<h2>專案影片 &nbsp; (注意某些私人youtube影片是不開放其他網站載入)</h2>
 							
-							<input type="text" name="vedio" style='width: 325px' placeholder="請輸入youtube影片連結網址"  value="https://www.youtube.com/watch?v=${ProjectBean.videoLink}">
+							<input type="text" name="vedio" style='width: 350px' placeholder="請輸入youtube影片連結網址"  value="https://www.youtube.com/watch?v=${ProjectBean.videoLink}">
 							<h2>募資目標金額</h2>
 							<p>
 								<input type="number" max="99999999" min="0"
@@ -101,7 +100,7 @@
 						<c:forEach items="${dpBeans}" var="dpBean" >
 							<div class="plan" id="donatePlan${dpBean.planId}" data-planId="${dpBean.planId}">
 								<div>
-									<h2 class="donateMoney">$${dpBean.donateMoney}</h2>
+									<h2 class="donateMoney dollar">${dpBean.donateMoney}</h2>
 								</div>
 								<div class="projectThumb">
 									<img
@@ -112,11 +111,12 @@
 										<c:out value="${dpBean.donateDescription}"
 											default="單純贊助，不需回饋，小額贊助給予劇組鼓勵和支持。"></c:out>
 									</div>
-									<span class="shipping" data-shipping="${dpBean.shipping}">沒有運送服務</span>
 									<hr>
-									<span class="deliverDate">預計寄送時間 ${dpBean.dliverDate}</span> <span
-										class="limit">限量 <strong>${dpBean.limitNum}</strong>份
-									</span>
+									<span class="shipping" data-shipping="${dpBean.shipping}">沒有運送服務</span>
+									<div>
+									<span class="deliverDate">預計寄送時間 ${dpBean.dliverDate}</span> 
+									<span class="limit">限量 <strong>${dpBean.limitNum}</strong>份</span>
+									</div>
 								</div>
 							</div>
 						</c:forEach>
@@ -212,7 +212,9 @@
 	<script>
 		var dataDpBeans = null;
 		$(function() {
-			
+			$(".dollar").text(function(){
+				$(this).text("$"+formatNumber($(this).text())) ;
+			})
 			$(".datepicker").datepicker();
 			//設定方案日期按鈕
 			donateOptionElm();
@@ -274,6 +276,9 @@
 							dataDpBeans = JSON.parse(data);
 							dpPlanForEach(dataDpBeans);
 							$( ".plan" ).on( "click", getPlanForm);
+							$(".dollar").text(function(){
+								$(this).text("$"+formatNumber($(this).text())) ;
+							})
 						},
 						error:function(){
 							alert("fail");
@@ -331,7 +336,7 @@
 				dialog.dialog("open");
 			});
 			
-			$(".plan").click()
+			$( ".plan" ).on( "click", getPlanForm);
 			
 		});
 		
@@ -357,10 +362,10 @@
 				cache:false,
 				contentType: false,
 				processData: false,
-				success:function(){
+				success:function(data){
 					for(var i = 0 ; i<count;i++){
 						var url =  "${pageContext.request.contextPath}/infoPhoto/"+${ProjectBean.projectId}+"/"+i;    
-					$("#preViewArea").find("img").attr("src", url);
+					$("#preViewArea #image"+i).attr("src", url);
 					}
 					alert("資料建立成功")
 				},
@@ -395,13 +400,13 @@ function dpPlanForEach(dpBeans){
 	$(".dplan-view").html("");
 	for(var dpBean of dpBeans){
 		var dplan = $("<div class='plan' id='donatePlan"+dpBean.planId+"' data-planId='"+dpBean.planId+"'>"+
-			"<div><h2 class='donateMoney'>$"+dpBean.donateMoney+"</h2></div>"+
+			"<div><h2 class='donateMoney dollar'>"+dpBean.donateMoney+"</h2></div>"+
 			"<div class='projectThumb'><img src='${pageContext.request.contextPath}"+
 			"/getDonatePlan/photo/"+dpBean.planId+"?t="+Math.random()+"'></div><div class='planText'><div class='description'>"+
-			dpBean.donateDescription+"</div><span class='shipping'"+ 
-			"data-shipping='"+dpBean.shipping+"'>沒有運送服務</span>"+
+			dpBean.donateDescription+"</div><hr><span class='shipping'"+ 
+			"data-shipping='"+dpBean.shipping+"'>沒有運送服務</span><div>"+
 			"<span class='deliverDate'>預計寄送時間 "+dpBean.dliverDate+"</span>"+
-			"<span class='limit'>限量 <strong>"+dpBean.limitNum+"</strong>份</span></div></div>")
+			"<span class='limit'>限量 <strong>"+dpBean.limitNum+"</strong>份</span></div></div></div>")
 						
 		$(".dplan-view").append(dplan);
 	}

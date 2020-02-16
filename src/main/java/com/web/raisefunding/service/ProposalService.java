@@ -20,6 +20,7 @@ public interface ProposalService {
 	public int updateProjInfo(ProjectInfoBean infoBean) ;
 	public int createDonatePlan(DonatePlanBean dpBean);
 	public DonatePlanBean getSinglePlan(Integer projectId , Integer dpId) ;
-	public ProjectInfoBean getProjectInfo(Integer projectId);
+	public boolean checkProjectInfo(Integer projectId);
 	public void updateDonatePlan(DonatePlanBean dpBean);
+	public ProjectInfoBean getProjectInfo(Integer projectId);
 }

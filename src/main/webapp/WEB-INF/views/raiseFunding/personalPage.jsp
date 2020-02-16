@@ -27,7 +27,7 @@
            
             <c:if test="${pcBeans!=null}">
             <c:forEach items="${pcBeans}"  var="pcBean">
-            <div class="inner" id="project12">
+            <div class="inner" id="project${pcBean.projBean.projectId}">
                 <div class="projectThumb" style="background-image:url('${pageContext.request.contextPath}/getProject/photo/${pcBean.projBean.projectId}');">
                 </div>
                 <div class="project">
@@ -54,6 +54,12 @@
     </div>
     <jsp:include page="../fragment/footer.jsp" />
     <script>
+    
+    $(".inner").click(function(){
+    	var url = "${pageContext.request.contextPath}/"+ $(this).attr("id");
+    	window.location.replace(url);
+    });
+    
     $(".dayCount").each(function(){
 		var dayCount = $(this).attr("data-endDay");
 		console.log(DaysCountdown(dayCount));
