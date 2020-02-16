@@ -124,6 +124,13 @@ h1 {
     text-align: center;
     font-size: 36px;
 }
+.Main{
+
+	background-color: white;
+    border-radius: 5px;
+    width: 50%;
+    }
+
 </style>
 <meta charset="UTF-8">
 <title>更新會員資料</title>
@@ -135,7 +142,7 @@ h1 {
 <h1>更新會員資料</h1>
 <hr>
 		<form method='POST' id="modifyMember" action="${pageContext.request.contextPath}/_01_register/DomodifyMember"
-			enctype='multipart/form-data'>
+			enctype='multipart/form-data' class="Main">
 			<input type="hidden" name="noname"  id='putOrDelete'   value="" >
     		<table>
     			<c:if test='${members.memberId != null}'>
@@ -174,7 +181,10 @@ h1 {
 
 			<div>
 			<hr>
-			<button ><a href="/TaiwanFilm/ShowAllMembers" style="text-decoration: none; color: black;">回到管理會員</a></button>
+			<button ><a href="${pageContext.request.contextPath}/ShowAllMembers">
+					<div class="m-bar1">回上一頁</div>
+				</a>  
+				</button>
 <!-- 			<button ><a href="/TaiwanFilm/_01_register/MemberBackstage" style="text-decoration: none; color: black;">管理者頁面</a></button> -->
 				
 		</form>

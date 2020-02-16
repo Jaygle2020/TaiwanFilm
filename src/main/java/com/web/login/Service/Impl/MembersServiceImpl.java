@@ -63,7 +63,7 @@ public class MembersServiceImpl implements MembersService {
 	}
 	@Transactional	
 	@Override
-	public List<MembersBean> getMemberByEmail(String keyword) {
-		return dao.getMemberByEmail(keyword);
+	public List<MembersBean> getMemberByName(String keyword) {
+		return dao.getMemberByName(keyword);
 	}
 }

@@ -47,7 +47,8 @@ public class MembersDaoImpl implements MembersDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<MembersBean> getMemberByEmail(String keyword){
+	public List<MembersBean> getMemberByName(String keyword){
+		System.out.println("模糊查詢DAO");
 		String hql="FROM MembersBean mb WHERE mb.memberName like '%"+keyword+"%'";
 //		List<MembersBean> list = new ArrayList<>();
 		Session session = factory.getCurrentSession();

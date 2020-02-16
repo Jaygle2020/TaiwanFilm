@@ -24,6 +24,6 @@ public interface MembersDao {
 	List<MembersBean> getNotMember();
 	//後台編輯會員狀態
 	boolean modifyMembers(MembersBean member);
-	List<MembersBean> getMemberByEmail(String keyword);
+	List<MembersBean> getMemberByName(String keyword);
 
 }

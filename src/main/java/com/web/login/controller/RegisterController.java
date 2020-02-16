@@ -156,21 +156,24 @@ public class RegisterController {
 		model.addAttribute("members", member1);
 		return "_01_register/registerUpdateMember";
 	}
-	
+
 	@RequestMapping(value = "/_01_register/DoNotMember",method = RequestMethod.POST)
 	public String DoNotMember(
 			HttpServletRequest request,
 			Model model, 
 			HttpSession session) {
+			System.out.println("修改會員狀態controller!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			MembersBean member = new MembersBean();
 			member.setEmail(request.getParameter("email"));		
-			member.setMemberMode(request.getParameter("memberMode"));	
+			member.setMemberMode(request.getParameter("memberMode"));
+			System.out.println("controller取得的會員狀態為:"+request.getParameter("memberMode"));
+			System.out.println("service.modifyMembers(member) :" + service.modifyMembers(member));
 			if(service.modifyMembers(member)) {
 				System.out.println("會員狀態修改成功");
 				model.addAttribute("members", service.getAllMembers());
-				return "_01_register/allMembers";
+				return "redirect:/ShowAllMembers";
 			} else {
-				System.out.println("會員資料修改失敗");
+				System.out.println("會員狀態修改失敗");
 				return "_01_register/DomodifyMember";
 			}		
 	
@@ -328,7 +331,7 @@ public class RegisterController {
 	
 @GetMapping("/ShowAllMembers")
 public String list(Model model) {
-		model.addAttribute("members", service.getAllMembers());
+		model.addAttribute("memberlist", service.getAllMembers());
 	 return "_01_register/allMembers";
  }
  
@@ -356,8 +359,8 @@ public String list(Model model) {
 	@GetMapping("/FuzzyQuery")
 	public String FuzzyQuery(String keyword,Model model)  {
 
-		List<MembersBean> list = service.getMemberByEmail(keyword); 
-		model.addAttribute("members", list);
+		List<MembersBean> list = service.getMemberByName(keyword); 
+		model.addAttribute("memberlist", list);
 		System.out.println("keyword 是:" + keyword);
 		return "_01_register/allMembers";
 	}
