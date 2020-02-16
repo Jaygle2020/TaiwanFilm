@@ -112,10 +112,11 @@ public class FundsController {
 	}
 	
 	@PostMapping("/updateSubmit")
-	public String updateProjectAndCrowd(Model model,@ModelAttribute("CrowdFundingBean") CrowdFundingBean cfBean, HttpServletRequest request,
+	public String updateProjectAndCrowd(Model model, HttpServletRequest request,
 			@RequestParam("photoStr") MultipartFile photoStr, @RequestParam("photoStr2") MultipartFile photoStr2,
 			@RequestParam("dateBegin") String dateBegin, @RequestParam("dateEnd") String dateEnd,
 			@RequestParam("fundsGoal") Integer fundsGoal,@ModelAttribute("ProjectBean")ProjectBean projBean ) {
+		CrowdFundingBean cfBean = projBean.getCfBean();
 		cfBean.setDateBegin(dateBegin);
 		cfBean.setDateEnd(dateEnd);
 		cfBean.setFundsGoal(fundsGoal);
@@ -123,7 +124,6 @@ public class FundsController {
 		projBean.setProjDescript(request.getParameter("projDescript"));
 		projBean.setProjStory(request.getParameter("projStory"));	
 		projBean.setVideoLink(util.vedioLinkCut(request.getParameter("vedio")));
-		cfBean.setActionId(projBean.getCfBean().getActionId());
 		if (!photoStr.isEmpty()) {
 			projBean.setPhoto(util.fileTransformBlob(photoStr));
 			projBean.setPhotoFileName(util.getFileName(photoStr));

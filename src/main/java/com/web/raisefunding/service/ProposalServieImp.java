@@ -59,8 +59,8 @@ public class ProposalServieImp implements ProposalService {
 		projDao.updateProject(projBean);
 		if(cfBean.getFundsNow()==null)cfBean.setFundsNow(0);
 		if(cfBean.getBackerNum()==null)cfBean.setBackerNum(0);
-		cfBean.setProjBean(projBean);
-		projBean.setCfBean(cfBean);
+//		cfBean.setProjBean(projBean);
+//		projBean.setCfBean(cfBean);
 		cfDao.updateFund(cfBean);
 		n++;
 		return n;

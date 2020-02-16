@@ -37,7 +37,7 @@
 			<section class="formSection">
 				
 					<div class="active create-basic productlist form-group">
-					<form method="POST" action="${pageContext.request.contextPath}/submitProject"
+					<form method="POST" action="${pageContext.request.contextPath}/updateSubmit"
 					enctype="multipart/form-data" id="projectForm">
 						<div class="createFormIntro partialWidthBlock">
 							<p>在這個區塊您將填寫專案內容中最吸引人募資影片、封面圖片和專案說明。</p>
