@@ -95,6 +95,14 @@ transform: translate(-50%, -50%);
 
 }
 
+.nobooder {
+    font-size: 24px;
+    margin-bottom: 10px;
+    border: 0;
+    padding: 0;
+    border-bottom: 1px solid black;
+}
+
 </style>
 </head>
 <body>
@@ -117,17 +125,17 @@ transform: translate(-50%, -50%);
 						<td class="AllText">顯示名稱
 						<td class="AllText">性別
 					<tr>
-						<td><input name="memberName" id="memberName" type="text"
+						<td><input class="nobooder"name="memberName" id="memberName" type="text"
 							value='${sessionScope.members.memberName}' />
-						<td><input type="radio" id="gender" name="gender" value="男生" />男生
-							<input type="radio" id="gender" name="gender" value="女生" />女生
+						<td style="font-size: 24px;"><input style="font-size: 24px;" type="radio" id="gender" name="gender" value="男生" />男生
+							<input style="font-size: 24px;" type="radio" id="gender" name="gender" value="女生" />女生
 					<tr>
 						<td class="AllText">聯絡信箱
 						<td class="AllText">生日
 					<tr>
-						<td>${sessionScope.members.email}
-<%-- 						<input name="email" id="email" type="email"	value='${sessionScope.members.email}' disabled="disabled" /> --%>
-						<td><input type="date" name="birthDay" id="birthDay" value="${sessionScope.members.birthDay}"/>
+						<td style="font-size: 24px;">${sessionScope.members.email}
+						<input name="email" id="email" type="hidden"	value='${sessionScope.members.email}'/>
+						<td><input class="nobooder"type="date" name="birthDay" id="birthDay" value="${sessionScope.members.birthDay}"/>
 					<tr>
 						<td class="AllText">個人照片
 						<td class="AllText">預覽照片
@@ -140,7 +148,7 @@ transform: translate(-50%, -50%);
 							<BR>
 							<BR>
 							<input type="submit" class="allBt" id="bt1" value="確認" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="reset" class="allBt" id="bt2" value="清空" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="reset" class="allBt" id="bt2" value="復原" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<td>
 							<div class="imgdiv">
 							<img class="imgstyle" style="dsiplay: inline-block" id="oldMemberImage"

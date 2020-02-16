@@ -176,7 +176,7 @@ transform: translate(-50%, -50%);
 
    				<tr><td width='60'>照片:<td width='360'>
    				
-   				<input type='file' name="memberImage"
+   				<input type='file' name="memImage"
 				id="memberImage"  class='form:input-large' /> 
 				<tr><td width='60'><td width='360'>
 				<div class="imgdiv">

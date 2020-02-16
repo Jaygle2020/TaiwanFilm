@@ -108,13 +108,16 @@ public class MembersDaoImpl implements MembersDao {
 	
 	@Override
 	public boolean updateMembers(MembersBean member) {
+		System.out.println("修改資料Dao");
 		String hql = "from MembersBean where email = :email";
 		Session session = factory.getCurrentSession();
-
+		System.out.println("修改資料Dao" + hql);
+		System.out.println("修改資料Dao" + member.getEmail());
 		MembersBean mem = (MembersBean) session.createQuery(hql)
 				.setParameter("email", member.getEmail())
 				.getSingleResult();
-		
+		System.out.println("修改資料Dao:MEM"+ mem);
+			System.out.println("取出唯一值得信箱:" + member.getEmail());
 			mem.setMemberName(member.getMemberName());
 			mem.setEmail(member.getEmail());
 			mem.setGender(member.getGender());
