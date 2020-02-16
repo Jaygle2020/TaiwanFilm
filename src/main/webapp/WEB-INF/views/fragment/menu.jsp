@@ -52,10 +52,9 @@
 			<a href="${pageContext.request.contextPath}/movieIntro">
 				<div class="menu-buttonStyle">網路訂票</div>
 			</a>
-
+			
 			<a href="${pageContext.request.contextPath}/createDate">
 			 <div class="menu-buttonStyle">留言板</div>
-
 			</a>
 			
 			<c:if test="${testNum == 2}">			

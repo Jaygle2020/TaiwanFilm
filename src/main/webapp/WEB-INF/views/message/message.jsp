@@ -63,16 +63,14 @@
 					: ${message.createDate}</div>
 				<div
 					style="display: inline-block; text-align: right; font-size: 20px; width: 13%">
-
-
 					<a href="${pageContext.request.contextPath}/createDate">返回文章列表</a>
-
 				</div>
 			</div>
 			<p>
 			<div id="messageC" style="font-size: 30px; padding: 20px 0px">${message.messageContent}</div>
 		</div>
 		<div
+			style="display: inline-block; text-align: left; text-valign: center; width: 80%; border-style: none; background-color: #E8E8E8; font-size: 20px;padding-bottom:50px ">
 
 			style="display: inline-block; text-align: left; text-valign: center; width: 80%; border-style: none; background-color: #E8E8E8; font-size: 20px;padding-bottom:50px ">
 
@@ -80,12 +78,9 @@
 			<c:forEach var='replys' items='${replys}'>
 				<c:if test="${ replys.replyDelete ==1}">
 					<div style="display: inline-block; width: 100%">
-
-
 						<div style="display: inline-block; width: 5%;text-align: center;">
-
-						<%-- 	<img width='20' height='20'
-								src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' /> --%>
+							<img width='20' height='20'
+								src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
 						</div>
 						<div style="display: inline-block; width: 9%">${replys.membersBean.memberName }</div>
 						<div id="content${replys.replyId}"
@@ -244,7 +239,12 @@
 			}
 		})
 		} 
-
+/* 	$(function() {
+		if($("#messageC img").css("width") >$("#messageC img").css("850px")){
+			$("#messageC img").css("width","100%"); 
+		}else{
+		}
+	}) */
 	</script>
 </body>
 </html>
