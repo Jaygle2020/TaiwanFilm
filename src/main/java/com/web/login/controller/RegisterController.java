@@ -214,7 +214,9 @@ public class RegisterController {
 			model.addAttribute("members", service.getAllMembers());
 			return "_01_register/allMembers";
 		} else {
-			return "_01_register/DomodifyMember";
+			return "redirect:/ShowAllMembers";
+			
+//			return "_01_register/DomodifyMember";
 		}
 		
 	}

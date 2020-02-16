@@ -130,6 +130,22 @@ h1 {
     border-radius: 5px;
     width: 50%;
     }
+.imgdiv{    
+    width: 150px; 
+    height: 150px; 
+    overflow: hidden; 
+    position: relative;
+    border-radius: 50%;
+}
+.imgstyle{
+width: 100%; 
+position: absolute; 
+top: 50%; left: 50%; 
+transform: translate(-50%, -50%);
+
+}
+    
+
 
 </style>
 <meta charset="UTF-8">
@@ -157,34 +173,27 @@ h1 {
  				<input type="radio"  id="gender" name="gender" value="女生" />女生    		   				
    				<td>
 <%--    				<c:if ${sessionScope.members.gender =='女生'}>CHECKED</c:if> --%>
-   				<script>
 
-   				$(document).ready(function() {
-
-   					if(${sessionScope.members.gender =='男生'}){
-   						$("input[name='gender'][value=男生]").attr("checked",true); 
-   					}else if(${sessionScope.members.gender =='女生'}){
-   						$("input[name='gender'][value=女生]").attr("checked",true); 
-   					}
-
-   				});
-   				//這個alert 語法是錯誤的!!!
-   				</script>
-   				<tr><td width='60'>照片:<td width='360'><input type='file' name="memImage"
+   				<tr><td width='60'>照片:<td width='360'>
+   				
+   				<input type='file' name="memberImage"
 				id="memberImage"  class='form:input-large' /> 
 				<tr><td width='60'><td width='360'>
-				<img width='100' height='100' src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
+				<div class="imgdiv">
+				<img class="imgstyle" style="dsiplay: inline-block" id="oldMemberImage" src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
+				<img class="imgstyle" id="preview_memImage" src="#" style="display: none" />
+    			</div>
     			</c:if> 
     		<c:if test='${empty members.memberId }'>無此會員!</c:if>
 			</table>
 			<input type="submit" id="bt1" value="確認" style="text-alien:left" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-			<div>
+<!-- 			<div> -->
 			<hr>
-			<button ><a href="${pageContext.request.contextPath}/ShowAllMembers">
-					<div class="m-bar1">回上一頁</div>
-				</a>  
-				</button>
+<%-- 			<button ><a href="${pageContext.request.contextPath}/ShowAllMembers"> --%>
+<!-- 					<div class="m-bar1">回上一頁</div> -->
+<!-- 				</a>   -->
+<!-- 				</button> -->
 <!-- 			<button ><a href="/TaiwanFilm/_01_register/MemberBackstage" style="text-decoration: none; color: black;">管理者頁面</a></button> -->
 				
 		</form>
@@ -193,5 +202,37 @@ h1 {
 
 </div>
 </div>
+   				<script>
+
+
+   				$(document).ready(function() {
+   					if(${sessionScope.members.gender =="男生"}){
+   						$("input[name='gender'][value=男生]").attr("checked",true); 
+   						
+   					}else if(${sessionScope.members.gender =="女生"}){
+   						$("input[name='gender'][value=女生]").attr("checked",true); 
+   					}
+   				});
+   				
+   				$("#memberImage").change(function() {
+   					//當檔案改變後，做一些事 
+   					readURL(this); // this代表<input id="memberImage">
+   					$("#preview_memImage").css("display", "inline-block");
+   					$("#oldMemberImage").css("display", "none");
+   				});
+
+   				function readURL(input) {
+   					if (input.files && input.files[0]) {
+   						var reader = new FileReader();
+   						reader.onload = function(e) {
+   							$("#preview_memImage").attr('src', e.target.result);
+   						}
+   						reader.readAsDataURL(input.files[0]);
+   					}
+   				}
+
+   			
+   				</script>
+
 </body>
 </html>

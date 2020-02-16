@@ -85,14 +85,20 @@ b {
     font-size: 46px;
     margin-bottom: 30px;
 }
-/* #memberImage{ */
-/*     background-color: black; */
-/*     border: 0; */
-/*     color: white; */
-/*     font-size: 16px; */
-/*     padding: 10px 30px; */
-/*     border-radius: 5px; */
-/* } */
+.imgdiv{    
+    width: 150px; 
+    height: 150px; 
+    overflow: hidden; 
+    position: relative;
+    border-radius: 50%;
+}
+.imgstyle{
+width: 100%; 
+position: absolute; 
+top: 50%; left: 50%; 
+transform: translate(-50%, -50%);
+
+}
 
 </style>
 </head>
@@ -140,9 +146,12 @@ b {
 							<BR>
 							<input type="submit" class="allBt" id="bt1" value="確認" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="reset" class="allBt" id="bt2" value="清空" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<td><img style="dsiplay: inline-block" id="oldMemberImage"
+						<td>
+							<div class="imgdiv">
+							<img class="imgstyle" style="dsiplay: inline-block" id="oldMemberImage"
 							src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
-							<img id="preview_memImage" src="#" style="display: none" />
+							<img class="imgstyle" id="preview_memImage" src="#" style="display: none" />
+							</div>
 					<tr>
 						<td>
 							
@@ -161,9 +170,9 @@ b {
 
 		$(document).ready(function() {
 
-			if(${sessionScope.members.gender =='男生'}){
-				$("input[name='gender'][value=男生]").attr("checked",true); 
-			}else if(${sessionScope.members.gender =='女生'}){
+			if(${sessionScope.members.gender =="男生"}){
+				$("input[name='gender'][value=男生]").attr("checked",true); 				
+			}else if(${sessionScope.members.gender =="女生"}){
 				$("input[name='gender'][value=女生]").attr("checked",true); 
 			}
 		});
