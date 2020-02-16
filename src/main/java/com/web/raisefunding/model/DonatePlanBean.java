@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.google.gson.annotations.Expose;
+
 
 
 
@@ -23,15 +25,24 @@ public class DonatePlanBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="planId")
+	@Expose
 	private Integer planId;
+	@Expose
 	private Integer donateMoney;
+	@Expose
 	@Column(length=500)
 	private String donateDescription;
+	@Expose
 	private String pictureFileName;
+	@Expose
 	private Blob picture;
+	@Expose
 	private String shipping;
+	@Expose
 	private String dliverDate;
-	private Integer limit;
+	@Expose
+	private Integer limitNum;
+	@Expose
 	@OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="projectId", referencedColumnName="projectId")
 	private ProjectBean projBean;
@@ -46,12 +57,12 @@ public class DonatePlanBean implements Serializable {
 
 	public DonatePlanBean() {}
 	
-	public DonatePlanBean(Integer donateMoney,String donateDescription,String shipping,String dliverDate,Integer limit) {
+	public DonatePlanBean(Integer donateMoney,String donateDescription,String shipping,String dliverDate,Integer limitNum) {
 		this.donateMoney = donateMoney;
 		this.donateDescription = donateDescription;
 		this.shipping = shipping;
 		this.dliverDate = dliverDate;
-		this.limit = limit;
+		this.limitNum = limitNum;
 	}
 	
 	
@@ -92,11 +103,11 @@ public class DonatePlanBean implements Serializable {
 	public void setDliverDate(String dliverDate) {
 		this.dliverDate = dliverDate;
 	}
-	public Integer getLimit() {
-		return limit;
+	public Integer getLimitNum() {
+		return limitNum;
 	}
-	public void setLimit(Integer limit) {
-		this.limit = limit;
+	public void setLimitNum(Integer limitNum) {
+		this.limitNum = limitNum;
 	}
 
 	public String getPictureFileName() {

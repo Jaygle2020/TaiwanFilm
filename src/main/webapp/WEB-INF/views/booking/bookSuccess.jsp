@@ -3,16 +3,20 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/movie2.css">
+	href="${pageContext.request.contextPath }/css/movie.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/menuStyle.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <head>
-<title>movie</title>
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath }/favicon.ico" />
+<title>Taiwam Films - 訂票成功</title>
 <style>
 .ticketContent {
-	padding: 50px;
+	padding: 125px 150px 50px 150px;
 }
 
 .ticketOrder {
@@ -22,21 +26,21 @@
 	margin: 20px 0px 50px 0px;
 }
 
-.mart {
-	padding-top: 95px;
-}
+body{
+	background-image: url(img/wall1.jpeg);
+}  
 </style>
 </head>
 <body>
 
-	<jsp:include page="../fragment/top.jsp" />
+	<jsp:include page="../fragment/menu.jsp" />
 
 	<div class="ticketContent">
 		<!-- 訂位成功提示訊息 -->
 		<div>
-			<p>
-				<strong>訂票成功！</strong>
-			</p>
+
+			<h3>訂票成功！</h3>
+
 			<p>
 				請於 <span style="color: red">${session.sessionDate.substring(4, 6) }/
 					${session.sessionDate.substring(6, 8) }&ensp;${session.sessionTime.substring(0, 2) - 1 }:${session.sessionTime.substring(3, 5) }
@@ -89,10 +93,9 @@
 	</div>
 
 	<jsp:include page="../fragment/bottom.jsp" />
-
 </body>
 <script>
-	var num = ${ticket.ticketId };
+	var num = ${ticket.ticketId	};
 	for (var len = (num + "").length; len < 7; len = num.length) {
 		num = "0" + num;
 	}

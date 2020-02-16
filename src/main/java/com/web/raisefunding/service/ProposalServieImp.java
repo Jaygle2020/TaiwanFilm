@@ -38,23 +38,42 @@ public class ProposalServieImp implements ProposalService {
 		this.infoDao = infoDao;
 	}
 	@Transactional
-	@Override  //依次建立整個專案跟贊助(測試用)
+	@Override  //依次建立整個專案跟贊助
 	public int createProjectAndPlan( CrowdFundingBean cfBean, ProjectBean projBean) {
 		int n = 0;
 		projDao.createProject(projBean);
-		cfBean.setProjBean(projBean);
 		cfBean.setFundsNow(0);
 		cfBean.setBackerNum(0);
+		cfBean.setProjBean(projBean);
+		projBean.setCfBean(cfBean);
 		cfDao.createNewCrowdFunding(cfBean);
 		n++;
 		return n;
 	}
+	
+	
+	@Transactional
+	@Override  //依次建立整個專案跟贊助
+	public int updateProjectAndPlan( CrowdFundingBean cfBean, ProjectBean projBean) {
+		int n = 0;
+		projDao.updateProject(projBean);
+		if(cfBean.getFundsNow()==null)cfBean.setFundsNow(0);
+		if(cfBean.getBackerNum()==null)cfBean.setBackerNum(0);
+		cfBean.setProjBean(projBean);
+		projBean.setCfBean(cfBean);
+		cfDao.updateFund(cfBean);
+		n++;
+		return n;
+	}
+	
 	@Transactional
 	@Override   //測Spring form tag 用
 	public CrowdFundingBean getCrowdFundingBean(Integer projectId) {
 		CrowdFundingBean cfBean = cfDao.getCrowdFundingBean(projectId);
+		if(cfBean.getFundsNow()!=null&&cfBean.getFundsGoal()!=null) {
 		double num = (double)cfBean.getFundsNow()/cfBean.getFundsGoal();
 		cfBean.setPercent((int)Math.round(num*100));
+		}
 		return cfBean;
 	}
 	
@@ -92,8 +111,14 @@ public class ProposalServieImp implements ProposalService {
 	
 	@Transactional
 	@Override
-	public List<ProjectInfoBean> getProjectInfo(Integer projectId) {
+	public ProjectInfoBean getProjectInfo(Integer projectId) {
 		return infoDao.getProjectInfo(projectId);
+	}
+	
+	@Transactional
+	@Override
+	public boolean checkProjectInfo(Integer projectId) {
+		return infoDao.checkProjectInfo(projectId);
 	}
 	
 	@Transactional
@@ -101,6 +126,7 @@ public class ProposalServieImp implements ProposalService {
 	public int createProjInfo(ProjectInfoBean infoBean) {
 		return infoDao.createProjInfo(infoBean);
 	}
+	
 	
 	@Transactional
 	@Override
@@ -116,6 +142,17 @@ public class ProposalServieImp implements ProposalService {
 		return n;
 	}
 	
-
+	@Transactional
+	@Override
+	public DonatePlanBean getSinglePlan(Integer projectId , Integer dpId) {
+		return dpDao.getSinglePlan(projectId, dpId);
+	}
+	
+	@Transactional
+	@Override
+	public void updateDonatePlan(DonatePlanBean dpBean) {
+		dpDao.updatePlan(dpBean);
+		
+	}
 
 }

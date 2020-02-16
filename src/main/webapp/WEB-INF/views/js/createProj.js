@@ -104,8 +104,10 @@ function readURL(input) {
 	}
 }
 
-// 清除剛剛的操作重來
+// 清除INFO區塊的內容重新輸入
 function resetForm() {
+	$("#preViewArea").html("");
+	$("#viewArea").css("display","block");
 	$("#viewArea").html("");
 	$(".formArea [type='file']").remove();
 	$(".formArea")

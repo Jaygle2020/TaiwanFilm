@@ -1,8 +1,8 @@
 package com.web.raisefunding.dao;
 
 import java.io.Serializable;
-import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.hibernate.Session;
@@ -31,32 +31,50 @@ public class ProjectInfoDaoImp implements Serializable, ProjectInfoDao {
 	@Override
 	public int updateProjInfo(ProjectInfoBean infoBean) {
 		int n =0;
-		String hql = "update ProjectInfoBean i set i.projectTittle = :projectTittle,"+
-					"i.innerText = :innerText, i.photoCount =:photoCount,"+
-					"i.imgName01 = :imgName01,i.image01 =:image01,"+
-					"i.imgName02 = :imgName02,i.image02 =:image02,"+
-					"i.imgName03 = :imgName03,i.image03 =:image03,"+
-					"i.imgName04 = :imgName04,i.image04 =:image04"+
-					"where i.projectId = :projId";
 		Session session = factory.getCurrentSession();
-		Query query = session.createQuery(hql).setParameter("projectTittle", infoBean.getProjectTittle())
-				.setParameter("innerText", infoBean.getInnerText() ).setParameter("photoCount",infoBean.getPhotoCount())
-				.setParameter("imgName01",infoBean.getImgName01() ).setParameter("image01",infoBean.getImage01() )
-				.setParameter("imgName02",infoBean.getImgName02() ).setParameter("image02",infoBean.getImage02() )
-				.setParameter("imgName03",infoBean.getImgName03()).setParameter("image03",infoBean.getImage03() )
-				.setParameter("imgName04",infoBean.getImgName04() ).setParameter("image04",infoBean.getImage04() )
-				.setParameter("projId",infoBean.getProjBean().getProjectId() );
-		query.executeUpdate();		
+		String hqlget = "from ProjectInfoBean where projectId = :projId ";
+		ProjectInfoBean infoOldBean = (ProjectInfoBean) session.createQuery(hqlget).setParameter("projId", infoBean.getProjBean().getProjectId())
+										  .getSingleResult();
+		infoOldBean.setImage01(infoBean.getImage01());infoOldBean.setImgName01(infoBean.getImgName01());
+		infoOldBean.setImage02(infoBean.getImage02());infoOldBean.setImgName02(infoBean.getImgName02());
+		infoOldBean.setImage03(infoBean.getImage03());infoOldBean.setImgName03(infoBean.getImgName03());
+		infoOldBean.setImage04(infoBean.getImage04());infoOldBean.setImgName04(infoBean.getImgName04());
+		infoOldBean.setInnerText(infoBean.getInnerText());infoOldBean.setPhotoCount(infoBean.getPhotoCount());
+		infoOldBean.setProjectTittle(infoBean.getProjectTittle());
+		session.update(infoOldBean);
 		n++;
 		return n;
 	}
 
 	@Override
-	public List<ProjectInfoBean> getProjectInfo(Integer projectId) {
+	public boolean checkProjectInfo(Integer projectId) {
+		boolean check = false;
+		ProjectInfoBean infoBean = new ProjectInfoBean();
 		Session session = factory.getCurrentSession();
 		String hql = "from ProjectInfoBean where projectId = :projId";
-		List<ProjectInfoBean> infoBean = session.createQuery(hql).setParameter("projId", projectId)
-								   .getResultList();
+		try {
+			 infoBean = (ProjectInfoBean) session.createQuery(hql).setParameter("projId", projectId)
+					   .getSingleResult();
+			 check = true;
+		} catch (NoResultException e) {
+		e.printStackTrace(); System.out.println("these is no projectInfo");
+		}catch (Exception e2) {
+			System.out.println("another exception");
+		}
+		return check;
+	}
+	
+	@Override
+	public ProjectInfoBean getProjectInfo(Integer projectId) {
+		ProjectInfoBean infoBean = new ProjectInfoBean();
+		Session session = factory.getCurrentSession();
+		String hql = "from ProjectInfoBean where projectId = :projId";
+		try {
+			 infoBean = (ProjectInfoBean) session.createQuery(hql).setParameter("projId", projectId)
+					   .getSingleResult();
+		}catch (Exception e) {
+			System.out.println("another exception");
+		}
 		return infoBean;
 	}
 

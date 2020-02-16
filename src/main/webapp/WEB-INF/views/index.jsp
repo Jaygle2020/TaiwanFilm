@@ -1,543 +1,251 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+   
 <!DOCTYPE html>
-<html lang="zh-TW">
-<link rel="stylesheet" href="css/movie.css">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
+<title>Taiwam Films</title>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<head>
-<title>movie</title>
-<style>
-ul {
-	list-style-type: none;
-}
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/finalIndex.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/movie.css"
+	type="text/css">
+<!-- 	<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap" rel="stylesheet">
 
-a {
-	text-decoration: none;
-}
+	<link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet"> -->
+<!-- <link id="MonoTypeFontApiFontTracker" type="text/css" rel="stylesheet" href="https://fast.fonts.net/t/1.css?apiType=js&amp;projectid=b2d946f7-734c-4b45-a07f-3923a384b0dd"> -->
 
-h2 {
-	text-align: left;
-	color: #00bbd6;
-	border-left: 3px solid #00bbd6;
-	font-size: 18px;
-	padding-left: 10px;
-}
+<body style="margin: 0;background-image: url(img/wall1.jpeg)">
 
-body {
-	margin: 0;
-}
-</style>
-</head>
-<body>
+	<jsp:include page="fragment/menu.jsp" />
+ <!-- 改改改 -->
 
-	<jsp:include page="fragment/top.jsp" />
-
-
-	<div class="main">
-		<ul class="img">
-			<li><div class="main-bg1"></div></li>
-			<li><div class="main-bg2"></div></li>
-			<li><div class="main-bg3"></div></li>
-			<li><div class="main-bg4"></div></li>
-		</ul>
+	<div class="bottom-bar">	
+		<div class="bottom-bar-content">豐盛之城－臺灣三部曲 Formosa Wonderland -
+			「勇士計畫」預計2021年啟動</div>
 	</div>
+		<div class="dots" style="writing-mode: tb-rl;z-index: 200">
+			<div id="home-area" class="dot dot-pink"></div>  
+			<div id="activity-area" class="dot"></div>
+			<div id="funds-area" class="dot"></div>  
+			<div id="movie-area" class="dot"></div>
+		</div>
+	
 
-	<div class="section" id="popular">
-		<div class="width-limit">
-			<h2>熱門項目</h2>
-			<div class="inner">
-				<div class="projectThumb">
-					<img src="img/popular-pic01.jpg">
-				</div>
-				<div class="content">
-					<h3>測試文字</h3>
-					<p>測試文字測試文字測試文字測試文字測試文字</p>
-				</div>
-				<div class="downMeta"></div>
-			</div>
-
-			<div class="inner">
-				<div class="projectThumb">
-					<img src="img/popular-pic02.jpg">
-				</div>
-				<div class="content">
-					<h3>測試文字</h3>
-					<p>測試文字測試文字測試文字測試文字測試文字</p>
-				</div>
-				<div class="downMeta"></div>
-			</div>
-
-			<div class="inner">
-				<div class="projectThumb">
-					<img src="img/popular-pic03.jpg">
-				</div>
-				<div class="content">
-					<h3>測試文字</h3>
-					<p>測試文字測試文字測試文字測試文字測試文字</p>
-				</div>
-				<div class="downMeta"></div>
+	<div class="indexWidth">
+		<div class="mainContent">
+			<div class="mainContent-coverImg"></div>
+			<div class="mainContentimg">
+				<div class="mainContent-img-left"></div>
+				<div class="mainContent-img-right"></div>
 			</div>
 		</div>
-	</div>
+			
 
-	<div class="section" id="category">
-		<div class="width-limit">
-			<div class="change-category">
-				<div class="change-menu">
-					<div class="buttonBorder-active buttonBorder" id="new-button">最新發起</div>
-					<div class="buttonBorder" id="trend-button">趨勢話題</div>
-					<div class="buttonBorder" id="coming-button">即將開始</div>
-					<div class="buttonBorder" id="end-button">即將結束</div>
+
+	 <jsp:include page="activity/activities.jsp" /> 
+
+		<div class="funds-trailer" >  
+			<div class="Ftrailer-video">
+				<iframe width="800px" height="400px"
+					src="https://www.youtube.com/embed/${projectBean.videoLink}" frameborder="0"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+			<div class="Ftrailer-title">${projectBean.projectName}</div>
+			<div class="Ftrailer-txt">${projectBean.projDescript}</div>
+		</div>
+		<div class="funds">      
+			<div class="introduction">
+				<div class="f-inner">
+					<div class="f-img1 f-img-style"></div>  
+					<div class="f-img2 f-img-style"></div>
+					<div class="f-img3 f-img-style"></div>
+					<!-- <img src="img/test1.jpg">
+					<img src="img/test2.jpg">
+					<img src="img/test3.jpg"> -->
+				</div>
+				<div class="f-content">
+					<div class="f-content-pad">
+						<h3>募資介紹</h3>
+						<h2>國片平台集資成趨勢</h2>
+<p>近年來，國片的募資方式多轉移到募資平台上，相信是最節省人力物力及較便捷的方法，也會有集資公司輔導，效益能發揮到最大。</p>
+<p>一般情況下，群眾集資的專案會以「全有全無（All or Nothing）」的模式進行；若集資失敗，提案中募資的款項將會退還給贊助者，專案也不會按計劃進行。
+提到近來衆多國片會在平台上募資的原因，貝殼放大集資專案經理韓婷如表示，台灣電影集資以紀錄片為主，多半是帶有核心關懷的議題，非常適合透過群眾集資的方式，在募集資金的同時，能讓議題逐漸加溫。
+						</p><br>
+						<p>群眾募資對於提案者或贊助者而言，都是一個新的體驗，與過去純然的銷售或籌資完全不同，因此即將計劃的你不妨也加入我們。</p>
+					</div>
+				</div>
+				<div class="f-txt"></div>
+			</div>
+			<div class="story">
+				<div class="f-content">
+					<div class="f-content-pad">
+						<h3>募資故事</h3>
+						<p>${projectBean.projStory}</p>
+					</div>
+				</div>
+				<div class="f-inner">
+					<div class="f-img4 f-img-style"></div>
+					<div class="f-img5 f-img-style"></div>
+					<div class="f-img6 f-img-style"></div>
 				</div>
 			</div>
+		</div>
 
 
-
-			<div class="category-content active" id="new">
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic05.jpg">
+		<div class="movie">
+			<div class="cast">
+				<div class="movie-title">電影</div>
+				<div class="movie-inner" style="text-align: left; font-size: 20px;">
+					<p>二輪戲院流行的時期，錄影帶剛成為一種價格實惠的家庭影音放映技術，很多預算有限的觀眾寧可等影片在二輪影院上映，而非花更多的錢去首輪電影院。</p>
+					<p>但隨著21世紀的到來，有兩個因素促使許多二輪戲院停業：</p>
+					<ol>
+						<li>電影院影廳供過於求，導致電影在首映電影院的停留時間更長</li>
+						<li>戲院上映和VHS或DVD發行的時間間隔持續縮小</li>
+					</ol>
+					<p>後一個因素讓許多觀影人認為不值得花錢和精神在可能遇到的吵鬧顧客及骯髒環境上，使二輪戲院成為夕陽產業。</p>
+					<br>
+					<div style="color: #d2b48c;">
+						<p>上班太忙錯過了首輪強檔好片嗎？</p>
+						<p>首輪秒下口碑卻爆棚的好片來不及看嗎？</p>
+						<p>荷包緊緊但想要大螢幕環繞音響的享受嗎？</p>
+						<p>二輪電影的文化不該被沒落，錯過的電影不知道去哪看嗎？</p>
+						<p>我們來幫你訂票，讓你不在錯過你想看的電影！！</p>
 					</div>
-					<div class="content">
-						<h3>新新新新新</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic04.jpg">
-					</div>
-					<div class="content">
-						<h3>新新新新新</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic03.jpg">
-					</div>
-					<div class="content">
-						<h3>新新新新新</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic02.jpg">
-					</div>
-					<div class="content">
-						<h3>測試文字</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>測試文字</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic04.jpg">
-					</div>
-					<div class="content">
-						<h3>測試文字</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
 				</div>
 			</div>
-			<div class="category-content" id="trend">
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>我是最潮的</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>測試文字</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>測試文字</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>測試文字</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>測試文字</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>測試文字</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-			</div>
-			<div class="category-content" id="coming">
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>來來來來來</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>來來來來來</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>來來來來來</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>測試文字</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>測試文字</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>測試文字</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-			</div>
-
-			<div class="category-content" id="end">
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>結束結束結束</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>結束結束結束</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>結束結束結束</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>測試文字</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>測試文字</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
-				</div>
-				<div class="inner">
-					<div class="projectThumb">
-						<img src="img/popular-pic01.jpg">
-					</div>
-					<div class="content">
-						<h3>測試文字</h3>
-						<p>測試文字測試文字測試文字測試文字測試文字</p>
-					</div>
-					<div class="downMeta"></div>
+			<div class="area">
+				<div class="movie-pad">
+					<c:forEach var='movie' end="5" items='${movies }'>
+						<a href="<spring:url value='/movieDetail?id=${movie.movieId}' />"><div
+								class="background${movie.movieId } pictures"
+								id="test${movie.movieId }"
+								style="background-image:url('<c:url value='/getPicture/movieBean/${movie.movieId }' />');"></div></a>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<div class="section" id="unique">
-		<div class="width-limit">
-			<h2>探索企劃</h2>
-			<div class="unique-project">
-				<div class="text">
-					<div class="text-content">
-						<p>黑膠募資專頁</p>
-						<p>好感音樂</p>
-					</div>
-					<p>
-						<a href="" class="more-btn">了解更多</a>
-					</p>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<div class="section" id="siteCategory">
-		<div class="category-square">
-			<div>
-				<img src="img/icon04.svg">
-				<p>設計</p>
-			</div>
-		</div>
-		<div class="category-square">
-			<div>
-				<img src="img/icon01.svg">
-				<p>音樂</p>
-			</div>
-		</div>
-		<div class="category-square">
-			<div>
-				<img src="img/icon02.svg">
-				<p>影視</p>
-			</div>
-		</div>
-		<div class="category-square">
-			<div>
-				<img src="img/icon03.svg">
-				<p>科技</p>
-			</div>
-		</div>
-		<div class="category-square">
-			<div>
-				<img src="img/icon04.svg">
-				<p>藝術</p>
-			</div>
-		</div>
-		<div class="category-square">
-			<div>
-				<img src="img/icon03.svg">
-				<p>休閒</p>
-			</div>
-		</div>
-		<div class="category-square">
-			<div>
-				<img src="img/icon02.svg">
-				<p>公共</p>
-			</div>
-		</div>
-		<div class="category-square">
-			<div>
-				<img src="img/icon04.svg">
-				<p>在地</p>
-			</div>
-		</div>
-	</div>
-
-	<jsp:include page="fragment/top.jsp" />
+	
+	<jsp:include page="fragment/bottom.jsp" /> 
 
 </body>
 
 
-<script type="text/javascript"></script>
-
 <script>
-	$('#new-button').click(function() {
-		$('.category-content').removeClass("active active-bottom");
-		$('#new').addClass("active");
-		$('.buttonBorder').removeClass("buttonBorder-active");
-		$('#new-button').addClass("buttonBorder-active");
+
+	$(window).scroll(function() {
+		var scrollVal = $(this).scrollTop();
+		$("span.qScrollTop").text(scrollVal);
+	 	/* console.log(scrollVal);     滑動時抓高度 */
+		if (1231 > scrollVal && scrollVal > 422) {
+			$(".goToMid-l").css("color", "black");
+			$(".menu-click").css("color", "black");
+			$('.dot').removeClass("dot-pink");
+			$('#activity-area').addClass("dot-pink");
+
+		} else if(1000 > scrollVal && scrollVal > 100){
+			$(".mainContent-coverImg").css("margin-top",test())
+			function test(){
+				var y =($(this).scrollTop()/50 + "%");                      
+				return y;        
+			}      
+		} 
+		
+		else if (1950 > scrollVal && scrollVal > 1232)  {
+			$(".goToMid-l").css("color", "white");
+			$(".menu-click").css("color", "white");
+
+		}else if(3314 > scrollVal && scrollVal > 2683) {	
+			$(".goToMid-l").css("color", "black");
+		} else if (3314 > scrollVal && scrollVal > 1951) {
+			$(".goToMid-l").css("color", "white");
+			$(".menu-click").css("color", "black"); 
+			$('.dot').removeClass("dot-pink");
+			$('#funds-area').addClass("dot-pink");
+
+		} else if (9999 > scrollVal && scrollVal > 3315) {
+			$(".goToMid-l").css("color", "white");
+			$(".menu-click").css("color", "white");
+
+			$('.dot').removeClass("dot-pink");
+			$('#movie-area').addClass("dot-pink");
+
+		} else {
+			$(".goToMid-l").css("color", "black");
+			$(".right-bar").css("color", "black");
+
+			$('.dot').removeClass("dot-pink");
+			$('#home-area').addClass("dot-pink");
+		}
 
 	});
-	$('#trend-button').click(function() {
-		$('.category-content').removeClass("active active-bottom");
-		$('#trend').addClass("active");
-		$('.buttonBorder').removeClass("buttonBorder-active");
-		$('#trend-button').addClass("buttonBorder-active");
-	});
-	$('#coming-button').click(function() {
-		$('.category-content').removeClass("active active-bottom");
-		$('#coming').addClass("active");
-		$('.buttonBorder').removeClass("buttonBorder-active");
-		$('#coming-button').addClass("buttonBorder-active");
-	});
-	$('#end-button').click(function() {
-		$('.category-content').removeClass("active active-bottom");
-		$('#end').addClass("active");
-		$('.buttonBorder').removeClass("buttonBorder-active");
-		$('#end-button').addClass("buttonBorder-active");
-	});
 
-	$('.myAccount').mouseover(function() {
-		$('.register-btn').show();
+	//點dot移動畫面
 
+	$("#home-area").click(function() {
+		$('html,body').animate({
+			scrollTop : 0
+		}, 'fast');
 	});
-	$('.myAccount').mouseout(function() {
-		$('.register-btn').hide();
-
+	$("#activity-area").click(function() {
+		$('html,body').animate({
+			scrollTop : 872
+		}, 'fast');
+	});
+	$("#funds-area").click(function() {
+		$('html,body').animate({
+			scrollTop : 1620
+		}, 'fast');
+	});
+	$("#movie-area").click(function() {
+		$('html,body').animate({
+			scrollTop : 3773
+		}, 'fast');
 	});
 
-	$(document).ready(
-			function() {
-				var i = 0;
-				var clone = $(".main .img li").first().clone();//克隆第一張圖片
-				$(".main .img").append(clone);//復制到列表最後
-				var size = $(".main .img li").size();
+	$(".pictures").mouseover(function() {
+		$(".pictures").addClass("dark");
 
-				for (var j = 0; j < size - 1; j++) {
-					$(".main .num").append("<li></li>");
-				}
+		$('#test1').mouseover(function() {
+			$('.pictures').removeClass("light");
+			$(this).addClass("light");
+		});
+		$('#test2').mouseover(function() {
+			$('.pictures').removeClass("light");
+			$(this).addClass("light");
+		});
+		$('#test3').mouseover(function() {
+			$('.pictures').removeClass("light");
+			$(this).addClass("light");
+		});
+		$('#test4').mouseover(function() {
+			$('.pictures').removeClass("light");
+			$(this).addClass("light");
+		});
+		$('#test5').mouseover(function() {
+			$('.pictures').removeClass("light");
+			$(this).addClass("light");
+		});
+		$('#test6').mouseover(function() {
+			$('.pictures').removeClass("light");
+			$(this).addClass("light");
+		});
+	});
 
-				$(".main .num li").first().addClass("on");
-
-				/*自動輪播*/
-
-				var t = setInterval(function() {
-					i++;
-					move();
-				}, 2000);
-
-				/*鼠標懸停事件*/
-
-				$(".main").hover(function() {
-					clearInterval(t);//鼠標懸停時清除定時器
-				}, function() {
-					t = setInterval(function() {
-						i++;
-						move();
-					}, 2000); //鼠標移出時清除定時器
-				});
-
-				/*鼠標滑入原點事件*/
-
-				$(".main .num li").hover(function() {
-
-					var index = $(this).index();//獲取當前索引值
-					i = index;
-					$(".main .img").stop().animate({
-						left : -index * 1500
-					}, 750);
-					$(this).addClass("on").siblings().removeClass("on");
-				});
-
-				/*移動事件*/
-				function move() {
-					if (i == size) {
-						$(".main .img").css({
-							left : 0
-						});
-						i = 1;
-					}
-					if (i == -1) {
-						$(".main .img").css({
-							left : -(size - 1) * 1500
-						});
-						i = size - 2;
-					}
-					$(".main .img").stop().animate({
-						left : -i * 1450
-					/*圖片移動的長度*/
-					}, 1500);/* 圖片移動的時間*/
-
-					if (i == size - 1) {
-						$(".main .num li").eq(0).addClass("on").siblings()
-								.removeClass("on");
-					} else {
-						$(".main .num li").eq(i).addClass("on").siblings()
-								.removeClass("on");
-					}
-				}
-			});
+	// 移出照片區時(mouseout) 去掉所有移入時加入的dark
+	$(".pictures").mouseout(function() {
+		$(".pictures").removeClass("dark");
+	});
 </script>
+</body>
 </html>

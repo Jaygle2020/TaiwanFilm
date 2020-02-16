@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/movie2.css">
+	href="${pageContext.request.contextPath }/css/movie.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
@@ -16,8 +16,39 @@
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <style>
+label:not (#fake ) {
+	color: #428bca;
+	font-size: 16px;
+}
+
+input[type="checkbox"] {
+	height: 20px;
+	width: 20px;
+}
+
+input, select {
+	height: 35px;
+	border-radius: 5px;
+}
+
+textarea {
+	border-radius: 5px;
+}
+
+span {
+	font-size: 16px;
+}
+
 .inputLarge {
 	width: 500px;
+}
+
+.category-content {
+	margin-bottom: 50px;
+}
+
+fieldset {
+	padding-left: 170px;
 }
 
 label {
@@ -33,7 +64,8 @@ label {
 
 #btn {
 	margin-right: 5px;
-	height:23px;
+	height: 23px;
+	border-radius: 0px;
 }
 
 #text {
@@ -42,16 +74,13 @@ label {
 </style>
 </head>
 <body>
-	<jsp:include page="../fragment/top.jsp" />
+	<jsp:include page="../backstage.jsp" />
 
-	<section>
-		<div class="container">
-			<h1 style="text-align: center">修改電影</h1>
+	<section class="container"
+		style="position: absolute; left: 17%; width: 80%; padding-top: 100px">
+		<div class="category-content">
+			<h1 style="text-align: center; margin: 0">修改電影</h1>
 		</div>
-	</section>
-	<hr
-		style="height: 1px; border: none; color: #333; background-color: #333;">
-	<section class="container">
 		<!--       三個地方要完全一樣 -->
 		<form:form method='POST' modelAttribute="movieBean"
 			class='form-horizontal' enctype="multipart/form-data">
@@ -106,38 +135,39 @@ label {
 						類型 </label>
 					<div class="col-lg-10" id="type">
 						<form:checkbox path="type" value="動作" />
-						動作
+						<span>動作</span>
 						<form:checkbox path="type" value="冒險" />
-						冒險
+						<span>冒險</span>
 						<form:checkbox path="type" value="喜劇" />
-						喜劇
+						<span>喜劇</span>
 						<form:checkbox path="type" value="劇情" />
-						劇情
+						<span>劇情</span>
 						<form:checkbox path="type" value="動畫" />
-						動畫
+						<span>動畫</span>
 						<form:checkbox path="type" value="偵探推理" />
-						偵探推理
+						<span>偵探推理</span>
 						<form:checkbox path="type" value="紀錄" />
-						紀錄
+						<span>紀錄</span>
 						<form:checkbox path="type" value="英雄" />
-						英雄<br>
+						<span>英雄</span><br>
 						<form:checkbox path="type" value="警匪" />
-						警匪
+						<span>警匪</span>
 						<form:checkbox path="type" value="科幻" />
-						科幻
+						<span>科幻</span>
 						<form:checkbox path="type" value="懸疑" />
-						懸疑
+						<span>懸疑</span>
 						<form:checkbox path="type" value="驚悚" />
-						驚悚
+						<span>驚悚</span>
 						<form:checkbox path="type" value="溫馨" />
-						溫馨
+						<span>溫馨</span>
 						<form:checkbox path="type" value="戰爭" />
-						戰爭
+						<span>戰爭</span>
 						<form:checkbox path="type" value="勵志" />
-						勵志
+						<span>勵志</span>
 						<form:checkbox path="type" value="家庭" />
-						家庭 <input id="typeHidden" type="hidden" value="${movie.type }" />
+						<span>家庭</span>
 					</div>
+					<input id="typeHidden" type="hidden" value="${movie.type }" />
 				</div>
 
 				<div class="form-group">
@@ -199,9 +229,9 @@ label {
 					<label class='control-label col-lg-2 col-lg-2' for="fileImage">
 						圖片 </label>
 					<div class='col-lg-10'>
-						<label for="fileImage"> <input type="button" id="btn"
-							value="選擇檔案"><span id="text">${movie.fileName }</span> <form:input
-								id="fileImage" path="fileImage" type='file'
+						<label for="fileImage" id="fake"> <input type="button"
+							id="btn" value="選擇檔案"><span id="text">${movie.fileName }</span>
+							<form:input id="fileImage" path="fileImage" type='file'
 								value="${pageContext.request.contextPath }/img/booking/${movie.fileName }" />
 						</label>
 					</div>
@@ -215,9 +245,8 @@ label {
 				</div>
 			</fieldset>
 		</form:form>
+		<br> <br> <br> <br>
 	</section>
-
-	<jsp:include page="../fragment/bottom.jsp" />
 
 </body>
 <script>
@@ -236,5 +265,11 @@ label {
 		$("#text").css("opacity", "0");
 		$("#btn").css("opacity", "0");
 	})
+
+	$("#btnAdd").click(function() {
+		if (!confirm("確定要修改嗎?")) {
+			return false;
+		}
+	});
 </script>
 </html>

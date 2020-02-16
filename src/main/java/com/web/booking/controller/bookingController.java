@@ -103,7 +103,7 @@ public class bookingController {
 		}
 
 		service.alterMovieDetail(mb);
-		return "redirect:/alterMovieDetail?id=" + id;
+		return "redirect:/alterMovie";
 	}
 
 	@RequestMapping("/deleteMovieDetail")

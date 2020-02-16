@@ -1,5 +1,7 @@
 package com.web.login.Service;
 
+import java.util.List;
+
 import com.web.login.Model.MembersBean;
 
 public interface MembersService {
@@ -9,5 +11,8 @@ public interface MembersService {
 	MembersBean getMemberByBean(MembersBean mb);
 	MembersBean login(String email,String pwd);
 	public boolean updateMembers(MembersBean member);
-	
+	public boolean modifyMembers(MembersBean member);
+	boolean emailExists(String email);
+	List<MembersBean> getAllMembers();
+	List<MembersBean> getMemberByEmail(String keyword);
 }
