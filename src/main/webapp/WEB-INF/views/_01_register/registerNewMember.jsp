@@ -149,7 +149,8 @@
 <div style="bottom:0px;"><jsp:include page="../fragment/bottom.jsp" /></div> 
 		<script	src="${pageContext.request.contextPath }/js/registerNewMember.js"></script>
 		<script>
-
+		
+//一鍵輸入資料
 		function oneEntry1() {
 			 var email = "eeit11099@gmail.com";
 			 var pass = "Sa123456";
@@ -176,10 +177,12 @@
 					if(mname !=""){
 						if(email !=""){
 					$("#bt1").prop("disabled", false);
+					$("#bt1").css("background-color","black");
 						}
 					}
 				}else {
 					$("#bt1").prop("disabled", true);
+					$("#bt1").css("background-color","grey");
 					$('#pwdErrorBox').text("確認密碼不符");
 
 					}
@@ -195,10 +198,12 @@
 					if(mname !=""){
 						if(email !=""){
 					$("#bt1").prop("disabled", false);
+					$("#bt1").css("background-color","black");
 						}
 					}
 				}else {
 					$("#bt1").prop("disabled", true);
+					$("#bt1").css("background-color","grey");
 					$('#pwdErrorBox').text("確認密碼不符");
 					}
 			})
@@ -213,6 +218,7 @@
 					$('#nameErrorBox').text("");
 					if(email != "" && pwd1 == pwd2 && pwd1 != ""){
 						$("#bt1").prop("disabled", false);
+						$("#bt1").css("background-color","black");
 					}
 				}else{
 					$('#nameErrorBox').css("color","red").text("請輸入名稱");
@@ -223,7 +229,7 @@
 		})
 		//email 更動時 確認信箱能否使用
 		$(document).ready(function(){
-			$("#email").blur(function(){
+			$("#email").change(function(){
 				var pwd1 = $("#password").val();
 				var pwd2 = $("#password1").val();
 				var email = $('#email').val();
@@ -238,16 +244,19 @@
 						if(data){
 							$('#errorBox').css("color","red").text("此帳號重複");
 							$("#bt1").prop("disabled", true);
+							$("#bt1").css("background-color","grey");
 						}else if(email !="" ){
 							$('#errorBox').css("color","green").text("帳號可使用");
 							if(pwd1 == pwd2 && mname != ""){
 								$('#pwdErrorBox').text("");
 								$("#bt1").prop("disabled", false);
+								$("#bt1").css("background-color", "black");
 							}
 								
 						}else{
 							$('#errorBox').css("color","red").text("請輸入帳號");
 							$("#bt1").prop("disabled", true);
+							$("#bt1").css("background-color","grey");
 						}
 						console.log('success');
 					}

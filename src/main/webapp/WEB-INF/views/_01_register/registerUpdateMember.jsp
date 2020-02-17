@@ -199,7 +199,7 @@ transform: translate(-50%, -50%);
 		function oneButtonInport() {
 			var name = "吳慷仁先生";
 			var gerd = 	"男生";
-			var birt = "1988-01-26";
+			var birt = "1982-11-24";
 			$("#memberName").val(name);			
 			$("input[name='gender'][value=男生]").attr("checked",true); 
 			$("#birthDay").val(birt);
