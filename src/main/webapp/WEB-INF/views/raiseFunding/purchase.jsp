@@ -143,6 +143,8 @@
 <jsp:include page="../fragment/footer.jsp" />
 	<script>
 		$(function() {
+			var firstPrice = Number($("#donateMoney").text()) + Number($(".fare").text());
+			$(".payAmount").text(firstPrice);
 			$(".dollar").text(function(){
 				$(this).text("$"+formatNumber($(this).text())) ;
 			})
