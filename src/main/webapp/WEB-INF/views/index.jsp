@@ -15,11 +15,7 @@
 	rel="stylesheet">
 <link rel="stylesheet" href="css/finalIndex.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/movie.css"
-	type="text/css">
 <!-- 	<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap" rel="stylesheet">
-
 	<link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet"> -->
 <!-- <link id="MonoTypeFontApiFontTracker" type="text/css" rel="stylesheet" href="https://fast.fonts.net/t/1.css?apiType=js&amp;projectid=b2d946f7-734c-4b45-a07f-3923a384b0dd"> -->
 

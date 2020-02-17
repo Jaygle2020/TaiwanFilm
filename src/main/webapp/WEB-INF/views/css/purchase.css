@@ -202,7 +202,7 @@ body{
   background: linear-gradient(top bottom, white lightblue);
   border: 1px solid #cdcdcd;
   border-radius: 10px;
-  width: 250px;
+  width: 270px;
   height:400px;
   display: inline-block;
   text-align: center;
@@ -212,11 +212,12 @@ body{
 }
 .plan .projectThumb{
   width: 100%;
-  height: 200px;
+  height: 180px;
+  margin-top:7px;
 }
 .plan .projectThumb img{
 	width: 100%;
-  height: 200px;
+  height: 180px;
 }
 .plan .donateMoney {
   font-size: 30px;
@@ -261,7 +262,7 @@ body{
 
 .plan .planText .limit {
  position: absolute;
-    right: -14px;
+    right: -5px;
     bottom: -70px;
     font-size: 14px;
     font-weight: bold;
