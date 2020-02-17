@@ -338,6 +338,46 @@
 			
 			$( ".plan" ).on( "click", getPlanForm);
 			
+			//點擊方案方塊叫回原方案的資料進表格
+			function updateForm(dpBean){
+				$("#donateMoney").val(dpBean.donateMoney);
+				$("#donateDescription").text(dpBean.donateDescription);
+				var img = $("<img width='300' height='200'>").attr('src',
+						"${pageContext.request.contextPath}/getDonatePlan/photo/"+dpBean.planId
+						);
+				$("#photoPre").html("").append(img);
+				$("#limit").val(dpBean.limitNum);
+				$("#updateId").val(dpBean.planId);
+				var deletePlan = $("<button type='button' data-delId='"+dpBean.planId+"' id='delPane'>刪除</button>")		
+				$(".ui-dialog-buttonpane").append(deletePlan);
+				$("#delPane").on("click",delPlan);
+					
+			}
+			//刪除按鈕
+			function delPlan(){
+				alert($(this))
+				var url = "${pageContext.request.contextPath}/delDonatePlan/projId"+${ProjectBean.projectId}+
+				"/actionId"+$(this).attr("data-delId");
+				$.ajax({
+					type:'get',
+					url:url,
+					dataType:"json",
+					success:function(dataDpBeans){
+						console.log(dataDpBeans);
+						dpPlanForEach(dataDpBeans);
+						$( ".plan" ).on( "click", getPlanForm);
+						$(".dollar").text(function(){
+						$(this).text("$"+formatNumber($(this).text())) ;
+						})
+						$("button").remove("#delPane");
+						$("#updateId").val("0");
+						dialog.dialog("close");
+					},
+					error:function(){
+						alert("fail");
+					}	
+				})
+			}
 		});
 		
 		//送出表單按鈕
@@ -411,18 +451,7 @@ function dpPlanForEach(dpBeans){
 		$(".dplan-view").append(dplan);
 	}
 }
-//點擊方案方塊叫回原方案的資料進表格
-function updateForm(dpBean){
-		$("#donateMoney").val(dpBean.donateMoney);
-		$("#donateDescription").text(dpBean.donateDescription);
-		var img = $("<img width='300' height='200'>").attr('src',
-				"${pageContext.request.contextPath}/getDonatePlan/photo/"+dpBean.planId
-				);
-		$("#photoPre").html("").append(img);
-		$("#limit").val(dpBean.limitNum);
-		$("#updateId").val(dpBean.planId);
-		
-}
+
 
 
 	</script>

@@ -23,4 +23,5 @@ public interface ProposalService {
 	public boolean checkProjectInfo(Integer projectId);
 	public void updateDonatePlan(DonatePlanBean dpBean);
 	public ProjectInfoBean getProjectInfo(Integer projectId);
+	public void delDonatePlan(Integer projectId , Integer dpId);
 }

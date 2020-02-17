@@ -277,6 +277,12 @@ margin-top: 20px;
 #enterTable{
   font-size: 20px;
   font-weight: bold;
-	
 }
+
+#delPane{
+    float: right;
+    height: 35px;
+    border-radius: 8px;
+}
+
 /*# sourceMappingURL=create.css.map */

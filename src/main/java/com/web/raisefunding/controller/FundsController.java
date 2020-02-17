@@ -194,13 +194,23 @@ public class FundsController {
 		String jsonDpBean = gson.toJson(dpBeans);
 		return jsonDpBean;
 	}
-
+	
 	@GetMapping("/getDonatePlan/projId{prjId}/actionId{dpId}")
 	public @ResponseBody String getSingleDpBean(@PathVariable("prjId") Integer projectId,
 			@PathVariable("dpId") Integer planId) {
 		DonatePlanBean dpBean = propService.getSinglePlan(projectId, planId);
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String jsonDpBean = gson.toJson(dpBean);
+		return jsonDpBean;
+	}
+	
+	@GetMapping(value="/delDonatePlan/projId{prjId}/actionId{dpId}", produces = { "text/html;charset=utf-8" })
+	public @ResponseBody String delSingleDpBean(@PathVariable("prjId") Integer projectId,
+			@PathVariable("dpId") Integer planId) {
+		propService.delDonatePlan(projectId, planId);
+		List<DonatePlanBean> dpBeans = propService.getAllDonatePlanBean(projectId);
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		String jsonDpBean = gson.toJson(dpBeans);
 		return jsonDpBean;
 	}
 

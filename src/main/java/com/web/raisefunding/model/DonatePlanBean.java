@@ -43,6 +43,8 @@ public class DonatePlanBean implements Serializable {
 	@Expose
 	private Integer limitNum;
 	@Expose
+	private Integer online;
+	@Expose
 	@OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="projectId", referencedColumnName="projectId")
 	private ProjectBean projBean;
@@ -91,6 +93,14 @@ public class DonatePlanBean implements Serializable {
 		this.picture = picture;
 	}
 	
+	public Integer getOnline() {
+		return online;
+	}
+
+	public void setOnline(Integer online) {
+		this.online = online;
+	}
+
 	public String getShipping() {
 		return shipping;
 	}
