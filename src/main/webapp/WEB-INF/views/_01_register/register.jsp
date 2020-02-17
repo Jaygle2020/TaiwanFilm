@@ -102,7 +102,7 @@ color:red;
 
 			<div class="sign" id="sign-in">
 				<b>登入</b>
-				<p class="errorMsg">${errorMessage}</p>
+				<p class="errorMsg" id="errorBox">${errorMessage}</p>
 				<form action='${pageContext.request.contextPath}/Checklogin'
 					method='post'>
 					<input id="email" name="email" class="nobooder" type='email'
