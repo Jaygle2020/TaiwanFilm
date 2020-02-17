@@ -223,6 +223,5 @@ display:block;
 		});
 
 	</script>
-<jsp:include page="../fragment/footer.jsp"></jsp:include>
 </body>
 </html>

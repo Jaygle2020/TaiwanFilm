@@ -55,7 +55,7 @@ body {
 }
 
 .activityUpdateButton {
-	width: 7%;
+	width: 17%;
 	display: inline-block;
 	margin-top: 12px;
 	text-align: center;
@@ -64,7 +64,8 @@ body {
 }
 
 .activityUpdateButtonStyle {
-	width: 100%;
+	width: 50%;
+	display:inline-block;
 	color: white;
 	background-color: red;
 	padding: 3px;
