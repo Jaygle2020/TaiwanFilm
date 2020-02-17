@@ -131,6 +131,11 @@ public class MessageServiceImpl implements MessageService {
 	}
 	@Transactional
 	@Override
+	public void resetReplyB(Integer replyId ) {
+		dao.resetReplyB(replyId);
+	}
+	@Transactional
+	@Override
 	public void reportReply(ReplyBean reply ) {
 		dao.reportReply(reply);
 	}
