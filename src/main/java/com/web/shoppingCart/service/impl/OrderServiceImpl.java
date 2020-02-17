@@ -75,4 +75,12 @@ public class OrderServiceImpl implements OrderService {
 
 		
 	}
+
+
+	@Transactional
+	@Override
+	public Integer getLatestMemOrder(Integer memberId) {
+		
+		return	odao.getLatestMemOrder(memberId);
+	}
 }

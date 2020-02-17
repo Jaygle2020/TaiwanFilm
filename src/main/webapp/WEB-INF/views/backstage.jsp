@@ -18,7 +18,7 @@
 		body{
 		background-color: #f1f1f1;margin:0}
 		.TaiwanFilms{
-		display: inline-block;font-size: 35px;font-weight: bold;color: #428bca; padding:15px 5px; 
+		display: inline-block;font-size: 35px;font-weight: bold;color: #428bca; padding:20px 5px; 
 		}
 		.backStage-top{  
 			width: 100%;		
@@ -83,7 +83,26 @@
 		.back-movie:hover{background:#EA0082} 
 		.back-message:hover{background:#EA0082} 
 		.back-shopping:hover{background:#EA0082} 
-		
+		.a-bar1{
+			height: 25px;
+			color: #404040;
+		}
+		.f-bar1{
+			height: 25px;
+			color: #404040;
+		}
+		.m-bar1{
+			height: 25px;
+			color: #404040;
+		}
+		.s-bar1{
+			height: 25px;
+			color: #404040;
+		}
+		.i-bar1{
+			height: 25px;  
+			color: #404040;
+		} 
 </style>
 </head>
 <body>
@@ -97,10 +116,10 @@
 	</div>           
 	<div class="backStage-bar">
 		<div class="backStage-title">
-			<div class="back-member backstage-title">會員管理</div>
+			<div class="back-member backstage-title">會員管理</div>
 			<div class="choose-list-member choose-list">  
 				<a href="${pageContext.request.contextPath}/ShowAllMembers">
-					<div class="m-bar1">查詢全部會員</div>
+					<div class="m-bar1">1.查詢全部會員</div>
 				</a>  
 <%-- 				<a href="${pageContext.request.contextPath}/FuzzyQuery"> --%>
 <!-- 					<div class="m-bar2">模糊查詢</div> -->
@@ -112,16 +131,16 @@
 			</div>  
 		</div>
 		<div class="backStage-title">
-			<div class="back-activity backstage-title">活動</div>
+			<div class="back-activity backstage-title">活動 </div>
 			<div class="choose-list-activity choose-list">  
 				<a href="${pageContext.request.contextPath}/allActivityM"> 
-					<div class="a-bar1">查詢全部活動</div>
+					<div class="a-bar1">1.查詢全部活動</div>
 				</a>  
 				<a href="${pageContext.request.contextPath}/activitiesM">
-					<div class="a-bar2">查詢分類活動</div>
+					<div class="a-bar2">2.查詢分類活動</div>
 				</a>
 				<a href="${pageContext.request.contextPath}/addActivities">
-					<div class="a-bar3">新增活動</div>
+					<div class="a-bar3">3.新增活動</div>
 				</a>      
 				
 			</div> 
@@ -129,32 +148,32 @@
 		<div class="backStage-title">
 			<div class="back-funds backstage-title">募款</div>
 			<div class="choose-list-funds choose-list">
-				<a href="${pageContext.request.contextPath}/manage/getAllProject"><div class="f-bar1">目前的募款清單</div></a>
+				<a href="${pageContext.request.contextPath}/manage/getAllProject"><div class="f-bar1">1.目前的募款清單</div></a>
 <!-- 				<a href=""><div class="f-bar2">f2</div></a> -->
 <!-- 				<a href=""><div class="f-bar3">f3</div></a> -->
-			</div>
+			</div>  
 		</div>
-		<div class="backStage-title">
+		<div class="backStage-title"> 
 			<div class="back-movie backstage-title">電影</div>
 			<div class="choose-list-movie choose-list">
-				<a href="alterMovie"><div class="m-bar1">編輯電影</div></a>
-				<a href="addMovie"><div class="m-bar2">新增電影</div></a>
+				<a href="alterMovie"><div class="m-bar1">1.編輯電影</div></a>
+				<a href="addMovie"><div class="m-bar2">2.新增電影</div></a>
 			</div>
 		</div>
 		<div class="backStage-title">
-			<div class="back-shopping backstage-title">購物</div>
+			<div class="back-shopping backstage-title">購物</div>
 			<div class="choose-list-shopping choose-list">
 				<a href="${pageContext.request.contextPath}/productsM"> 
-					<div class="a-bar1">商品管理</div>
+					<div class="a-bar1">1.商品管理</div>
 				</a>  
-				<a href="${pageContext.request.contextPath}/products/add"><div class="s-bar2">新增商品</div></a>
+				<a href="${pageContext.request.contextPath}/products/add"><div class="s-bar2">2.新增商品</div></a>
 				<!-- <a href=""><div class="s-bar3">s3</div></a> -->
 			</div>
 		</div>   
 		<div class="backStage-title">
 			<div class="back-message backstage-title">留言板</div>
 			<div class="choose-list-message choose-list">
-				<a href="${pageContext.request.contextPath}/replysB"><div class="i-bar1">被檢舉留言</div></a>	
+				<a href="${pageContext.request.contextPath}/replysB"><div class="i-bar1">1.被檢舉留言</div></a>	
 			</div>
 		</div>
 	</div> 
