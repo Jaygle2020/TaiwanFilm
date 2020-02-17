@@ -30,7 +30,11 @@
 
 	<div class="bottom-bar">	
 		<div class="bottom-bar-content">豐盛之城－臺灣三部曲 Formosa Wonderland -
-			「勇士計畫」預計2021年啟動</div>
+			「勇士計畫」預計2021年啟動
+		
+
+			
+			</div>
 	</div>
 		<div class="dots" style="writing-mode: tb-rl;z-index: 200">
 			<div id="home-area" class="dot dot-pink"></div>  
@@ -142,11 +146,12 @@
 
 
 <script>
-
+	
+ 
 	$(window).scroll(function() {
 		var scrollVal = $(this).scrollTop();
 		$("span.qScrollTop").text(scrollVal);
-	 	/* console.log(scrollVal);     滑動時抓高度 */
+	/*  	 console.log(scrollVal);    */
 		if (1231 > scrollVal && scrollVal > 422) {
 			$(".goToMid-l").css("color", "black");
 			$(".menu-click").css("color", "black");
@@ -160,7 +165,6 @@
 				return y;        
 			}      
 		} 
-		
 		else if (1950 > scrollVal && scrollVal > 1232)  {
 			$(".goToMid-l").css("color", "white");
 			$(".menu-click").css("color", "white");
@@ -180,7 +184,8 @@
 			$('.dot').removeClass("dot-pink");
 			$('#movie-area').addClass("dot-pink");
 
-		} else {
+		}	  
+		else {
 			$(".goToMid-l").css("color", "black");
 			$(".right-bar").css("color", "black");
 

@@ -101,8 +101,7 @@ input {
  
 	<section>
 		<div class="container"style="width: 80%;display: inline-block;float:right;padding-top: 40px;margin-top: 20px">
-			<h1 style="text-align: center; font-weight: bold; font-size: 35px">新增活動資料</h1>
-			<button class="demo" style="color:black;border: 1px solid black;display: inline-block;width: 10% "onclick="demo()">DEMO用資料</button>  
+			<h1 style="text-align: center; font-weight: bold; font-size: 35px">新增活動資料</h1>  
 		</div>     
 	</section> 
 	    
@@ -273,7 +272,7 @@ input {
 					style="width: 30%; display: inline-block; float: right">
 					<div class='col-lg-offset-2 col-lg-10'>
 						<input id="btnAdd" type='submit' class='btn btn-primary'
-							value="送出"  />
+							value="送出" onclick="alertme()" />
 					</div>
 				</div>
 				
@@ -288,6 +287,9 @@ input {
 
 
 <script language="javascript">
+	function alertme(){
+		alert("新增成功")
+	}
 
 	$("#activityTitle").val("《你的情歌》唱破1500萬票房");
 	$("#activityAuthor").val("Mirror Media")

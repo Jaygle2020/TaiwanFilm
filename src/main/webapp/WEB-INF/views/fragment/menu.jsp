@@ -40,26 +40,26 @@
 	<div class="menu-bar">
 		<div class="close-menu menu-buttonStyle">CLOSE</div>
 		<div class="menu-button">
-			<a href="${pageContext.request.contextPath}/activities">
+			<a href="${pageContext.request.contextPath}/activities" style="text-decoration: none;">
 				<div class="menu-buttonStyle">活動情報</div>
 			</a>
-			<a href="${pageContext.request.contextPath}/getAllProject">
+			<a href="${pageContext.request.contextPath}/getAllProject" style="text-decoration: none;">
 				<div class="menu-buttonStyle">贊助電影</div>
 			</a>
-			<a href="${pageContext.request.contextPath}/products">
+			<a href="${pageContext.request.contextPath}/products" style="text-decoration: none;">
 				<div class="menu-buttonStyle">電影周邊</div>
 			</a>
-			<a href="${pageContext.request.contextPath}/movieIntro">
+			<a href="${pageContext.request.contextPath}/movieIntro" style="text-decoration: none;">
 				<div class="menu-buttonStyle">網路訂票</div>
 			</a>
 
-			<a href="${pageContext.request.contextPath}/createDate">
+			<a href="${pageContext.request.contextPath}/createDate" style="text-decoration: none;">
 			 <div class="menu-buttonStyle">留言板</div>
 
 			</a>
 			
 			<c:if test="${testNum == 2}">			
-			<a href="ShowAllMembers">
+			<a href="ShowAllMembers"  style="text-decoration: none;">
 				<div class="menu-buttonStyle">進入後台</div>
 			</a>    
 			</c:if> 
@@ -116,6 +116,23 @@
 		$("#memberDetail").fadeToggle(500); 
 	}
 
+ $(".fixed").click(function(){
+	/*  $(".close-menu").trigger("click"); */
+	$(".right-bar").show();
+	$(".menu-bar").animate({
+		right : "-80%"
+	});
+	$(".indexWidth").animate({
+		opacity : "1"
+	});
+	$(".menu-bar").hide(100);
+	$(".fixed").hide(500);
+	$(".fixed").animate({
+		width : "0%"
+	});
+	$('body').css('overflow', 'visible'); 
+});
+ 
 $(".menu-click").click(function() {
 	$(".right-bar").hide(500);
 	$(".menu-bar").css("display", "inline-block");

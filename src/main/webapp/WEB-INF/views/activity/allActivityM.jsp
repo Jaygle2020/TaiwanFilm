@@ -99,7 +99,7 @@ body {
 					<c:if test="${activity.status == '1' }">
 						<a href="<spring:url value='/activity?id=${activity.activityId}' />"
 							class="anchor-style"> 
-							<a href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
+							<a href="<spring:url value='/activityM/${activity.activityId}' />">
 									<div class="activity-inner"
 										data-number="${activity.activityWatched}">
 										<div class="activity-content">       
@@ -135,7 +135,7 @@ body {
     <c:if test="${activity.category == '3'}">
      <a href="<spring:url value='/activity?id=${activity.activityId}' />"
       class="anchor-style"> 
-      <a href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
+      <a href="<spring:url value='/activityM/${activity.activityId}' />">
         <div class="activity-inner"
          data-number="${activity.activityWatched}">
          <div class="activity-content">       
@@ -172,7 +172,7 @@ body {
     <c:if test="${activity.status == '0'}">
      <a href="<spring:url value='/activity?id=${activity.activityId}' />"
       class="anchor-style"> 
-      <a href="<spring:url value='/queryMyActivity/${activity.activityId}' />">
+      <a href="<spring:url value='/activityM/${activity.activityId}' />">
         <div class="activity-inner"
          data-number="${activity.activityWatched}">
          <div class="activity-content">       

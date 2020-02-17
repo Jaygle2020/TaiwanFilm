@@ -2,14 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 
-	
-	
-	
-	
-</style>
-<title>Insert title here</title>
-</head>
-<body>
+	<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
+	integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+	crossorigin="anonymous"></link>
 
 
 	<div class="Myfooter-area">
@@ -24,10 +20,3 @@
 			<p style="margin-top: 30px">財團法人資訊工業策進會(資策會)<p>
 			<p style="font-weight: bold">©2019 TaiwanFilms</p>
 		</div>
-
-
-</body>
-
-
-
-</html>   

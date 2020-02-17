@@ -26,6 +26,7 @@ public class activityBean  implements Serializable {
 	    @GeneratedValue(strategy=GenerationType.IDENTITY)
 		private Integer activityId;	
 		private String activityTitle;
+		@Column(columnDefinition="nvarchar(max)")
 		private String activityContent;
 		private Integer category;
 		private String createTime;
