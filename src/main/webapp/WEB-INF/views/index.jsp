@@ -42,8 +42,8 @@
 
 	<div class="indexWidth">
 		<div class="mainContent">
-			<div class="mainContent-coverImg"></div>
-			<div class="mainContentimg">
+			<div class="mainContent-coverImg" style="height: 700px"></div>
+			<div class="mainContentimg"> 
 				<div class="mainContent-img-left"></div>
 				<div class="mainContent-img-right"></div>
 			</div>
@@ -53,7 +53,7 @@
 
 	 <jsp:include page="activity/activities.jsp" /> 
 
-		<div class="funds-trailer" >  
+		<div class="funds-trailer"  style="background-size:cover">    
 			<div class="Ftrailer-video">
 				<iframe width="800px" height="400px"
 					src="https://www.youtube.com/embed/${projectBean.videoLink}" frameborder="0"

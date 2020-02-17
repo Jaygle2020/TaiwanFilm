@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/menuStyle.css">
-<title>個人訂單明細</title>
+<title>TaiwanFilms</title>
 <style type="text/css">
 #main {
 	position: absolute;
@@ -84,12 +84,12 @@
 			</c:choose>
 			<tr id='borderA' bgColor="${aColor}" height='30'>
 				<td id='borderA' align="center" style="background: #d9dde0;">${aBean.bookId}</td>
-				<td id='borderA' align="left" style="background: #d9dde0;">${aBean.title}</td>
-				<td id='borderA' align="right" style="background: #d9dde0;">${aBean.unitPrice}&nbsp;</td>
-				<td id='borderA' align="right" style="background: #d9dde0;">${aBean.quantity}&nbsp;</td>
-				<td id='borderA' align="right" style="background: #d9dde0;">${aBean.unitPrice*aBean.quantity}&nbsp;</td>
+				<td id='borderA' align="center" style="background: #d9dde0;">${aBean.title}</td>
+				<td id='borderA' align="center" style="background: #d9dde0;">${aBean.unitPrice}&nbsp;</td>
+				<td id='borderA' align="center" style="background: #d9dde0;">${aBean.quantity}&nbsp;</td>
+				<td id='borderA' align="center" style="background: #d9dde0;">${aBean.unitPrice*aBean.quantity}&nbsp;</td>
 				<%-- <td id='borderA' align="center">${aBean.discount}&nbsp;</td> --%>
-				<td id='borderA' align="right" style="background: #d9dde0;"><fmt:formatNumber
+				<td id='borderA' align="center" style="background: #d9dde0;"><fmt:formatNumber
 						value="${aBean.unitPrice*aBean.quantity}" pattern="#,###,###" />元</td>
 				<c:set var="subtotal"
 					value="${ subtotal + aBean.unitPrice *  aBean.quantity }" />
@@ -100,7 +100,7 @@
 				style="background: #d9dde0;">&nbsp;</TD>
 			<TD id='borderA' width="60px" align="center"
 				style="background: burlywood;"><b>總金額</b></TD>
-			<TD id='borderA' width="100px" align="right"
+			<TD id='borderA' width="100px" align="center"
 				style="background: burlywood;"><fmt:formatNumber
 					value="${subtotal}" pattern="#,###,###" />元</TD>
 		</tr>

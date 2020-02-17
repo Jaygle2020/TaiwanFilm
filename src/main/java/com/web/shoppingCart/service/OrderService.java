@@ -20,7 +20,6 @@ import com.web.shoppingCart.model.OrderBean;
 // 實作此介面的類別為 _04_ShoppingCart.model.service.impl.OrderServiceImpl
 // 
 
-
 public interface OrderService {
 	void persistOrder(OrderBean ob);
 
@@ -29,4 +28,7 @@ public interface OrderService {
 	List<OrderBean> getAllOrders();
 
 	List<OrderBean> getMemberOrders(Integer integer);
+
+	// 取得會員最新訂單
+	Integer getLatestMemOrder(Integer memberId);
 }

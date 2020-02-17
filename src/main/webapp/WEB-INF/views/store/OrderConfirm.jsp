@@ -58,7 +58,7 @@
 .ball-area2 {
 	width: 300px;
 	height: 5px;
-	background: #f8f9fa;
+	background: #e9ebec;
 	display: inline-block;
 }
 
@@ -166,7 +166,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- 取得今天的日期，今天的日期應當在最後確認時才取得 -->
 <jsp:useBean id="today" class="java.util.Date" scope="session" />
-<title>訂單明細資訊確認</title>
+<title>TaiwanFilms</title>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
@@ -204,7 +204,7 @@
 					<div class="ball2"></div>
 					<div class="ball1">填寫資料</div>
 					<div class="ball2"></div>
-					<div class="ball1">訂單確認</div>
+					<div class="ball1">訂購完成</div>
 				</div>
 			</div>
 		</div>
@@ -233,8 +233,8 @@
 						<TD colspan='3'
 							style="text-align: left; border: 0.5px solid #d1d1d1; padding-left: 39px; background: floralwhite;">
 							出貨地址：<Input style="background: #d1d1d1;" size="60" type="text"
-							id='ShippingAddress' name="ShippingAddress" value="台北市大安區復興南路一段390號2樓"> <font
-							color='red'>${errorMsg.ShippingAddress}</font>
+							id='ShippingAddress' name="ShippingAddress"
+							value="台北市大安區復興南路一段390號2樓"> <font color='red'>${errorMsg.ShippingAddress}</font>
 						</TD>
 					</TR>
 					<TR>
@@ -324,8 +324,10 @@
 				</TABLE>
 				<P />
 				<input type="hidden" name="finalDecision" value=""> <input
-					style="font-size: 50px;" type="button" name="OrderBtn" value="確定送出"
-					onclick="reconfirmOrder()"> <input style="font-size: 50px;"
+					style="font-size: 22px; padding: 5px 10px; font-weight: bold; border-radius: 10px; background: #e266ab; color: white;"
+					type="button" name="OrderBtn" value="確定送出"
+					onclick="reconfirmOrder()"> <input
+					style="font-size: 22px; padding: 5px 10px; font-weight: bold; border-radius: 10px; background: #e266ab; color: white;"
 					type="button" name="CancelBtn" value="取消訂單" onclick="cancelOrder()">
 			</FORM>
 		</div>

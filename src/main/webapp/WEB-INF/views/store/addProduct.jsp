@@ -150,6 +150,8 @@ fieldset {
 					<div class='col-lg-10'>
 						<form:input id="productImage" path="productImage" type='file'
 							class='form:input-large' />
+						<!-- <img id="preview_productImage_img" src="#" /> -->
+						<div id="productImageAppend"></div>
 					</div>
 				</div>
 
@@ -159,6 +161,8 @@ fieldset {
 					<div class='col-lg-10'>
 						<input id="productImage2" name="productImage2" type='file'
 							class='form:input-large' />
+						<!-- <img id="preview_productImage2_img" src="#" /> -->
+						<div id="productImage2Append"></div>
 					</div>
 				</div>
 				<div class="form-group subImg3" style="display: none;">
@@ -167,6 +171,8 @@ fieldset {
 					<div class='col-lg-10'>
 						<input id="productImage3" name="productImage3" type='file'
 							class='form:input-large' />
+							<!-- <img id="preview_productImage3_img" src="#" /> -->
+							<div id="productImage3Append"></div>
 					</div>
 				</div>
 
@@ -207,7 +213,7 @@ fieldset {
 		<input type="button" value="DEMO" onclick="oneButtonInportADD()"
 			style="display: inline-block; margin-left: 800px;">
 
-	<input type="button" value="新增商品" onclick="oneButtonInportADD()">
+	
 
 	</section>
 	
@@ -223,6 +229,53 @@ fieldset {
 			$('.subImg3').show();
 		}
 	});
+
+	$("#productImage").change(function() {
+		//當檔案改變後，做一些事 
+		$("#productImageAppend").append("<img id='preview_productImage_img' src='' />");
+		readURL(this); // this代表<input id="imgInp">
+	});
+
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("#preview_productImage_img").attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$("#productImage2").change(function() {
+		//當檔案改變後，做一些事 
+		$("#productImage2Append").append("<img id='preview_productImage2_img' src='' />");
+		readURL2(this); // this代表<input id="imgInp">
+	});
+
+	function readURL2(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("#preview_productImage2_img").attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	$("#productImage3").change(function() {
+		//當檔案改變後，做一些事 
+		$("#productImage3Append").append("<img id='preview_productImage3_img' src='' />");
+		readURL3(this); // this代表<input id="imgInp">
+	});
+
+	function readURL3(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$("#preview_productImage3_img").attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
 	
 	
 	function oneButtonInportADD() {

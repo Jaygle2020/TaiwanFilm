@@ -18,5 +18,8 @@ public interface OrderDao {
 	List<OrderBean> getAllOrders();
 
 	List<OrderBean> getMemberOrders(Integer memberId);
+	
+	//取得會員最新訂
+	Integer getLatestMemOrder(Integer memberId);
 
 }

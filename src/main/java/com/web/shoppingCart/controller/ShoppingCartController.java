@@ -194,7 +194,7 @@ public class ShoppingCartController {
 
 			session.removeAttribute("ShoppingCart");
 
-			return "store/orderSuccess";
+			return "redirect://showOrder";
 
 		} catch (RuntimeException ex) {
 			String message = ex.getMessage();
@@ -206,7 +206,31 @@ public class ShoppingCartController {
 			return "store/ShowCartContent";
 		}
 	}
-
+	
+	@GetMapping("/showOrder")
+	public String orderListdo(HttpSession session ,HttpServletRequest request) {
+		
+		
+		
+		MembersBean mb = (MembersBean) session.getAttribute("members");
+		Integer memberId = mb.getMemberId();
+		
+		System.out.println("memberId"+memberId);
+		
+		
+//		String orderNo = "22";
+//		int no = Integer.parseInt(orderNo.trim());
+		
+		Integer no = service.getLatestMemOrder(memberId);
+//		int no = Integer.parseInt(nostr.toString());
+		
+		OrderBean ob = service.getOrder(no);
+		request.setAttribute("OrderBean", ob); // 將OrderBean物件暫存到請求物件內
+		List<OrderBean> memberOrders = service.getMemberOrders(mb.getMemberId());
+		System.out.println(ob);		
+		
+		return "store/orderSuccess";
+	}
 	//
 	@GetMapping("/orderList.do")
 	public String orderListdo(HttpServletRequest request) {
@@ -214,7 +238,7 @@ public class ShoppingCartController {
 //		System.out.println("進入orderList");
 
 		MembersBean mem = (MembersBean) session.getAttribute("members");
-
+		
 		if (mem == null) {
 			// 請使用者登入
 

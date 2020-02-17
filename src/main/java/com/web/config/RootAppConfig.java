@@ -25,50 +25,16 @@ public class RootAppConfig {
 	public DataSource msSQLDataSource() {
 		ComboPooledDataSource ds = new ComboPooledDataSource();
 		ds.setUser("sa");
-		ds.setPassword("sa123456");
+		ds.setPassword("1234567890");
 		try {
 			ds.setDriverClass("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		} catch (PropertyVetoException e) {
 			e.printStackTrace();
 		}
-		ds.setJdbcUrl("jdbc:sqlserver://127.0.0.1:1433;DatabaseName=taiwanFilm");
+		ds.setJdbcUrl("jdbc:sqlserver://127.0.0.1:1433;DatabaseName=jspdb");
 		ds.setInitialPoolSize(4);
 		ds.setMaxPoolSize(8);
 		return ds;
-	}
-	@Bean
-	public DataSource mySQLDataSource() {
-		 ComboPooledDataSource ds = new ComboPooledDataSource();
-	        ds.setUser("root");
-	        ds.setPassword("1234567890");
-	        try {
-	            ds.setDriverClass("com.mysql.cj.jdbc.Driver");
-	        } catch (PropertyVetoException e) {
-	            e.printStackTrace();
-	        }
-	        ds.setJdbcUrl("jdbc:mysql://localhost:3306/taiwanFilm?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
-	        ds.setInitialPoolSize(4);
-	        ds.setMaxPoolSize(8);
-	        return ds;
-	}
-	@Bean
-	public LocalSessionFactoryBean sessionFactory() {
-		LocalSessionFactoryBean factory = new LocalSessionFactoryBean();
-		factory.setPackagesToScan(new String[] {
-				"com.web.raisefunding.model",
-				"com.web.login.Model",
-				"com.web.booking.model",
-				"com.web.activity.model",
-				"com.web.message.model",
-				"com.web.store.model",
-				"com.web.shoppingCart.model"
-				
-		});
-
-			factory.setDataSource(msSQLDataSource());
-			factory.setHibernateProperties(additionalPropertiesMsSQL());	
-
-		return factory;
 	}
 //	@Bean
 //	public DataSource mySQLDataSource() {
@@ -81,6 +47,42 @@ public class RootAppConfig {
 //	            e.printStackTrace();
 //	        }
 //	        ds.setJdbcUrl("jdbc:mysql://localhost:3306/jspdb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
+//	        ds.setInitialPoolSize(4);
+//	        ds.setMaxPoolSize(8);
+//	        return ds;
+//	}
+	@Bean
+	public LocalSessionFactoryBean sessionFactory() {
+		LocalSessionFactoryBean factory = new LocalSessionFactoryBean();
+		factory.setPackagesToScan(new String[] {
+				"com.web.raisefunding.model",
+				"com.web.login.Model",
+				"com.web.booking.model",
+				"com.web.activity.model",  
+				"com.web.message.model",
+				"com.web.store.model",
+				"com.web.shoppingCart.model" 
+				
+		});
+
+			factory.setDataSource(msSQLDataSource());
+			factory.setHibernateProperties(additionalPropertiesMsSQL());	
+ 
+		return factory;
+	}
+	
+	
+//	@Bean
+//	public DataSource mySQLDataSource() {
+//		 ComboPooledDataSource ds = new ComboPooledDataSource();
+//	        ds.setUser("root");
+//	        ds.setPassword("00000000");
+//	        try {
+//	            ds.setDriverClass("com.mysql.cj.jdbc.Driver");
+//	        } catch (PropertyVetoException e) {
+//	            e.printStackTrace();
+//	        }
+//	        ds.setJdbcUrl("jdbc:mysql://localhost:3306/taiwanFilm?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
 //	        ds.setInitialPoolSize(4);
 //	        ds.setMaxPoolSize(8);
 //	        return ds;
@@ -99,8 +101,8 @@ public class RootAppConfig {
 //				
 //		});
 //
-//			factory.setDataSource(msSQLDataSource());
-//			factory.setHibernateProperties(additionalPropertiesMsSQL());	
+//			factory.setDataSource(mySQLDataSource());
+//			factory.setHibernateProperties(additionalPropertiesMySQL());	
 //
 //		return factory;
 //	}

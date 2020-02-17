@@ -80,4 +80,14 @@ public class OrderDaoImpl_Hibernate implements OrderDao {
 		return list;
 	}
 
+	@Override
+	public Integer getLatestMemOrder(Integer memberId) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM OrderBean  WHERE memberId = :mid order by orderDate desc";
+		OrderBean orderNo = (OrderBean) session.createQuery(hql).setParameter("mid", memberId).getResultList().get(0);
+		
+		System.out.println("orderNo=="+orderNo);
+		return orderNo.getOrderNo();
+	}
+
 }
