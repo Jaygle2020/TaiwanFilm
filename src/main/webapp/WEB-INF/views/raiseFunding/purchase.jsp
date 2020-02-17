@@ -13,7 +13,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/UtilTool.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/purchase.css">
+	href="${pageContext.request.contextPath}/css/purchase1.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/menuStyle.css" />
 
@@ -152,7 +152,9 @@
 			var date = new Date().toLocaleDateString();
 			$(".LocaleDate").text(date);
 			$("#localeDate").val(date);
-			$("#payAmount").val($(".payAmount").text());
+			var intputPay = $(".payAmount").text().replace(",","");
+			console.log("first ready"+intputPay);
+			$("#payAmount").val(intputPay);
 			
 			
 		});
@@ -163,27 +165,34 @@
 					switch (position) {
 					case "InTaiwan":
 						$(".fare").text("60");
-						var price = Number($("#donateMoney").text())
+						var price = Number($("#donateMoney").text().replace(",",""))
 								+ Number($(".fare").text());
 						$(".payAmount").text(price);
 						break;
 					case "OutOfTaiwan":
 						$(".fare").text("100");
-						var price = Number($("#donateMoney").text())
+						var price = Number($("#donateMoney").text().replace(",",""))
 								+ Number($(".fare").text());
 						$(".payAmount").text(price);
 						break;
 					case "Foreign":
 						$(".fare").text("200");
-						var price = Number($("#donateMoney").text())
+						var price = Number($("#donateMoney").text().replace(",",""))
 								+ Number($(".fare").text());
 						$(".payAmount").text(price);
 						break;
 					}
-					$("#payAmount").val($(".payAmount").text());
+					console.log($(".payAmount").text());
+					var intputPay = $(".payAmount").text().replace(",","");
+					console.log(intputPay);
+					$("#payAmount").val(intputPay);
 					$(".dollar1").text(function(){
-						$(this).text("$"+formatNumber($(this).text())) ;
+						alert($(".payAmount").text())
+						if($(this).text().indexOf(",")==-1)
+						$(this).text(formatNumber($(this).text())) ;
+// 						else $(this).text(formatNumber($(this).text().replace(",",""))) ;
 					})
+				
 				})
 				
 				
