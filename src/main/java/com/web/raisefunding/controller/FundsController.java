@@ -112,10 +112,11 @@ public class FundsController {
 	}
 	
 	@PostMapping("/updateSubmit")
-	public String updateProjectAndCrowd(Model model,@ModelAttribute("CrowdFundingBean") CrowdFundingBean cfBean, HttpServletRequest request,
+	public String updateProjectAndCrowd(Model model, HttpServletRequest request,
 			@RequestParam("photoStr") MultipartFile photoStr, @RequestParam("photoStr2") MultipartFile photoStr2,
 			@RequestParam("dateBegin") String dateBegin, @RequestParam("dateEnd") String dateEnd,
 			@RequestParam("fundsGoal") Integer fundsGoal,@ModelAttribute("ProjectBean")ProjectBean projBean ) {
+		CrowdFundingBean cfBean = projBean.getCfBean();
 		cfBean.setDateBegin(dateBegin);
 		cfBean.setDateEnd(dateEnd);
 		cfBean.setFundsGoal(fundsGoal);
@@ -123,7 +124,6 @@ public class FundsController {
 		projBean.setProjDescript(request.getParameter("projDescript"));
 		projBean.setProjStory(request.getParameter("projStory"));	
 		projBean.setVideoLink(util.vedioLinkCut(request.getParameter("vedio")));
-		cfBean.setActionId(projBean.getCfBean().getActionId());
 		if (!photoStr.isEmpty()) {
 			projBean.setPhoto(util.fileTransformBlob(photoStr));
 			projBean.setPhotoFileName(util.getFileName(photoStr));
@@ -168,25 +168,27 @@ public class FundsController {
 		dpBean.setDonateMoney(donateMoney);
 		dpBean.setLimitNum(limitNum);
 		dpBean.setShipping(shipping);
-		if (!donatePhoto.isEmpty()) {
-			dpBean.setPicture(util.fileTransformBlob(donatePhoto));
-			dpBean.setPictureFileName(util.getFileName(donatePhoto));
-		} else {
-			dpBean.setPicture(util.fileToBlob(noImage));
-			dpBean.setPictureFileName("noImage.jpg");
-		}
 		dpBean.setProjBean(propService.GetProjBean(projectId));
 		// 判斷如果有ID就執行更新 沒ID就新增
 		System.out.println("chage condition");
 		if (planId > 0) {
-			System.out.println("-------------------test------------");
-
+			if (!donatePhoto.isEmpty()) {
+				dpBean.setPicture(util.fileTransformBlob(donatePhoto));
+				dpBean.setPictureFileName(util.getFileName(donatePhoto));
+			}
 			dpBean.setPlanId(planId);
 			propService.updateDonatePlan(dpBean);
-		} else
+		} else {
+			if (!donatePhoto.isEmpty()) {
+				dpBean.setPicture(util.fileTransformBlob(donatePhoto));
+				dpBean.setPictureFileName(util.getFileName(donatePhoto));
+			} else {
+				dpBean.setPicture(util.fileToBlob(noImage));
+				dpBean.setPictureFileName("noImage.jpg");
+			}
 			propService.createDonatePlan(dpBean);
+		}
 //		dpBean.setPlanId(Integer.parseInt(request.getParameter("updateId")));}
-
 		List<DonatePlanBean> dpBeans = propService.getAllDonatePlanBean(projectId);
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String jsonDpBean = gson.toJson(dpBeans);
@@ -342,12 +344,12 @@ public class FundsController {
 		infoBean.setImgName04(util.getFileName(file3));
 		ProjectBean projBean = propService.GetProjBean(projectId);
 		infoBean.setProjBean(projBean);
-//		if(propService.getProjectInfo(projectId).get(0)!=null) {
-//			propService.updateProjInfo(infoBean);
-//		}else {  這裡有一個專案介紹表單重複建立的問題 待解決
+		if(propService.checkProjectInfo(projectId)) {
+			propService.updateProjInfo(infoBean);
+		}else {  //這裡有一個專案介紹表單重複建立的問題 待解決
 		propService.createProjInfo(infoBean);
-		// 這裡想要判斷有專案就修改 沒專案就新增 待改
-//		}
+//		 這裡想要判斷有專案就修改 沒專案就新增 待改
+		}
 		model.addAttribute("ProjectBean", projBean);
 		return "raiseFunding/createProject";
 	}

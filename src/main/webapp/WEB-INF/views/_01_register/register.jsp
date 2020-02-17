@@ -53,8 +53,12 @@ body {
 }
 
 .nobooder {
-	font-size: 24px;
-	margin-bottom: 30px;
+    font-size: 24px;
+    margin-bottom: 10px;
+    border: 0;
+    padding: 0;
+    border-bottom: 1px solid black;
+	
 }
 
 b {
@@ -83,6 +87,9 @@ input:not (.nobooder ){
 	top:100px;
 	right:100px;
 }
+.errorMsg{
+color:red;
+}
 </style>
 </head>
 <body style="background-color: white;">
@@ -95,7 +102,7 @@ input:not (.nobooder ){
 
 			<div class="sign" id="sign-in">
 				<b>登入</b>
-				<p class="login-box-msg">${errorMessage}</p>
+				<p class="errorMsg" id="errorBox">${errorMessage}</p>
 				<form action='${pageContext.request.contextPath}/Checklogin'
 					method='post'>
 					<input id="email" name="email" class="nobooder" type='email'

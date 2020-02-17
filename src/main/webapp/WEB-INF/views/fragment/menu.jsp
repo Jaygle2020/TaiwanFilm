@@ -55,7 +55,6 @@
 
 			<a href="${pageContext.request.contextPath}/createDate" style="text-decoration: none;">
 			 <div class="menu-buttonStyle">留言板</div>
-
 			</a>
 			
 			<c:if test="${testNum == 2}">			

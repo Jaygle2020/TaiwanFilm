@@ -56,7 +56,7 @@ display:block;
 			action="${pageContext.request.contextPath}/queryMessages"
 			id="search-bar" style="text-align: center">
 			<input class="query" type="text" name="keyword" size="113"
-				style="height: 50px; font-size: 20px; 	placeholder="搜尋文章⋯" />
+				style="height: 50px; font-size: 20px; "	placeholder="搜尋文章⋯" />
 		</form>
 		<div
 			style="display: inline-block; text-align: center; text-valign: center; width: 100%;">
@@ -80,10 +80,6 @@ display:block;
 
 					<a href="${pageContext.request.contextPath}/messageLike">人氣文章</a>
 				</div>
-				<%-- <div id="query1" class="messageT"
-					style="display: inline-block; text-align: center; width: 10%">
-					<a href="${pageContext.request.contextPath}/createDate">時間排序</a>
-				</div> --%>
 				<div style="display: inline-block; text-align: center; width: 45%"></div>
 				<div id="query2" class="messageT"
 					style="display: inline-block; text-align:center; width: 10%">
@@ -132,7 +128,7 @@ display:block;
 						<div style="display: inline-block; text-align: left; width: 50%;vertical-align:top;color: #428bca" >
 							<a href="<spring:url value='/message?id=${message.messageId}' />">
 								<div class="mt"
-									style="display: inline-block; text-align: center; font-size: 30px; color:black">${message.messageTitle}</div>
+									style="display: inline-block; text-align: left; font-size: 30px; color:black">${message.messageTitle}</div>
 							</a> <a
 								href="<spring:url value='/message?id=${message.messageId}' />">
 								<div id="viewArea" class="viewAreas">${message.messageContent}</div>
@@ -201,7 +197,7 @@ display:block;
 		if ($("#${Id.count}") / 2 == 0) {
 			$("#${Id.count}").css("background-color", "red");
 		}
-		$(function() {
+/* 		$(function() {
 			var len = 19; // 超過50個字以"..."取代
 
 			$(".mt").each(function(i) {
@@ -212,7 +208,7 @@ display:block;
 					$(this).text(text);
 				}
 			});
-		});
+		}); */
 		$(function() {
 
 			var len = 45; // 超過50個字以"..."取代
@@ -227,6 +223,5 @@ display:block;
 		});
 
 	</script>
-<jsp:include page="../fragment/footer.jsp"></jsp:include>
 </body>
 </html>

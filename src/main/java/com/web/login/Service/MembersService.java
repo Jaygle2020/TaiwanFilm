@@ -14,5 +14,5 @@ public interface MembersService {
 	public boolean modifyMembers(MembersBean member);
 	boolean emailExists(String email);
 	List<MembersBean> getAllMembers();
-	List<MembersBean> getMemberByEmail(String keyword);
+	List<MembersBean> getMemberByName(String keyword);
 }

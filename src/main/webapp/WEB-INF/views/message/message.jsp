@@ -38,9 +38,9 @@
 				style="text-align: left; display: inline-block; font-size: 40px; padding-top: 50px;">${message.messageTitle}</div>
 			<div style="display: inline-block; width: 100%">
 				<div style="display: inline-block; width: 85%; font-size: 20px">
-				<%-- 	發文者 : <img width='20' height='20'
-						src='${pageContext.request.contextPath}/crm/picture/＄{message.memberBean.memberImage}'> --%>
-					
+					發文者 : <img width='20' height='20'
+						src='${pageContext.request.contextPath}/crm/picture/${message.memberBean.memberId}'>
+
 					${message.memberBean.memberName}
 					<c:if test="${members.memberId == message.memberBean.memberId}">
 						<a
@@ -63,29 +63,20 @@
 					: ${message.createDate}</div>
 				<div
 					style="display: inline-block; text-align: right; font-size: 20px; width: 13%">
-
-
 					<a href="${pageContext.request.contextPath}/createDate">返回文章列表</a>
-
 				</div>
 			</div>
 			<p>
 			<div id="messageC" style="font-size: 30px; padding: 20px 0px">${message.messageContent}</div>
 		</div>
 		<div
-
-			style="display: inline-block; text-align: left; text-valign: center; width: 80%; border-style: none; background-color: #E8E8E8; font-size: 20px;padding-bottom:50px ">
-
-
+			style="display: inline-block; text-align: left; text-valign: center; width: 80%; border-style: none; background-color: #E8E8E8; font-size: 20px; padding-bottom: 50px">
 			<c:forEach var='replys' items='${replys}'>
 				<c:if test="${ replys.replyDelete ==1}">
 					<div style="display: inline-block; width: 100%">
-
-
-						<div style="display: inline-block; width: 5%;text-align: center;">
-
-						<%-- 	<img width='20' height='20'
-								src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' /> --%>
+						<div style="display: inline-block; width: 5%; text-align: center;">
+							<img width='20' height='20'
+								src='${pageContext.request.contextPath}/crm/picture/${replys.membersBean.memberId}' />
 						</div>
 						<div style="display: inline-block; width: 9%">${replys.membersBean.memberName }</div>
 						<div id="content${replys.replyId}"
@@ -109,22 +100,32 @@
 							</form>
 						</c:if>
 						<c:if test="${replys.membersBean.memberId!=members.memberId }">
-							<div style="display: inline-block; text-align: right; width: 10%">
-								<button id="reportbutton${replys.replyId}"
-									onclick="report(${replys.replyId})">檢舉</button>
-							</div>
-					
+							<c:if test="${replys.replyReport==1 }">
+								<div
+									style="display: inline-block; text-align: right; width: 10%">
+									<button id="reportbutton${replys.replyId}"
+										onclick="report(${replys.replyId})">檢舉</button>
+								</div>	
+							</c:if>
+							<c:if test="${replys.replyReport==2}">
+								<div
+									style="display: inline-block; text-align: right; width: 10%">
+									<button id="reportbutton${replys.replyId}"
+										onclick="notreport(${replys.replyId})">放棄檢舉</button>
+								</div>
+								</c:if>
 						</c:if>
 					</div>
 				</c:if>
 			</c:forEach>
 
 			<form method='POST'
-				action="${pageContext.request.contextPath}/replys/add" style="text-align: center;">
+				action="${pageContext.request.contextPath}/replys/add"
+				style="text-align: center;">
 				<fieldset>
 					<div style="display: inline-block; text-align: left; width: 90%">
 						<input name="replyContent" value="${replyContent}" type="text"
-							placeholder="我要留言...."  "/><input type="submit" value="留言" />
+							placeholder="我要留言...." "/><input type="submit" value="留言" />
 					</div>
 					<div>
 						<input name="messageId" value="${message.messageId}" type="hidden">
@@ -244,7 +245,12 @@
 			}
 		})
 		} 
-
+/* 	$(function() {
+		if($("#messageC img").css("width") >$("#messageC img").css("850px")){
+			$("#messageC img").css("width","100%"); 
+		}else{
+		}
+	}) */
 	</script>
 </body>
 </html>

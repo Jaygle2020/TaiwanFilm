@@ -55,7 +55,7 @@ body {
 }
 
 .activityUpdateButton {
-	width: 7%;
+	width: 17%;
 	display: inline-block;
 	margin-top: 12px;
 	text-align: center;
@@ -64,7 +64,8 @@ body {
 }
 
 .activityUpdateButtonStyle {
-	width: 100%;
+	width: 50%;
+	display:inline-block;
 	color: white;
 	background-color: red;
 	padding: 3px;
@@ -84,10 +85,12 @@ body {
 					style="position: relative; width: 100%; font-weight: bold; color: black; display: inline-block; text-align: right">回到分類頁面</div>
 			</a>
 			<div class="activity-content-show">
-				<div class="acitivityUpdateWidth">留言ID</div>
 				<div class="acitivityUpdateWidth">留言人</div>
 				<div class="acitivityUpdateWidth">留言內容</div>
 				<div class="acitivityUpdateWidth">留言時間</div>
+					<div class="activityUpdateButton">
+						<div class="activityUpdateButtonStyle">復原</div>
+					</div>
 				<div class="activityUpdateButton">
 					<div class="activityUpdateButtonStyle">刪除</div>
 				</div>
@@ -96,21 +99,25 @@ body {
 				<c:if test="${reply.replyReport == '2'}">
 					<div class="activity-inner" data-number="${reply.replyId}">
 						<div class="activity-content">
-							<div class="activityThumb" 
-								style="background-image: url('getPicture/${activity.activityId}');background-size:cover;height: 80px;width:20%;display: inline-block;	text-align: center;    padding-top: 23px;">
-								${reply.replyId }</div>
-							<div class="acitivityUpdateWidth" style="font-size: 18px;">${reply.membersBean.memberName }</div>
-							<div class="acitivityUpdateWidth">${reply.replyContent}</div>
+							<div class="activityThumb"
+								style="background-image: url('getPicture/${activity.activityId}');background-size:cover;height: 80px;width:20%;display: inline-block;	text-align: center;    padding-top: 23px;font-size: 18px;">
+								${reply.membersBean.memberName }</div>
+							<div class="acitivityUpdateWidth" style="font-size: 15px;">${reply.replyContent}</div>
 							<div class="acitivityUpdateWidth">${reply.replyDate}</div>
+							<div class="activityUpdateButton">
+								<form method="GET"
+									action="${pageContext.request.contextPath}/resetReplyB">
+									<input type="hidden" name="replyId" value="${reply.replyId }">
+									<button type="submit" onclick="reset()"
+										style="background: #428bca; background-image: none; color: white; padding: 5px 10px; font-weight: bold;">復原</button>
+								</form>
+							</div>
 							<div class="activityUpdateButton">
 								<form method="GET"
 									action="${pageContext.request.contextPath}/deleteReplyB">
 									<input type="hidden" name="replyId" value="${reply.replyId }">
-
 									<button type="submit" onclick="del()"
-										style="background: #428bca; background-image: none; color: white; padding: 5px 10px;
-	/* border-radius: 0px; */ font-weight: bold;">刪除</button>
-
+										style="background: #428bca; background-image: none; color: white; padding: 5px 10px; font-weight: bold;">刪除</button>
 								</form>
 							</div>
 						</div>

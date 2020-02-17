@@ -108,12 +108,19 @@ public class RegisterController {
 	@PostMapping("/Checklogin")
 	public String memberCheckLogin(@ModelAttribute("MembersBean") MembersBean member, Model model, HttpSession session,
 			HttpServletRequest request, HttpServletResponse response) {
-		MembersBean bean = service.login(request.getParameter("email"),request.getParameter("password"));
 		if (request.getParameter("email") == null || request.getParameter("password") == null) {
 			model.addAttribute("errorMessage", "帳號或密碼欄不能為空");
 			return "_01_register/register";}
-		try {
+		MembersBean bean = null;
+					bean = service.login(request.getParameter("email"),request.getParameter("password"));
 			
+			if(bean ==null) {
+				model.addAttribute("errorMessage", "帳號或密碼錯誤");
+				System.out.println("無此帳號");
+				
+				return "_01_register/register";	
+				
+			}
 		if (bean.getMemberMode().equals("2") || bean.getMemberMode().equals("1") ) {
 			//這個一定要有 bean.setMemberImage(null);
 			bean.setMemberImage(null);
@@ -139,13 +146,17 @@ public class RegisterController {
 				return "redirect:" + requestURI;
 			}	        
 			return "redirect:/";
-		}
-		} catch (Exception e) {	
-			System.out.println("無帳號");
+		}else if(bean.getMemberMode().equals("0")) {
+			model.addAttribute("errorMessage", "此帳號非會員狀態，請通知服務人員。");
+			System.out.println("此帳號非會員");
+			
+			return "_01_register/register";	
+		}else {
+			model.addAttribute("errorMessage", "帳號不存在，請重新輸入或註冊帳號。");
+			System.out.println("無此帳號");
 			return "_01_register/register";
+			
 		}
-
-		return "_01_register/register";
 	}
 
 	@RequestMapping(value = "/UpdateMember")
@@ -156,27 +167,31 @@ public class RegisterController {
 		model.addAttribute("members", member1);
 		return "_01_register/registerUpdateMember";
 	}
-	
+
 	@RequestMapping(value = "/_01_register/DoNotMember",method = RequestMethod.POST)
 	public String DoNotMember(
 			HttpServletRequest request,
 			Model model, 
 			HttpSession session) {
+			System.out.println("修改會員狀態controller!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			MembersBean member = new MembersBean();
 			member.setEmail(request.getParameter("email"));		
-			member.setMemberMode(request.getParameter("memberMode"));	
+			member.setMemberMode(request.getParameter("memberMode"));
+			System.out.println("controller取得的會員狀態為:"+request.getParameter("memberMode"));
+			System.out.println("service.modifyMembers(member) :" + service.modifyMembers(member));
 			if(service.modifyMembers(member)) {
 				System.out.println("會員狀態修改成功");
 				model.addAttribute("members", service.getAllMembers());
-				return "_01_register/allMembers";
+				return "redirect:/ShowAllMembers";
 			} else {
-				System.out.println("會員資料修改失敗");
+				System.out.println("會員狀態修改失敗");
 				return "_01_register/DomodifyMember";
 			}		
 	
 	}
 	@RequestMapping(value = "/_01_register/DomodifyMember", method = RequestMethod.POST)
-	public String DomodifyMember(@RequestParam("memImage")
+	public String DomodifyMember(
+			@RequestParam("memImage")
 	MultipartFile picture,
 	HttpServletRequest request,
 	Model model, 
@@ -209,9 +224,12 @@ public class RegisterController {
 
 		if(service.updateMembers(member)) {
 			model.addAttribute("members", service.getAllMembers());
-			return "_01_register/allMembers";
+			return "redirect:/ShowAllMembers";
 		} else {
-			return "_01_register/DomodifyMember";
+			System.out.println("更新失敗");
+			return "redirect:/ShowAllMembers";
+			
+//			return "_01_register/DomodifyMember";
 		}
 		
 	}
@@ -225,9 +243,11 @@ public class RegisterController {
 	HttpServletRequest request,
 	Model model, 
 	HttpSession session) throws ParseException {
+		System.out.println("CON改資料");
+		System.out.println("信箱" + request.getParameter("email"));
+		System.out.println("姓名" + request.getParameter("memberName"));
 		MembersBean member1 =(MembersBean) session.getAttribute("members");
 		MembersBean member = new MembersBean(
-
 				request.getParameter("memberName"),request.getParameter("email"),
 				request.getParameter("gender"),request.getParameter("birthDay"));		
 		member.setPassword(member1.getPassword());
@@ -254,7 +274,6 @@ public class RegisterController {
 		}
 	}
 
-	@SuppressWarnings("unused")
 	@GetMapping("/crm/picture/{id}")
 	public ResponseEntity<byte[]> getPicture(@PathVariable("id") Integer id) {
 		byte[] body = null;
@@ -356,8 +375,8 @@ public String list(Model model) {
 	@GetMapping("/FuzzyQuery")
 	public String FuzzyQuery(String keyword,Model model)  {
 
-		List<MembersBean> list = service.getMemberByEmail(keyword); 
-		model.addAttribute("members", list);
+		List<MembersBean> list = service.getMemberByName(keyword); 
+		model.addAttribute("memberlist", list);
 		System.out.println("keyword 是:" + keyword);
 		return "_01_register/allMembers";
 	}

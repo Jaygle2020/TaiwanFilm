@@ -80,21 +80,29 @@ b {
     font-size: 46px;
     margin-bottom: 30px;
 }
-/* #memberImage{ */
-/*     background-color: black; */
-/*     border: 0; */
-/*     color: white; */
-/*     font-size: 16px; */
-/*     padding: 10px 30px; */
-/*     border-radius: 5px; */
-/* } */
-.showImg{
+.imgdiv{    
+    width: 150px; 
+    height: 150px; 
+    overflow: hidden; 
+    position: relative;
     border-radius: 50%;
- 	width:130;
- 	height:130;
- 	border-radius: 50%;
+}
+.imgstyle{
+width: 100%; 
+position: absolute; 
+top: 50%; left: 50%; 
+transform: translate(-50%, -50%);
 
 }
+
+.nobooder {
+    font-size: 24px;
+    margin-bottom: 10px;
+    border: 0;
+    padding: 0;
+    border-bottom: 1px solid black;
+}
+
 </style>
 </head>
 <body>
@@ -117,17 +125,17 @@ b {
 						<td class="AllText">顯示名稱
 						<td class="AllText">性別
 					<tr>
-						<td><input name="memberName" id="memberName" type="text"
+						<td><input class="nobooder"name="memberName" id="memberName" type="text"
 							value='${sessionScope.members.memberName}' />
-						<td><input type="radio" id="gender" name="gender" value="男生" />男生
-							<input type="radio" id="gender" name="gender" value="女生" />女生
+						<td style="font-size: 24px;"><input style="font-size: 24px;" type="radio" id="gender" name="gender" value="男生" />男生
+							<input style="font-size: 24px;" type="radio" id="gender" name="gender" value="女生" />女生
 					<tr>
 						<td class="AllText">聯絡信箱
 						<td class="AllText">生日
 					<tr>
-						<td>${sessionScope.members.email}
-<%-- 						<input name="email" id="email" type="email"	value='${sessionScope.members.email}' disabled="disabled" /> --%>
-						<td><input type="date" name="birthDay" id="birthDay" value="${sessionScope.members.birthDay}"/>
+						<td style="font-size: 24px;">${sessionScope.members.email}
+						<input name="email" id="email" type="hidden"	value='${sessionScope.members.email}'/>
+						<td><input class="nobooder"type="date" name="birthDay" id="birthDay" value="${sessionScope.members.birthDay}"/>
 					<tr>
 						<td class="AllText">個人照片
 						<td class="AllText">預覽照片
@@ -142,9 +150,11 @@ b {
 							<input type="submit" class="allBt" id="bt1" value="確認" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							<input type="reset" class="allBt" id="bt2" value="復原" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<td>
-						<img class="showImg" style="dsiplay: inline-block" id="oldMemberImage"
+							<div class="imgdiv">
+							<img class="imgstyle" style="dsiplay: inline-block" id="oldMemberImage"
 							src='${pageContext.request.contextPath}/crm/picture/${sessionScope.members.memberId}' />
-							<img class="showImg" id="preview_memImage" src="#" style="display: none" />
+							<img class="imgstyle" id="preview_memImage" src="#" style="display: none" />
+							</div>
 					<tr>
 						<td>
 							
@@ -162,12 +172,12 @@ b {
 	
 		$(document).ready(function() {
 
-				if(${sessionScope.members.gender =='男生'}){
-					$("input[name='gender'][value=男生]").attr("checked",true); 
-				}else if(${sessionScope.members.gender =='女生'}){
-					$("input[name='gender'][value=女生]").attr("checked",true); 
-				}
-			});
+			if(${sessionScope.members.gender =="男生"}){
+				$("input[name='gender'][value=男生]").attr("checked",true); 				
+			}else if(${sessionScope.members.gender =="女生"}){
+				$("input[name='gender'][value=女生]").attr("checked",true); 
+			}
+		});
 	
 		$("#memberImage").change(function() {
 			//當檔案改變後，做一些事 

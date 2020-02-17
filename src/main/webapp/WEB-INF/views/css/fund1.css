@@ -215,13 +215,13 @@ section {
 }
 
 .projectContentDown .container .col-left {
-  width: 60%;
+  width: 56%;
   float: left;
   position: relative;
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
-  margin-left:2%;
+  margin-left:4%;
 }
 .projectContentDown .container .col-left .middleFrame {
   margin: auto;
@@ -342,14 +342,14 @@ section {
 }
 
 .projectContentDown .rewardBar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column nowrap;
-          flex-flow: column nowrap;
-          margin-right: 4%;
+  	display: -webkit-box;
+  	display: -ms-flexbox;
+  	display: flex;
+  	-webkit-box-orient: vertical;
+  	-webkit-box-direction: normal;
+    -ms-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    margin-right: 6%;
 }
 
 h1.projectContentHeading {

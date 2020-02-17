@@ -46,7 +46,7 @@ public class RootAppConfig {
 	        } catch (PropertyVetoException e) {
 	            e.printStackTrace();
 	        }
-	        ds.setJdbcUrl("jdbc:mysql://localhost:3306/jspdb?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
+	        ds.setJdbcUrl("jdbc:mysql://localhost:3306/taiwanFilm?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Taipei");
 	        ds.setInitialPoolSize(4);
 	        ds.setMaxPoolSize(8);
 	        return ds;

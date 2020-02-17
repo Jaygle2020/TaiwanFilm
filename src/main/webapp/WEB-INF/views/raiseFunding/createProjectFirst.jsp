@@ -10,7 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
 <link rel=stylesheet type="text/css"
-	href="${pageContext.request.contextPath}/css/create.css">
+	href="${pageContext.request.contextPath}/css/createCss.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/menuStyle1.css" />
 <link rel="stylesheet"
@@ -23,7 +23,7 @@
 <script>
 <!-- 網頁就緒時執行的JS -->
 	$(function() {
-		$(".datepicker").datepicker();
+		$(".datepicker").datepicker({ minDate: new Date()});
 		donateOptionElm();
 		$("#dliverDate").val(
 				$("#deliverYear").val() + "-" + $("#deliverMonth").val());
@@ -76,7 +76,7 @@
 								accept="image/jpeg,image/png,image/bmp" style="background-color: lightgray;">
 							<h2>專案影片 &nbsp; <span style="color:black;"> (注意某些私人youtube影片是不開放其他網站載入) </span></h2>
 
-							<input type="text" name="vedio" placeholder="請輸入youtube影片連結網址">
+							<input type="text" name="vedio" style='width: 350px' placeholder="請輸入youtube影片連結網址">
 							<h2>募資目標金額</h2>
 							<p>
 								<input type="number" max="99999999" min="0" name="fundsGoal" />
