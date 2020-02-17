@@ -160,7 +160,7 @@ color:red;
 		}
 // 		一般會員帳號密碼一鍵輸入
 		function oneButtonInport1() {
-			var em = "eeit11040@gmail.com";
+			var em = "eeit11099@gmail.com";
 			var pwd = "Sa123456";		
 			$("#email").val(em);
 			$("#password").val(pwd);

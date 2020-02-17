@@ -181,7 +181,7 @@ public class RegisterController {
 			System.out.println("service.modifyMembers(member) :" + service.modifyMembers(member));
 			if(service.modifyMembers(member)) {
 				System.out.println("會員狀態修改成功");
-				model.addAttribute("members", service.getAllMembers());
+				model.addAttribute("memberlist", service.getAllMembers());
 				return "redirect:/ShowAllMembers";
 			} else {
 				System.out.println("會員狀態修改失敗");
@@ -223,7 +223,7 @@ public class RegisterController {
 			model.addAttribute("members", member);
 
 		if(service.updateMembers(member)) {
-			model.addAttribute("members", service.getAllMembers());
+			model.addAttribute("memberlist", service.getAllMembers());
 			return "redirect:/ShowAllMembers";
 		} else {
 			System.out.println("更新失敗");

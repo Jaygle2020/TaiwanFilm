@@ -151,9 +151,9 @@
 		<script>
 
 		function oneEntry1() {
-			 var email = "jeter@gmail.com";
+			 var email = "eeit11099@gmail.com";
 			 var pass = "Sa123456";
-			 var name = "基特";
+			 var name = "吳慷仁";
 			 $("#email").val(email);
 			 $("#password").val(pass);
 			 $("#password1").val(pass);

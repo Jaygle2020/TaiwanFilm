@@ -197,7 +197,7 @@ transform: translate(-50%, -50%);
 		}
 
 		function oneButtonInport() {
-			var name = "王曉明";
+			var name = "吳慷仁先生";
 			var gerd = 	"男生";
 			var birt = "1988-01-26";
 			$("#memberName").val(name);			
