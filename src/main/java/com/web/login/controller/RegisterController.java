@@ -113,7 +113,7 @@ public class RegisterController {
 			return "_01_register/register";}
 		MembersBean bean = null;
 					bean = service.login(request.getParameter("email"),request.getParameter("password"));
-			System.out.println("CON~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + bean);
+			
 			if(bean ==null) {
 				model.addAttribute("errorMessage", "帳號或密碼錯誤");
 				System.out.println("無此帳號");
