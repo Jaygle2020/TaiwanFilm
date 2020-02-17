@@ -178,7 +178,7 @@ public class FundsController {
 			}
 			dpBean.setPlanId(planId);
 			propService.updateDonatePlan(dpBean);
-		} else
+		} else {
 			if (!donatePhoto.isEmpty()) {
 				dpBean.setPicture(util.fileTransformBlob(donatePhoto));
 				dpBean.setPictureFileName(util.getFileName(donatePhoto));
@@ -187,6 +187,7 @@ public class FundsController {
 				dpBean.setPictureFileName("noImage.jpg");
 			}
 			propService.createDonatePlan(dpBean);
+		}
 //		dpBean.setPlanId(Integer.parseInt(request.getParameter("updateId")));}
 		List<DonatePlanBean> dpBeans = propService.getAllDonatePlanBean(projectId);
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();

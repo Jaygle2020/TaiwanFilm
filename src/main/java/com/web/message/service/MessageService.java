@@ -51,4 +51,6 @@ public interface MessageService {
 
 	void deleteReplyB(Integer replyId);
 
+	void resetReplyB(Integer replyId);
+
 }

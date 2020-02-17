@@ -192,6 +192,13 @@ public class MessageController {
 		service.deleteReplyB(replyId);
 		return "redirect:/replysB";
 	}
+	// 後台復原留言
+	@RequestMapping(value = "/resetReplyB", method = RequestMethod.GET)
+	public String ResetReplyB(Model model,
+			@RequestParam("replyId") Integer replyId) {
+		service.resetReplyB(replyId);
+		return "redirect:/replysB";
+	}
 
 	// 檢舉留言
 	@RequestMapping(value = "/reportReply", method = RequestMethod.POST)
@@ -286,7 +293,7 @@ public class MessageController {
 
 	@InitBinder
 	public void messageWhiteListing(WebDataBinder binder) {
-		binder.setAllowedFields("messageContent", "messageCategory", "messageTitle", "messageId", "messageDelete"
+		binder.setAllowedFields("messageContent", "messageCategory", "messageTitle", "messageId", "messageDelete","messageLike"
 				);
 	}
 

@@ -180,6 +180,13 @@ public class MessageDaoImpl implements MessageDao {
 		Session session = factory.getCurrentSession();
 		session.createQuery(hql).setParameter("newReplyReport", 3).setParameter("replyId", replyId).executeUpdate();
 	}
+	// 後台復原留言
+	@Override
+	public void resetReplyB(Integer replyId) {
+		String hql = "UPDATE ReplyBean SET replyReport=:newReplyReport WHERE replyId=:replyId";
+		Session session = factory.getCurrentSession();
+		session.createQuery(hql).setParameter("newReplyReport", 1).setParameter("replyId", replyId).executeUpdate();
+	}
 
 	// 檢舉留言
 	@Override

@@ -52,4 +52,6 @@ public interface MessageDao {
 
 	void deleteReplyB(Integer replyId);
 
+	void resetReplyB(Integer replyId);
+
 }
