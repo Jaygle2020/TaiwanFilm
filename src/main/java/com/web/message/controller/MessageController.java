@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.web.config.ControllerUtil;
 
 import com.web.login.Model.MembersBean;
+import com.web.login.Service.MembersService;
 import com.web.message.model.MessageBean;
 import com.web.message.model.ReplyBean;
 import com.web.message.service.MessageService;
@@ -44,7 +45,8 @@ public class MessageController {
 	public void setService(MessageService service) {
 		this.service = service;
 	}
-
+	@Autowired
+	MembersService  mservice;
 	@Autowired
 	ControllerUtil util;
 
@@ -269,7 +271,7 @@ public class MessageController {
 //		bb.setImage04(util.fileTransformBlob(file3));
 //		bb.setImg04(util.getFileName(file3));
 
-		bb.setMemberBean(mem1);
+		bb.setMemberBean(mservice.getMemberById(mem1.getMemberId()));
 		service.addMessage(bb);
 		return "redirect:/createDate";
 	}

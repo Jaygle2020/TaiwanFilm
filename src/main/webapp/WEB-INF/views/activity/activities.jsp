@@ -355,6 +355,11 @@ border-bottom: 5px solid #EA0082;
 
 
 			<script>
+			
+				/* $(".activity-inner").mouseover(function(){
+					alert($(this).data("number"));
+				});     */
+				
 				$('#new-button').click(function() {
 					$('.activityContent').removeClass("active active-bottom");
 					$('#new').addClass("active");

@@ -121,7 +121,7 @@ a {
 
 .keyQuery {
 	color: #9a5105;
-	margin-right: 926px;
+	margin-right: 1144px;
 	display: inline-block;
 	font-size: 18px;
 	font-family: fantasy;
@@ -245,7 +245,7 @@ a {
 					<Input type='hidden' name='pgId' value='${product.productId}'>
 
 					<button
-						style="height: 55px; font-size: 24px; background: darkcyan; color: antiquewhite; width: 362px; border-radius: 6%;"
+						style="height: 55px; font-size: 24px; background: darkcyan; color: antiquewhite; width: 429px; border-radius: 6%;"
 						id="addsubm" type="button" data-id="${product.productId}"
 						onclick="pgaddCart(this)">加入購物車</button>
 

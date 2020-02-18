@@ -144,9 +144,8 @@
 </form:form>
 </div>
 <div class="DEMOONE">
-<input  id="oneEntry"type="button" onclick="oneEntry1()" value="DEMO用註冊會員"/>
+	<input  id="oneEntry"type="button" onclick="oneEntry1()" value="DEMO用註冊會員"/>
 </div>
-<div style="bottom:0px;"><jsp:include page="../fragment/bottom.jsp" /></div> 
 		<script	src="${pageContext.request.contextPath }/js/registerNewMember.js"></script>
 		<script>
 		

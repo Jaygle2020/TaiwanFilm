@@ -217,7 +217,7 @@
 			$(".dollar").text(function(){
 				$(this).text("$"+formatNumber($(this).text())) ;
 			})
-			$("#preViewArea").find("img").a
+			//$("#preViewArea").find("img").a
 			$(".datepicker").datepicker();
 			
 			//設定方案日期按鈕
@@ -251,6 +251,34 @@
 				}
 			}
 			
+			
+			//建立彈出視窗結構
+			dialog = $("#dialog-form").dialog({
+				autoOpen : false,
+				height : 650,
+				width : 800,
+				modal : true,
+				buttons : {
+					"建立一個贊助專案" : addDonatePlan,
+					"取消" : function() {
+						dialog.dialog("close");
+					}
+					
+				},
+				close : function() {
+					var form = document.getElementById("rewardPlan");
+					form.reset();
+					var noPictures = $("<p>目前沒有圖片</p>");
+					$("#photoPre").html("").append(noPictures);
+					allFields.removeClass("ui-state-error");
+				}
+			});
+			
+			form = dialog.find( "#rewardPlan" ).on( "submit", function( event ) {
+			      event.preventDefault();
+			      addDonatePlan();
+			    });
+			
 			//彈出式視窗內的資料送進SERVER
 			function addDonatePlan() {
 				var valid = true;
@@ -263,7 +291,7 @@
 					var formData = new FormData(form);
 					$.ajax({
 						type:'post',
-						url:url,
+						url:url,  //  url = /createDonatePlan
 						data: formData,
 						dataType:false,
 						cache:false,
@@ -281,7 +309,7 @@
 							alert("fail");
 						}
 					})
-					$("#updateId").val("0");
+					$("#updateId").val("0"); // updateId是拿來檢查要新增還是更改的數字
 					dialog.dialog("close");
 				}
 				
@@ -304,37 +332,51 @@
 				})
 			}
 
-			dialog = $("#dialog-form").dialog({
-				autoOpen : false,
-				height : 650,
-				width : 800,
-				modal : true,
-				buttons : {
-					"建立一個贊助專案" : addDonatePlan,
-					"取消" : function() {
-						dialog.dialog("close");
-					}
-				},
-				close : function() {
-					var form = document.getElementById("rewardPlan");
-					form.reset();
-					var noPictures = $("<p>目前沒有圖片</p>");
-					$("#photoPre").html("").append(noPictures);
-					allFields.removeClass("ui-state-error");
-				}
-			});
-			
-			form = dialog.find( "#rewardPlan" ).on( "submit", function( event ) {
-			      event.preventDefault();
-			      addDonatePlan();
-			    });
-			
 			$("#create-user").button().on("click", function() {
 				dialog.dialog("open");
 			});
 			
 			$( ".plan" ).on( "click", getPlanForm);
 			
+			// 點擊方案後會呼叫此方法設置表格內的資料
+			function updateForm(dpBean){
+				$("#donateMoney").val(dpBean.donateMoney);
+				$("#donateDescription").text(dpBean.donateDescription);
+				var img = $("<img width='300' height='200'>").attr('src',
+						"${pageContext.request.contextPath}/getDonatePlan/photo/"+dpBean.planId
+						);
+				$("#photoPre").html("").append(img);
+				$("#limit").val(dpBean.limitNum);
+				$("#updateId").val(dpBean.planId);
+				var deletePlan = $("<button type='button' data-delId='"+dpBean.planId+"' id='delPane'>刪除</button>")		
+				$(".ui-dialog-buttonpane").append(deletePlan);
+				$("#delPane").on("click",delPlan);
+			}
+			//刪除按鈕
+			function delPlan(){
+				alert($(this))
+				var url = "${pageContext.request.contextPath}/delDonatePlan/projId"+${ProjectBean.projectId}+
+				"/actionId"+$(this).attr("data-delId");
+				$.ajax({
+					type:'get',
+					url:url,
+					dataType:"json",
+					success:function(dataDpBeans){
+						console.log(dataDpBeans);
+						dpPlanForEach(dataDpBeans);
+						$( ".plan" ).on( "click", getPlanForm);
+						$(".dollar").text(function(){
+						$(this).text("$"+formatNumber($(this).text())) ;
+						})
+						$("button").remove("#delPane");
+						$("#updateId").val("0");
+						dialog.dialog("close");
+					},
+					error:function(){
+						alert("fail");
+					}	
+				})
+			}
 		});
 		
 		//送出表單按鈕
@@ -398,7 +440,7 @@ function dpPlanForEach(dpBeans){
 	$(".dplan-view").html("");
 	for(var dpBean of dpBeans){
 		var dplan = $("<div class='plan' id='donatePlan"+dpBean.planId+"' data-planId='"+dpBean.planId+"'>"+
-			"<div><h2 class='donateMoney dollar'>$"+dpBean.donateMoney+"</h2></div>"+
+			"<div><h2 class='donateMoney dollar'>"+dpBean.donateMoney+"</h2></div>"+
 			"<div class='projectThumb'><img src='${pageContext.request.contextPath}"+
 			"/getDonatePlan/photo/"+dpBean.planId+"?t="+Math.random()+"'></div><div class='planText'><div class='description'>"+
 			dpBean.donateDescription+"</div><hr><span class='shipping'"+ 
@@ -411,17 +453,9 @@ function dpPlanForEach(dpBeans){
 	}
 }
 //點擊方案方塊叫回原方案的資料進表格
-function updateForm(dpBean){
-		$("#donateMoney").val(dpBean.donateMoney);
-		$("#donateDescription").text(dpBean.donateDescription);
-		var img = $("<img width='300' height='200'>").attr('src',
-				"${pageContext.request.contextPath}/getDonatePlan/photo/"+dpBean.planId
-				);
-		$("#photoPre").html("").append(img);
-		$("#limit").val(dpBean.limitNum);
-		$("#updateId").val(dpBean.planId);
-		
-}
+
+
+
 
 
 	</script>

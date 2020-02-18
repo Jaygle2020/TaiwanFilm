@@ -154,5 +154,13 @@ public class ProposalServieImp implements ProposalService {
 		dpDao.updatePlan(dpBean);
 		
 	}
+	
+	@Transactional
+	@Override
+	public void delDonatePlan(Integer projectId , Integer dpId) {
+		DonatePlanBean dpBean = dpDao.getSinglePlan(projectId, dpId);
+		dpDao.delDonatePlan(dpBean);
+		
+	}
 
 }

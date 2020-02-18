@@ -21,7 +21,6 @@ body {
 .sign {
 	vertical-align: top;
 	width: 300px;
-	height: 230px;
 	display: inline-block;
 }
 
@@ -29,6 +28,7 @@ body {
     padding-top: 100px;	
 	margin-bottom: 10%;
 	text-align: center;
+	padding-top: 250px;
 }
 
 .sign {
@@ -36,16 +36,15 @@ body {
 }
 
 #sign-in {
-	hight: 230px;
 	margin: 0px 30px;
 	border-radius: 5px;
-	margin: 0px 50px;
+	margin: 0px 50px; 
 }
 
 #sign-up {
-	margin: 5px;
-	hight: 230px;
-	border-radius: 5px;
+	margin: 5px; 
+	border-left: 1px solid black;
+    padding-left: 70px;
 }
 
 .loginOrOut {
@@ -58,6 +57,7 @@ body {
     border: 0;
     padding: 0;
     border-bottom: 1px solid black;
+    font-family: serif;
 	
 }
 
@@ -102,17 +102,19 @@ color:red;
 
 			<div class="sign" id="sign-in">
 				<b>登入</b>
+				<br>
+				<br>   
 				<p class="errorMsg" id="errorBox">${errorMessage}</p>
 				<form action='${pageContext.request.contextPath}/Checklogin'
 					method='post'>
 					<input id="email" name="email" class="nobooder" type='email'
-						placeholder='輸入電子信箱' required /><br> 
+						placeholder='輸入電子信箱' required  style="width:90%"/><br> 
 						<input id="password" name="password" class="nobooder" type='password'
-						placeholder='輸入密碼' required /><br> 
-						<label for="remember" class="grey dark"> <br>
+						placeholder='輸入密碼' required  style="width:90%"/><br> 
+						<label for="remember" class="grey dark"> <br> 
 					<input type="checkbox" name="rememberBox" id="checkbox" />記得我
 					</label> <br> <br> <input class="but" type='reset' value='清除' />
-					<input class="but" type='submit' value='確認登入'
+					<input class="but" type='submit' value='確認登入' 
 						onclick='return check()' />
 				</form>
 
@@ -137,7 +139,7 @@ color:red;
 	<input type="button" value="DEMO管理員" onclick="oneButtonInport2()"> 
 	<input type="button" value="DEMO一般會員" onclick="oneButtonInport1()">
 	</div>
-	<jsp:include page="../fragment/bottom.jsp" />
+
 	<script	src="${pageContext.request.contextPath}/_01_register/JQ/jquery.cookie.js"></script>
 	<script>
 

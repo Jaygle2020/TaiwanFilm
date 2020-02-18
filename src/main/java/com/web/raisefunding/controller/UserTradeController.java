@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.web.login.Model.MembersBean;
+import com.web.login.Service.MembersService;
 import com.web.raisefunding.model.DonatePlanBean;
 import com.web.raisefunding.model.PurchaseBean;
 import com.web.raisefunding.service.DonatePlanService;
@@ -25,6 +26,8 @@ public class UserTradeController {
 	DonatePlanService dpService;
 	@Autowired
 	ServletContext context;
+	@Autowired
+	MembersService membService;
 	
 	//進入個別贊助方案的寄送表單
 	@GetMapping("/donatePlan{id}")
@@ -52,7 +55,7 @@ public class UserTradeController {
 		DonatePlanBean dpBean =  dpService.getDonateBean(planId);
 		pcBean.setPayAmount(payAmount);
 		pcBean.setOrderDate(orderDate);
-		pcBean.setMbBean(mbBean);
+		pcBean.setMbBean(membService.getMemberById(mbBean.getMemberId()));
 		pcBean.setProjBean(dpBean.getProjBean());
 		pcBean.setDpBean(dpBean);
 		dpService.createPurchaseData(pcBean);

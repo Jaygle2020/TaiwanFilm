@@ -251,40 +251,6 @@ public class ActivityController {
 
 	
 	
-	@RequestMapping(value = "/SignUpActivity/{activityId}", method = RequestMethod.GET)
-	public String SignUpActivity(@PathVariable("activityId") Integer activityId, Model model) {
-		
-		
-		
-		
-		activityBean ab = service.getActivityById(activityId);
-		model.addAttribute("activity", ab);
-		return "activity/SignUpActivity";
-	} 
-
-	@RequestMapping(value = "/SignUpActivity/{activityId}", method = RequestMethod.POST)
-	public String SignUpActivity(@PathVariable("activityId") Integer activityId,
-			@ModelAttribute("activityBean") activityBean ab, Model model) {
-		ab.setActivityId(activityId);
-		service.updateActivity(ab);
-		model.addAttribute("activity", service.getActivityById(activityId));
-		return "activity/updateactivityM";
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	/*當我需要insert進資料庫時,需要透過他來過濾使用端輸入的東西限制,以防亂輸入,甚至藉由語法亂改你資料*/
 	@InitBinder

@@ -2,8 +2,6 @@ package com.web.raisefunding.dao;
 
 import java.util.List;
 
-import javax.persistence.NoResultException;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +20,7 @@ public class DonatePlanDaoImp implements DonatePlanDao {
 	public int createNewPlan(DonatePlanBean dpBean) {
 		int n = 0;
 		Session session = factory.getCurrentSession();
+		dpBean.setOnline(1);
 		session.save(dpBean);
 		n++;
 		return n;
@@ -54,9 +53,9 @@ public class DonatePlanDaoImp implements DonatePlanDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<DonatePlanBean> getAllPlan(Integer projectId) {
+	public List<DonatePlanBean> getAllPlan(Integer projectId) {		
 		Session session = factory.getCurrentSession();
-		String hql = "From DonatePlanBean where projectId = :prjId";
+		String hql = "From DonatePlanBean where projectId = :prjId and online = 1";
 		List<DonatePlanBean> list= session.createQuery(hql)
 				.setParameter("prjId", projectId)
 				.getResultList();
@@ -68,6 +67,14 @@ public class DonatePlanDaoImp implements DonatePlanDao {
 		Session session = factory.getCurrentSession();
 		DonatePlanBean dpBean = session.get(DonatePlanBean.class, planId);
 		dpBean.setLimitNum((dpBean.getLimitNum()-1));
+	}
+	
+	@Override
+	public void delDonatePlan(DonatePlanBean dpBean) {
+		dpBean.setOnline(0);
+		Session session = factory.getCurrentSession();
+		session.update(dpBean);
+		
 	}
 
 }

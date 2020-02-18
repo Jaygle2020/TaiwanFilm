@@ -66,7 +66,7 @@
 .ball-area2 {
 	width: 300px;
 	height: 5px;
-	background: #f8f9fa;
+	background: #e9ebec;
 	display: inline-block;
 }
 
@@ -470,7 +470,7 @@ function Abort() {
 				<div style="text-align: left; padding: 10px">
 					<div
 						style="padding: 5px 10px; background: green; display: inline-block">促銷優惠</div>
-					<div style="width: 50%; display: inline-block;">宅配優惠|免運優惠，滿1000元(含以上)免運費</div>
+					<div style="width: 50%; display: inline-block;">宅配優惠|免運優惠，滿200元(含以上)免運費</div>
 				</div>
 
 			</div>
