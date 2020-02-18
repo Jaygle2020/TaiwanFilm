@@ -8,7 +8,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath }/favicon.ico" />
 <link
 	href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou&display=swap"
 	rel="stylesheet">
@@ -116,13 +117,13 @@ a {
 	display: inline-block;
 	margin-top: px;
 	margin-top: -47px;
-	margin-right: 130px;
+	margin-right: 179px;
 	font-size: 23px;
 }
 
 .keyQuery {
 	color: #9a5105;
-	margin-right: 1144px;
+	margin-right: 1218px;
 	display: inline-block;
 	font-size: 18px;
 	font-family: fantasy;
@@ -156,7 +157,7 @@ a {
 	<br>
 	<div>
 		<div class="allProductPage"
-			style="padding-left: 165px; padding-top: 74px; font-size: 30px; font-family: serif;">
+			style="padding-left: 222px; padding-top: 74px; font-size: 30px; font-family: serif;">
 			<a href="<c:url value='products' />">全部商品</a>
 
 		</div>
@@ -167,7 +168,7 @@ a {
 			</a>
 		</div>
 	</div>
-	<hr style="margin-right: 168px; margin-left: 164px;">
+	<hr style="margin-right: 225px; margin-left: 221px;">
 
 	<div class="productlist active">
 
@@ -201,6 +202,7 @@ a {
 			</div>
 		</div>
 
+		<br>
 		<c:forEach var='product' items='${products}' varStatus="paging">
 			<c:if test='${paging.last}'>
 				<div class="pagingcount" style="display: none">${paging.count}
@@ -246,7 +248,7 @@ a {
 					<Input type='hidden' name='pgId' value='${product.productId}'>
 
 					<button
-						style="height: 55px; font-size: 24px; background: darkcyan; color: antiquewhite; width: 429px; border-radius: 6%;"
+						style="height: 55px; font-size: 24px; background: darkcyan; color: antiquewhite; width: 473px; border-radius: 6%;"
 						id="addsubm" type="button" data-id="${product.productId}"
 						onclick="pgaddCart(this)">加入購物車</button>
 

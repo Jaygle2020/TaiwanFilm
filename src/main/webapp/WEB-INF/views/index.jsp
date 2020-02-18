@@ -43,12 +43,12 @@
 
 	<div class="indexWidth">
 		<div class="mainContent">
-			<div class="mainContent-coverImg" style="height: 700px"></div>
-			<div class="mainContentimg"> 
-				<div class="mainContent-img-left"></div>
-				<div class="mainContent-img-right"></div>
+			<div class="mainContent-coverImg" style="height: 750px"></div>
+			<div class="mainContentimg">     
+				<div class="mainContent-img-left" style="height: 900px;width: 600px"></div>
+				<div class="mainContent-img-right" style="height: 900px;width: 600px"></div>
 			</div>
-		</div>
+		</div>  
 			
 
 

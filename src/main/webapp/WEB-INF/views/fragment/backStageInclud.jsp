@@ -12,7 +12,7 @@
 	</div>         
 	<div class="backStage-bar">
 		<div class="backStage-title">
-			<div class="back-member backstage-title">會員管理</div>
+			<div class="back-member backstage-title">會員管理</div>
 			<div class="choose-list-member choose-list">  
 				<a href="${pageContext.request.contextPath}/ShowAllMembers">
 					<div class="m-bar1">查詢全部會員</div>
@@ -27,7 +27,7 @@
 			</div> 
 		</div>
 		<div class="backStage-title">
-			<div class="back-activity backstage-title">活動</div>
+			<div class="back-activity backstage-title">活動</div>
 			<div class="choose-list-activity choose-list">  
 				<a href="${pageContext.request.contextPath}/allActivityM"> 
 					<div class="a-bar1">查詢全部活動</div>
@@ -58,7 +58,7 @@
 			</div>
 		</div>
 		<div class="backStage-title">
-			<div class="back-shopping backstage-title">購物</div>
+			<div class="back-shopping backstage-title">購物</div>
 			<div class="choose-list-shopping choose-list">
 				<a href="${pageContext.request.contextPath}/productsM"><div class="s-bar1">商品管理</div></a>
 				<a href="${pageContext.request.contextPath}/products/add"><div class="s-bar2">新增商品</div></a>

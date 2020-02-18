@@ -116,7 +116,7 @@
 			<div class="TaiwanFilms" style="font-size: 20px;color: black;padding-top: 30px">回到後台首頁</div>
 		</a>   --%>
 	</div>           
-	<div class="backStage-bar">
+	<div class="backStage-bar" style="height:870px">
 		<div class="backStage-title">
 			<div class="back-member backstage-title">會員管理</div>
 			<div class="choose-list-member choose-list">  
