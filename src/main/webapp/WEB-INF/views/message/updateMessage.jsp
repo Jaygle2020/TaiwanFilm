@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>編輯訊息</title>
 
-
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/menuStyle.css"
 	type="text/css">

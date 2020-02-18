@@ -11,6 +11,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/Flying.css"
 	type="text/css">
+	<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/UtilTool.js" ></script>
 </head>

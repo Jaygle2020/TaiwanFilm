@@ -16,6 +16,7 @@
 	href="${pageContext.request.contextPath}/css/purchase1.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/menuStyle.css" />
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>	
 
 </head>
 

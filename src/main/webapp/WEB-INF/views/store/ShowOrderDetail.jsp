@@ -9,6 +9,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/menuStyle.css">
 <title>TaiwanFilms</title>
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
 <style type="text/css">
 #main {
 	position: absolute;

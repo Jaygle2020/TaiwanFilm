@@ -8,6 +8,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
 <link
 	href="https://fonts.googleapis.com/css?family=ZCOOL+QingKe+HuangYou&display=swap"
 	rel="stylesheet">

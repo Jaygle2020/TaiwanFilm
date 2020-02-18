@@ -4,13 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
  <title>TaiwanFilms</title>
-<!-- <html>
-
-<head>
-
-<meta charset="UTF-8"> -->
-
-      
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>  
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script> 
 

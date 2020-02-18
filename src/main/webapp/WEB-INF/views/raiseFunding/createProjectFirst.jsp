@@ -19,7 +19,7 @@
 	href="https://use.fontawesome.com/releases/v5.0.9/css/all.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>  
 <script>
 <!-- 網頁就緒時執行的JS -->
 	$(function() {

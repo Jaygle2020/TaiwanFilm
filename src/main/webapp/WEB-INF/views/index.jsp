@@ -10,9 +10,10 @@
 <title>Taiwam Films</title>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap"
+<meta charset="UTF-8">  
+<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap"   
 	rel="stylesheet">
+
 <link rel="stylesheet" href="css/finalIndex.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" />
 <!-- 	<link href="https://fonts.googleapis.com/css?family=Mukta&display=swap" rel="stylesheet">

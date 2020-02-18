@@ -8,6 +8,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
 	rel="stylesheet">

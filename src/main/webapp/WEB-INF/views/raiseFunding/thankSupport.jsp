@@ -11,6 +11,7 @@
 	href="${pageContext.request.contextPath}/css/menuStyle.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/thank1.css" />
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
 <style>
 
 

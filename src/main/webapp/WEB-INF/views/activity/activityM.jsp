@@ -15,6 +15,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/menuStyle.css"
 	type="text/css">
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
 <style>
 .container h2{
 	font-size: 40px;

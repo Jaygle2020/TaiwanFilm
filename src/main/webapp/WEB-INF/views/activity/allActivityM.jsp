@@ -13,7 +13,7 @@
 <link rel='stylesheet'
  href='${pageContext.request.contextPath}/css/movie.css' type="text/css" />
 <title>TaiwanFilms</title>
-
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
 <style>
 body {
  background: white;

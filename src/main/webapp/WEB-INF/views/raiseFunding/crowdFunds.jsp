@@ -10,6 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/menuStyle.css" />
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https:///code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel=stylesheet type="text/css"

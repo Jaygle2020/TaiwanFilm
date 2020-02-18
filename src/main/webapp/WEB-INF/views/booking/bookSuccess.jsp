@@ -4,6 +4,7 @@
 <html lang="zh-TW">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/movie.css">
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/menuStyle.css">
 <meta charset="UTF-8">

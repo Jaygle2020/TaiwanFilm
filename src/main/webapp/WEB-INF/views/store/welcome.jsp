@@ -7,10 +7,11 @@
 <head>
 <meta charset="utf-8">
 <title>Welcome</title>
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
 </head>
 <body>
 
-	<div style="text-align: center;">
+	<div style="text-align: center;">  
 		<h1>${title}</h1>
 		<p>${subtitle}</p>
 	</div>

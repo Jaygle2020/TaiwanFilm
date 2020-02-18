@@ -10,7 +10,7 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <script type='text/javascript'
 	src='${pageContext.request.contextPath}/javascript/jquery-1.9.1.js'></script>
-
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
 <title>所有會員資料</title>
 <style>
 .name {
@@ -143,19 +143,11 @@ h1 {
 						<div class="content-area">確認</div>
 					</div>
 					<c:forEach var='member' items='${memberlist}' varStatus="status">
-						<c:choose>
-							<c:when test="${status.count > 6}">
-								<div id="pageproduct${status.count}" class="product"
-									style="display: none;">
-							</c:when>
-							<c:otherwise>
-								<div id="pageproduct${status.count}" class="product">
-							</c:otherwise>
-						</c:choose>
+						
 						<div class="content">
 							<div class="content-area">
 								<a	href="${pageContext.request.contextPath}/_01_register/modify/${member.memberId}">${member.memberId}</a>
-							${status.count}
+		
 							</div>
 							<div class="content-area">${member.email}</div>
 							<div class="content-area">${member.memberName}</div>

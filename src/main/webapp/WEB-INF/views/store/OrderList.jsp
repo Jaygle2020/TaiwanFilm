@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/menuStyle.css">
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
 <title>訂單列表</title>
 <style type="text/css">
 #borderA {

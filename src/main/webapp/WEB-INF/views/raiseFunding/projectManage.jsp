@@ -24,7 +24,7 @@
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <link rel='stylesheet'
 	href='${pageContext.request.contextPath}/css/movie.css' type="text/css" />
-
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath }/favicon.ico"/>
 <style>
 
 body{
